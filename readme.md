@@ -24,6 +24,6 @@ intend on building a CRUD using React and GraphQL.
 - [ ] WiP;
 
 **Deployment**
- - [X] [Vercel](https://woovi-challenge.vercel.app/)
+ - [X] Production: [Vercel](https://woovi-challenge.vercel.app/)
  
 
