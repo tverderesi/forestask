@@ -1,34 +1,24 @@
 :root {
-  --leafy-green: #017933
-}
-
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+  --leafy-green: #017933;
+  --bs-gray-100-o90: #f9fafbe6;
 }
 
 
 .forest-green {
   color: var(--leafy-green)
+}
+
+.btn-transparent {
+  background-color: transparent;
+  border: none;
+  color: var(--bs-gray-900);
+}
+
+.btn-transparent:hover {
+  background-color: var(--bs-gray-900) !important;
+  color: var(--bs-gray-100) !important;
+}
+
+.bg-light {
+  background-color: var(--bs-gray-100-o90) !important;
 }
