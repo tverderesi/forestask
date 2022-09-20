@@ -1,4 +1,4 @@
-import { BsCardChecklist, BsFillMoonStarsFill, BsFillPersonFill } from "react-icons/bs";
+import { BsCardChecklist, BsFillMoonStarsFill, BsFillPersonFill, BsTreeFill } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 import React from "react";
@@ -50,7 +50,7 @@ class Tasks extends React.Component {
 class TeacherMode extends React.Component {
   render() {
     return (
-      <Button href="./html/teachermode.html" variant="transparent">
+      <Button variant="transparent">
         <div className="mb-2">
           <FaChalkboardTeacher size="1.5em" />
         </div>
@@ -59,5 +59,17 @@ class TeacherMode extends React.Component {
     );
   }
 }
+class Header extends React.Component {
+  render() {
+    return (
+      <header className="mt-3">
+        <h1 className=" d-flex align-items-center justify-content-center fw-bold">
+          flores<span className="forest-green me-3">tarefa </span>
+          <BsTreeFill className="forest-green" />
+        </h1>
+      </header>
+    );
+  }
+}
 
-export { DarkMode, TeacherMode, Profile, Tasks };
+export { DarkMode, TeacherMode, Profile, Tasks, Header };
