@@ -1,24 +1,27 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import React from "react";
-import { Header } from "./Components";
-import Navbar from "./Navbar";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
+
+
 function App() {
+  const style = {
+    backgroundImage: `url("./media/4.png")`,
+    height: "90vh",
+    margin: "0",
+    overflow: "hidden",
+    backgroundSize: "cover",
+    backgroundPosition: "0 90%",
+  }
   return (
-    <div
+<>
+<div
       className="App"
-      style={{
-        backgroundImage: `url("./media/4.png")`,
-        height: "100vh",
-        margin: "0",
-        overflow: "hidden",
-        backgroundSize: "cover",
-        backgroundPosition: "0 100vh",
-      }}
-    >
+      style={style}>
       <Header />
-      <Navbar />
     </div>
+    <Navbar/></>
   );
 }
 
