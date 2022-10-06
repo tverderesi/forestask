@@ -1,5 +1,7 @@
 import Card from './shared/Card';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ';
 function CardList() {
   return (
     <AnimatePresence>
@@ -15,21 +17,10 @@ function CardList() {
           },
         }}
       >
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card
+          title='title'
+          content={lorem}
+        />
       </motion.div>
     </AnimatePresence>
   );

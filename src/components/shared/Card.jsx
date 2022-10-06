@@ -1,56 +1,49 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import '../../App.css';
+import { BsCheckLg } from 'react-icons/bs';
+import CardTags from './CardTags';
 
-function Card2() {
+function Card2({ title, content }) {
   return (
-    <Card className='card container-fluid rounded mt-3'>
-      <div className='card-body row'>
-        <div className='col'>
-          <h5 className='card-title display-5'>Title</h5>
-          <div className='mt-1'>
-            <Button
-              type='button'
-              className='btn btn-homework btn-sm
-                  font-weight-bold'
-            >
-              Type
-            </Button>
-            <button
-              type='button'
-              className='btn btn-subj-math btn-sm
-                  font-weight-bold'
-            >
-              Subject
-            </button>
-            <button
-              type='button'
-              className='btn btn-sm btn-deadline
-                  font-weight-bold'
-            >
-              deadline
-            </button>
-            <button
-              type='button'
-              className='btn btn-exp btn-sm
-                            font-weight-bold'
-            >
-              XP: 0
-            </button>
-            <div className='col-1 task-checkbox align-self-center justify-self-center'>
-              <input
-                name='done'
-                className='xp_done done'
-                type='checkbox'
-                value='0'
-              />
-            </div>
-          </div>
+    <Card
+      style={{
+        backdropFilter: 'blur(20px)',
+        backgroundColor: '#f9fafbe0',
+        borderRadius: '16px',
+        border: 'none',
+      }}
+    >
+      <Card.Header
+        className='mt-5 ms-4'
+        style={{ background: 'none', border: 'none' }}
+      >
+        <Card.Title style={{ fontSize: '1.75em', fontWeight: '600' }}>{title}</Card.Title>
+        <CardTags subject='Music' />
+      </Card.Header>
 
-          <p className='card-text mt-3 text-justify'>Content</p>
-        </div>
-      </div>
+      <Card.Body className='col-10 ms-4'>
+        <p className='text-justify'>{content}</p>
+      </Card.Body>
+      <button
+        className='col-1 p-0'
+        style={{
+          height: '60px',
+          width: '60px',
+          padding: '0',
+          border: 'none',
+          borderRadius: '50%',
+          position: 'absolute',
+          left: '92.5%',
+          top: 'calc(50% - 30px)',
+        }}
+      >
+        <BsCheckLg
+          className='p-0'
+          size={'30px'}
+          style={{ opacity: '10%' }}
+        />
+      </button>
     </Card>
   );
 }
