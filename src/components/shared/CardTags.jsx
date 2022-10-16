@@ -1,37 +1,41 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { SubjectColor } from './TagStyles';
+import {
+  MdInfoOutline,
+  MdOutlineLightbulb,
+  MdCalendarToday,
+  MdSentimentVerySatisfied,
+} from 'react-icons/md';
+import { Col } from 'react-bootstrap';
+import { useContext } from 'react';
+import CardListContext from '../../context/CardListContext';
 
-function CardTags(subject) {
+function CardTags({ subject, type, deadline, xp }) {
+  const { PalleteCreator } = useContext(CardListContext);
+
+  // Styling
+  const Subjects = ['Math', 'Music', 'Science', 'Portuguese', 'English'];
+  const BaseColor = '#8f3fc4';
+  const classes = 'd-flex align-items-center col-auto me-2';
+  let Pallete = PalleteCreator(Subjects, BaseColor);
+
   return (
-    <div className='d-flex flex-row mt-4'>
-      <Button
-        type='button'
-        className='btn btn-homework btn-sm
-                  font-weight-bold'
+    <div className='d-flex fw-bold flex-wrap p-0'>
+      <Col className={classes}>
+        <MdInfoOutline className='react-icons me-1' /> {type}
+      </Col>
+      <Col
+        className={classes}
+        style={{ color: Pallete['Subject'][`${subject}`] }}
       >
-        Type
-      </Button>
-      <Button
-        type='button'
-        style={{ backgroundColor: SubjectColor['Science'] }}
-      >
-        Subject
-      </Button>
-      <Button
-        type='button'
-        className='btn btn-sm btn-deadline
-                  font-weight-bold ms-2'
-      >
+        <MdOutlineLightbulb className='me-1' />
+        {subject}
+      </Col>
+      <Col className={classes}>
+        <MdCalendarToday className='me-1' />
         deadline
-      </Button>
-      <Button
-        type='button'
-        className='btn btn-exp btn-sm
-                            font-weight-bold ms-2'
-      >
-        0 XP
-      </Button>
+      </Col>
+      <Col className={classes}>
+        <MdSentimentVerySatisfied className='me-1' />0 XP
+      </Col>
     </div>
   );
 }
