@@ -4,16 +4,12 @@
   --card-color: hsla(197, 24%, 94%, 0.95);
   --leafy-green: #017933;
   --bs-gray-100-o90: #f9fafbe6;
-  --card-color: #e0e0e0;
-  --homework: #e68fa1;
-
   --deadline: #6eaaf1;
   --fontcolor: black;
   --lvl: #f77779;
   --age: #ee976b;
   --exp: #65c0bd;
 }
-
 
 .forest-green {
   color: var(--leafy-green)
@@ -23,6 +19,7 @@
   background-color: transparent;
   border: none;
   color: var(--bs-gray-900);
+  font-weight: bold;
 }
 
 .btn-transparent:hover {
@@ -259,8 +256,8 @@ h5.card-title {
 }
 
 #information-card-image {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
 }
 
 
