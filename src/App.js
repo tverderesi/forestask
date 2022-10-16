@@ -2,29 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React from 'react';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
 import CardList from './components/CardList';
-import Nav from 'react-bootstrap/Nav';
-import DarkMode from './components/DarkMode';
-import Profile from './components/Profile';
-import Tasks from './components/Tasks';
-import TeacherMode from './components/TeacherMode';
-const navItems = [
-  <>
-    <Nav.Item>
-      <DarkMode />
-    </Nav.Item>
-    <Nav.Item>
-      <Profile />
-    </Nav.Item>
-    <Nav.Item>
-      <Tasks />
-    </Nav.Item>
-    <Nav.Item>
-      <TeacherMode />
-    </Nav.Item>
-  </>,
-];
+import ProfileCard from './components/ProfileCard';
+import { CardListProvider } from './context/CardListContext';
+
 function App() {
   const style = {
     backgroundImage: `url("./media/4.png")`,
@@ -36,12 +17,22 @@ function App() {
   };
   return (
     <div
-      className='App'
+      className='App d-flex'
       style={style}
     >
-      <Header />
-      <CardList />
-      <Navbar navItems={navItems} />
+      <div
+        className='d-flex justify-content-between m-auto align-items-start align-self-center'
+        style={{ width: ' 90%' }}
+      >
+        <ProfileCard
+          lvl='3'
+          xp='300'
+          name='Thomas'
+        />
+        <CardListProvider>
+          <CardList />
+        </CardListProvider>
+      </div>
     </div>
   );
 }
