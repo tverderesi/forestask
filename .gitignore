@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 /florestarefa-main
 src/components/shared/AnnoyingButton.jsx
+src/context/cards.js
