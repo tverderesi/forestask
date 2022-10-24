@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { BsCheckLg } from 'react-icons/bs';
 import CardListContext from '../../context/CardListContext';
 import { useContext } from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function ActivityCard({ item }) {
   const { handleCardClick, text } = useContext(CardListContext);
@@ -18,7 +18,7 @@ function ActivityCard({ item }) {
       position: 'absolute',
       top: '25%',
       left: '25%',
-      opacity: item.checked === true ? '1' : '0',
+      opacity: item.checked ? '1' : '0',
     };
   };
 
@@ -31,13 +31,11 @@ function ActivityCard({ item }) {
     });
   };
 
-  const handleDone = (id, checked) => {
+  const handleDone = id => {
     addDone(id);
-    setCompleted(checked);
+    setCompleted(!completed);
     return;
   };
-
-  useEffect(() => {}, [completed]);
 
   return (
     <Card
