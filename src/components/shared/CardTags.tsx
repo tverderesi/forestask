@@ -8,7 +8,17 @@ import { Col } from 'react-bootstrap';
 import { useContext } from 'react';
 import CardListContext from '../../context/CardListContext';
 
-function CardTags({ subject, type, deadline, xp }) {
+function CardTags({
+  subject,
+  type,
+  deadline,
+  xp,
+}: {
+  subject: any;
+  type: any;
+  deadline?: any;
+  xp?: any;
+}) {
   const { PalleteCreator } = useContext(CardListContext);
 
   // Styling

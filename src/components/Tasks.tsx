@@ -11,7 +11,6 @@ function Tasks() {
       variant='transparent'
       data-toggle='collapse'
       aria-pressed='false'
-      autocomplete='off'
     >
       <div className='mb-2'>
         <FaTree size='1.5em' />

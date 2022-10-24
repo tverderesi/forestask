@@ -1,11 +1,12 @@
 import ActivityCard from './shared/AcitivityCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useContext, useRef, useState } from 'react';
-import CardListContext, { CardListProvider } from '../context/CardListContext';
+import { useContext, useRef, useState, CSSProperties } from 'react';
+import CardListContext from '../context/CardListContext';
 import CardListTop from './shared/CardListTop';
-
+import CSS from 'csstype';
 function CardList() {
-  const { cards, handleClick, page, pageLimit, numCards } = useContext(CardListContext);
+  const { cards, handleClick, page, pageLimit, numCards } =
+    useContext(CardListContext);
 
   //  Animations Variants
 
@@ -36,7 +37,6 @@ function CardList() {
             handleClick={handleClick}
             page={page + 1}
             pageLimit={pageLimit + 1}
-            style={{ position: 'absolute', top: '0' }}
           />
         </motion.div>
 
@@ -48,17 +48,23 @@ function CardList() {
               animate={{
                 x: 0,
                 opacity: 1,
-                transition: { duration: 0.3, delay: 0.45 + 0.15 * (item.id % numCards) },
+                transition: {
+                  duration: 0.3,
+                  delay: 0.45 + 0.15 * (item.id % numCards),
+                },
               }}
               exit={{
                 opacity: 0,
                 x: 200,
-                transition: { duration: 0.3, delay: 0.15 * (item.id % numCards) },
+                transition: {
+                  duration: 0.3,
+                  delay: 0.15 * (item.id % numCards),
+                },
               }}
             >
               <ActivityCard
-                item={item}
-                id={item.id}
+                item={item as any}
+                id={item.id as any}
               />
             </motion.div>
           );

@@ -3,15 +3,14 @@ import CardTags from './CardTags';
 import { Col, Container, Row } from 'react-bootstrap';
 import { BsCheckLg } from 'react-icons/bs';
 import CardListContext from '../../context/CardListContext';
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
-function ActivityCard({ item }) {
+function ActivityCard({ item, id }: { item: any; id: any }) {
   const { handleCardClick, text } = useContext(CardListContext);
 
   const [completed, setCompleted] = useState(item.checked);
 
-  let CheckButtonStyle = item => {
+  let CheckButtonStyle = (item: any) => {
     return {
       verticalAlign: 'middle',
       alignSelf: 'center',
@@ -22,7 +21,7 @@ function ActivityCard({ item }) {
     };
   };
 
-  const addDone = async id => {
+  const addDone = async (id: number) => {
     item['checked'] = !item['checked'];
     await fetch(`http://localhost:5000/cards/${id}`, {
       method: 'PUT',
@@ -31,7 +30,7 @@ function ActivityCard({ item }) {
     });
   };
 
-  const handleDone = id => {
+  const handleDone = (id: number) => {
     addDone(id);
     setCompleted(!completed);
     return;
@@ -68,8 +67,8 @@ function ActivityCard({ item }) {
               style={{ background: 'none', border: 'none' }}
             >
               <CardTags
-                subject={item.subject}
-                type={item.type}
+                subject={item.subject as any}
+                type={item.type as any}
               />
             </Card.Header>
 
@@ -82,7 +81,7 @@ function ActivityCard({ item }) {
             <div
               onClick={e => {
                 e.preventDefault();
-                handleDone(item.id, item.checked);
+                handleDone(item.id);
               }}
               style={{
                 height: '60px',
@@ -99,7 +98,7 @@ function ActivityCard({ item }) {
               <BsCheckLg
                 className='p-0'
                 size='30'
-                style={CheckButtonStyle(item)}
+                style={CheckButtonStyle(item) as any}
               />
             </div>
           </Col>

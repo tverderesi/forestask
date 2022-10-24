@@ -1,9 +1,17 @@
 import { Card, Row } from 'react-bootstrap';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 
-function CardListTop({ page, pageLimit, handleClick }) {
+function CardListTop({
+  page,
+  pageLimit,
+  handleClick,
+}: {
+  page: any;
+  pageLimit: any;
+  handleClick: any;
+}) {
   // Styling
-  function PageButtonStyle(page, direction) {
+  function PageButtonStyle(page: any, direction: any) {
     return {
       backgroundColor:
         direction === 'right'
@@ -53,7 +61,7 @@ function CardListTop({ page, pageLimit, handleClick }) {
             handleClick(-1);
           }}
           className='btn p-0 '
-          style={PageButtonStyle(page, 'right')}
+          style={PageButtonStyle(page, 'right') as any}
         />
         <BsArrowRightShort
           onClick={e => {
@@ -61,7 +69,7 @@ function CardListTop({ page, pageLimit, handleClick }) {
             handleClick(+1);
           }}
           className='btn p-0'
-          style={PageButtonStyle(page, 'left')}
+          style={PageButtonStyle(page, 'left') as any}
         />
       </Row>
     </Card>

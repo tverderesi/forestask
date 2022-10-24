@@ -1,13 +1,10 @@
 import React from 'react';
-import DarkMode from './../components/DarkMode';
-import Tasks from './../components/Tasks';
-import TeacherMode from './../components/TeacherMode';
 import Card from 'react-bootstrap/Card';
 import '../App.css';
 import { Figure } from 'react-bootstrap';
 import Navbar from './Navbar';
 import Header from './Header';
-const navItems = [<DarkMode />, <Tasks />, <TeacherMode />];
+import { navItems } from './navItems';
 
 function ProfileCard({ lvl, xp, name }) {
   return (
@@ -31,7 +28,7 @@ function ProfileCard({ lvl, xp, name }) {
         <Figure className='d-flex mt-2'>
           <img
             id='information-card-image'
-            class='rounded-circle'
+            className='rounded-circle'
             src='./media/profile_pic.jpg'
             alt='Sua Foto de Perfil'
           />
@@ -39,14 +36,10 @@ function ProfileCard({ lvl, xp, name }) {
             <h5>Hello, {name}</h5>
             <div>Level {lvl} </div>
             <div>{xp}xp to lvl up!</div>
-            <div class='progress mt-3'>
+            <div className='progress mt-3'>
               <div
                 id='myBar'
-                class='progress-bar progress-bar-striped progress-bar-animated'
-                role='progressbar'
-                aria-valuenow='75'
-                aria-valuemin='0'
-                aria-valuemax='100'
+                className='progress-bar progress-bar-striped progress-bar-animated'
               ></div>
             </div>
           </figcaption>
