@@ -1,43 +1,28 @@
 import React from 'react';
-import {
-  useEffect,
-  createContext,
-  useState,
-  SetStateAction,
-  ReactNode,
-} from 'react';
-import { PalleteCreatorFunction } from '../components/shared/PalleteCreator';
+import { useEffect, createContext, useState } from 'react';
 
-interface CardListContextTypes {
-  cards: any;
-  page: number;
-  pageLimit: number;
-  numCards: any;
-  text: any;
-  PalleteCreator: any;
-  handleCardClick: any;
-  handleClick: any;
-}
-
-interface Props {
-  children?: ReactNode;
-  // any props that come into the component
-}
-
-type windowHeight = number;
+import { CardListContextTypes, Props } from '../types/ContextTypes';
 
 const CardListContext = createContext({} as CardListContextTypes);
 
 export const CardListProvider = ({ children }: Props) => {
-  const PalleteCreator = PalleteCreatorFunction;
-
   const [cards, setCards] = useState([]);
 
   //Discovering the number of cards per page for rendering
-  const windowHeight = window.visualViewport?.height as windowHeight;
+  const [windowHeight, setWindowHeight] = useState(0);
+
   const [numCards, setNumCards] = useState(
-    Math.round((windowHeight * 0.8 - 73.6) / (88 + 15 + 8))
-  ); //@todo
+    Math.round((window.innerHeight * 0.8 - 73.6) / (88 + 15 + 8))
+  );
+
+  useEffect(() => {
+    window.addEventListener('resize', e => {
+      setWindowHeight(window.innerHeight);
+    });
+    setNumCards(
+      Math.round(((window.innerHeight - 73.6) * 0.85) / (88 + 15 + 8)) - 1
+    );
+  }, [windowHeight]);
 
   //Setting pageLimit and the first page to be rendered.
   const [page, setPage] = useState(0);
@@ -72,17 +57,12 @@ export const CardListProvider = ({ children }: Props) => {
 
   useEffect(() => {
     fetchSize();
-  });
+  }, []);
 
   const handleClick = (idx: number) => {
     setPage(
       page + idx > pageLimit ? pageLimit : page + idx < 0 ? page : page + idx
     );
-  };
-
-  const [text, setText] = useState('');
-  const handleCardClick = (item: { content: SetStateAction<string> }) => {
-    return text ? setText('') : setText(item.content);
   };
 
   return (
@@ -92,9 +72,6 @@ export const CardListProvider = ({ children }: Props) => {
         page,
         pageLimit,
         numCards,
-        text,
-        PalleteCreator,
-        handleCardClick,
         handleClick,
       }}
     >
