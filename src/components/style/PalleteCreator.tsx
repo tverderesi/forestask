@@ -8,7 +8,7 @@ export default function palleteCreator(inputArray: any[], BaseColor: string) {
     inputArray.length,
     inputArray.length
   );
-  Subjects.forEach(
+  inputArray.forEach(
     (itemName: string, i: number) => (item[itemName] = Colors[i].toHex8String())
   );
   return Pallete;
