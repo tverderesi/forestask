@@ -1,12 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import CardListContext from './context/CardListContext';
 import { CardListProvider } from './context/CardListContext';
-import { useContext } from 'react';
 import { ViewPort } from './components/ViewPort';
 
 function App() {
-  return <CardListProvider>{ViewPort()}</CardListProvider>;
+  const style = {
+    backgroundImage: `url("./media/4.png")`,
+    height: '100vh',
+    margin: '0',
+    overflow: 'hidden',
+    backgroundSize: 'cover',
+    backgroundPosition: '0 100%',
+  };
+
+  return (
+    <div
+      className='App d-flex justify-content-center'
+      style={style}
+    >
+      <CardListProvider>{ViewPort()}</CardListProvider>
+    </div>
+  );
 }
 
 export default App;

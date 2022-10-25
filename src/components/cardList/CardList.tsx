@@ -9,11 +9,19 @@ function CardList() {
     useContext(CardListContext);
 
   const cardListRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const styleMobile = {
+    width: '95vw',
+    height: '80vh',
+  };
+  const styleDesktop = {
+    height: '85vh',
+    width: 'max(350px, 30vw)',
+  };
 
   return (
     <div
       className='d-flex flex-column justify-content-between'
-      style={{ width: windowWidth < 700 ? '95%' : '40%', height: '85vh' }}
+      style={windowWidth < 825 ? styleMobile : styleDesktop}
       ref={cardListRef}
     >
       <AnimatePresence mode='popLayout'>

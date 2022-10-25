@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import { Figure } from 'react-bootstrap';
-import Navbar from '../interfaceGeneral/ProfileNavbar';
+import Navbar from '../interfaceGeneral/DesktopProfileNavbar';
 import Header from '../interfaceGeneral/Header';
 
 function ProfileCard({ lvl, xp, name }) {
@@ -13,8 +13,7 @@ function ProfileCard({ lvl, xp, name }) {
         border: 'none',
         height: '85vh',
         boxShadow: '5px 5px 20px #3a3a3a38',
-        width: 'max(27.5%, 300px)',
-        margin: '0',
+        width: 'max(350px, 30vw) ',
       }}
     >
       <Card.Header

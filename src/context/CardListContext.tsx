@@ -18,12 +18,14 @@ export const CardListProvider = ({ children }: Props) => {
   );
 
   useEffect(() => {
-    window.addEventListener('resize', e => {
-      setWindowHeight(window.innerHeight);
-    });
+    const handleWindowResize = () => setWindowHeight(window.innerHeight);
+
+    window.addEventListener('resize', handleWindowResize);
+
     setNumCards(
       Math.round(((window.innerHeight - 73.6) * 0.85) / (88 + 15 + 8)) - 1
     );
+    return () => window.removeEventListener('resize', handleWindowResize);
   }, [windowHeight]);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export const CardListProvider = ({ children }: Props) => {
 
     // Return a function from the effect that removes the event listener
     return () => window.removeEventListener('resize', handleWindowResize);
-  }, []);
+  }, [windowWidth]);
 
   //Setting pageLimit and the first page to be rendered.
 
