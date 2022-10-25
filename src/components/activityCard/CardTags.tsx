@@ -21,7 +21,7 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
       </Col>
       <Col
         className={classes}
-        style={{ color: Pallete['Subject'][`${subject}`] }}
+        style={{ color: Pallete[`${subject}`] }}
       >
         <MdOutlineLightbulb className='me-1' />
         {subject}
