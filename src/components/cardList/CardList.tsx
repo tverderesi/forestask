@@ -3,8 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useContext, useRef, MutableRefObject } from 'react';
 import CardListContext from '../../context/CardListContext';
 import CardListTop from './CardListTop';
+
 function CardList() {
-  const { cards, handleClick, page, pageLimit, numCards } =
+  const { cards, handleClick, page, pageLimit, numCards, windowWidth } =
     useContext(CardListContext);
 
   const cardListRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -12,7 +13,7 @@ function CardList() {
   return (
     <div
       className='d-flex flex-column justify-content-between'
-      style={{ width: '40%', height: '85vh' }}
+      style={{ width: windowWidth < 700 ? '95%' : '40%', height: '85vh' }}
       ref={cardListRef}
     >
       <AnimatePresence mode='popLayout'>

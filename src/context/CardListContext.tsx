@@ -11,6 +11,8 @@ export const CardListProvider = ({ children }: Props) => {
   const [pageLimit, setPageLimit] = useState(0);
   //Discovering the number of cards per page for rendering
   const [windowHeight, setWindowHeight] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const [numCards, setNumCards] = useState(
     Math.round((window.innerHeight * 0.8 - 73.6) / (88 + 15 + 8))
   );
@@ -23,6 +25,14 @@ export const CardListProvider = ({ children }: Props) => {
       Math.round(((window.innerHeight - 73.6) * 0.85) / (88 + 15 + 8)) - 1
     );
   }, [windowHeight]);
+
+  useEffect(() => {
+    const handleWindowResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleWindowResize);
+
+    // Return a function from the effect that removes the event listener
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
 
   //Setting pageLimit and the first page to be rendered.
 
@@ -76,6 +86,7 @@ export const CardListProvider = ({ children }: Props) => {
         page,
         pageLimit,
         numCards,
+        windowWidth,
         handleClick,
       }}
     >
