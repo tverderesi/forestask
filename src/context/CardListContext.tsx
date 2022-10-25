@@ -57,6 +57,12 @@ export const CardListProvider = ({ children }: Props) => {
 
   useEffect(() => {}, []);
 
+  /**
+   * Handles tasks' page navigation in the main view.
+   * @param page - current page
+   * @param idx - index, advances (+1) and retrocedes (-1) pages.
+   * @param pageLimit - maximum number of pages allowed.
+   */
   const handleClick = (idx: number) => {
     setPage(
       page + idx > pageLimit ? pageLimit : page + idx < 0 ? page : page + idx
