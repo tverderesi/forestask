@@ -1,15 +1,15 @@
 import tinycolor from 'tinycolor2';
 
 export default function palleteCreator(inputArray: any[], BaseColor: string) {
-  var item = {};
-  let Pallete = { item };
+  let Pallete = {};
 
   var Colors = tinycolor(BaseColor).analogous(
     inputArray.length,
     inputArray.length
   );
   inputArray.forEach(
-    (itemName: string, i: number) => (item[itemName] = Colors[i].toHex8String())
+    (itemName: string, i: number) =>
+      (Pallete[itemName] = Colors[i].toHex8String())
   );
   return Pallete;
 }
