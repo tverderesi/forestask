@@ -1,27 +1,22 @@
 import Card from 'react-bootstrap/Card';
-import CardTags from './CardTags';
 import { Col, Container, Row } from 'react-bootstrap';
 import { BsCheckLg } from 'react-icons/bs';
-import CardListContext from '../../context/CardListContext';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import CardTags from './CardTags';
+import * as Style from './ActivityCardStyle';
+import * as Types from './ActivityCardTypes';
 
-function ActivityCard({ item, id }: { item: any; id: any }) {
-  const { handleCardClick, text } = useContext(CardListContext);
-
+function ActivityCard({ item }: Types.ChildProps) {
+  //States
   const [completed, setCompleted] = useState(item.checked);
+  const [text, setText] = useState('');
 
-  let CheckButtonStyle = (item: any) => {
-    return {
-      verticalAlign: 'middle',
-      alignSelf: 'center',
-      position: 'absolute',
-      top: '25%',
-      left: '25%',
-      opacity: item.checked ? '1' : '0',
-    };
+  //Functions
+  const handleCardClick: Types.handleCardClick = content => {
+    text ? setText('') : setText(content);
   };
 
-  const addDone = async (id: number) => {
+  const addDone: Types.addDone = async id => {
     item['checked'] = !item['checked'];
     await fetch(`http://localhost:5000/cards/${id}`, {
       method: 'PUT',
@@ -30,27 +25,20 @@ function ActivityCard({ item, id }: { item: any; id: any }) {
     });
   };
 
-  const handleDone = (id: number) => {
+  const handleDone: Types.handleDone = id => {
     addDone(id);
     setCompleted(!completed);
-    return;
   };
 
   return (
     <Card
-      style={{
-        backdropFilter: 'blur(20px)',
-        backgroundColor: '#f9fafbb9',
-        borderRadius: '16px',
-        border: 'none',
-        boxShadow: '5px 5px 20px #3a3a3a38',
-      }}
-      className='container-md mb-2'
+      className='container-md mt-2'
+      style={Style.activityCard}
     >
       <Container>
         <Card.Title
           className='text-center mt-3'
-          style={{ fontSize: '1.25em', fontWeight: '600' }}
+          style={Style.cardTitle}
         >
           {item.title}
         </Card.Title>
@@ -59,16 +47,16 @@ function ActivityCard({ item, id }: { item: any; id: any }) {
             className='col-9 p-0 mb-0'
             onClick={e => {
               e.preventDefault();
-              handleCardClick(item);
+              handleCardClick(item.content);
             }}
           >
             <Card.Header
               className='ms-2 mt-0 me-0 ms-0 p-0'
-              style={{ background: 'none', border: 'none' }}
+              style={Style.cardHeader}
             >
               <CardTags
-                subject={item.subject as any}
-                type={item.type as any}
+                subject={item.subject}
+                type={item.type}
               />
             </Card.Header>
 
@@ -83,22 +71,12 @@ function ActivityCard({ item, id }: { item: any; id: any }) {
                 e.preventDefault();
                 handleDone(item.id);
               }}
-              style={{
-                height: '60px',
-                width: '60px',
-                padding: '0',
-                border: 'none',
-                borderRadius: '50%',
-                position: 'absolute',
-                right: '2.5%',
-                top: 'calc(50% - 30px)',
-                backgroundColor: 'hsla(0, 0%, 65%, 0.322)',
-              }}
+              style={Style.navButton}
             >
               <BsCheckLg
                 className='p-0'
                 size='30'
-                style={CheckButtonStyle(item) as any}
+                style={Style.CheckButton(item) as any}
               />
             </div>
           </Col>
