@@ -1,10 +1,8 @@
-import React from 'react';
 import Card from 'react-bootstrap/Card';
-import '../App.css';
 import { Figure } from 'react-bootstrap';
-import Navbar from './Navbar';
-import Header from './Header';
-import { navItems } from './navItems';
+import Navbar from '../interfaceGeneral/Navbar';
+import Header from '../interfaceGeneral/Header';
+import { navItems } from '../interfaceGeneral/navItems';
 
 function ProfileCard({ lvl, xp, name }) {
   return (
