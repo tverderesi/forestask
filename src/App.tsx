@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useRef } from 'react';
 import './App.css';
-import CardList from './components/CardList';
-import ProfileCard from './components/ProfileCard';
+import CardList from './components/cardList/CardList';
+import ProfileCard from './components/profile/ProfileCard';
 import { CardListProvider } from './context/CardListContext';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     backgroundSize: 'cover',
     backgroundPosition: '0 100%',
   };
+
   return (
     <div
       className='App d-flex'
