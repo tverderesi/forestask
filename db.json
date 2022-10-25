@@ -6,7 +6,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
-      "checked": false
+      "checked": true
     },
     {
       "id": "1",
@@ -22,7 +22,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
-      "checked": false
+      "checked": true
     },
     {
       "id": "3",
@@ -30,7 +30,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Portuguese",
       "type": "Homework",
-      "checked": false
+      "checked": true
     },
     {
       "id": "4",
@@ -38,7 +38,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Homework",
-      "checked": false
+      "checked": true
     },
     {
       "id": "5",
@@ -46,7 +46,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Math",
       "type": "Homework",
-      "checked": false
+      "checked": true
     },
     {
       "id": "6",
@@ -54,7 +54,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Homework",
-      "checked": true
+      "checked": false
     },
     {
       "id": "7",
@@ -62,7 +62,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Homework",
-      "checked": false
+      "checked": true
     },
     {
       "id": "8",
@@ -78,7 +78,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
-      "checked": "true"
+      "checked": false
     },
     {
       "id": "10",
