@@ -1,23 +1,19 @@
-import ActivityCard from './shared/AcitivityCard';
+import ActivityCard from '../activityCard/AcitivityCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useContext, useRef, useState, CSSProperties } from 'react';
-import CardListContext from '../context/CardListContext';
-import CardListTop from './shared/CardListTop';
-import CSS from 'csstype';
+import { useContext, useRef, MutableRefObject } from 'react';
+import CardListContext from '../../context/CardListContext';
+import CardListTop from './CardListTop';
 function CardList() {
   const { cards, handleClick, page, pageLimit, numCards } =
     useContext(CardListContext);
 
-  //  Animations Variants
-
-  const [height, setHeight] = useState(null);
-  let CardListRef = useRef(null);
+  const cardListRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   return (
     <div
-      className='d-flex flex-column'
-      ref={CardListRef}
-      style={{ width: '40%', height: '80vh' }}
+      className='d-flex flex-column justify-content-between'
+      style={{ width: '40%', height: '85vh' }}
+      ref={cardListRef}
     >
       <AnimatePresence mode='popLayout'>
         <motion.div
@@ -62,10 +58,7 @@ function CardList() {
                 },
               }}
             >
-              <ActivityCard
-                item={item as any}
-                id={item.id as any}
-              />
+              <ActivityCard item={item} />
             </motion.div>
           );
         })}
