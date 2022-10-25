@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useRef } from 'react';
 import './App.css';
 import CardList from './components/cardList/CardList';
 import ProfileCard from './components/profile/ProfileCard';
@@ -22,7 +21,7 @@ function App() {
     >
       <div
         className='d-flex justify-content-between m-auto align-items-start align-self-center'
-        style={{ width: ' 90%' }}
+        style={{ width: ' 95%' }}
       >
         <ProfileCard
           lvl='3'
