@@ -7,15 +7,27 @@ import * as Style from './ActivityCardStyle';
 import * as Types from './ActivityCardTypes';
 
 function ActivityCard({ item }: Types.ChildProps) {
-  //States
+  /**STATES
+   * @param completed - holds the current card's completed state.
+   * @param text - holds the current card's content.
+   */
   const [completed, setCompleted] = useState(item.checked);
   const [text, setText] = useState('');
 
   //Functions
+  /** Shows/Hides card content when clicked
+   *
+   *  @param content - the card content stored within the text state.
+   */
   const handleCardClick: Types.handleCardClick = content => {
     text ? setText('') : setText(content);
   };
 
+  /** Puts the current state of the task in the database.
+   *
+   * @param id - Card id.
+   * @eventProperty
+   */
   const addDone: Types.addDone = async id => {
     item['checked'] = !item['checked'];
     await fetch(`http://localhost:5000/cards/${id}`, {
@@ -25,6 +37,12 @@ function ActivityCard({ item }: Types.ChildProps) {
     });
   };
 
+  /** handles what happens when the user clicks on the checkbox item, by calling the 'addDone'
+   * function and flipping the 'completed' state.
+   *
+   * @params id - Card id.
+   * @eventProperty
+   */
   const handleDone: Types.handleDone = id => {
     addDone(id);
     setCompleted(!completed);
@@ -32,7 +50,7 @@ function ActivityCard({ item }: Types.ChildProps) {
 
   return (
     <Card
-      className='container-md mt-2'
+      className='container-md mt-1  '
       style={Style.activityCard}
     >
       <Container>
