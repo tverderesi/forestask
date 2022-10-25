@@ -7,10 +7,10 @@ const CardListContext = createContext({} as CardListContextTypes);
 
 export const CardListProvider = ({ children }: Props) => {
   const [cards, setCards] = useState([]);
-
+  const [page, setPage] = useState(0);
+  const [pageLimit, setPageLimit] = useState(0);
   //Discovering the number of cards per page for rendering
   const [windowHeight, setWindowHeight] = useState(0);
-
   const [numCards, setNumCards] = useState(
     Math.round((window.innerHeight * 0.8 - 73.6) / (88 + 15 + 8))
   );
@@ -25,7 +25,6 @@ export const CardListProvider = ({ children }: Props) => {
   }, [windowHeight]);
 
   //Setting pageLimit and the first page to be rendered.
-  const [page, setPage] = useState(0);
 
   const fetchSize = async () => {
     const response = await fetch(
@@ -38,7 +37,6 @@ export const CardListProvider = ({ children }: Props) => {
     setPageLimit(Math.floor(data / numCards));
   };
 
-  const [pageLimit, setPageLimit] = useState(0);
   //Setting done state
   const fetchItems = async (offset: number, limit: number) => {
     const response = await fetch(
@@ -53,11 +51,11 @@ export const CardListProvider = ({ children }: Props) => {
 
   useEffect(() => {
     fetchItems(numCards * page, numCards);
+    fetchSize();
+    // eslint-disable-next-line
   }, [page, numCards]);
 
-  useEffect(() => {
-    fetchSize();
-  }, []);
+  useEffect(() => {}, []);
 
   const handleClick = (idx: number) => {
     setPage(

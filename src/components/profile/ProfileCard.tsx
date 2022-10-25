@@ -1,8 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { Figure } from 'react-bootstrap';
-import Navbar from '../interfaceGeneral/Navbar';
+import Navbar from '../interfaceGeneral/ProfileNavbar';
 import Header from '../interfaceGeneral/Header';
-import { navItems } from '../interfaceGeneral/navItems';
 
 function ProfileCard({ lvl, xp, name }) {
   return (
@@ -45,7 +44,7 @@ function ProfileCard({ lvl, xp, name }) {
       </Card.Header>
       <Card.Body className='p-0 m-0'></Card.Body>
       <Card.Footer style={{ border: 'none' }}>
-        <Navbar navItems={navItems} />
+        <Navbar />
       </Card.Footer>
     </Card>
   );
