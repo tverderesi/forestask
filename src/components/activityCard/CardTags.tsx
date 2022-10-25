@@ -5,32 +5,19 @@ import {
   MdSentimentVerySatisfied,
 } from 'react-icons/md';
 import { Col } from 'react-bootstrap';
-import { useContext } from 'react';
-import CardListContext from '../../context/CardListContext';
-
-function CardTags({
-  subject,
-  type,
-  deadline,
-  xp,
-}: {
-  subject: any;
-  type: any;
-  deadline?: any;
-  xp?: any;
-}) {
-  const { PalleteCreator } = useContext(CardListContext);
-
+import * as Types from './ActivityCardTypes';
+import palleteCreator from '../style/PalleteCreator';
+function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   // Styling
   const Subjects = ['Math', 'Music', 'Science', 'Portuguese', 'English'];
   const BaseColor = '#8f3fc4';
-  const classes = 'd-flex align-items-center col-auto me-2';
-  let Pallete = PalleteCreator(Subjects, BaseColor);
+  const classes = 'd-flex align-items-center col-auto me-2 g-0';
+  let Pallete = palleteCreator(Subjects, BaseColor);
 
   return (
-    <div className='d-flex fw-bold flex-wrap p-0'>
+    <div className='d-flex fw-bold flex-wrap g-0'>
       <Col className={classes}>
-        <MdInfoOutline className='react-icons me-1' /> {type}
+        <MdInfoOutline className='me-1' /> {type}
       </Col>
       <Col
         className={classes}
