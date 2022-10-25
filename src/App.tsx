@@ -1,39 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import CardList from './components/cardList/CardList';
-import ProfileCard from './components/profile/ProfileCard';
+import CardListContext from './context/CardListContext';
 import { CardListProvider } from './context/CardListContext';
+import { useContext } from 'react';
+import { ViewPort } from './components/ViewPort';
 
 function App() {
-  const style = {
-    backgroundImage: `url("./media/4.png")`,
-    height: '100vh',
-    margin: '0',
-    overflow: 'hidden',
-    backgroundSize: 'cover',
-    backgroundPosition: '0 100%',
-  };
-
-  return (
-    <div
-      className='App d-flex'
-      style={style}
-    >
-      <div
-        className='d-flex justify-content-between m-auto align-items-start align-self-center'
-        style={{ width: ' 95%' }}
-      >
-        <ProfileCard
-          lvl='3'
-          xp='300'
-          name='Thomas'
-        />
-        <CardListProvider>
-          <CardList />
-        </CardListProvider>
-      </div>
-    </div>
-  );
+  return <CardListProvider>{ViewPort()}</CardListProvider>;
 }
 
 export default App;
