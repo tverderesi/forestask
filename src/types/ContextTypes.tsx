@@ -6,6 +6,9 @@ export interface CardListContextTypes {
   numCards: any;
   windowWidth: number;
   handleClick: any;
+  subjects: any;
+  subjectPallete: any;
+  activities: any;
 }
 
 export type Props = { children?: ReactNode };

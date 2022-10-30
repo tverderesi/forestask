@@ -1,5 +1,5 @@
-import React from 'react';
 import { useEffect, createContext, useState } from 'react';
+import palleteCreator from '../components/style/PalleteCreator';
 
 import { CardListContextTypes, Props } from '../types/ContextTypes';
 
@@ -12,11 +12,15 @@ export const CardListProvider = ({ children }: Props) => {
   //Discovering the number of cards per page for rendering
   const [windowHeight, setWindowHeight] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [subjects, setSubjects] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   const [numCards, setNumCards] = useState(
     Math.round((window.innerHeight * 0.8 - 73.6) / (88 + 15 + 8))
   );
 
+  const subjectTextBaseColor = 'hsl(276, 53%, 51%)';
+  const subjectPallete = palleteCreator(subjects, subjectTextBaseColor);
   useEffect(() => {
     const handleWindowResize = () => setWindowHeight(window.innerHeight);
 
@@ -51,6 +55,7 @@ export const CardListProvider = ({ children }: Props) => {
 
   //Setting done state
   const fetchItems = async (offset: number, limit: number) => {
+    console.log('called fetchItems');
     const response = await fetch(
       `http://localhost:5000/cards?_start=${offset}&_limit=${limit}`,
       {
@@ -59,16 +64,40 @@ export const CardListProvider = ({ children }: Props) => {
     );
     const data = await response.json();
     setCards(data);
+    console.log(
+      `end. data in subjects is ${cards} and the response was ${data} `
+    );
   };
 
   useEffect(() => {
     fetchItems(numCards * page, numCards);
     fetchSize();
-    // eslint-disable-next-line
+
+    fetchSubjects();
+    fetchActivities();
   }, [page, numCards]);
 
-  useEffect(() => {}, []);
-
+  async function fetchSubjects() {
+    console.log('called fetchSubjects');
+    const response = await fetch('http://localhost:5000/subjects', {
+      headers: { 'Content-Type': 'json' },
+    });
+    const data = await response.json();
+    setSubjects(data);
+    console.log(
+      `end. data in subjects is ${subjects} and the response was ${data} `
+    );
+  }
+  async function fetchActivities() {
+    const response = await fetch('http://localhost:5000/activities', {
+      headers: { 'Content-Type': 'json' },
+    });
+    const data = await response.json();
+    setActivities(data);
+    console.log(
+      `end. data in subjects is ${subjects} and the response was ${data} `
+    );
+  }
   /**
    * Handles tasks' page navigation in the main view.
    * @param page - current page
@@ -89,6 +118,9 @@ export const CardListProvider = ({ children }: Props) => {
         pageLimit,
         numCards,
         windowWidth,
+        subjects,
+        subjectPallete,
+        activities,
         handleClick,
       }}
     >
