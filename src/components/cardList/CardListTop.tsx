@@ -24,11 +24,11 @@ function CardListTop({
       color:
         direction === 'right'
           ? page === 1
-            ? 'hsla(0, 0%, 75%, 0.322)'
-            : ' hsla(0, 0%, 55%, 0.80)'
+            ? 'hsla(0, 0%, 75%, 1)'
+            : ' hsla(0, 0%, 0%, 1)'
           : page === pageLimit
-          ? 'hsla(0, 0%, 75%, 0.322)'
-          : ' hsla(0, 0%, 55%, 0.80)',
+          ? 'hsla(0, 0%, 75%, 1)'
+          : 'hsla(0, 0%, 0%, 1)',
       border: 'none',
       width: '2rem',
       height: '2rem',
@@ -40,7 +40,7 @@ function CardListTop({
 
   const CardListStyle = {
     backdropFilter: 'blur(20px)',
-    backgroundColor: '#f9fafbb9',
+    backgroundColor: '#f9fafb80',
     borderRadius: '16px',
     border: 'none',
     boxShadow: '5px 5px 20px #3a3a3a38',
