@@ -5,7 +5,7 @@ import CardListContext from '../../context/CardListContext';
 import CardListTop from './CardListTop';
 
 function CardList() {
-  const { cards, handleClick, page, pageLimit, numCards, windowWidth } =
+  const { handleClick, page, pageLimit, numCards, windowWidth, cards } =
     useContext(CardListContext);
 
   const cardListRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -15,7 +15,7 @@ function CardList() {
   };
   const styleDesktop = {
     height: '85vh',
-    width: 'max(350px, 30vw)',
+    width: 'max(350px, 40vw)',
   };
 
   return (
