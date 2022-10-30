@@ -6,22 +6,24 @@ import {
 } from 'react-icons/md';
 import { Col } from 'react-bootstrap';
 import * as Types from './ActivityCardTypes';
-import palleteCreator from '../style/PalleteCreator';
+import { useContext } from 'react';
+import CardListContext from '../../context/CardListContext';
+
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   // Styling
-  const Subjects = ['Math', 'Music', 'Science', 'Portuguese', 'English'];
-  const BaseColor = '#8f3fc4';
   const classes = 'd-flex align-items-center col-auto me-2 g-0';
-  let Pallete = palleteCreator(Subjects, BaseColor);
-
+  const { subjectPallete } = useContext(CardListContext);
   return (
-    <div className='d-flex fw-bold flex-wrap g-0'>
+    <div
+      className='d-flex flex-wrap g-0'
+      style={{ fontWeight: '600' }}
+    >
       <Col className={classes}>
         <MdInfoOutline className='me-1' /> {type}
       </Col>
       <Col
         className={classes}
-        style={{ color: Pallete[`${subject}`] }}
+        style={{ color: subjectPallete['textPallete'][`${subject}`] }}
       >
         <MdOutlineLightbulb className='me-1' />
         {subject}
