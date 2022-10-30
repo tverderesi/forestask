@@ -1,15 +1,25 @@
 import tinycolor from 'tinycolor2';
 
 export default function palleteCreator(inputArray: any[], BaseColor: string) {
-  let Pallete = {};
+  let textPallete = {};
+  let buttonPallete = {};
 
-  var Colors = tinycolor(BaseColor).analogous(
+  let textColors = tinycolor(BaseColor).analogous(
     inputArray.length,
-    inputArray.length
+    inputArray.length * 1.25
   );
+
   inputArray.forEach(
     (itemName: string, i: number) =>
-      (Pallete[itemName] = Colors[i].toHex8String())
+      (textPallete[itemName] = textColors[i].toHex8String())
   );
+
+  inputArray.forEach(
+    (itemName: string, i: number) =>
+      (buttonPallete[itemName] = textColors[i].lighten(5).toHex8String())
+  );
+
+  const Pallete = { buttonPallete, textPallete };
+
   return Pallete;
 }
