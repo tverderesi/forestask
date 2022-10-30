@@ -7,14 +7,19 @@ function MobileNavbar() {
   return (
     <nav
       className='d-flex flex-row justify-content-around'
-      style={{ position: 'absolute', bottom: '0', width: '100vw' }}
+      style={{
+        position: 'absolute',
+        bottom: '0',
+        width: '100vw',
+        backdropFilter: 'blur(20px)',
+        backgroundColor: '#f9fafb80',
+        left: '0',
+        boxShadow: '5px 5px 20px #3a3a3a38',
+      }}
     >
       <Profile />
-
       <DarkMode />
-
       <Tasks />
-
       <TeacherMode />
     </nav>
   );
