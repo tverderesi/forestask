@@ -800,5 +800,16 @@
       "type": "Homework",
       "checked": "true"
     }
+  ],
+  "subjects": [
+    "Music",
+    "Math",
+    "Portuguese",
+    "English",
+    "Science"
+  ],
+  "activities": [
+    "Test",
+    "Homework"
   ]
 }
