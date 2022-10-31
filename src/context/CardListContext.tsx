@@ -6,6 +6,13 @@ import { CardListContextTypes, Props } from '../types/ContextTypes';
 const CardListContext = createContext({} as CardListContextTypes);
 
 export const CardListProvider = ({ children }: Props) => {
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loading, setLoading] = useState({
+    cards: true,
+    pageLimit: true,
+    subjects: true,
+    activities: true,
+  });
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(0);
   const [pageLimit, setPageLimit] = useState(0);
@@ -51,11 +58,11 @@ export const CardListProvider = ({ children }: Props) => {
     );
     const data = Number(response.headers.get('X-total-count'));
     setPageLimit(Math.floor(data / numCards));
+    setLoading(prevState => ({ ...prevState, pageLimit: false }));
   };
 
   //Setting done state
   const fetchItems = async (offset: number, limit: number) => {
-    console.log('called fetchItems');
     const response = await fetch(
       `http://localhost:5000/cards?_start=${offset}&_limit=${limit}`,
       {
@@ -64,9 +71,7 @@ export const CardListProvider = ({ children }: Props) => {
     );
     const data = await response.json();
     setCards(data);
-    console.log(
-      `end. data in subjects is ${cards} and the response was ${data} `
-    );
+    setLoading(prevState => ({ ...prevState, cards: false }));
   };
 
   useEffect(() => {
@@ -78,15 +83,12 @@ export const CardListProvider = ({ children }: Props) => {
   }, [page, numCards]);
 
   async function fetchSubjects() {
-    console.log('called fetchSubjects');
     const response = await fetch('http://localhost:5000/subjects', {
       headers: { 'Content-Type': 'json' },
     });
     const data = await response.json();
     setSubjects(data);
-    console.log(
-      `end. data in subjects is ${subjects} and the response was ${data} `
-    );
+    setLoading(prevState => ({ ...prevState, subjects: false }));
   }
   async function fetchActivities() {
     const response = await fetch('http://localhost:5000/activities', {
@@ -94,9 +96,7 @@ export const CardListProvider = ({ children }: Props) => {
     });
     const data = await response.json();
     setActivities(data);
-    console.log(
-      `end. data in subjects is ${subjects} and the response was ${data} `
-    );
+    setLoading(prevState => ({ ...prevState, activities: false }));
   }
   /**
    * Handles tasks' page navigation in the main view.
@@ -115,13 +115,16 @@ export const CardListProvider = ({ children }: Props) => {
       value={{
         cards,
         page,
+        loginSuccess,
         pageLimit,
         numCards,
         windowWidth,
         subjects,
         subjectPallete,
         activities,
+        loading,
         handleClick,
+        setLoginSuccess,
       }}
     >
       {children}

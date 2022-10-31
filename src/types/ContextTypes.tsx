@@ -9,6 +9,9 @@ export interface CardListContextTypes {
   subjects: any;
   subjectPallete: any;
   activities: any;
+  setLoginSuccess: any;
+  loginSuccess: boolean;
+  loading: any;
 }
 
 export type Props = { children?: ReactNode };
