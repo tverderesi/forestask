@@ -1,11 +1,13 @@
 import CardList from './cardList/CardList';
 import ProfileCard from './profile/ProfileCard';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MobileNavbar from './layout/MobileNavbar';
-import Loading from './layout/Login';
+import Modal from './Login/Modal';
+import CardListContext from '../context/CardListContext';
 
 export function ViewPort() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { loading } = useContext(CardListContext);
 
   useEffect(() => {
     const handleWindowResize = () => setWindowWidth(window.innerWidth);
@@ -17,7 +19,14 @@ export function ViewPort() {
 
   return windowWidth > 825 ? (
     <>
-      <Loading />
+      {loading.cards &&
+      loading.pageLimit &&
+      loading.subjects &&
+      loading.activities ? (
+        <Modal />
+      ) : (
+        ''
+      )}
       <div
         className='d-flex justify-content-between align-items-start align-self-center justify-self-center'
         style={{ width: '92.5vw' }}
@@ -32,7 +41,14 @@ export function ViewPort() {
     </>
   ) : (
     <>
-      <Loading />
+      {loading.cards &&
+      loading.pageLimit &&
+      loading.subjects &&
+      loading.activities ? (
+        <Modal />
+      ) : (
+        ''
+      )}
       <div className=''>
         <CardList />
         <MobileNavbar />
