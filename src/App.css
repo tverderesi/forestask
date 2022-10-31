@@ -71,7 +71,7 @@ form {
   border-radius: 1rem;
 
 }
-form input[type=text], form input[type=password] { padding: 1rem; border: none; background-color:  rgb(255, 255, 255);  font-weight: 600; width: 20vw}
+form input[type=text], form input[type=password] { padding: 1rem; border: none; background-color:  rgb(255, 255, 255) !important;  font-weight: 600; width: 30vmax; font-size: 1.1rem;}
 form input[type=sumbit] { width: '50%' ; background-color: forestgreen ;}
 ::placeholder{color: black;}
 form input.top,  form input.top:focus{

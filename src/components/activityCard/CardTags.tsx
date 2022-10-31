@@ -7,12 +7,12 @@ import {
 import { Col } from 'react-bootstrap';
 import * as Types from './ActivityCardTypes';
 import { useContext } from 'react';
-import CardListContext from '../../context/CardListContext';
+import AppContext from '../../context/AppContext';
 
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   // Styling
   const classes = 'd-flex align-items-center col-auto me-2 g-0';
-  const { subjectPallete } = useContext(CardListContext);
+  const { subjectPallete } = useContext(AppContext);
   return (
     <div
       className='d-flex flex-wrap g-0'

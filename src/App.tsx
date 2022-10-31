@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { CardListProvider } from './context/CardListContext';
+import { AppProvider } from './context/AppContext';
 import { ViewPort } from './components/ViewPort';
 
 function App() {
@@ -18,9 +18,9 @@ function App() {
       className='App d-flex justify-content-center'
       style={style}
     >
-      <CardListProvider>
+      <AppProvider>
         <ViewPort />
-      </CardListProvider>
+      </AppProvider>
     </div>
   );
 }

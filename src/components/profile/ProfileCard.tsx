@@ -3,7 +3,7 @@ import { Accordion, Figure, Row, Col, Container } from 'react-bootstrap';
 import Navbar from '../layout/DesktopProfileNavbar';
 import Header from '../layout/Header';
 import AccordionItem from './AccordionItem';
-import CardListContext from '../../context/CardListContext';
+import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
 import {
   MdInfoOutline,
@@ -14,7 +14,7 @@ import {
 import Date from './Date';
 
 function ProfileCard({ lvl, xp, name }) {
-  const { subjects, subjectPallete, activities } = useContext(CardListContext);
+  const { subjects, subjectPallete, activities } = useContext(AppContext);
   return (
     <Card
       style={{

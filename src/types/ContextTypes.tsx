@@ -12,6 +12,7 @@ export interface CardListContextTypes {
   setLoginSuccess: any;
   loginSuccess: boolean;
   loading: any;
+  dispatch: any;
 }
 
 export type Props = { children?: ReactNode };

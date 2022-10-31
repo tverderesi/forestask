@@ -1,17 +1,20 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import CardListContext from '../../context/CardListContext';
+import AppContext from '../../context/AppContext';
 import Header from '../layout/Header';
 import { useContext } from 'react';
+import { fetchSize } from '../../context/AppFunctions';
 
 export default function Login() {
-  const { setLoginSuccess } = useContext(CardListContext);
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const { dispatch } = useContext(AppContext);
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (
       e.currentTarget[0].value === 'admin' &&
       e.currentTarget[1].value === 'admin'
     ) {
-      setLoginSuccess(true);
+      dispatch({ type: 'LOGIN_SUCCESS' });
+      const totalCards = await fetchSize();
+      dispatch({ type: 'TOTAL_CARDS_SUCCESS', payload: totalCards });
     }
   };
 

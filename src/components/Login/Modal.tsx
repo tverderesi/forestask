@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import CardListContext from '../../context/CardListContext';
+import AppContext from '../../context/AppContext';
 import Loading from './Loading';
 import Login from './Login';
 
 export default function Modal() {
-  const { loginSuccess } = useContext(CardListContext);
+  const { loginSuccess } = useContext(AppContext);
   return (
     <div
       style={{

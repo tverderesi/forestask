@@ -1,12 +1,12 @@
 import ActivityCard from '../activityCard/AcitivityCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext, useRef, MutableRefObject } from 'react';
-import CardListContext from '../../context/CardListContext';
+import AppContext from '../../context/AppContext';
 import CardListTop from './CardListTop';
 
 function CardList() {
   const { handleClick, page, pageLimit, numCards, windowWidth, cards } =
-    useContext(CardListContext);
+    useContext(AppContext);
 
   const cardListRef = useRef() as MutableRefObject<HTMLInputElement>;
   const styleMobile = {

@@ -1,14 +1,21 @@
-import { useEffect, createContext, useState } from 'react';
+import { useEffect, createContext, useState, useReducer } from 'react';
 import palleteCreator from '../components/style/PalleteCreator';
 
 import { CardListContextTypes, Props } from '../types/ContextTypes';
+import AppReducer from './AppReducer';
 
-const CardListContext = createContext({} as CardListContextTypes);
+const AppContext = createContext({} as CardListContextTypes);
 
-export const CardListProvider = ({ children }: Props) => {
-  const [loginSuccess, setLoginSuccess] = useState(false);
+export const AppProvider = ({ children }: Props) => {
+  const initialState = {
+    loadingCards: false,
+    loginSuccess: false,
+    totalCards: 0,
+  };
+
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState({
-    cards: true,
     pageLimit: true,
     subjects: true,
     activities: true,
@@ -19,7 +26,6 @@ export const CardListProvider = ({ children }: Props) => {
   //Discovering the number of cards per page for rendering
   const [windowHeight, setWindowHeight] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [subjects, setSubjects] = useState([]);
   const [activities, setActivities] = useState([]);
 
   const [numCards, setNumCards] = useState(
@@ -49,18 +55,6 @@ export const CardListProvider = ({ children }: Props) => {
 
   //Setting pageLimit and the first page to be rendered.
 
-  const fetchSize = async () => {
-    const response = await fetch(
-      'http://localhost:5000/cards/?_start=0&_end=0',
-      {
-        headers: { 'Content-Type': 'json' },
-      }
-    );
-    const data = Number(response.headers.get('X-total-count'));
-    setPageLimit(Math.floor(data / numCards));
-    setLoading(prevState => ({ ...prevState, pageLimit: false }));
-  };
-
   //Setting done state
   const fetchItems = async (offset: number, limit: number) => {
     const response = await fetch(
@@ -76,7 +70,6 @@ export const CardListProvider = ({ children }: Props) => {
 
   useEffect(() => {
     fetchItems(numCards * page, numCards);
-    fetchSize();
 
     fetchSubjects();
     fetchActivities();
@@ -88,7 +81,7 @@ export const CardListProvider = ({ children }: Props) => {
     });
     const data = await response.json();
     setSubjects(data);
-    setLoading(prevState => ({ ...prevState, subjects: false }));
+    return data;
   }
   async function fetchActivities() {
     const response = await fetch('http://localhost:5000/activities', {
@@ -111,11 +104,12 @@ export const CardListProvider = ({ children }: Props) => {
   };
 
   return (
-    <CardListContext.Provider
+    <AppContext.Provider
       value={{
+        ...state,
         cards,
         page,
-        loginSuccess,
+        dispatch,
         pageLimit,
         numCards,
         windowWidth,
@@ -124,12 +118,11 @@ export const CardListProvider = ({ children }: Props) => {
         activities,
         loading,
         handleClick,
-        setLoginSuccess,
       }}
     >
       {children}
-    </CardListContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export default CardListContext;
+export default AppContext;
