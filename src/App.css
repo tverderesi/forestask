@@ -66,3 +66,25 @@
 
 input[type='date']:focus {outline:  3px solid #c491ff !important;}
 input[type='date'] {margin-left: 10px;}
+
+form {
+  border-radius: 1rem;
+
+}
+form input[type=text], form input[type=password] { padding: 1rem; border: none; background-color:  rgb(255, 255, 255);  font-weight: 600; width: 20vw}
+form input[type=sumbit] { width: '50%' ; background-color: forestgreen ;}
+::placeholder{color: black;}
+form input.top,  form input.top:focus{
+  border-radius: 1rem 1rem 0 0  ;
+  border-bottom: 1px solid lightgray;
+}
+
+form input.bottom, form input.bottom:focus {
+  border-radius: 0 0  1rem 1rem  ;
+
+  
+
+}
+form input.top:focus, form input.bottom:focus{   background-color: rgb(225, 255, 225);outline: none;
+}
+
