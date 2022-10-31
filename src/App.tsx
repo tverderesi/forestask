@@ -18,7 +18,9 @@ function App() {
       className='App d-flex justify-content-center'
       style={style}
     >
-      <CardListProvider>{ViewPort()}</CardListProvider>
+      <CardListProvider>
+        <ViewPort />
+      </CardListProvider>
     </div>
   );
 }
