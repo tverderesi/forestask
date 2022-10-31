@@ -10,7 +10,7 @@ function Header() {
         >
           flores<span className='forest-green'>tarefa </span>
         </div>
-        <div style={{ position: 'absolute', left: '90%' }}>
+        <div style={{ position: 'absolute' }}>
           <BsTreeFill className='forest-green h3 justify-self-end' />
         </div>
       </div>
