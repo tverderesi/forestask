@@ -1,18 +1,21 @@
 import { Accordion, Col, Container, Row } from 'react-bootstrap';
 import AccordionHeader from 'react-bootstrap/esm/AccordionHeader';
 import AccordionBody from 'react-bootstrap/esm/AccordionBody';
+import { SyntheticEvent, useContext } from 'react';
+import AppContext from '../../context/AppContext';
 
 export default function AccordionItem({
   name,
   categories,
-  itemPallete,
+  itemPalette,
   icon,
 }: {
   name: string;
   categories: any;
-  itemPallete: any;
+  itemPalette: any;
   icon: any;
 }) {
+  const { dispatch, filters } = useContext(AppContext);
   return (
     <Accordion.Item
       eventKey={name}
@@ -43,8 +46,20 @@ export default function AccordionItem({
                     <button
                       className='p-2 btn rounded-borders'
                       style={{
-                        backgroundColor: `${itemPallete['buttonPallete'][category]}`,
+                        backgroundColor: `${itemPalette[category]}`,
                         fontWeight: '600',
+                        color: ' white',
+                      }}
+                      onClick={(e: SyntheticEvent<HTMLButtonElement>) => {
+                        const { innerHTML, style } = e.currentTarget;
+
+                        filters[`${name.toLowerCase()}`] = innerHTML;
+                        filters[`${name.toLowerCase()}Color`] =
+                          style.backgroundColor;
+                        dispatch({
+                          type: 'ADD_TO_FILTER',
+                          payload: filters,
+                        });
                       }}
                     >
                       {category}
