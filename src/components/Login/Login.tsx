@@ -1,23 +1,34 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import AppContext from '../../context/AppContext';
-import Header from '../layout/Header';
 import { useContext } from 'react';
-import { fetchSize } from '../../context/AppFunctions';
+import AppContext from '../../context/AppContext';
+import { init } from '../../context/AppFunctions';
+import Header from '../layout/Header';
 
 export default function Login() {
-  const { dispatch } = useContext(AppContext);
+  const { cardHeight, dispatch, windowHeight } = useContext(AppContext);
+
+  const loginStyle = {
+    width: '50%',
+    backgroundColor: 'forestgreen',
+    border: 'none',
+    borderRadius: '1rem',
+    padding: '.5rem',
+    fontWeight: '600',
+    marginTop: '1rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    color: 'white',
+  };
+
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (
       e.currentTarget[0].value === 'admin' &&
       e.currentTarget[1].value === 'admin'
     ) {
-      dispatch({ type: 'LOGIN_SUCCESS' });
-      const totalCards = await fetchSize();
-      dispatch({ type: 'TOTAL_CARDS_SUCCESS', payload: totalCards });
+      init(cardHeight, dispatch, windowHeight);
     }
   };
-
   return (
     <AnimatePresence>
       <motion.form
@@ -43,18 +54,7 @@ export default function Login() {
         <input
           type='submit'
           value='Log in'
-          style={{
-            width: '50%',
-            backgroundColor: 'forestgreen',
-            border: 'none',
-            borderRadius: '1rem',
-            padding: '.5rem',
-            fontWeight: '600',
-            marginTop: '1rem',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            color: 'white',
-          }}
+          style={loginStyle}
         />
       </motion.form>
     </AnimatePresence>
