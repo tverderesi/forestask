@@ -1,8 +1,21 @@
 import paletteCreator from '../components/style/PaletteCreator';
-export async function changePage(currentPage, index, maxPages, cardsPerPage) {
+
+export async function changePage(
+  filters,
+  currentPage,
+  index,
+  maxPages,
+  cardsPerPage
+) {
   let newPage = currentPage + index;
   newPage = newPage >= maxPages ? maxPages : newPage < 0 ? 0 : newPage;
-  const currentCards = await fetchItems(newPage * cardsPerPage, cardsPerPage);
+  const params = {
+    subject: filters.subjects,
+    activity: filters.activities,
+    _start: newPage * cardsPerPage,
+    _limit: cardsPerPage,
+  };
+  const currentCards = await fetchCards(params);
   console.log(currentCards);
   return { newPage, currentCards };
 }
@@ -14,23 +27,15 @@ export async function fetchActivities() {
   return await response.json();
 }
 
-export const fetchItems = async (offset: number, limit: number) => {
-  const response = await fetch(
-    `http://localhost:5000/cards?_start=${offset}&_limit=${limit}`,
-    {
-      headers: { 'Content-Type': 'text/html' },
-    }
-  );
-  const data = await response.json();
-  return data;
-};
-
-export const fetchSize = async () => {
-  const response = await fetch('http://localhost:5000/cards/?_start=0&_end=0', {
-    headers: { 'Content-Type': 'json' },
+export const fetchCards = async (params, getXTotalCount = false) => {
+  const queryParams = paramBuilder(params);
+  console.log(queryParams);
+  const response = await fetch(`http://localhost:5000/cards?${queryParams}`, {
+    headers: { 'Content-Type': 'text/html' },
   });
-  const data = Number(response.headers.get('X-total-count'));
-  return data;
+  const data = await response.json();
+  const xTotalCount = Number(response.headers.get('X-total-count'));
+  return getXTotalCount ? [data, xTotalCount] : data;
 };
 
 export async function createSubjectPalette() {
@@ -55,43 +60,92 @@ export async function fetchSubjects() {
 }
 
 export function setPagesParameters(cardHeight, windowHeight, totalCards) {
-  const cardsPerPage = Math.floor(windowHeight / (cardHeight + 16)) - 1;
-  const maxPages = Math.ceil(totalCards / cardsPerPage);
+  const cardsPerPage = Math.floor((windowHeight * 0.85) / (cardHeight + 16));
+  const maxPages = Math.floor(totalCards / cardsPerPage);
   const PageParameters = { cardsPerPage: cardsPerPage, maxPages: maxPages };
   return PageParameters;
 }
 
-export const filterCards = async params => {
-  const paramBuilder = queryParams => {
-    const params = {};
-    const keys = ['subject', 'type'];
-    const values = Object.values(queryParams);
+export const paramBuilder = queryParams => {
+  const params = {};
+  const keys = ['subject', 'type', '_start', '_limit'];
+  const values = Object.values(queryParams);
 
-    values.map((value, index) => {
-      return value ? (params[keys[index]] = value) : '';
-    });
+  values.map((value, index) => {
+    return value ? (params[keys[index]] = value) : '';
+  });
+  console.log(params);
 
-    return params;
+  return new URLSearchParams(params);
+};
+export const handlePageChange = async (
+  index: number,
+  filters,
+  page,
+  maxPages,
+  cardsPerPage,
+  dispatch
+) => {
+  const payload = await changePage(
+    filters,
+    page,
+    index,
+    maxPages,
+    cardsPerPage
+  );
+  dispatch({ type: 'CHANGE_PAGE', payload: payload });
+};
+
+export async function filterCards(
+  filters,
+  windowHeight,
+  dispatch,
+  page,
+  cardsPerPage
+) {
+  const { subjects, activities } = filters;
+  const params = {
+    subjects: subjects,
+    activites: activities,
+    _start: page,
+    _limit: cardsPerPage,
+  };
+  const payload = await fetchCards(params);
+
+  //Workaround to get number of filtered cards
+  const params2 = {
+    subjects: subjects,
+    activites: activities,
   };
 
-  const queryParams = new URLSearchParams(paramBuilder(params));
+  const payload2 = await fetchCards(params2);
 
-  const response = await fetch(`http://localhost:5000/cards?${queryParams}`, {
-    headers: { 'Content-Type': 'json' },
+  dispatch({
+    type: 'LOAD_TOTAL_CARDS',
+    payload: payload2.length,
   });
-
-  const data = await response.json();
-  console.log(data);
-
-  return data;
-};
+  const filteredPagesParameters = await setPagesParameters(
+    100,
+    windowHeight,
+    payload2.length
+  );
+  dispatch({
+    type: 'SET_PAGES_PARAMETERS',
+    payload: filteredPagesParameters,
+  });
+  dispatch({ type: 'RENDER_CARDS', payload: payload });
+}
 
 export const init = async (cardHeight, dispatch, windowHeight) => {
   dispatch({ type: 'LOGIN_SUCCESS' });
-  const totalCards = await fetchSize();
-  dispatch({ type: 'LOAD_TOTAL_CARDS', payload: totalCards });
-
-  const firstCard = await fetchItems(0, 1);
+  const firstCardParams = {
+    subject: '',
+    activity: '',
+    _start: 0,
+    _limit: 1,
+  };
+  const [firstCard, xTotalCount] = await fetchCards(firstCardParams, true);
+  dispatch({ type: 'LOAD_TOTAL_CARDS', payload: xTotalCount });
   const subjects = await fetchSubjects();
   const subjectPalette = await createSubjectPalette();
   const activities = await fetchActivities();
@@ -106,13 +160,20 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
 
   dispatch({ type: 'RENDER_FIRST_CARD', payload: firstCard });
   const pageParameters = setPagesParameters(
-    totalCards,
+    xTotalCount,
     windowHeight,
-    totalCards
+    xTotalCount
   );
   dispatch({ type: 'SET_PAGES_PARAMETERS', payload: pageParameters });
+  const { cardsPerPage } = pageParameters;
+  const firstLoadParams = {
+    subject: '',
+    activity: '',
+    _start: 0,
+    _limit: cardsPerPage,
+  };
 
-  const cards = await fetchItems(0, pageParameters.cardsPerPage);
+  const cards = await fetchCards(firstLoadParams);
 
   dispatch({ type: 'CLEAR_CARDS' });
   dispatch({ type: 'RENDER_CARDS', payload: cards });
