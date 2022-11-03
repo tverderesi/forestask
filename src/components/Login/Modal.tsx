@@ -5,6 +5,7 @@ import Login from './Login';
 
 export default function Modal() {
   const { loginSuccess } = useContext(AppContext);
+
   return (
     <div
       style={{
