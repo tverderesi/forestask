@@ -3,16 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import CardListTop from './CardListTop';
-import { changePage } from '../../context/AppFunctions';
 
 function CardList() {
-  const { maxPages, cardsPerPage, windowWidth, cards, dispatch, page } =
+  const { maxPages, cardsPerPage, windowWidth, cards, page } =
     useContext(AppContext);
-
-  const handlePageChange = async (index: number) => {
-    const payload = await changePage(page, index, maxPages, cardsPerPage);
-    dispatch({ type: 'CHANGE_PAGE', payload: payload });
-  };
 
   const styleMobile = {
     width: '95vw',
@@ -25,7 +19,9 @@ function CardList() {
 
   return (
     <div
-      className='d-flex flex-column justify-content-between'
+      className={`d-flex flex-column ${
+        page === maxPages ? `justify-content-start` : `justify-content-between`
+      }`}
       style={windowWidth < 825 ? styleMobile : styleDesktop}
     >
       <AnimatePresence mode='popLayout'>
@@ -42,14 +38,10 @@ function CardList() {
             transition: { duration: 0.3 },
           }}
         >
-          <CardListTop
-            handleClick={handlePageChange}
-            page={page + 1}
-            pageLimit={maxPages + 1}
-          />
+          <CardListTop />
         </motion.div>
 
-        {cards.map(item => {
+        {cards.map((item, index) => {
           return (
             <motion.div
               key={item.id}
@@ -59,7 +51,7 @@ function CardList() {
                 opacity: 1,
                 transition: {
                   duration: 0.3,
-                  delay: 0.45 + 0.15 * (item.id % cardsPerPage),
+                  delay: 0.45 + 0.15 * (index % cardsPerPage),
                 },
               }}
               exit={{
@@ -67,9 +59,10 @@ function CardList() {
                 x: 200,
                 transition: {
                   duration: 0.3,
-                  delay: 0.15 * (item.id % cardsPerPage),
+                  delay: 0.15 * (index % cardsPerPage),
                 },
               }}
+              className={page === maxPages ? `mb-3` : ''}
             >
               <ActivityCard item={item} />
             </motion.div>
