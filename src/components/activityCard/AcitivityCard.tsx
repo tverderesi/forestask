@@ -1,10 +1,18 @@
 import Card from 'react-bootstrap/Card';
 import { Col, Container, Row } from 'react-bootstrap';
 import { BsCheckLg } from 'react-icons/bs';
-import { useState } from 'react';
+
 import CardTags from './CardTags';
 import * as Style from './ActivityCardStyle';
 import * as Types from './ActivityCardTypes';
+import {
+  useRef,
+  MutableRefObject,
+  useEffect,
+  useState,
+  useContext,
+} from 'react';
+import AppContext from '../../context/AppContext';
 
 function ActivityCard({ item }: Types.ChildProps) {
   /**STATES
@@ -13,6 +21,7 @@ function ActivityCard({ item }: Types.ChildProps) {
    */
   const [completed, setCompleted] = useState(item.checked);
   const [text, setText] = useState('');
+  const { cardHeight, setCardHeight } = useContext(AppContext);
 
   //Functions
   /** Shows/Hides card content when clicked
@@ -48,10 +57,21 @@ function ActivityCard({ item }: Types.ChildProps) {
     setCompleted(!completed);
   };
 
+  const cardListRef = useRef(null) as MutableRefObject<any>;
+  let cardRefHeight =
+    cardListRef.current != null ? cardListRef.current.scrollHeight : 0;
+  useEffect(() => {
+    console.log(`cardHeight: ${cardHeight}`);
+    setCardHeight(cardRefHeight);
+
+    //eslint-disable-next-line
+  }, [cardRefHeight]);
+
   return (
     <Card
       className='container-md mt-1  '
       style={Style.activityCard}
+      ref={cardListRef}
     >
       <Container>
         <Card.Title
