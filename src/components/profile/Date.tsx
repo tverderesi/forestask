@@ -43,18 +43,6 @@ export default function Date({ name, icon }: { name: string; icon: any }) {
             }}
             className=' text-center'
           />
-
-          <input
-            type='submit'
-            value='Filter'
-            className='btn btn-primary'
-            style={{
-              backgroundColor: '#c491ff',
-              border: 'none',
-              color: 'black',
-              fontWeight: '600',
-            }}
-          />
         </Container>
       </AccordionBody>
     </Accordion.Item>
