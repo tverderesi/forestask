@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import { Accordion, Figure, Row, Col, Container, Badge } from 'react-bootstrap';
+import { Accordion, Figure, Row, Col, Container } from 'react-bootstrap';
 import Navbar from '../layout/DesktopProfileNavbar';
 import Header from '../layout/Header';
 import AccordionItem from './AccordionItem';
@@ -11,16 +11,18 @@ import {
   MdCalendarToday,
   MdFilterAlt,
 } from 'react-icons/md';
-import Date from './Date';
 import { filterCards } from '../../context/AppFunctions';
 
 function ProfileCard({ lvl, xp, name }) {
   const {
     subjects,
+    page,
+    cardsPerPage,
     activities,
     subjectPalette,
     activityPalette,
     filters,
+    windowHeight,
     dispatch,
   } = useContext(AppContext);
 
@@ -109,20 +111,20 @@ function ProfileCard({ lvl, xp, name }) {
           }}
           flush
         >
-          <Container className='align-self-center justify-content-center mt-2 ms-2  mb-0'>
-            <Row>
-              <Col className='d-flex align-items-center'>
-                <span style={{ position: 'relative', top: '-.25rem' }}>
-                  <MdFilterAlt size={22} />
-                </span>
-                <span
-                  className='p-2 h5'
-                  style={{ fontWeight: '600' }}
-                >
-                  Filter
-                </span>
-              </Col>
-              <Col xs={3}>
+          <Container className='align-self-center justify-content-center mb-2 p-0'>
+            <Row className='ms-0 me-0'>
+              <Col className='d-flex flex-row align-items-center  justify-content-between g-0 ms-3 mt-2 me-3'>
+                <div className='ms-1'>
+                  <span style={{ position: 'relative', top: '-.25rem' }}>
+                    <MdFilterAlt size={22} />
+                  </span>
+                  <span
+                    className='h5 ms-1'
+                    style={{ fontWeight: '600' }}
+                  >
+                    Filter
+                  </span>
+                </div>
                 <button
                   value='Filter'
                   className='btn btn-primary'
@@ -131,22 +133,27 @@ function ProfileCard({ lvl, xp, name }) {
                     border: 'none',
                     color: 'black',
                     fontWeight: '600',
-                    right: '.5rem',
-                    position: 'relative',
-                    left: '10%',
+                    fontSize: '.80rem',
                   }}
-                  onClick={async () => {
-                    const { subjects, activities } = filters;
-                    const payload = await filterCards({ subjects, activities });
-                    dispatch({ type: 'RENDER_CARDS', payload: payload });
+                  onClick={() => {
+                    filterCards(
+                      filters,
+                      windowHeight,
+                      dispatch,
+                      page,
+                      cardsPerPage
+                    );
                   }}
                 >
                   Submit
                 </button>
               </Col>
             </Row>
-            <Row className='d-flex justify-content-around ms-0 align-items-center mt-0'>
-              <Col>
+            <Row className='d-flex justify-content-around align-items-center mt-1 me-3 ms-3 '>
+              <Col
+                fluid
+                className='pe-0'
+              >
                 <div
                   className='badge me-1'
                   style={{ backgroundColor: filters.subjectsColor }}
@@ -184,7 +191,7 @@ function ProfileCard({ lvl, xp, name }) {
               />
             }
           />
-          <Date
+          <AccordionItem
             name={'Deadline'}
             icon={
               <MdCalendarToday
@@ -192,6 +199,8 @@ function ProfileCard({ lvl, xp, name }) {
                 className='me-1'
               />
             }
+            categories={''}
+            itemPalette={''}
           />
         </Accordion>
       </Card.Body>
