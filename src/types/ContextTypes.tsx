@@ -1,18 +1,23 @@
 import { ReactNode } from 'react';
 export interface CardListContextTypes {
-  cards: any;
-  page: number;
-  pageLimit: number;
-  numCards: any;
-  windowWidth: number;
-  handleClick: any;
-  subjects: any;
-  subjectPallete: any;
-  activities: any;
-  setLoginSuccess: any;
+  activities: any[];
+  activityPalette: any;
+  cardHeight: number;
+  cards: any[];
+  cardsPerPage: number;
+  loadSuccess: boolean;
+  loading: boolean;
   loginSuccess: boolean;
-  loading: any;
-  dispatch: any;
+  maxPages: number;
+  page: number;
+  setCardHeight: any;
+  subjects: any[];
+  subjectPalette: any;
+  totalCards: number;
+  windowHeight: number;
+  windowWidth: number;
+  filters: any;
+  dispatch: (string) => { any };
 }
 
 export type Props = { children?: ReactNode };
