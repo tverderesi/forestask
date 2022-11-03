@@ -11,7 +11,7 @@ function CardListTop() {
     return {
       backgroundColor:
         direction === 'right'
-          ? page === 1
+          ? page === 0
             ? 'hsla(0, 0%, 92%, 0.322)'
             : 'hsla(0, 0%, 65%, 0.322)'
           : page === maxPages
@@ -19,7 +19,7 @@ function CardListTop() {
           : 'hsla(0, 0%, 65%, 0.322)',
       color:
         direction === 'right'
-          ? page === 1
+          ? page === 0
             ? 'hsla(0, 0%, 75%, 1)'
             : ' hsla(0, 0%, 0%, 1)'
           : page === maxPages
