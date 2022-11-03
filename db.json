@@ -2,7 +2,7 @@
   "cards": [
     {
       "id": "0",
-      "title": "title 2",
+      "title": "title 0",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
@@ -10,7 +10,7 @@
     },
     {
       "id": "1",
-      "title": "title 2",
+      "title": "title 1",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
@@ -801,15 +801,6 @@
       "checked": "true"
     }
   ],
-  "subjects": [
-    "Music",
-    "Math",
-    "Portuguese",
-    "English",
-    "Science"
-  ],
-  "activities": [
-    "Test",
-    "Homework"
-  ]
+  "subjects": ["Music", "Math", "Portuguese", "English", "Science"],
+  "activities": ["Test", "Homework"]
 }
