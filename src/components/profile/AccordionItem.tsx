@@ -24,11 +24,11 @@ export default function AccordionItem({
       }}
     >
       <AccordionHeader style={{ backgroundColor: 'transparent' }}>
-        <Row>
+        <Row className='mb-1 mt-1'>
           <Col className='d-flex align-items-center'>
-            <span style={{ position: 'relative', top: '-.25rem' }}>{icon}</span>
+            <span style={{ position: 'relative', top: '-.35rem' }}>{icon}</span>
             <span
-              className='p-2 h6'
+              className=' h6'
               style={{ fontWeight: '600' }}
             >
               {name}
@@ -37,7 +37,28 @@ export default function AccordionItem({
         </Row>
       </AccordionHeader>
       <AccordionBody className='ms-3'>
-        {
+        {name === 'Deadline' ? (
+          <Container
+            fluid
+            className='d-flex align-items-center justify-content-around g-0 justify-self-center'
+          >
+            <input
+              type='date'
+              style={{
+                borderRadius: '10rem',
+                border: 'none',
+                fontWeight: '600',
+                height: '2.25rem',
+                paddingLeft: '7%',
+                paddingRight: '0px',
+                width: '70%',
+                paddingBottom: '2%',
+                backgroundColor: '#e9ecef',
+              }}
+              className=' text-center'
+            />
+          </Container>
+        ) : (
           <Container className='gx-0'>
             <Row>
               {categories.map(category => {
@@ -49,6 +70,7 @@ export default function AccordionItem({
                         backgroundColor: `${itemPalette[category]}`,
                         fontWeight: '600',
                         color: ' white',
+                        fontSize: '.80rem',
                       }}
                       onClick={(e: SyntheticEvent<HTMLButtonElement>) => {
                         const { innerHTML, style } = e.currentTarget;
@@ -69,7 +91,7 @@ export default function AccordionItem({
               })}
             </Row>
           </Container>
-        }
+        )}
       </AccordionBody>
     </Accordion.Item>
   );
