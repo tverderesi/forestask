@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import { Accordion, Figure, Row, Col, Container } from 'react-bootstrap';
+import { Accordion, Figure, Row, Col, Container, Badge } from 'react-bootstrap';
 import Navbar from '../layout/DesktopProfileNavbar';
 import Header from '../layout/Header';
 import AccordionItem from './AccordionItem';
@@ -12,9 +12,18 @@ import {
   MdFilterAlt,
 } from 'react-icons/md';
 import Date from './Date';
+import { filterCards } from '../../context/AppFunctions';
 
 function ProfileCard({ lvl, xp, name }) {
-  const { subjects, subjectPallete, activities } = useContext(AppContext);
+  const {
+    subjects,
+    activities,
+    subjectPalette,
+    activityPalette,
+    filters,
+    dispatch,
+  } = useContext(AppContext);
+
   return (
     <Card
       style={{
@@ -85,7 +94,14 @@ function ProfileCard({ lvl, xp, name }) {
           </figcaption>
         </Figure>
       </Card.Header>
-      <Card.Body className='p-0 m-0'>
+      <Card.Body
+        className='p-0 m-0'
+        style={{
+          position: 'relative',
+          overflowY: 'scroll',
+          overflowX: 'hidden',
+        }}
+      >
         <Accordion
           style={{
             backgroundColor: 'transparent',
@@ -106,6 +122,44 @@ function ProfileCard({ lvl, xp, name }) {
                   Filter
                 </span>
               </Col>
+              <Col xs={3}>
+                <button
+                  value='Filter'
+                  className='btn btn-primary'
+                  style={{
+                    backgroundColor: '#c491ff',
+                    border: 'none',
+                    color: 'black',
+                    fontWeight: '600',
+                    right: '.5rem',
+                    position: 'relative',
+                    left: '10%',
+                  }}
+                  onClick={async () => {
+                    const { subjects, activities } = filters;
+                    const payload = await filterCards({ subjects, activities });
+                    dispatch({ type: 'RENDER_CARDS', payload: payload });
+                  }}
+                >
+                  Submit
+                </button>
+              </Col>
+            </Row>
+            <Row className='d-flex justify-content-around ms-0 align-items-center mt-0'>
+              <Col>
+                <div
+                  className='badge me-1'
+                  style={{ backgroundColor: filters.subjectsColor }}
+                >
+                  {filters.subjects}
+                </div>
+                <div
+                  className='badge'
+                  style={{ backgroundColor: filters.activitiesColor }}
+                >
+                  {filters.activities}
+                </div>
+              </Col>
             </Row>
           </Container>
           <AccordionItem
@@ -117,12 +171,12 @@ function ProfileCard({ lvl, xp, name }) {
             }
             name='Subjects'
             categories={subjects}
-            itemPallete={subjectPallete}
+            itemPalette={subjectPalette}
           />
           <AccordionItem
             name='Activities'
             categories={activities}
-            itemPallete={subjectPallete}
+            itemPalette={activityPalette}
             icon={
               <MdOutlineLightbulb
                 size={20}
