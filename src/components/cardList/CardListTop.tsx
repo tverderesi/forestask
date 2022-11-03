@@ -1,16 +1,12 @@
 import { Card, Row } from 'react-bootstrap';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
-
-function CardListTop({
-  page,
-  pageLimit,
-  handleClick,
-}: {
-  page: any;
-  pageLimit: any;
-  handleClick: any;
-}) {
+import { handlePageChange } from '../../context/AppFunctions';
+import { useContext } from 'react';
+import AppContext from '../../context/AppContext';
+function CardListTop() {
   // Styling
+  const { filters, page, maxPages, cardsPerPage, dispatch } =
+    useContext(AppContext);
   function PageButtonStyle(page: any, direction: any) {
     return {
       backgroundColor:
@@ -18,7 +14,7 @@ function CardListTop({
           ? page === 1
             ? 'hsla(0, 0%, 92%, 0.322)'
             : 'hsla(0, 0%, 65%, 0.322)'
-          : page === pageLimit
+          : page === maxPages
           ? 'hsla(0, 0%, 92%, 0.322)'
           : 'hsla(0, 0%, 65%, 0.322)',
       color:
@@ -26,7 +22,7 @@ function CardListTop({
           ? page === 1
             ? 'hsla(0, 0%, 75%, 1)'
             : ' hsla(0, 0%, 0%, 1)'
-          : page === pageLimit
+          : page === maxPages
           ? 'hsla(0, 0%, 75%, 1)'
           : 'hsla(0, 0%, 0%, 1)',
       border: 'none',
@@ -49,16 +45,23 @@ function CardListTop({
   return (
     <Card
       style={CardListStyle}
-      className='container-md mt-0'
+      className={`container-md mt-0 ${page === maxPages ? `mb-3` : ''}`}
     >
       <Row className='p-3'>
         <span className='h3'>
-          Tasks {page}/{pageLimit}
+          Tasks {page + 1}/{maxPages + 1}
         </span>
         <BsArrowLeftShort
           onClick={e => {
             e.preventDefault();
-            handleClick(-1);
+            handlePageChange(
+              -1,
+              filters,
+              page,
+              maxPages,
+              cardsPerPage,
+              dispatch
+            );
           }}
           className='btn p-0 '
           style={PageButtonStyle(page, 'right') as any}
@@ -66,7 +69,14 @@ function CardListTop({
         <BsArrowRightShort
           onClick={e => {
             e.preventDefault();
-            handleClick(+1);
+            handlePageChange(
+              +1,
+              filters,
+              page,
+              maxPages,
+              cardsPerPage,
+              dispatch
+            );
           }}
           className='btn p-0'
           style={PageButtonStyle(page, 'left') as any}
