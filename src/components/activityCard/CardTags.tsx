@@ -6,13 +6,13 @@ import {
 } from 'react-icons/md';
 import { Col } from 'react-bootstrap';
 import * as Types from './ActivityCardTypes';
-import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
+import { useContext } from 'react';
 
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
+  const { subjectPalette } = useContext(AppContext);
   // Styling
   const classes = 'd-flex align-items-center col-auto me-2 g-0';
-  const { subjectPallete } = useContext(AppContext);
   return (
     <div
       className='d-flex flex-wrap g-0'
@@ -23,7 +23,7 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
       </Col>
       <Col
         className={classes}
-        style={{ color: subjectPallete['textPallete'][`${subject}`] }}
+        style={{ color: subjectPalette[`${subject}`] }}
       >
         <MdOutlineLightbulb className='me-1' />
         {subject}
