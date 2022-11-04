@@ -16,6 +16,7 @@ export default function AccordionItem({
   icon: any;
 }) {
   const { dispatch, filters } = useContext(AppContext);
+
   return (
     <Accordion.Item
       eventKey={name}
@@ -54,6 +55,7 @@ export default function AccordionItem({
                 width: '70%',
                 paddingBottom: '2%',
                 backgroundColor: '#e9ecef',
+                fontSize: '.85rem',
               }}
               className=' text-center'
             />
@@ -70,7 +72,7 @@ export default function AccordionItem({
                         backgroundColor: `${itemPalette[category]}`,
                         fontWeight: '600',
                         color: ' white',
-                        fontSize: '.80rem',
+                        fontSize: '.85rem',
                       }}
                       onClick={(e: SyntheticEvent<HTMLButtonElement>) => {
                         const { innerHTML, style } = e.currentTarget;
