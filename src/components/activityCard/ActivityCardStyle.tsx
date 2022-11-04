@@ -32,5 +32,5 @@ export const navButton: React.CSSProperties = {
   position: 'absolute',
   right: '2.5%',
   top: 'calc(50% - 30px)',
-  backgroundColor: 'hsla(0, 0%, 65%, 0.70)',
+  backgroundColor: '#a6a6a6b3',
 };

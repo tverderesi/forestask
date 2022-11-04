@@ -3,7 +3,7 @@ import ProfileCard from './profile/ProfileCard';
 import { useContext, useEffect, useState } from 'react';
 import MobileNavbar from './layout/MobileNavbar';
 
-import Modal from './Login/Modal';
+import Modal from './login/Modal';
 import AppContext from '../context/AppContext';
 
 export function ViewPort() {
@@ -12,8 +12,6 @@ export function ViewPort() {
   useEffect(() => {
     const handleWindowResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleWindowResize);
-
-    // Return a function from the effect that removes the event listener
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [windowWidth]);
 
