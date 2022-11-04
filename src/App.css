@@ -21,6 +21,8 @@
   --taskexp: #4d908e;
 }
 
+* {font-weight: '600' !important}
+
 .forest-green {
   color: var(--leafy-green)
 }
