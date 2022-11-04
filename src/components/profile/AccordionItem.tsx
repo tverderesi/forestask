@@ -1,20 +1,18 @@
-import { Accordion, Col, Container, Row } from 'react-bootstrap';
+import { Accordion, Col, Row } from 'react-bootstrap';
 import AccordionHeader from 'react-bootstrap/esm/AccordionHeader';
 import AccordionBody from 'react-bootstrap/esm/AccordionBody';
-import { SyntheticEvent, useContext } from 'react';
+import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
+import AccordionButton from './AccordionButton';
+import AccordionDeadline from './AccordionDeadline';
+import { AccordionType } from '../../types/Types';
 
 export default function AccordionItem({
   name,
   categories,
   itemPalette,
   icon,
-}: {
-  name: string;
-  categories: any;
-  itemPalette: any;
-  icon: any;
-}) {
+}: AccordionType) {
   const { dispatch, filters } = useContext(AppContext);
 
   return (
@@ -28,71 +26,21 @@ export default function AccordionItem({
         <Row className='mb-1 mt-1'>
           <Col className='d-flex align-items-center'>
             <span style={{ position: 'relative', top: '-.35rem' }}>{icon}</span>
-            <span
-              className=' h6'
-              style={{ fontWeight: '600' }}
-            >
-              {name}
-            </span>
+            <span className=' h6'>{name}</span>
           </Col>
         </Row>
       </AccordionHeader>
       <AccordionBody className='ms-3'>
         {name === 'Deadline' ? (
-          <Container
-            fluid
-            className='d-flex align-items-center justify-content-around g-0 justify-self-center'
-          >
-            <input
-              type='date'
-              style={{
-                borderRadius: '10rem',
-                border: 'none',
-                fontWeight: '600',
-                height: '2.25rem',
-                paddingLeft: '7%',
-                paddingRight: '0px',
-                width: '70%',
-                paddingBottom: '2%',
-                backgroundColor: '#e9ecef',
-                fontSize: '.85rem',
-              }}
-              className=' text-center'
-            />
-          </Container>
+          <AccordionDeadline />
         ) : (
-          <Container className='gx-0'>
-            <Row>
-              {categories.map(category => {
-                return (
-                  <Col className='gx-3 col-auto mt-0 mb-3'>
-                    <button
-                      className='p-2 btn rounded-borders'
-                      style={{
-                        backgroundColor: `${itemPalette[category]}`,
-                        fontWeight: '600',
-                        color: ' white',
-                        fontSize: '.85rem',
-                      }}
-                      onClick={(e: SyntheticEvent<HTMLButtonElement>) => {
-                        const { innerHTML, style } = e.currentTarget;
-
-                        filters[`${name.toLowerCase()}`] = innerHTML;
-                        filters[`${name.toLowerCase()}Color`] =
-                          style.backgroundColor;
-                        dispatch({
-                          type: 'ADD_TO_FILTER',
-                          payload: filters,
-                        });
-                      }}
-                    >
-                      {category}
-                    </button>
-                  </Col>
-                );
-              })}
-            </Row>
-          </Container>
+          <AccordionButton
+            name={name}
+            categories={categories}
+            dispatch={dispatch}
+            itemPalette={itemPalette}
+            filters={filters}
+          />
         )}
       </AccordionBody>
     </Accordion.Item>
