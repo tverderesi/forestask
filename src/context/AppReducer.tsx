@@ -50,7 +50,6 @@ export const AppReducer = (state: any, action: any) => {
         activityPalette: action.payload.activityPalette,
       };
     case 'ADD_TO_FILTER':
-      console.log(action.payload);
       return { ...state, filters: action.payload };
   }
 };
