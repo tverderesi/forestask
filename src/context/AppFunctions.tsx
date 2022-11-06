@@ -16,7 +16,6 @@ export async function changePage(
     _limit: cardsPerPage,
   };
   const currentCards = await fetchCards(params);
-  console.log(currentCards);
   return { newPage, currentCards };
 }
 
@@ -30,6 +29,7 @@ export async function fetchActivities() {
 export const fetchCards = async (params, getXTotalCount = false) => {
   const queryParams = paramBuilder(params);
   console.log(queryParams);
+
   const response = await fetch(`http://localhost:5000/cards?${queryParams}`, {
     headers: { 'Content-Type': 'text/html' },
   });
@@ -68,13 +68,12 @@ export function setPagesParameters(cardHeight, windowHeight, totalCards) {
 
 export const paramBuilder = queryParams => {
   const params = {};
-  const keys = ['subject', 'type', '_start', '_limit'];
+  const keys = ['subject', 'type', 'deadline', 'checked', '_start', '_limit'];
   const values = Object.values(queryParams);
 
   values.map((value, index) => {
     return value ? (params[keys[index]] = value) : '';
   });
-  console.log(params);
 
   return new URLSearchParams(params);
 };
@@ -103,10 +102,12 @@ export async function filterCards(
   page,
   cardsPerPage
 ) {
-  const { subjects, activities } = filters;
+  const { subjects, activities, deadline, checked } = filters;
   const params = {
     subjects: subjects,
     activites: activities,
+    deadline: deadline,
+    checked: checked,
     _start: page,
     _limit: cardsPerPage,
   };
@@ -116,6 +117,8 @@ export async function filterCards(
   const params2 = {
     subjects: subjects,
     activites: activities,
+    deadline: deadline,
+    checked: checked,
   };
 
   const payload2 = await fetchCards(params2);
@@ -141,6 +144,8 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
   const firstCardParams = {
     subject: '',
     activity: '',
+    deadline: '',
+    checked: '',
     _start: 0,
     _limit: 1,
   };
@@ -169,6 +174,8 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
   const firstLoadParams = {
     subject: '',
     activity: '',
+    deadline: '',
+    checked: '',
     _start: 0,
     _limit: cardsPerPage,
   };
