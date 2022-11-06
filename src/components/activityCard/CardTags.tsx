@@ -10,18 +10,24 @@ import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
 
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
-  const { subjectPalette } = useContext(AppContext);
+  const { subjectPalette, activityPalette } = useContext(AppContext);
   // Styling
-  const classes = 'd-flex align-items-center col-auto me-2 g-0';
+  const classes =
+    'd-flex align-items-center col-auto me-3 g-0 justify-self-center';
   return (
     <div
       className='d-flex flex-wrap g-0'
-      style={{ fontWeight: '600' }}
+      style={{ fontWeight: 600 }}
     >
-      <Col className={classes}>
+      <Col
+        xs={3}
+        className={classes}
+        style={{ color: activityPalette[`${type}`] }}
+      >
         <MdInfoOutline className='me-1' /> {type}
       </Col>
       <Col
+        xs={3}
         className={classes}
         style={{ color: subjectPalette[`${subject}`] }}
       >
