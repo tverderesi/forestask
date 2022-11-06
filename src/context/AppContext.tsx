@@ -2,6 +2,7 @@ import { useEffect, createContext, useState, useReducer } from 'react';
 
 import { AppContextTypes, Props } from '../types/Types';
 import { AppReducer } from './AppReducer';
+import FakeDataGenerator from './FakeDataGenerator';
 
 const AppContext = createContext({} as AppContextTypes);
 
@@ -28,6 +29,9 @@ export const AppProvider = ({ children }: Props) => {
       checked: '',
     },
   };
+
+  // const a = FakeDataGenerator(100);
+  // console.log(a);
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
