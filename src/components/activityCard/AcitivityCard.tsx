@@ -95,6 +95,8 @@ function ActivityCard({ item }: Types.ChildProps) {
               <CardTags
                 subject={item.subject}
                 type={item.type}
+                xp={item.xp}
+                deadline={item.deadline as string}
               />
             </Card.Header>
 
