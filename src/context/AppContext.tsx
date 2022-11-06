@@ -24,6 +24,8 @@ export const AppProvider = ({ children }: Props) => {
       subjectsColor: '',
       activities: '',
       activitiesColor: '',
+      deadline: '',
+      checked: '',
     },
   };
 
