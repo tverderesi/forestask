@@ -1,7 +1,7 @@
 import TreeIcon from '../layout/TreeIcon';
 export default function Loading() {
   return (
-    <>
+    <div>
       <div
         className='d-flex'
         style={{
@@ -9,8 +9,8 @@ export default function Loading() {
           marginRight: 'auto',
         }}
       >
-        <TreeIcon treeNumber={0} /> <TreeIcon treeNumber={0.025} />
-        <TreeIcon treeNumber={0.05} />
+        <TreeIcon treeNumber={0} /> <TreeIcon treeNumber={0} />
+        <TreeIcon treeNumber={0} />
       </div>
       <div
         className='h5 mt-3'
@@ -18,6 +18,6 @@ export default function Loading() {
       >
         Loading your Forest...
       </div>
-    </>
+    </div>
   );
 }

@@ -14,14 +14,14 @@ function TreeIcon({ treeNumber }) {
   };
   const tree = i => {
     return {
-      'initial': { opacity: 0, scale: 0.9 },
+      'initial': { opacity: 0, scale: 0.9, y: 0.01 },
       'animate': {
         opacity: [0, 1, 1, 0],
         scale: [0.9, 1, 1, 0.9],
+        y: [0.01, 0, 0, 0.01],
 
         transition: {
-          type: 'spring',
-          bounce: 0.6,
+          bounce: 1,
           duration: 2,
           delay: i * 0.2 + 2 * treeNumber,
           repeat: Infinity,
@@ -35,7 +35,6 @@ function TreeIcon({ treeNumber }) {
     'initial': { opacity: 1 },
     'animate': {
       opacity: 1,
-
       transition: {
         type: 'tween',
         duration: 2,
