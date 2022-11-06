@@ -34,15 +34,18 @@ export type ItemPalette = {
 };
 
 export type Filters = {
-  subjects: subject;
-  subjectsColor: any;
   activities: type;
   activitiesColor: any;
+  checked: boolean;
+  date: Date;
+  subjects: subject;
+  subjectsColor: any;
 };
 
 export interface State {
   activities: type[];
   activityPalette: any;
+
   filters: Filters;
   maxPages: number;
   page: number;
