@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import Loading from './Loading';
@@ -7,7 +8,11 @@ export default function Modal() {
   const { loginSuccess } = useContext(AppContext);
 
   return (
-    <div
+    <motion.div
+      key='modal'
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       style={{
         zIndex: '10',
         position: 'absolute',
@@ -21,6 +26,6 @@ export default function Modal() {
       className='d-flex flex-column align-self-center justify-self-center align-items-center justify-content-center'
     >
       {loginSuccess ? <Loading /> : <Login />}
-    </div>
+    </motion.div>
   );
 }
