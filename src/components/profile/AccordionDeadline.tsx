@@ -2,8 +2,6 @@ import { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import AppContext from '../../context/AppContext';
 
-require('react-datepicker/dist/react-datepicker-cssmodules.css');
-
 export default function AccordionDeadline() {
   const { dispatch, filters } = useContext(AppContext);
   const [focused, setFocused] = useState(false);

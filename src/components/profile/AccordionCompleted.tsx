@@ -1,7 +1,5 @@
 import { Container } from 'react-bootstrap';
 
-require('react-datepicker/dist/react-datepicker-cssmodules.css');
-
 export default function AccordionCompleted({ filters, dispatch }) {
   return (
     <Container
@@ -17,6 +15,7 @@ export default function AccordionCompleted({ filters, dispatch }) {
           className='me-1'
           onClick={() => {
             const payload = { ...filters, checked: true };
+
             dispatch({ type: 'ADD_TO_FILTER', payload: payload });
           }}
         />
@@ -32,6 +31,7 @@ export default function AccordionCompleted({ filters, dispatch }) {
           className='me-1'
           onClick={() => {
             const payload = { ...filters, checked: false };
+
             dispatch({ type: 'ADD_TO_FILTER', payload: payload });
           }}
         />
