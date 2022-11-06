@@ -15,6 +15,7 @@ export type handleCardClick = (content: string) => void;
 //Object Types
 
 export type item = {
+  deadline: string;
   id: number;
   content: string;
   type: type;
