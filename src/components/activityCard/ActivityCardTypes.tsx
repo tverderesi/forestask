@@ -6,6 +6,12 @@ export type subject = 'Math' | 'Music' | 'Science' | 'Portuguese' | 'English';
 
 //Function Types
 
+export type handleDone = (id: number) => void;
+
+export type addDone = (id: number) => void;
+
+export type handleCardClick = (content: string) => void;
+
 //Object Types
 
 export type item = {
