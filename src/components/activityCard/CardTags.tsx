@@ -4,7 +4,7 @@ import {
   MdCalendarToday,
   MdSentimentVerySatisfied,
 } from 'react-icons/md';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import * as Types from './ActivityCardTypes';
 import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
@@ -14,20 +14,22 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   // Styling
   const classes =
     'd-flex align-items-center col-auto me-3 g-0 justify-self-center';
+  const date =
+    typeof deadline === 'string' ? new Date(deadline).toLocaleDateString() : '';
+  console.log(date);
   return (
-    <div
+    <Row
+      fluid
       className='d-flex flex-wrap g-0'
       style={{ fontWeight: 600 }}
     >
       <Col
-        xs={3}
         className={classes}
         style={{ color: activityPalette[`${type}`] }}
       >
         <MdInfoOutline className='me-1' /> {type}
       </Col>
       <Col
-        xs={3}
         className={classes}
         style={{ color: subjectPalette[`${subject}`] }}
       >
@@ -36,12 +38,13 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
       </Col>
       <Col className={classes}>
         <MdCalendarToday className='me-1' />
-        deadline
+        {date}
       </Col>
       <Col className={classes}>
-        <MdSentimentVerySatisfied className='me-1' />0 XP
+        <MdSentimentVerySatisfied className='me-1' />
+        {Number(xp)} XP
       </Col>
-    </div>
+    </Row>
   );
 }
 
