@@ -5,6 +5,7 @@ import MobileNavbar from './layout/MobileNavbar';
 
 import Modal from './login/Modal';
 import AppContext from '../context/AppContext';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export function ViewPort() {
   const { loadSuccess } = useContext(AppContext);
@@ -16,27 +17,28 @@ export function ViewPort() {
   }, [windowWidth]);
 
   return windowWidth > 825 ? (
-    <>
+    <AnimatePresence>
       {loadSuccess ? (
-        <div
+        <motion.div
           className='d-flex justify-content-between align-items-start align-self-center justify-self-center'
           style={{ width: '92.5vw' }}
+          key='mainViewport'
         >
           <ProfileCard
             lvl='3'
             xp='300'
-            name='Thomas'
+            name='Thomas '
           />
           <CardList />
-        </div>
+        </motion.div>
       ) : (
         <Modal />
       )}
-    </>
+    </AnimatePresence>
   ) : (
-    <>
+    <motion.div>
       <CardList />
       <MobileNavbar />
-    </>
+    </motion.div>
   );
 }
