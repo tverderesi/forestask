@@ -12,9 +12,12 @@ export async function changePage(
   const params = {
     subject: filters.subjects,
     activity: filters.activities,
+    deadline: filters.deadline,
+    checked: filters.checked,
     _start: newPage * cardsPerPage,
     _limit: cardsPerPage,
   };
+
   const currentCards = await fetchCards(params);
   return { newPage, currentCards };
 }
@@ -28,7 +31,6 @@ export async function fetchActivities() {
 
 export const fetchCards = async (params, getXTotalCount = false) => {
   const queryParams = paramBuilder(params);
-  console.log(queryParams);
 
   const response = await fetch(`http://localhost:5000/cards?${queryParams}`, {
     headers: { 'Content-Type': 'text/html' },
@@ -72,7 +74,7 @@ export const paramBuilder = queryParams => {
   const values = Object.values(queryParams);
 
   values.map((value, index) => {
-    return value ? (params[keys[index]] = value) : '';
+    return value || value === false ? (params[keys[index]] = value) : '';
   });
 
   return new URLSearchParams(params);
@@ -122,7 +124,6 @@ export async function filterCards(
   };
 
   const payload2 = await fetchCards(params2);
-
   dispatch({
     type: 'LOAD_TOTAL_CARDS',
     payload: payload2.length,
