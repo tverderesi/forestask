@@ -12,6 +12,8 @@ import {
   MdFilterAlt,
 } from 'react-icons/md';
 import { filterCards } from '../../context/AppFunctions';
+import { FaTimes } from 'react-icons/fa';
+import { BsCheckLg } from 'react-icons/bs';
 
 function ProfileCard({ lvl, xp, name }) {
   const {
@@ -25,7 +27,8 @@ function ProfileCard({ lvl, xp, name }) {
     windowHeight,
     dispatch,
   } = useContext(AppContext);
-
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  console.log(tz);
   return (
     <Card
       style={{
@@ -42,6 +45,7 @@ function ProfileCard({ lvl, xp, name }) {
         style={{
           border: 'none',
           borderRadius: '16px 16px 0 0',
+          zIndex: '1',
         }}
         className='m-0'
       >
@@ -101,7 +105,6 @@ function ProfileCard({ lvl, xp, name }) {
         style={{
           position: 'relative',
           overflowY: 'scroll',
-          overflowX: 'hidden',
         }}
       >
         <Accordion
@@ -159,12 +162,81 @@ function ProfileCard({ lvl, xp, name }) {
                   style={{ backgroundColor: filters.subjectsColor }}
                 >
                   {filters.subjects}
+                  {filters.subjects && (
+                    <FaTimes
+                      className='ms-1'
+                      style={{ position: 'relative', top: '-.05rem' }}
+                      onClick={() => {
+                        const lollygag = {
+                          ...filters,
+                          subjects: '',
+                          subjectsColor: '',
+                        };
+                        dispatch({ type: 'ADD_TO_FILTER', payload: lollygag });
+                      }}
+                    />
+                  )}
                 </div>
                 <div
-                  className='badge'
+                  className='badge me-1'
                   style={{ backgroundColor: filters.activitiesColor }}
                 >
                   {filters.activities}
+                  {filters.activities && (
+                    <FaTimes
+                      className='ms-1'
+                      style={{ position: 'relative', top: '-.05rem' }}
+                      onClick={() => {
+                        const lollygag = {
+                          ...filters,
+                          activities: '',
+                          activitiesColor: '',
+                        };
+                        dispatch({ type: 'ADD_TO_FILTER', payload: lollygag });
+                      }}
+                    />
+                  )}
+                </div>
+                <div
+                  className='badge me-1'
+                  style={{ backgroundColor: '#8e5800' }}
+                >
+                  {filters.deadline
+                    ? filters.deadline.toLocaleString({
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        timeZone: tz,
+                      })
+                    : ''}
+                  {filters.deadline && (
+                    <FaTimes
+                      className='ms-1'
+                      style={{ position: 'relative', top: '-.05rem' }}
+                      onClick={() => {
+                        const lollygag = { ...filters, deadline: '' };
+                        dispatch({ type: 'ADD_TO_FILTER', payload: lollygag });
+                      }}
+                    />
+                  )}
+                </div>
+                <div
+                  className='badge me-1'
+                  style={{ backgroundColor: '#8e5800' }}
+                >
+                  {filters.checked ? 'Completed' : ''}
+                  {filters.checked === false ? 'Not Completed' : ''}
+                  {(filters.checked === false || filters.checked) && (
+                    <FaTimes
+                      className='ms-1'
+                      style={{ position: 'relative', top: '-.05rem' }}
+                      onClick={() => {
+                        const lollygag = { ...filters, checked: '' };
+                        console.log(lollygag);
+                        dispatch({ type: 'ADD_TO_FILTER', payload: lollygag });
+                      }}
+                    />
+                  )}
                 </div>
               </Col>
             </Row>
@@ -195,6 +267,18 @@ function ProfileCard({ lvl, xp, name }) {
             name={'Deadline'}
             icon={
               <MdCalendarToday
+                size={20}
+                className='me-1'
+              />
+            }
+            categories={''}
+            itemPalette={''}
+          />
+
+          <AccordionItem
+            name={'Completed'}
+            icon={
+              <BsCheckLg
                 size={20}
                 className='me-1'
               />
