@@ -1,12 +1,13 @@
 import { useEffect, createContext, useState, useReducer } from 'react';
 
-import { CardListContextTypes, Props } from '../types/ContextTypes';
+import { AppContextTypes, Props } from '../types/Types';
 import { AppReducer } from './AppReducer';
 
-const AppContext = createContext({} as CardListContextTypes);
+const AppContext = createContext({} as AppContextTypes);
 
 export const AppProvider = ({ children }: Props) => {
   const initialState = {
+    loadSuccess: false,
     loading: false,
     loginSuccess: false,
     totalCards: 0,
@@ -16,7 +17,6 @@ export const AppProvider = ({ children }: Props) => {
     activityPalette: {},
     cardsPerPage: 1,
     maxPages: 1,
-    loadSuccess: false,
     page: 0,
     activities: [],
     filters: {
