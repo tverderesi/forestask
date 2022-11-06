@@ -15,6 +15,7 @@ export type Card = {
   xp: number;
   checked: boolean;
   title: string;
+  deadline: string;
 };
 
 export type AccordionType = {
@@ -45,7 +46,6 @@ export type Filters = {
 export interface State {
   activities: type[];
   activityPalette: any;
-
   filters: Filters;
   maxPages: number;
   page: number;
@@ -61,6 +61,8 @@ export interface State {
 
 //Dispatch Action Type
 export type Action = { type: string; payload: any };
+
+export type Dispatch = { state: State; Action: Action };
 
 //Context Types
 export interface AppContextTypes extends State {
