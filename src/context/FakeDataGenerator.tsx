@@ -12,10 +12,10 @@ export default function FakeDataGenerator(numOfCards: number) {
     let randomCheckedIdx = Math.floor(Math.random() * checked.length);
     let randomDate = new Date(
       Date.now() + Math.floor(Math.random() * 50 * 864e5)
-    );
+    ).toISOString();
     let card = {
       id: `${i}`,
-      title: `title ${i}`,
+      title: `${subjects[randomSubjectIdx]} ${activities[randomActivityIdx]}`,
       content: `${lorem} `,
       subject: `${subjects[randomSubjectIdx]}`,
       type: `${activities[randomActivityIdx]}`,
