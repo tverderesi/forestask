@@ -19,6 +19,8 @@ export const AppProvider = ({ children }: Props) => {
     cardsPerPage: 1,
     maxPages: 1,
     page: 0,
+    userData: { xp: 0, level: 0, name: 'Thomas' },
+
     activities: [],
     filters: {
       subjects: '',
@@ -28,10 +30,8 @@ export const AppProvider = ({ children }: Props) => {
       deadline: '',
       checked: '',
     },
+    gameLevels: {},
   };
-
-  // const a = FakeDataGenerator(100);
-  // console.log(a);
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
