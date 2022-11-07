@@ -1,7 +1,7 @@
 import { Row, Col } from 'react-bootstrap';
 import { FaTimes } from 'react-icons/fa';
 
-export default function FiltersRow({ filters, dispatch, timeZone }) {
+export default function FiltersRow({ filters, dispatch, timeZone, locale }) {
   return (
     <Row className='d-flex justify-content-around align-items-center mt-1 me-3 ms-3 '>
       <Col
@@ -18,12 +18,12 @@ export default function FiltersRow({ filters, dispatch, timeZone }) {
               className='ms-1'
               style={{ position: 'relative', top: '-.05rem' }}
               onClick={() => {
-                const lollygag = {
+                const payload = {
                   ...filters,
                   subjects: '',
                   subjectsColor: '',
                 };
-                dispatch({ type: 'ADD_TO_FILTER', payload: lollygag });
+                dispatch({ type: 'ADD_TO_FILTER', payload: payload });
               }}
             />
           )}
@@ -53,11 +53,8 @@ export default function FiltersRow({ filters, dispatch, timeZone }) {
           style={{ backgroundColor: '#8e5800' }}
         >
           {filters.deadline
-            ? filters.deadline.toLocaleString({
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                timeZone: timeZone,
+            ? new Date(filters.deadline).toLocaleDateString(locale, {
+                timeZone: 'Etc/UTC',
               })
             : ''}
           {filters.deadline && (
