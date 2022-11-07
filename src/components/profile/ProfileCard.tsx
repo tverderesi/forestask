@@ -16,7 +16,7 @@ import FiltersRow from './FiltersRow';
 import FiltersHeader from './FiltersHeader';
 import * as Style from './ProfileCardStyles';
 
-function ProfileCard({ lvl, xp, name }) {
+function ProfileCard() {
   const {
     subjects,
     page,
@@ -27,8 +27,12 @@ function ProfileCard({ lvl, xp, name }) {
     filters,
     windowHeight,
     dispatch,
+    userData,
+    gameLevels,
   } = useContext(AppContext);
+
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const locale = Intl.DateTimeFormat().resolvedOptions().locale;
 
   return (
     <Card style={Style.card}>
@@ -38,9 +42,8 @@ function ProfileCard({ lvl, xp, name }) {
       >
         <Header />
         <ProfileHeader
-          name={name}
-          xp={xp}
-          lvl={lvl}
+          userData={userData}
+          gameLevels={gameLevels}
         />
       </Card.Header>
       <Card.Body
@@ -66,6 +69,7 @@ function ProfileCard({ lvl, xp, name }) {
               filters={filters}
               dispatch={dispatch}
               timeZone={timeZone}
+              locale={locale}
             />
           </Container>
           <AccordionItem
