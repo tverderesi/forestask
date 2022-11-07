@@ -30,7 +30,10 @@ export default function AccordionDeadline() {
           type='date'
           className=' text-center'
           onChange={(e: any) => {
-            const payload = { ...filters, deadline: e.target.value };
+            const payload = {
+              ...filters,
+              deadline: new Date(e.target.value).toISOString(),
+            };
             dispatch({ type: 'ADD_TO_FILTER', payload: payload });
           }}
           style={{
