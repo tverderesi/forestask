@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import CardListTop from './CardListTop';
 import { Card } from 'react-bootstrap';
-import { MdSentimentVerySatisfied } from 'react-icons/md';
 import { GiPartyPopper } from 'react-icons/gi';
 
 function CardList() {
