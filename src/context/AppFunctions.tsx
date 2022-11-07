@@ -1,4 +1,5 @@
 import paletteCreator from '../components/style/PaletteCreator';
+import { Card } from '../types/Types';
 
 export async function changePage(
   filters,
@@ -21,6 +22,24 @@ export async function changePage(
   const currentCards = await fetchCards(params);
   return { newPage, currentCards };
 }
+
+export const getXP = async () => {
+  let XP = 0;
+  const res = await fetch('http://localhost:5000/cards?checked=true');
+  const cards: Card[] = await res.json();
+  cards.map(card => (XP += Number(card.xp)));
+
+  return XP;
+};
+
+export const fetchGameLevels = async (level = '') => {
+  const params = level ? paramBuilder(level) : '';
+
+  const res = await fetch(`http://localhost:5000/levels/${params}`);
+  return await res.json();
+};
+
+export const updateGameLevels = (userData, gameLevels) => {};
 
 export async function fetchActivities() {
   const response = await fetch('http://localhost:5000/activities', {
@@ -53,13 +72,13 @@ export async function createActivityPalette() {
   return activityPalette;
 }
 
-export async function fetchSubjects() {
+export const fetchSubjects = async () => {
   const response = await fetch('http://localhost:5000/subjects', {
     headers: { 'Content-Type': 'json' },
   });
   const data = await response.json();
   return data;
-}
+};
 
 export function setPagesParameters(cardHeight, windowHeight, totalCards) {
   const cardsPerPage = Math.floor((windowHeight * 0.85) / (cardHeight + 16));
@@ -70,13 +89,20 @@ export function setPagesParameters(cardHeight, windowHeight, totalCards) {
 
 export const paramBuilder = queryParams => {
   const params = {};
-  const keys = ['subject', 'type', 'deadline', 'checked', '_start', '_limit'];
+  const keys = [
+    'subject',
+    'type',
+    'deadline',
+    'checked',
+    '_start',
+    '_limit',
+    'level',
+  ];
   const values = Object.values(queryParams);
 
   values.map((value, index) => {
     return value || value === false ? (params[keys[index]] = value) : '';
   });
-
   return new URLSearchParams(params);
 };
 export const handlePageChange = async (
@@ -97,13 +123,13 @@ export const handlePageChange = async (
   dispatch({ type: 'CHANGE_PAGE', payload: payload });
 };
 
-export async function filterCards(
+export const filterCards = async (
   filters,
   windowHeight,
   dispatch,
   page,
   cardsPerPage
-) {
+) => {
   const { subjects, activities, deadline, checked } = filters;
   const params = {
     subjects: subjects,
@@ -128,6 +154,7 @@ export async function filterCards(
     type: 'LOAD_TOTAL_CARDS',
     payload: payload2.length,
   });
+
   const filteredPagesParameters = await setPagesParameters(
     100,
     windowHeight,
@@ -138,7 +165,26 @@ export async function filterCards(
     payload: filteredPagesParameters,
   });
   dispatch({ type: 'RENDER_CARDS', payload: payload });
-}
+};
+
+export const setUserLevel = (userXP, gameLevels) => {
+  let userLevel = '0';
+  for (let level = 0; userXP > Number(gameLevels[level]); level++) {
+    userLevel = level.toString();
+  }
+  return userLevel;
+};
+
+export const fetchUserData = async (id = '') => {
+  const res = await fetch('http://localhost:5000/user');
+  const userData = await res.json();
+
+  const userXP = await getXP();
+  const gameLevels = await fetchGameLevels();
+  const userLevel = setUserLevel(userXP, gameLevels);
+
+  return { ...userData, xp: userXP, level: userLevel };
+};
 
 export const init = async (cardHeight, dispatch, windowHeight) => {
   dispatch({ type: 'LOGIN_SUCCESS' });
@@ -156,6 +202,8 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
   const subjectPalette = await createSubjectPalette();
   const activities = await fetchActivities();
   const activityPalette = await createActivityPalette();
+  const gameLevels = await fetchGameLevels();
+  const userData = await fetchUserData();
 
   dispatch({ type: 'LOAD_SUBJECTS', payload: subjects });
   dispatch({ type: 'FETCH_ACTIVITIES', payload: activities });
@@ -163,6 +211,8 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
     type: 'CREATE_PALETTES',
     payload: { subjectPalette, activityPalette },
   });
+  dispatch({ type: 'SET_GAME_LEVELS', payload: gameLevels });
+  dispatch({ type: 'SET_USER_DATA', payload: userData });
 
   dispatch({ type: 'RENDER_FIRST_CARD', payload: firstCard });
   const pageParameters = setPagesParameters(
@@ -181,9 +231,63 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
     _limit: cardsPerPage,
   };
 
-  const cards = await fetchCards(firstLoadParams);
-
   dispatch({ type: 'CLEAR_CARDS' });
+
+  const cards = await fetchCards(firstLoadParams);
   dispatch({ type: 'RENDER_CARDS', payload: cards });
   dispatch({ type: 'LOAD_SUCCESS' });
+};
+
+/** Puts the current state of the task in the database.
+ *
+ * @param id - Card id.
+ * @eventProperty
+ */
+export const addDone: any = async (item, id) => {
+  item.checked = !item.checked;
+
+  await fetch(`http://localhost:5000/cards/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item),
+  });
+};
+
+/** handles what happens when the user clicks on the checkbox item, by calling the 'addDone'
+ * function and flipping the 'completed' state.
+ *
+ * @params id - Card id
+ * @params item - the card.
+ * @params xp - current user XP.
+ * @params completed, setCompleted - useState function to update the checkmark.
+ * @params dispatch - dispatch function that comes from {@link AppReducer.}
+ * @eventProperty
+ */
+export const handleDone: any = async (
+  id,
+  item,
+  userData,
+  completed,
+  setCompleted,
+  dispatch,
+  gameLevels
+) => {
+  setCompleted(!completed);
+  addDone(item, id);
+  const newXP = item.checked
+    ? Number(userData.xp) + Number(item.xp)
+    : userData.xp - item.xp;
+  const userLevel = setUserLevel(newXP, gameLevels);
+
+  dispatch({
+    type: 'SET_USER_DATA',
+    payload: { ...userData, xp: newXP, level: userLevel },
+  });
+};
+
+export const setLastLevel = gameLevels => {
+  const levelIndexes = Object.keys(gameLevels);
+
+  const lastLevel = levelIndexes[levelIndexes.length - 1];
+  return lastLevel;
 };
