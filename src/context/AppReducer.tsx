@@ -1,5 +1,5 @@
 import palleteCreator from '../components/style/PaletteCreator';
-
+/** @AppReducer */
 export const AppReducer = (state: any, action: any) => {
   const subjectTextBaseColor = 'hsl(276, 53%, 51%)';
   switch (action.type) {
@@ -51,5 +51,12 @@ export const AppReducer = (state: any, action: any) => {
       };
     case 'ADD_TO_FILTER':
       return { ...state, filters: action.payload };
+
+    case 'SET_GAME_LEVELS':
+      return { ...state, gameLevels: action.payload, loading: true };
+    case 'SET_PAGE':
+      return { ...state, page: action.payload };
+    case 'SET_USER_DATA':
+      return { ...state, userData: action.payload, loading: true };
   }
 };
