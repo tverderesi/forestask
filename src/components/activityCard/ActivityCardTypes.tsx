@@ -15,7 +15,7 @@ export type handleCardClick = (content: string) => void;
 //Object Types
 
 export type item = {
-  deadline: string;
+  deadline: number;
   id: number;
   content: string;
   type: type;
@@ -32,6 +32,6 @@ export type ChildProps = {
 export type CardTags = {
   subject: subject;
   type: type;
-  deadline?: string;
-  xp?: number;
+  deadline: number;
+  xp: number;
 };
