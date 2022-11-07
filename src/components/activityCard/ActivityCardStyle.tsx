@@ -1,6 +1,6 @@
 import { item } from './ActivityCardTypes';
 
-export let CheckButton = (item: item): React.CSSProperties => {
+export const CheckButton = item => {
   return {
     verticalAlign: 'middle',
     alignSelf: 'center',
