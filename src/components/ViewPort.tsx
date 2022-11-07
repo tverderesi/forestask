@@ -24,11 +24,7 @@ export function ViewPort() {
           style={{ width: '92.5vw' }}
           key='mainViewport'
         >
-          <ProfileCard
-            lvl='3'
-            xp='300'
-            name='Thomas '
-          />
+          <ProfileCard />
           <CardList />
         </motion.div>
       ) : (
