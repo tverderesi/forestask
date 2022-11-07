@@ -15,7 +15,7 @@ export type Card = {
   xp: number;
   checked: boolean;
   title: string;
-  deadline: string;
+  deadline: number;
 };
 
 export type AccordionType = {
@@ -57,6 +57,8 @@ export interface State {
   subjects: subject[];
   subjectPalette: any;
   totalCards: number;
+  gameLevels: any;
+  userData: { xp: number; name: string; level: number };
 }
 
 //Dispatch Action Type
