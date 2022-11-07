@@ -35,6 +35,7 @@ export default function FiltersHeader({
           }}
           onClick={() => {
             filterCards(filters, windowHeight, dispatch, page, cardsPerPage);
+            dispatch({ type: 'SET_PAGE', payload: 0 });
           }}
         >
           Submit
@@ -55,6 +56,7 @@ export default function FiltersHeader({
             filters.deadline = '';
             filters.checked = '';
             filterCards(filters, windowHeight, dispatch, page, cardsPerPage);
+            dispatch({ type: 'SET_PAGE', payload: 0 });
           }}
         >
           Clear
