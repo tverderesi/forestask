@@ -1,6 +1,10 @@
 import { Figure } from 'react-bootstrap';
+import { setLastLevel } from '../../context/AppFunctions';
+import ProgressBar from './ProgressBar';
 
-export default function ProfileHeader({ name, xp, lvl }) {
+export default function ProfileHeader({ userData, gameLevels }) {
+  const lastLevel = setLastLevel(gameLevels);
+
   return (
     <Figure
       className='d-flex mt-2 mx-auto justify-content-between'
@@ -16,9 +20,7 @@ export default function ProfileHeader({ name, xp, lvl }) {
           className='d-flex flex-column ms-4 justify-content-between'
           style={{ height: '100px' }}
         >
-          <span className='fs-5'>Hello, {name}</span>
-
-          <span className='fs-6'>{xp} xp to level up!</span>
+          <span className='fs-5'>Hello, {userData.name}</span>
 
           <div className='d-flex flex-row justify-content-between align-items-center'>
             <div
@@ -40,12 +42,14 @@ export default function ProfileHeader({ name, xp, lvl }) {
                   zIndex: '1',
                 }}
               >
-                Level {lvl}
+                {userData.level.toString() === lastLevel
+                  ? 'Max level'
+                  : `Level ${userData.level}`}
               </div>
-              <div
-                className='w-25 progress-bar'
-                style={{ backgroundColor: '#c491ff' }}
-              ></div>
+              <ProgressBar
+                userData={userData}
+                gameLevels={gameLevels}
+              />
             </div>
           </div>
         </div>
