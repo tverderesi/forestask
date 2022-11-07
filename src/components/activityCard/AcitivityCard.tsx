@@ -13,6 +13,7 @@ import {
   useContext,
 } from 'react';
 import AppContext from '../../context/AppContext';
+import { handleDone } from '../../context/AppFunctions';
 
 function ActivityCard({ item }: Types.ChildProps) {
   /**STATES
@@ -21,7 +22,8 @@ function ActivityCard({ item }: Types.ChildProps) {
    */
   const [completed, setCompleted] = useState(item.checked);
   const [text, setText] = useState('');
-  const { cardHeight, setCardHeight } = useContext(AppContext);
+  const { cardHeight, setCardHeight, userData, dispatch, gameLevels } =
+    useContext(AppContext);
 
   //Functions
   /** Shows/Hides card content when clicked
@@ -32,36 +34,10 @@ function ActivityCard({ item }: Types.ChildProps) {
     text ? setText('') : setText(content);
   };
 
-  /** Puts the current state of the task in the database.
-   *
-   * @param id - Card id.
-   * @eventProperty
-   */
-  const addDone: Types.addDone = async id => {
-    item['checked'] = !item['checked'];
-    await fetch(`http://localhost:5000/cards/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(item),
-    });
-  };
-
-  /** handles what happens when the user clicks on the checkbox item, by calling the 'addDone'
-   * function and flipping the 'completed' state.
-   *
-   * @params id - Card id.
-   * @eventProperty
-   */
-  const handleDone: Types.handleDone = id => {
-    addDone(id);
-    setCompleted(!completed);
-  };
-
   const cardListRef = useRef(null) as MutableRefObject<any>;
   let cardRefHeight =
     cardListRef.current != null ? cardListRef.current.scrollHeight : 0;
   useEffect(() => {
-    console.log(`cardHeight: ${cardHeight}`);
     setCardHeight(cardRefHeight);
 
     //eslint-disable-next-line
@@ -75,14 +51,14 @@ function ActivityCard({ item }: Types.ChildProps) {
     >
       <Container>
         <Card.Title
-          className='text-center mt-3'
+          className='text-center p-3'
           style={Style.cardTitle}
         >
           {item.title}
         </Card.Title>
-        <Row>
+        <Row fluid>
           <Col
-            className='col-9 p-0 mb-0'
+            className=' w-100 p-0 mb-0'
             onClick={e => {
               e.preventDefault();
               handleCardClick(item.content);
@@ -96,7 +72,7 @@ function ActivityCard({ item }: Types.ChildProps) {
                 subject={item.subject}
                 type={item.type}
                 xp={item.xp}
-                deadline={item.deadline as string}
+                deadline={item.deadline}
               />
             </Card.Header>
 
@@ -105,18 +81,26 @@ function ActivityCard({ item }: Types.ChildProps) {
             </Card.Body>
           </Col>
 
-          <Col className='p-0'>
+          <Col className=' col-2 p-0'>
             <div
               onClick={e => {
                 e.preventDefault();
-                handleDone(item.id);
+                handleDone(
+                  item.id,
+                  item,
+                  userData,
+                  completed,
+                  setCompleted,
+                  dispatch,
+                  gameLevels
+                );
               }}
               style={Style.navButton}
             >
               <BsCheckLg
                 className='p-0'
                 size='30'
-                style={Style.CheckButton(item) as any}
+                style={Style.CheckButton(item) as React.CSSProperties}
               />
             </div>
           </Col>
