@@ -51,7 +51,7 @@ export interface State {
   page: number;
   cards: Card[];
   cardsPerPage: number;
-  loadSuccess: boolean;
+  initSuccess: boolean;
   loading: boolean;
   loginSuccess: boolean;
   subjects: subject[];
@@ -59,6 +59,7 @@ export interface State {
   totalCards: number;
   gameLevels: any;
   userData: { xp: number; name: string; level: number };
+  loadingStatus: string;
 }
 
 //Dispatch Action Type
