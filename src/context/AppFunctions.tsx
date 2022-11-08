@@ -196,6 +196,7 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
     _start: 0,
     _limit: 1,
   };
+  dispatch({ type: 'SET_LOADING', payload: true });
   const [firstCard, xTotalCount] = await fetchCards(firstCardParams, true);
   dispatch({ type: 'LOAD_TOTAL_CARDS', payload: xTotalCount });
   const subjects = await fetchSubjects();
@@ -214,9 +215,8 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
   dispatch({ type: 'SET_GAME_LEVELS', payload: gameLevels });
   dispatch({ type: 'SET_USER_DATA', payload: userData });
 
-  dispatch({ type: 'RENDER_FIRST_CARD', payload: firstCard });
   const pageParameters = setPagesParameters(
-    xTotalCount,
+    cardHeight,
     windowHeight,
     xTotalCount
   );
@@ -235,7 +235,8 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
 
   const cards = await fetchCards(firstLoadParams);
   dispatch({ type: 'RENDER_CARDS', payload: cards });
-  dispatch({ type: 'LOAD_SUCCESS' });
+  dispatch({ type: 'INIT_SUCCESS' });
+  setTimeout(() => dispatch({ type: 'SET_LOADING', payload: false }), 1000);
 };
 
 /** Puts the current state of the task in the database.
@@ -287,7 +288,6 @@ export const handleDone: any = async (
 
 export const setLastLevel = gameLevels => {
   const levelIndexes = Object.keys(gameLevels);
-
   const lastLevel = levelIndexes[levelIndexes.length - 1];
   return lastLevel;
 };
