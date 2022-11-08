@@ -1,4 +1,5 @@
-import TreeIcon from '../layout/TreeIcon';
+import TreeIcon from '../layout/icons/TreeIcon';
+
 export default function Loading() {
   return (
     <div>
