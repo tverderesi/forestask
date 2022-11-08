@@ -1,10 +1,10 @@
 [data-theme="light"] {
-  --card-color: #ecf1f3f2;
   --leafy-green: #017933;
   --bs-gray-100-o90: #f9fafbe6;
-  --lvl: #f77779;
-  --age: #ee976b;
-  --exp: #65c0bd;
+  --bs-dropdown-link-hover-bg: 'transparent';
+  --card-bg-color: #f9fafb80;
+  --bold-accent-color-1: #c491ff;
+  --soft-button-bg-color: #9a9c9e20;
   
 }
 
@@ -19,6 +19,7 @@
   --age: #f9844a;
   --exp: #4d908e;
   --taskexp: #4d908e;
+ 
 }
 
 * {font-weight: '600' !important}
@@ -90,3 +91,6 @@ form input.bottom, form input.bottom:focus {
 form input.top:focus, form input.bottom:focus{   background-color: rgb(225, 255, 225);outline: none;
 }
 
+.dropdown-toggle::after {
+  display: none !important; 
+}
