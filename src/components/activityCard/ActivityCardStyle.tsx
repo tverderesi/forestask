@@ -11,7 +11,7 @@ export const CheckButton = item => {
 
 export const activityCard = {
   backdropFilter: 'blur(20px)',
-  backgroundColor: '#f9fafb80',
+  backgroundColor: 'var(--card-bg-color)',
   borderRadius: '16px',
   border: 'none',
   boxShadow: '5px 5px 20px #3a3a3a38',
@@ -30,5 +30,5 @@ export const navButton: React.CSSProperties = {
   position: 'absolute',
   right: '2.5%',
   top: 'calc(50% - 30px)',
-  backgroundColor: '#9a9c9e20',
+  backgroundColor: 'var(--soft-button-bg-color)',
 };
