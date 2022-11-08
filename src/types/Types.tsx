@@ -60,6 +60,8 @@ export interface State {
   gameLevels: any;
   userData: { xp: number; name: string; level: number };
   loadingStatus: string;
+  showForest: boolean;
+  direction: -1 | 1;
 }
 
 //Dispatch Action Type

@@ -32,6 +32,8 @@ export const AppProvider = ({ children }: Props) => {
     },
     gameLevels: {},
     loadingStatus: '',
+    showForest: false,
+    direction: 1,
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
