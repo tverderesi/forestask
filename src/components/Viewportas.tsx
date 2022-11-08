@@ -7,7 +7,7 @@ import Modal from './login/Modal';
 import AppContext from '../context/AppContext';
 import { AnimatePresence, motion } from 'framer-motion';
 
-export function ViewPort() {
+export default function Viewport() {
   const { loadSuccess } = useContext(AppContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {

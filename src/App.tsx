@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { AppProvider } from './context/AppContext';
-import { ViewPort } from './components/ViewPort';
+import Viewport from './components/Viewportas';
 
 function App() {
   const style = {
@@ -19,7 +19,7 @@ function App() {
       style={style}
     >
       <AppProvider>
-        <ViewPort />
+        <Viewport />
       </AppProvider>
     </div>
   );
