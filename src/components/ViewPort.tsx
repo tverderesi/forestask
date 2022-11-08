@@ -3,7 +3,7 @@ import ProfileCard from './profile/ProfileCard';
 import { useContext, useEffect, useState } from 'react';
 import MobileNavbar from './layout/MobileNavbar';
 
-import Modal from './login/Modal';
+import Modal from './logina/Modal';
 import AppContext from '../context/AppContext';
 import { AnimatePresence, motion } from 'framer-motion';
 

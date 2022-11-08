@@ -1,5 +1,3 @@
-import { item } from './ActivityCardTypes';
-
 export const CheckButton = item => {
   return {
     verticalAlign: 'middle',
