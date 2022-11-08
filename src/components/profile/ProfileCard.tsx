@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { Accordion, Container } from 'react-bootstrap';
-import Navbar from '../layout/DesktopProfileNavbar';
-import Header from '../layout/Header';
+import Navbar from '../layout/elements/DesktopProfileNavbar';
+
 import AccordionItem from './AccordionItem';
 import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
@@ -15,6 +15,7 @@ import ProfileHeader from './ProfileHeader';
 import FiltersRow from './FiltersRow';
 import FiltersHeader from './FiltersHeader';
 import * as Style from './ProfileCardStyles';
+import Header from '../layout/elements/Header';
 
 function ProfileCard() {
   const {
@@ -29,13 +30,14 @@ function ProfileCard() {
     dispatch,
     userData,
     gameLevels,
+    showForest,
   } = useContext(AppContext);
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
 
   return (
-    <Card style={Style.card}>
+    <Card style={Style.card as React.CSSProperties}>
       <Card.Header
         style={Style.cardHeader}
         className='m-0'
@@ -120,7 +122,10 @@ function ProfileCard() {
         </Accordion>
       </Card.Body>
       <Card.Footer style={{ border: 'none' }}>
-        <Navbar />
+        <Navbar
+          dispatch={dispatch}
+          showForest={showForest}
+        />
       </Card.Footer>
     </Card>
   );
