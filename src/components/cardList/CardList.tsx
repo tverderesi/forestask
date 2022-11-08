@@ -7,7 +7,7 @@ import { Card } from 'react-bootstrap';
 import { GiPartyPopper } from 'react-icons/gi';
 
 function CardList() {
-  const { maxPages, cardsPerPage, windowWidth, cards, page } =
+  const { maxPages, cardsPerPage, windowWidth, cards, page, direction } =
     useContext(AppContext);
 
   const styleMobile = {
@@ -15,9 +15,18 @@ function CardList() {
     height: '80vh',
   };
   const styleDesktop = {
-    height: '85vh',
-    width: 'max(350px, 40vw)',
+    position: 'relative',
+    left: '2rem',
+    height: 'calc(85vh + 4rem)',
+    width: 'max(350px, calc(40vw + 40rem)',
+    overflowY: 'scroll',
+    overflowX: 'visible',
+    paddingTop: '2rem',
+    paddingBottom: '2rem',
+    paddingLeft: '20rem',
+    paddingRight: '20rem',
   };
+  console.log(typeof (direction * 200));
 
   return (
     <div
@@ -28,15 +37,16 @@ function CardList() {
     >
       <AnimatePresence mode='popLayout'>
         <motion.div
-          initial={{ opacity: 0, x: -200 }}
+          style={{ position: 'sticky' }}
+          initial={{ opacity: 0, x: direction * 200 }}
           animate={{
             x: 0,
             opacity: 1,
-            transition: { duration: 0.3 },
+            transition: { duration: 0.3, delay: 0.25 },
           }}
           exit={{
             opacity: 0,
-            x: 200,
+            x: -200 * direction,
             transition: { duration: 0.3 },
           }}
         >
@@ -48,18 +58,18 @@ function CardList() {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, x: -200 }}
+                initial={{ opacity: 0, x: 200 * direction }}
                 animate={{
                   x: 0,
                   opacity: 1,
                   transition: {
                     duration: 0.3,
-                    delay: 0.45 + 0.15 * (index % cardsPerPage),
+                    delay: 0.6 + 0.15 * (index % cardsPerPage),
                   },
                 }}
                 exit={{
                   opacity: 0,
-                  x: 200,
+                  x: -200 * direction,
                   transition: {
                     duration: 0.3,
                     delay: 0.15 * (index % cardsPerPage),
@@ -74,7 +84,7 @@ function CardList() {
         ) : (
           <motion.div
             key='nocards'
-            initial={{ opacity: 0, x: -200 }}
+            initial={{ opacity: 0, x: 200 * direction }}
             animate={{
               x: 0,
               opacity: 1,
@@ -85,7 +95,7 @@ function CardList() {
             }}
             exit={{
               opacity: 0,
-              x: 200,
+              x: -200 * direction,
               transition: {
                 duration: 0.3,
                 delay: 0.15,

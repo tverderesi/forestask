@@ -54,6 +54,7 @@ function CardListTop() {
         <BsArrowLeftShort
           onClick={e => {
             e.preventDefault();
+            dispatch({ type: 'DIRECTION', payload: -1 });
             handlePageChange(
               -1,
               filters,
@@ -69,6 +70,7 @@ function CardListTop() {
         <BsArrowRightShort
           onClick={e => {
             e.preventDefault();
+            dispatch({ type: 'DIRECTION', payload: 1 });
             handlePageChange(
               +1,
               filters,
