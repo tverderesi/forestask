@@ -5,7 +5,7 @@ import Loading from './Loading';
 import Login from './Login';
 
 export default function Modal() {
-  const { loginSuccess } = useContext(AppContext);
+  const { loading } = useContext(AppContext);
 
   return (
     <motion.div
@@ -25,7 +25,7 @@ export default function Modal() {
       }}
       className='d-flex flex-column align-self-center justify-self-center align-items-center justify-content-center'
     >
-      {loginSuccess ? <Loading /> : <Login />}
+      {loading ? <Loading /> : <Login />}
     </motion.div>
   );
 }
