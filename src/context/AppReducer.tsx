@@ -98,5 +98,10 @@ export const AppReducer = (state: any, action: any) => {
         ...state,
         cards: action.payload,
       };
+    case 'TOGGLE_FOREST':
+      return { ...state, showForest: action.payload };
+
+    case 'DIRECTION':
+      return { ...state, direction: action.payload };
   }
 };
