@@ -13,7 +13,7 @@ export default function Loading() {
         <TreeIcon treeNumber={0} />
       </div>
       <div
-        className='h5 mt-3'
+        className='h5 mt-3 text-center'
         style={{ fontWeight: '600' }}
       >
         Loading your Forest...
