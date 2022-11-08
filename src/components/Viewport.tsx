@@ -8,7 +8,7 @@ import AppContext from '../context/AppContext';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Viewport() {
-  const { loadSuccess } = useContext(AppContext);
+  const { initSuccess } = useContext(AppContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleWindowResize = () => setWindowWidth(window.innerWidth);
@@ -18,7 +18,7 @@ export default function Viewport() {
 
   return windowWidth > 825 ? (
     <AnimatePresence>
-      {loadSuccess ? (
+      {initSuccess ? (
         <motion.div
           className='d-flex justify-content-between align-items-start align-self-center justify-self-center'
           style={{ width: '92.5vw' }}
@@ -32,9 +32,15 @@ export default function Viewport() {
       )}
     </AnimatePresence>
   ) : (
-    <motion.div>
-      <CardList />
-      <MobileNavbar />
-    </motion.div>
+    <AnimatePresence>
+      {initSuccess ? (
+        <motion.div key='mainViewport'>
+          <CardList />
+          <MobileNavbar />
+        </motion.div>
+      ) : (
+        <Modal />
+      )}
+    </AnimatePresence>
   );
 }
