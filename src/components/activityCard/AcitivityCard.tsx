@@ -1,29 +1,35 @@
+// 1. node "builtin" modules
+
+// 2. "external" modules
 import Card from 'react-bootstrap/Card';
 import { Col, Collapse, Container, Row } from 'react-bootstrap';
 import { BsCheckLg } from 'react-icons/bs';
+import { useState, useContext } from 'react';
 
-import CardTags from './CardTags';
-import * as Style from './ActivityCardStyle';
-import * as Types from './ActivityCardTypes';
-import {
-  useRef,
-  MutableRefObject,
-  useEffect,
-  useState,
-  useContext,
-} from 'react';
+// 3. "internal" modules
+
+// 4. modules from a "parent" directory
 import AppContext from '../../context/AppContext';
 import { handleDone } from '../../context/AppFunctions';
 
+// 5. "sibling" modules from the same or a sibling's directory
+import CardTags from './CardTags';
+import * as Style from './ActivityCardStyle';
+
+// 6. "index" of the current directory
+
+// 7. "object"-imports (only available in TypeScript)
+
+// 8. "type" imports (only available in Flow and TypeScript)
+import * as Types from './ActivityCardTypes';
+
 function ActivityCard({ item }: Types.ChildProps) {
-  /**STATES
-   * @param completed - holds the current card's completed state.
-   * @param text - holds the current card's content.
-   */
+  //State Creation
   const [completed, setCompleted] = useState(item.checked);
   const [open, setOpen] = useState(false);
   const { userData, dispatch, gameLevels } = useContext(AppContext);
 
+  //Handling Collpasible Cards
   const handleCardClick: Types.handleCardClick = () => {
     setOpen(!open);
   };
