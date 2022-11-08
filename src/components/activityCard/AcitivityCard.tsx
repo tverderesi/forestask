@@ -22,48 +22,36 @@ function ActivityCard({ item }: Types.ChildProps) {
    */
   const [completed, setCompleted] = useState(item.checked);
   const [open, setOpen] = useState(false);
-  const { cardHeight, setCardHeight, userData, dispatch, gameLevels } =
-    useContext(AppContext);
+  const { userData, dispatch, gameLevels } = useContext(AppContext);
 
-  //Functions
-  /** Shows/Hides card content when clicked
-   *
-   *
-   */
   const handleCardClick: Types.handleCardClick = () => {
     setOpen(!open);
   };
-
-  const cardListRef = useRef(null) as MutableRefObject<any>;
-  let cardRefHeight =
-    cardListRef.current != null ? cardListRef.current.scrollHeight : 0;
-
-  useEffect(() => {
-    setCardHeight(cardRefHeight);
-
-    //eslint-disable-next-line
-  }, [cardRefHeight]);
 
   return (
     <Card
       className='container-md mt-3'
       style={Style.activityCard}
-      ref={cardListRef}
-      onClick={e => {
-        e.preventDefault();
-        handleCardClick();
-      }}
-      onMouseEnter={e => console.log(e.currentTarget.offsetHeight)}
     >
       <Container>
         <Card.Title
           className='text-center mt-3 mb-3'
           style={Style.cardTitle}
+          onClick={e => {
+            e.preventDefault();
+            handleCardClick();
+          }}
         >
           {item.title}
         </Card.Title>
         <Row fluid>
-          <Col className='w-100 p-0 mb-0'>
+          <Col
+            className='w-100 p-0 mb-0'
+            onClick={e => {
+              e.preventDefault();
+              handleCardClick();
+            }}
+          >
             <Card.Header
               className='ms-2 mt-0 me-0 ms-0 p-0'
               style={Style.cardHeader}
