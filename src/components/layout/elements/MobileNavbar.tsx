@@ -1,9 +1,12 @@
-import DarkMode from '../buttons/DarkMode';
+import { useContext } from 'react';
+import AppContext from '../../../context/AppContext';
+import ManageCards from '../buttons/ManageCards';
+import Forest from '../buttons/Forest';
 import Profile from '../buttons/Profile';
-import Tasks from '../buttons/Tasks';
-import TeacherMode from '../buttons/TeacherMode';
+import DarkMode from '../buttons/DarkMode';
 
 function MobileNavbar() {
+  const { dispatch, showForest } = useContext(AppContext);
   return (
     <nav
       className='d-flex flex-row justify-content-around'
@@ -19,8 +22,11 @@ function MobileNavbar() {
     >
       <Profile />
       <DarkMode />
-      <Tasks />
-      <TeacherMode />
+      <Forest
+        dispatch={dispatch}
+        showForest={showForest}
+      />
+      <ManageCards />
     </nav>
   );
 }
