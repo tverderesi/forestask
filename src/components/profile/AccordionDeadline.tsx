@@ -13,15 +13,13 @@ export default function AccordionDeadline() {
       <div
         className='d-flex flex-column jusitfy-content-center align-items-center'
         style={{
-          borderRadius: '10rem',
-
+          borderRadius: '1.12rem',
           fontWeight: '600',
           height: '2.25rem',
-
           paddingRight: '0px',
           width: '70%',
-          outline: focused ? '3px solid #c491ff' : '',
-          backgroundColor: '#e9ecef',
+          outline: focused ? '3px solid var(--bold-accent-color-1)' : '',
+          backgroundColor: 'var(--soft-button-bg-color)',
           fontSize: '.85rem',
           alignSelf: 'center',
         }}
