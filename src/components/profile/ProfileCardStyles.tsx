@@ -14,4 +14,6 @@ export const card = {
   height: '85vh',
   boxShadow: '5px 5px 20px #3a3a3a38',
   width: 'max(350px, 30vw) ',
+  position: 'relative',
+  top: '2rem',
 };
