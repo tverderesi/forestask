@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Collapse, Container, Row } from 'react-bootstrap';
 import { BsCheckLg } from 'react-icons/bs';
 
 import CardTags from './CardTags';
@@ -21,22 +21,23 @@ function ActivityCard({ item }: Types.ChildProps) {
    * @param text - holds the current card's content.
    */
   const [completed, setCompleted] = useState(item.checked);
-  const [text, setText] = useState('');
+  const [open, setOpen] = useState(false);
   const { cardHeight, setCardHeight, userData, dispatch, gameLevels } =
     useContext(AppContext);
 
   //Functions
   /** Shows/Hides card content when clicked
    *
-   *  @param content - the card content stored within the text state.
+   *
    */
-  const handleCardClick: Types.handleCardClick = content => {
-    text ? setText('') : setText(content);
+  const handleCardClick: Types.handleCardClick = () => {
+    setOpen(!open);
   };
 
   const cardListRef = useRef(null) as MutableRefObject<any>;
   let cardRefHeight =
     cardListRef.current != null ? cardListRef.current.scrollHeight : 0;
+
   useEffect(() => {
     setCardHeight(cardRefHeight);
 
@@ -45,25 +46,24 @@ function ActivityCard({ item }: Types.ChildProps) {
 
   return (
     <Card
-      className='container-md mt-1  '
+      className='container-md mt-3'
       style={Style.activityCard}
       ref={cardListRef}
+      onClick={e => {
+        e.preventDefault();
+        handleCardClick();
+      }}
+      onMouseEnter={e => console.log(e.currentTarget.offsetHeight)}
     >
       <Container>
         <Card.Title
-          className='text-center p-3'
+          className='text-center mt-3 mb-3'
           style={Style.cardTitle}
         >
           {item.title}
         </Card.Title>
         <Row fluid>
-          <Col
-            className=' w-100 p-0 mb-0'
-            onClick={e => {
-              e.preventDefault();
-              handleCardClick(item.content);
-            }}
-          >
+          <Col className='w-100 p-0 mb-0'>
             <Card.Header
               className='ms-2 mt-0 me-0 ms-0 p-0'
               style={Style.cardHeader}
@@ -76,12 +76,14 @@ function ActivityCard({ item }: Types.ChildProps) {
               />
             </Card.Header>
 
-            <Card.Body className='p-0 ms-2 mt-1'>
-              <p className='text-justify'>{text}</p>
+            <Card.Body className='p-0 ms-2 mt-1 mb-3'>
+              <Collapse in={open}>
+                <p>{item.content}</p>
+              </Collapse>
             </Card.Body>
           </Col>
 
-          <Col className=' col-2 p-0'>
+          <Col className='col-2 p-0'>
             <div
               onClick={e => {
                 e.preventDefault();
