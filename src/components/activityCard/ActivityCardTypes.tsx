@@ -10,7 +10,7 @@ export type handleDone = (id: number) => void;
 
 export type addDone = (id: number) => void;
 
-export type handleCardClick = (content: string) => void;
+export type handleCardClick = () => void;
 
 //Object Types
 

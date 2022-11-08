@@ -17,7 +17,7 @@ export const activityCard = {
   boxShadow: '5px 5px 20px #3a3a3a38',
 };
 
-export const cardTitle = { fontSize: '1.25em', fontWeight: '600' };
+export const cardTitle = { fontSize: '1rem', fontWeight: '600' };
 
 export const cardHeader = { background: 'none', border: 'none' };
 
