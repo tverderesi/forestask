@@ -21,7 +21,9 @@ export default function Modal() {
         width: '100vw',
         height: '100vh',
         backdropFilter: 'blur(50px)',
-        backgroundColor: '#dfdfdfb3',
+        backgroundColor: 'var(--modal-color)',
+        backgroundImage: 'url(./media/noise.png)',
+        backgroundBlendMode: 'overlay',
       }}
       className='d-flex flex-column align-self-center justify-self-center align-items-center justify-content-center'
     >

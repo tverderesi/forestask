@@ -7,8 +7,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import MainView from './layout/buttons/MainView';
 import MobileNavbar from './layout/elements/MobileNavbar';
 
+import ForestBackground from './forest/ForestBackground';
+
 export default function Viewport() {
-  const { initSuccess, showForest, dispatch } = useContext(AppContext);
+  const { initSuccess, showForest, dispatch, userData } =
+    useContext(AppContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleWindowResize = () => setWindowWidth(window.innerWidth);
@@ -16,9 +19,16 @@ export default function Viewport() {
     return () => window.removeEventListener('resize', handleWindowResize);
   }, [windowWidth]);
 
+  const levelArray: number[] = [];
+
+  for (let index = 0; index < userData.level; index++) {
+    levelArray.push(index);
+  }
+
   if (windowWidth > 825) {
     return (
       <AnimatePresence>
+        <ForestBackground levelArray={levelArray} />
         {initSuccess === true && showForest === false && (
           <motion.div
             className='d-flex justify-content-between align-items-start align-self-center justify-self-center'
@@ -46,7 +56,9 @@ export default function Viewport() {
         )}
         {initSuccess === false && <Modal />}
         {initSuccess === true && showForest === true && (
-          <MainView dispatch={dispatch} />
+          <>
+            <MainView dispatch={dispatch} />
+          </>
         )}
       </AnimatePresence>
     );

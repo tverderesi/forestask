@@ -4,7 +4,10 @@
   --bs-dropdown-link-hover-bg: 'transparent';
   --card-bg-color: #f9fafb80;
   --bold-accent-color-1: #c491ff;
-  --soft-button-bg-color: #9a9c9e20;
+  --soft-accent-bg-color: #9a9c9e20;
+  --softer-accent-bg-color: #9a9c9e14;
+  --card-shadow: 5px 5px 20px #3a3a3a38;
+  --modal-color: #dfdfdfb3;
   
 }
 

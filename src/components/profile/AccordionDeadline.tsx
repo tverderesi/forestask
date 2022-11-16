@@ -19,7 +19,7 @@ export default function AccordionDeadline() {
           paddingRight: '0px',
           width: '70%',
           outline: focused ? '3px solid var(--bold-accent-color-1)' : '',
-          backgroundColor: 'var(--soft-button-bg-color)',
+          backgroundColor: 'var(--soft-accent-bg-color)',
           fontSize: '.85rem',
           alignSelf: 'center',
         }}

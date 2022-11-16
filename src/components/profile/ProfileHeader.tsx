@@ -29,6 +29,7 @@ export default function ProfileHeader({ userData, gameLevels }) {
                 height: '25px',
                 borderRadius: '13px',
                 position: 'relative',
+                backgroundColor: 'var(--soft-accent-bg-color)',
               }}
             >
               <div

@@ -1,10 +1,24 @@
-import ActivityCard from '../activityCard/AcitivityCard';
+// 1. node "builtin" modules
+
+// 2. "external" modules
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
-import AppContext from '../../context/AppContext';
-import CardListTop from './CardListTop';
 import { Card } from 'react-bootstrap';
 import { GiPartyPopper } from 'react-icons/gi';
+// 3. "internal" modules
+
+// 4. modules from a "parent" directory
+import ActivityCard from '../activityCard/AcitivityCard';
+import AppContext from '../../context/AppContext';
+import { activityCard } from '../activityCard/ActivityCardStyle';
+// 5. "sibling" modules from the same or a sibling's directory
+import CardListTop from './CardListTop';
+
+// 6. "index" of the current directory
+
+// 7. "object"-imports (only available in TypeScript)
+
+// 8. "type" imports (only available in Flow and TypeScript)
 
 function CardList() {
   const { maxPages, cardsPerPage, windowWidth, cards, page, direction } =
@@ -26,7 +40,6 @@ function CardList() {
     paddingLeft: '20rem',
     paddingRight: '20rem',
   };
-  console.log(typeof (direction * 200));
 
   return (
     <div
@@ -104,14 +117,7 @@ function CardList() {
           >
             <Card
               className='d-flex justify-content-center'
-              style={{
-                backdropFilter: 'blur(20px)',
-                backgroundColor: '#f9fafb80',
-                borderRadius: '16px',
-                border: 'none',
-                boxShadow: '5px 5px 20px #3a3a3a38',
-                height: '12.5vh',
-              }}
+              style={activityCard}
             >
               <Card.Body
                 className='d-flex justify-content-center align-items-center mb-0'

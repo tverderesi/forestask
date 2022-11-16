@@ -9,12 +9,14 @@ export const CheckButton = item => {
   };
 };
 
-export const activityCard = {
+export const activityCard: React.CSSProperties = {
   backdropFilter: 'blur(20px)',
   backgroundColor: 'var(--card-bg-color)',
   borderRadius: '16px',
   border: 'none',
-  boxShadow: '5px 5px 20px #3a3a3a38',
+  boxShadow: 'var(--card-shadow)',
+
+  backgroundBlendMode: 'overlay',
 };
 
 export const cardTitle = { fontSize: '1rem', fontWeight: '600' };
@@ -30,5 +32,5 @@ export const navButton: React.CSSProperties = {
   position: 'absolute',
   right: '2.5%',
   top: 'calc(50% - 30px)',
-  backgroundColor: 'var(--soft-button-bg-color)',
+  backgroundColor: 'var(--soft-accent-bg-color)',
 };

@@ -1,6 +1,9 @@
-export const cardHeader = {
+export const cardHeader: React.CSSProperties = {
   border: 'none',
   borderRadius: '16px 16px 0 0',
+  backgroundColor: 'var(--softer-accent-bg-color)',
+
+  backgroundBlendMode: 'overlay',
 };
 export const accordion = {
   backgroundColor: 'transparent',
@@ -8,7 +11,9 @@ export const accordion = {
 };
 export const card = {
   backdropFilter: 'blur(20px)',
-  backgroundColor: 'hsla(210, 20%, 98%, 0.700)',
+
+  backgroundBlendMode: 'overlay',
+  backgroundColor: 'var(--card-bg-color)',
   borderRadius: '16px',
   border: 'none',
   height: '85vh',

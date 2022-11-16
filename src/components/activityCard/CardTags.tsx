@@ -1,13 +1,27 @@
+// 1. node "builtin" modules
+
+// 2. "external" modules
 import {
   MdInfoOutline,
   MdOutlineLightbulb,
   MdCalendarToday,
   MdSentimentVerySatisfied,
 } from 'react-icons/md';
-import * as Types from './ActivityCardTypes';
-import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
 import { IconContext } from 'react-icons/lib';
+
+// 3. "internal" modules
+
+// 4. modules from a "parent" directory
+import AppContext from '../../context/AppContext';
+// 5. "sibling" modules from the same or a sibling's directory
+
+// 6. "index" of the current directory
+
+// 7. "object"-imports (only available in TypeScript)
+
+// 8. "type" imports (only available in Flow and TypeScript)
+import * as Types from './ActivityCardTypes';
 
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   const { subjectPalette, activityPalette } = useContext(AppContext);
