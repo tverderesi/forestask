@@ -1,6 +1,7 @@
 import palleteCreator from '../components/style/PaletteCreator';
 /** @AppReducer */
 export const AppReducer = (state: any, action: any) => {
+  const subjectDarkTextBaseColor = 'hsl(276, 53%, 51%)';
   const subjectTextBaseColor = 'hsl(276, 53%, 51%)';
   switch (action.type) {
     default:
@@ -22,14 +23,15 @@ export const AppReducer = (state: any, action: any) => {
         loadingStatus: 'RENDER_FIRST_CARD',
       };
     case 'LOAD_SUBJECTS':
-      const subjectPallete = palleteCreator(
+      const subjectPalette = palleteCreator(
         action.payload,
-        subjectTextBaseColor
+        subjectTextBaseColor,
+        subjectDarkTextBaseColor
       );
       return {
         ...state,
         subjects: action.payload,
-        subjectPallete: subjectPallete,
+        subjectPalette: subjectPalette,
         loading: true,
         loadingStatus: 'LOAD_SUBJECTS',
       };
@@ -103,5 +105,8 @@ export const AppReducer = (state: any, action: any) => {
 
     case 'DIRECTION':
       return { ...state, direction: action.payload };
+
+    case 'CHANGE_COLOR':
+      return { ...state, dataTheme: action.payload };
   }
 };
