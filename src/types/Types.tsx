@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 
 //Semi-Primitive Types
 
-export type type = 'Homework' | 'Test';
-export type subject = 'Math' | 'Music' | 'Science' | 'Portuguese' | 'English';
+export type type = string;
+export type subject = string;
 
 //Component Types
 
@@ -62,6 +62,7 @@ export interface State {
   loadingStatus: string;
   showForest: boolean;
   direction: -1 | 1;
+  dataTheme: 'dark' | 'light';
 }
 
 //Dispatch Action Type
