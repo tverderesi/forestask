@@ -1,8 +1,8 @@
 //Semi Primitive Types
 
-export type type = 'Homework' | 'Test';
+export type type = string;
 
-export type subject = 'Math' | 'Music' | 'Science' | 'Portuguese' | 'English';
+export type subject = string;
 
 //Function Types
 
