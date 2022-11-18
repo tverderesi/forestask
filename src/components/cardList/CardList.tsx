@@ -24,21 +24,24 @@ function CardList() {
   const { maxPages, cardsPerPage, windowWidth, cards, page, direction } =
     useContext(AppContext);
 
-  const styleMobile = {
-    width: '95vw',
-    height: '80vh',
-  };
-  const styleDesktop = {
+  const styleMobile: React.CSSProperties = {
     position: 'relative',
-    left: '2rem',
-    height: 'calc(85vh + 4rem)',
-    width: 'max(350px, calc(40vw + 40rem)',
+    top: '2vh',
+    width: '100vw',
+    height: 'calc(88.5vh - 2rem)',
+  };
+  const styleDesktop: React.CSSProperties = {
+    position: 'relative',
     overflowY: 'scroll',
+    height: 'calc(85vh + 4rem)',
+    width: `max(350px, ${
+      windowWidth < 1100 ? 'calc(60vw + ( 220 / 1920 * 100vw ))' : '80vw'
+    })`,
     overflowX: 'visible',
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    paddingLeft: '20rem',
-    paddingRight: '20rem',
+    paddingLeft: windowWidth < 1100 ? 'calc( 220 / 1920 * 100vw)' : '25%',
+    paddingRight: '25%',
   };
 
   return (
