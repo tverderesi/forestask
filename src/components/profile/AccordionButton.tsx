@@ -6,6 +6,7 @@ export default function AccordionButton({
   itemPalette,
   filters,
   dispatch,
+  dataTheme,
 }) {
   const handleAccordionFilter = (e: React.MouseEvent<HTMLElement>) => {
     const { innerHTML, style } = e.currentTarget;
@@ -27,7 +28,7 @@ export default function AccordionButton({
               <button
                 className='p-2 btn rounded-borders'
                 style={{
-                  backgroundColor: `${itemPalette[category]}`,
+                  backgroundColor: `${itemPalette[dataTheme][category]}`,
                   fontWeight: '600',
                   color: ' white',
                   fontSize: '.85rem',

@@ -14,7 +14,7 @@ export default function AccordionItem({
   itemPalette,
   icon,
 }: AccordionType) {
-  const { dispatch, filters } = useContext(AppContext);
+  const { dispatch, filters, dataTheme } = useContext(AppContext);
 
   return (
     <Accordion.Item
@@ -53,6 +53,7 @@ export default function AccordionItem({
             dispatch={dispatch}
             itemPalette={itemPalette}
             filters={filters}
+            dataTheme={dataTheme}
           />
         ) : (
           ''
@@ -64,6 +65,7 @@ export default function AccordionItem({
             dispatch={dispatch}
             itemPalette={itemPalette}
             filters={filters}
+            dataTheme={dataTheme}
           />
         ) : (
           ''
