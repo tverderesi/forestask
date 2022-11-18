@@ -25,7 +25,9 @@ export async function changePage(
 
 export const getXP = async () => {
   let XP = 0;
-  const res = await fetch('http://localhost:5000/cards?checked=true');
+  const res = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/cards?checked=true`
+  );
   const cards: Card[] = await res.json();
   cards.map(card => (XP += Number(card.xp)));
 
@@ -35,25 +37,33 @@ export const getXP = async () => {
 export const fetchGameLevels = async (level = '') => {
   const params = level ? paramBuilder(level) : '';
 
-  const res = await fetch(`http://localhost:5000/levels/${params}`);
+  const res = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/levels/${params}`
+  );
   return await res.json();
 };
 
 export const updateGameLevels = (userData, gameLevels) => {};
 
 export async function fetchActivities() {
-  const response = await fetch('http://localhost:5000/activities', {
-    headers: { 'Content-Type': 'json' },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/activities`,
+    {
+      headers: { 'Content-Type': 'json' },
+    }
+  );
   return await response.json();
 }
 
 export const fetchCards = async (params, getXTotalCount = false) => {
   const queryParams = paramBuilder(params);
 
-  const response = await fetch(`http://localhost:5000/cards?${queryParams}`, {
-    headers: { 'Content-Type': 'text/html' },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/cards?${queryParams}`,
+    {
+      headers: { 'Content-Type': 'text/html' },
+    }
+  );
   const data = await response.json();
   const xTotalCount = Number(response.headers.get('X-total-count'));
   return getXTotalCount ? [data, xTotalCount] : data;
@@ -61,26 +71,31 @@ export const fetchCards = async (params, getXTotalCount = false) => {
 
 export async function createSubjectPalette() {
   const subjects = await fetchSubjects();
-  const subjectPalette = paletteCreator(subjects, '#c491ff');
+  const subjectPalette = paletteCreator(subjects, '#c491ff', '#b56576');
   return subjectPalette;
 }
 
 export async function createActivityPalette() {
   const activities = await fetchActivities();
-  const activityPalette = paletteCreator(activities, '#ff6f08');
+  const activityPalette = paletteCreator(activities, '#ff6f08', '#ff6f08');
 
   return activityPalette;
 }
 
 export const fetchSubjects = async () => {
-  const response = await fetch('http://localhost:5000/subjects', {
-    headers: { 'Content-Type': 'json' },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/subjects`,
+    {
+      headers: { 'Content-Type': 'json' },
+    }
+  );
   const data = await response.json();
   return data;
 };
 
 export function setPagesParameters(cardHeight, windowHeight, totalCards) {
+  console.log(cardHeight);
+  console.log((windowHeight * 0.85) / (cardHeight + 16));
   const cardsPerPage = Math.floor((windowHeight * 0.85) / (cardHeight + 16));
   const maxPages = Math.floor(totalCards / cardsPerPage);
   const PageParameters = { cardsPerPage: cardsPerPage, maxPages: maxPages };
@@ -176,7 +191,7 @@ export const setUserLevel = (userXP, gameLevels) => {
 };
 
 export const fetchUserData = async (id = '') => {
-  const res = await fetch('http://localhost:5000/user');
+  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/user`);
   const userData = await res.json();
 
   const userXP = await getXP();
@@ -247,7 +262,7 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
 export const addDone: any = async (item, id) => {
   item.checked = !item.checked;
 
-  await fetch(`http://localhost:5000/cards/${id}`, {
+  await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item),
