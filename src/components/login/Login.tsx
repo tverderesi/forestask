@@ -5,10 +5,11 @@ import { init } from '../../context/AppFunctions';
 import Header from '../layout/elements/Header';
 
 export default function Login() {
-  const { cardHeight, dispatch, windowHeight } = useContext(AppContext);
+  const { cardHeight, dispatch, windowHeight, windowWidth } =
+    useContext(AppContext);
 
   const loginStyle = {
-    width: '50%',
+    width: windowWidth < 825 ? '80vw' : '50%',
     backgroundColor: 'forestgreen',
     border: 'none',
     borderRadius: '1rem',
@@ -44,12 +45,14 @@ export default function Login() {
           required
           type='text'
           placeholder='Username'
+          style={{ width: windowWidth < 825 ? '80vw' : '100%' }}
         />
         <input
           required
           type='password'
           placeholder='Password'
           className='bottom'
+          style={{ width: windowWidth < 825 ? '80vw' : '100%' }}
         ></input>
         <input
           type='submit'
