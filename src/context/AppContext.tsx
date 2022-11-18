@@ -34,18 +34,21 @@ export const AppProvider = ({ children }: Props) => {
     loadingStatus: '',
     showForest: false,
     direction: 1,
+    dataTheme: 'light',
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
   const setInitialCardHeight = windowWidth => {
-    if (windowWidth > 1290 || windowWidth < 825) {
+    if (windowWidth > 1290 || (windowWidth < 825 && windowWidth > 540)) {
       return 94;
     } else if (windowWidth > 825 && windowWidth < 1290) {
       return 114;
+    } else if (windowWidth < 540) {
+      return 130;
     }
   };
-  const a = setInitialCardHeight(window.innerWidth);
-  const [cardHeight, setCardHeight] = useState(a);
+  const initialCardHeight = setInitialCardHeight(window.innerWidth);
+  const [cardHeight, setCardHeight] = useState(initialCardHeight);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -58,12 +61,12 @@ export const AppProvider = ({ children }: Props) => {
     window.addEventListener('resize', handleWindowResize);
     setCardHeight(setInitialCardHeight(windowWidth));
     const payload = setPagesParameters(
-      cardHeight,
+      setInitialCardHeight(window.innerWidth),
       windowHeight,
       state.totalCards
     );
 
-    console.log(windowWidth);
+    console.log(payload);
 
     dispatch({ type: 'UPDATE_PAGES_PARAMETERS', payload: payload });
     updatePage();
