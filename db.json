@@ -166,7 +166,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Portuguese",
       "type": "Test",
-      "checked": true,
+      "checked": false,
       "xp": "38",
       "deadline": "2022-12-18T18:05:17.490Z"
     },
@@ -176,7 +176,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "53",
       "deadline": "2022-11-21T15:28:10.883Z"
     },
@@ -186,7 +186,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "43",
       "deadline": "2022-11-15T10:23:02.585Z"
     },
@@ -196,7 +196,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "75",
       "deadline": "2022-12-12T05:13:47.364Z"
     },
@@ -206,7 +206,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Math",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "80",
       "deadline": "2022-11-11T23:06:51.433Z"
     },
@@ -216,7 +216,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Math",
       "type": "Homework",
-      "checked": false,
+      "checked": true,
       "xp": "77",
       "deadline": "2022-12-15T06:28:51.832Z"
     },
@@ -226,7 +226,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Test",
-      "checked": false,
+      "checked": true,
       "xp": "78",
       "deadline": "2022-12-05T19:20:21.885Z"
     },
