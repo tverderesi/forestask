@@ -24,7 +24,7 @@ import AppContext from '../../context/AppContext';
 import * as Types from './ActivityCardTypes';
 
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
-  const { subjectPalette, activityPalette } = useContext(AppContext);
+  const { subjectPalette, activityPalette, dataTheme } = useContext(AppContext);
   // Styling
   const locale = Intl.NumberFormat().resolvedOptions().locale;
   const classes =
@@ -62,13 +62,19 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
         >
           <div
             className={classes}
-            style={{ color: activityPalette[`${type}`], width: '50%' }}
+            style={{
+              color: activityPalette[dataTheme][`${type}`],
+              width: '50%',
+            }}
           >
             <MdInfoOutline className='me-1' /> {type}
           </div>
           <div
             className={classes}
-            style={{ color: subjectPalette[`${subject}`], width: '50%' }}
+            style={{
+              color: subjectPalette[dataTheme][`${subject}`],
+              width: '50%',
+            }}
           >
             <MdOutlineLightbulb className='me-1' />
             {subject}
