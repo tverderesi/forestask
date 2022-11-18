@@ -10,7 +10,7 @@ import MobileNavbar from './layout/elements/MobileNavbar';
 import ForestBackground from './forest/ForestBackground';
 
 export default function Viewport() {
-  const { initSuccess, showForest, dispatch, userData } =
+  const { initSuccess, showForest, dispatch, userData, dataTheme } =
     useContext(AppContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -27,42 +27,83 @@ export default function Viewport() {
 
   if (windowWidth > 825) {
     return (
-      <AnimatePresence>
-        <ForestBackground levelArray={levelArray} />
-        {initSuccess === true && showForest === false && (
-          <motion.div
-            className='d-flex justify-content-between align-items-start align-self-center justify-self-center'
-            style={{ width: '92.5vw' }}
-            key='mainViewport'
-          >
+      <main
+        data-theme={dataTheme}
+        className='d-flex justify-content-center align-items-center'
+        style={{
+          backgroundImage: `url(./media/background/${
+            dataTheme === 'light' ? '4' : '7'
+          }.png`,
+        }}
+      >
+        <AnimatePresence mode='popLayout'>
+          <ForestBackground
+            levelArray={levelArray}
+            windowWidth={windowWidth}
+            showForest={showForest}
+          />
+
+          {initSuccess === true && showForest === false && (
             <motion.div
-              initial={{ x: -1000 }}
-              animate={{
-                x: 0,
-                transition: { duration: 0.7, ease: 'easeOut', delay: 0.5 },
+              className='d-flex justify-content-between align-items-start'
+              key='mainViewport'
+              style={{
+                width: windowWidth < 900 ? '95%' : '90%',
               }}
-              exit={{ x: -1000, transition: { duration: 1 } }}
-              key='profileCard'
             >
-              <ProfileCard />
+              <motion.div
+                initial={{ x: -1000 }}
+                animate={{
+                  x: 0,
+                  transition: { duration: 0.7, ease: 'easeOut', delay: 0.5 },
+                }}
+                exit={{ x: -1000, transition: { duration: 1 } }}
+                key='profileCard'
+              >
+                <ProfileCard />
+              </motion.div>
+              <motion.div
+                exit={{ x: 1000, y: 0, transition: { duration: 1 } }}
+                key='cardList'
+              >
+                <CardList />
+              </motion.div>
             </motion.div>
-            <motion.div
-              exit={{ x: 1000, transition: { duration: 1 } }}
-              key='cardList'
-            >
-              <CardList />
-            </motion.div>
-          </motion.div>
-        )}
+          )}
+          {initSuccess === false && <Modal />}
+          {initSuccess === true && showForest === true && (
+            <>
+              <MainView dispatch={dispatch} />
+            </>
+          )}
+        </AnimatePresence>
+      </main>
+    );
+  } else {
+    return (
+      <>
         {initSuccess === false && <Modal />}
+        {initSuccess === true && showForest === false && (
+          <>
+            <div style={{ position: 'relative', zIndex: '10' }}>
+              <CardList />
+              <MobileNavbar />
+            </div>
+          </>
+        )}
         {initSuccess === true && showForest === true && (
           <>
             <MainView dispatch={dispatch} />
           </>
         )}
-      </AnimatePresence>
+        {initSuccess === true && (
+          <ForestBackground
+            levelArray={levelArray}
+            windowWidth={windowWidth}
+            showForest={showForest}
+          />
+        )}
+      </>
     );
-  } else {
-    return <></>;
   }
 }
