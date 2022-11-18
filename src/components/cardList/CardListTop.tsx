@@ -36,7 +36,7 @@ function CardListTop() {
 
   const CardListStyle = {
     backdropFilter: 'blur(20px)',
-    backgroundColor: '#f9fafb80',
+    backgroundColor: 'var(--card-bg-color)',
     borderRadius: '16px',
     border: 'none',
     boxShadow: '5px 5px 20px #3a3a3a38',
