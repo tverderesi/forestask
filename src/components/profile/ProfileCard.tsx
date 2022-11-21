@@ -122,10 +122,7 @@ function ProfileCard() {
         </Accordion>
       </Card.Body>
       <Card.Footer style={{ border: 'none' }}>
-        <Navbar
-          dispatch={dispatch}
-          showForest={showForest}
-        />
+        <Navbar dispatch={dispatch} />
       </Card.Footer>
     </Card>
   );
