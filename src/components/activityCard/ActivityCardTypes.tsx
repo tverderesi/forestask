@@ -1,5 +1,7 @@
 //Semi Primitive Types
 
+import { Card } from '../../types/Types';
+
 export type type = string;
 
 export type subject = string;
@@ -14,19 +16,8 @@ export type handleCardClick = () => void;
 
 //Object Types
 
-export type item = {
-  deadline: number;
-  id: number;
-  content: string;
-  type: type;
-  subject: subject;
-  xp: number;
-  checked: boolean;
-  title: string;
-};
-
 export type ChildProps = {
-  item: item;
+  item: Card;
 };
 
 export type CardTags = {
