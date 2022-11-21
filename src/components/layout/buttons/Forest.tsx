@@ -1,20 +1,26 @@
+import { Col } from 'react-bootstrap';
 import { FaTree } from 'react-icons/fa';
 
-export default function Forest({ dispatch, showForest }) {
+export default function Forest({ dispatch }) {
   return (
-    <button
-      className='btn btn-transparent'
-      key='Tasks'
-      onClick={e => {
-        e.preventDefault();
-        dispatch({ type: 'TOGGLE_FOREST', payload: true });
-      }}
-      style={{ fontWeight: 600, fontSize: '.9rem' }}
-    >
-      <div>
-        <FaTree size={28} />
-      </div>
-      Forest
-    </button>
+    <Col>
+      <button
+        className='btn btn-transparent d-flex flex-column justify-content-between w-100'
+        key='Tasks'
+        onClick={e => {
+          e.preventDefault();
+          dispatch({ type: 'TOGGLE_FOREST', payload: true });
+        }}
+        style={{ height: '10vh' }}
+      >
+        <div>
+          <FaTree
+            size={28}
+            style={{ verticalAlign: 'top' }}
+          />
+        </div>
+        Forest
+      </button>
+    </Col>
   );
 }
