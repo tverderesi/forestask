@@ -6,11 +6,11 @@ import AppContext from '../context/AppContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import MainView from './layout/buttons/MainView';
 import MobileNavbar from './layout/elements/MobileNavbar';
-
 import ForestBackground from './forest/ForestBackground';
+import AddItem from './additem/AddItem';
 
 export default function Viewport() {
-  const { initSuccess, showForest, dispatch, userData, dataTheme } =
+  const { initSuccess, showForest, dispatch, userData, dataTheme, addCard } =
     useContext(AppContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -42,6 +42,7 @@ export default function Viewport() {
             windowWidth={windowWidth}
             showForest={showForest}
           />
+          {addCard && <AddItem />}
 
           {initSuccess === true && showForest === false && (
             <motion.div
