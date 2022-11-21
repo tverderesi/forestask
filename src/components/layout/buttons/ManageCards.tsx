@@ -1,7 +1,7 @@
 // 1. node "builtin" modules
 
 // 2. "external" modules
-import { Dropdown } from 'react-bootstrap';
+import { Col, Dropdown } from 'react-bootstrap';
 import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import { BsPencil, BsPlusCircle } from 'react-icons/bs';
@@ -19,66 +19,74 @@ import ManageCardsIcon from '../icons/ManageCardsIcon';
 
 // 8. "type" imports (only available in Flow and TypeScript)
 
-export default function ManageCards() {
+export default function ManageCards({ dispatch }: { dispatch: any }) {
   return (
-    <Dropdown drop={'up'}>
-      <DropdownToggle
-        className='btn btn-transparent'
-        key='manageCards'
-        style={{ fontWeight: 600, fontSize: '.9rem' }}
-      >
-        <div>
-          <ManageCardsIcon scaleFactor={1.1} />
-        </div>
-        Manage Cards
-      </DropdownToggle>
-      <DropdownMenu
-        style={{
-          backdropFilter: 'blur(20px)',
-          backgroundColor: '#f9fafb80',
-          borderRadius: '16px',
-          border: 'none',
-          boxShadow: '5px 5px 20px #3a3a3a38',
-          padding: '.5rem',
-        }}
-      >
-        <Dropdown.Item
-          eventKey='1'
-          className='text-center'
+    <Col xs={4}>
+      <Dropdown drop={'up'}>
+        <DropdownToggle
+          className='btn btn-transparent  d-flex flex-column justify-content-between w-100'
+          key='manageCards'
+          style={{ height: '10vh', lineHeight: '' }}
+          id='button'
+        >
+          <div>
+            <ManageCardsIcon scaleFactor={1.1} />
+          </div>
+          Manage Cards
+        </DropdownToggle>
+        <DropdownMenu
           style={{
-            backgroundColor: 'transparent',
-            color: 'black',
-            width: '16rem',
-            borderBottom: 'solid 1px #80808020',
-            height: '2.5rem',
-            fontWeight: '600',
+            backdropFilter: 'blur(20px)',
+            backgroundColor: 'var(--card-bg-color)',
+            borderRadius: '16px',
+            border: 'none',
+            boxShadow: 'var(--card-shadow)',
+            padding: '.5rem',
+            color: 'var(--font-color)',
           }}
         >
-          <BsPlusCircle
-            style={{ position: 'absolute', top: '12.5%', left: '5%' }}
-            size={20}
-          />
-          Add Card
-        </Dropdown.Item>
-        <Dropdown.Item
-          eventKey='2'
-          className='text-center'
-          style={{
-            backgroundColor: 'transparent',
-            color: 'black',
-            height: '2.5rem',
-            paddingBottom: '.5rem',
-            paddingTop: '.5rem',
-            fontWeight: '600',
-          }}
-        >
-          <BsPencil
-            style={{ position: 'absolute', bottom: '17.5%', left: '5%' }}
-            size={20}
-          />
-          Edit Cards
-        </Dropdown.Item>
-      </DropdownMenu>
-    </Dropdown>
+          <Dropdown.Item
+            eventKey='1'
+            className='text-center'
+            style={{
+              backgroundColor: 'transparent',
+              width: '16rem',
+              borderBottom: 'solid 1px #80808020',
+              height: '2.5rem',
+              fontWeight: '600',
+              color: 'var(--font-color)',
+            }}
+            onClick={() => {
+              dispatch({ type: 'ADD_CARD' });
+            }}
+          >
+            <BsPlusCircle
+              style={{ position: 'absolute', top: '12.5%', left: '5%' }}
+              size={20}
+            />
+            Add Card
+          </Dropdown.Item>
+          <Dropdown.Item
+            eventKey='2'
+            className='text-center'
+            style={{
+              backgroundColor: 'transparent',
+
+              height: '2.5rem',
+              paddingBottom: '.5rem',
+              paddingTop: '.5rem',
+              fontWeight: '600',
+              color: 'var(--font-color)',
+            }}
+          >
+            <BsPencil
+              style={{ position: 'absolute', bottom: '17.5%', left: '5%' }}
+              size={20}
+            />
+            Edit Cards
+          </Dropdown.Item>
+        </DropdownMenu>
+      </Dropdown>
+    </Col>
   );
 }
