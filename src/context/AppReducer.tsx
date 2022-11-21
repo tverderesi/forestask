@@ -108,5 +108,9 @@ export const AppReducer = (state: any, action: any) => {
 
     case 'CHANGE_COLOR':
       return { ...state, dataTheme: action.payload };
+    case 'ADD_CARD':
+      return { ...state, addCard: true };
+    case 'SEND_CARD':
+      return { ...state, addCard: false };
   }
 };

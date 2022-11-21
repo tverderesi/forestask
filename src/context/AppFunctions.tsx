@@ -1,5 +1,6 @@
 import paletteCreator from '../components/style/PaletteCreator';
 import { Card } from '../types/Types';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function changePage(
   filters,
@@ -22,6 +23,16 @@ export async function changePage(
   const currentCards = await fetchCards(params);
   return { newPage, currentCards };
 }
+
+export const putCards = async newCard => {
+  newCard.id = uuidv4();
+  const a = JSON.stringify(newCard);
+  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards`, {
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    body: a,
+  });
+};
 
 export const getXP = async () => {
   let XP = 0;
@@ -94,8 +105,6 @@ export const fetchSubjects = async () => {
 };
 
 export function setPagesParameters(cardHeight, windowHeight, totalCards) {
-  console.log(cardHeight);
-  console.log((windowHeight * 0.85) / (cardHeight + 16));
   const cardsPerPage = Math.floor((windowHeight * 0.85) / (cardHeight + 16));
   const maxPages = Math.floor(totalCards / cardsPerPage);
   const PageParameters = { cardsPerPage: cardsPerPage, maxPages: maxPages };

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 const subjects = ['Math', 'Music', 'Science', 'Portuguese', 'English'];
 const activities = ['Homework', 'Text'];
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ';
@@ -14,7 +15,7 @@ export default function FakeDataGenerator(numOfCards: number) {
       Date.now() + Math.floor(Math.random() * 50 * 864e5)
     ).toISOString();
     let card = {
-      id: `${i}`,
+      id: uuidv4(),
       title: `${subjects[randomSubjectIdx]} ${activities[randomActivityIdx]}`,
       content: `${lorem} `,
       subject: `${subjects[randomSubjectIdx]}`,
