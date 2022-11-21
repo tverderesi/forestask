@@ -62,8 +62,8 @@ export default function FiltersRow({ filters, dispatch, timeZone, locale }) {
               className='ms-1'
               style={{ position: 'relative', top: '-.05rem' }}
               onClick={() => {
-                const lollygag = { ...filters, deadline: '' };
-                dispatch({ type: 'ADD_TO_FILTER', payload: lollygag });
+                const payload = { ...filters, deadline: '' };
+                dispatch({ type: 'ADD_TO_FILTER', payload: payload });
               }}
             />
           )}
