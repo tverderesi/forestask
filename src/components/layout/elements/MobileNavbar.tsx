@@ -6,7 +6,7 @@ import Profile from '../buttons/Profile';
 import DarkMode from '../buttons/DarkMode';
 
 function MobileNavbar() {
-  const { dispatch, showForest } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   return (
     <nav
       className='d-flex flex-row justify-content-around'
@@ -22,11 +22,8 @@ function MobileNavbar() {
     >
       <Profile />
       <DarkMode />
-      <Forest
-        dispatch={dispatch}
-        showForest={showForest}
-      />
-      <ManageCards />
+      <Forest dispatch={dispatch} />
+      <ManageCards dispatch={dispatch} />
     </nav>
   );
 }

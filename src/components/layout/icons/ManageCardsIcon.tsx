@@ -14,6 +14,7 @@ export default function ManageCards({
       height={height}
       version='1.1'
       viewBox='0 0 16 12.73'
+      style={{ verticalAlign: 'top' }}
     >
       <g transform='translate(-89.367 -93.965)'>
         <g

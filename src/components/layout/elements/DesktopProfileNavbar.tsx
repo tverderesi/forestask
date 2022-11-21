@@ -1,17 +1,15 @@
+import { Row } from 'react-bootstrap';
 import DarkMode from '../buttons/DarkMode';
 import Forest from '../buttons/Forest';
 import ManageCards from '../buttons/ManageCards';
 
-function Navbar({ dispatch, showForest }) {
+function Navbar({ dispatch }) {
   return (
-    <div className='d-flex justify-content-around align-items-start fw-bold'>
+    <Row className=''>
       <DarkMode />
-      <Forest
-        dispatch={dispatch}
-        showForest={showForest}
-      />
-      <ManageCards />
-    </div>
+      <ManageCards dispatch={dispatch} />
+      <Forest dispatch={dispatch} />
+    </Row>
   );
 }
 
