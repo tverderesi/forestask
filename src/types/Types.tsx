@@ -8,12 +8,12 @@ export type subject = string;
 //Component Types
 
 export type Card = {
-  id: number;
+  id: string;
   content: string;
   type: type;
   subject: subject;
   xp: number;
-  checked: boolean;
+  checked: any;
   title: string;
   deadline: number;
 };
@@ -63,6 +63,7 @@ export interface State {
   showForest: boolean;
   direction: -1 | 1;
   dataTheme: 'dark' | 'light';
+  addCard: boolean;
 }
 
 //Dispatch Action Type
