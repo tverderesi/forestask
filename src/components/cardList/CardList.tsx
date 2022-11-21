@@ -34,7 +34,7 @@ function CardList() {
     position: 'relative',
     overflowY: 'scroll',
     height: 'calc(85vh + 4rem)',
-    width: `max(350px, ${
+    minWidth: `max(350px, ${
       windowWidth < 1100 ? 'calc(60vw + ( 220 / 1920 * 100vw ))' : '80vw'
     })`,
     overflowX: 'visible',
