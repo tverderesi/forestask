@@ -4,8 +4,17 @@
     "level": 0,
     "xp": 0
   },
-  "subjects": ["Music", "Math", "Portuguese", "English", "Science"],
-  "activities": ["Test", "Homework"],
+  "subjects": [
+    "Music",
+    "Math",
+    "Portuguese",
+    "English",
+    "Science"
+  ],
+  "activities": [
+    "Test",
+    "Homework"
+  ],
   "levels": {
     "0": "0",
     "1": "100",
@@ -27,7 +36,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Portuguese",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "82",
       "deadline": "2022-11-19T02:16:15.624Z"
     },
@@ -37,7 +46,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "73",
       "deadline": "2022-12-16T01:23:50.955Z"
     },
@@ -47,7 +56,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Math",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "0",
       "deadline": "2022-12-16T19:30:26.983Z"
     },
@@ -57,7 +66,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Portuguese",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "26",
       "deadline": "2022-12-19T01:11:04.015Z"
     },
@@ -67,7 +76,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "31",
       "deadline": "2022-11-29T08:41:51.286Z"
     },
@@ -77,7 +86,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "50",
       "deadline": "2022-12-05T20:55:06.565Z"
     },
@@ -87,7 +96,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "96",
       "deadline": "2022-11-18T21:10:34.478Z"
     },
@@ -277,7 +286,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "47",
       "deadline": "2022-12-16T07:46:56.402Z"
     },
@@ -297,7 +306,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "80",
       "deadline": "2022-12-14T23:17:02.896Z"
     },
@@ -337,7 +346,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Portuguese",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "95",
       "deadline": "2022-12-14T04:03:51.994Z"
     },
@@ -367,7 +376,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "71",
       "deadline": "2022-12-11T02:56:43.254Z"
     },
@@ -377,7 +386,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "24",
       "deadline": "2022-11-30T16:46:17.109Z"
     },
@@ -387,7 +396,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "86",
       "deadline": "2022-12-04T21:13:19.076Z"
     },
@@ -397,7 +406,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "99",
       "deadline": "2022-11-22T11:33:14.614Z"
     },
@@ -407,7 +416,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Science",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "9",
       "deadline": "2022-12-07T12:21:14.000Z"
     },
@@ -417,7 +426,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Homework",
-      "checked": true,
+      "checked": false,
       "xp": "6",
       "deadline": "2023-01-02T10:27:56.391Z"
     },
