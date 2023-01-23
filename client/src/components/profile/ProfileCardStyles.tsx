@@ -16,7 +16,7 @@ export const card = {
   backgroundColor: 'var(--card-bg-color)',
   borderRadius: '16px',
   border: 'none',
-  height: 'calc(85vh + 1rem)',
+  height: 'calc(87vh + 1rem)',
   boxShadow: 'var(--card-shadow)',
   width: 'max(350px, 30vw) ',
   position: 'relative',

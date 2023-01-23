@@ -16,7 +16,7 @@ export default function ProgressBar({ userData, gameLevels }) {
   };
   return (
     <div
-      className='progress-bar'
+      className='w-full'
       style={{
         backgroundColor: '#c491ff',
         width: progressWidth(userData, gameLevels),

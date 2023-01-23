@@ -47,8 +47,8 @@ function CardListTop() {
       style={CardListStyle}
       className={`container-md mt-0 ${page === maxPages ? `mb-3` : ''}`}
     >
-      <Row className='p-3'>
-        <span className='h3'>
+      <Row className='p-5 font-semibold'>
+        <span className='text-xl'>
           Tasks {page + 1}/{maxPages + 1}
         </span>
         <BsArrowLeftShort
@@ -64,7 +64,7 @@ function CardListTop() {
               dispatch
             );
           }}
-          className='btn p-0 '
+          className='rounded-xl p-0 '
           style={PageButtonStyle(page, 'right') as any}
         />
         <BsArrowRightShort
@@ -80,7 +80,7 @@ function CardListTop() {
               dispatch
             );
           }}
-          className='btn p-0'
+          className='rounded-xl  p-0'
           style={PageButtonStyle(page, 'left') as any}
         />
       </Row>

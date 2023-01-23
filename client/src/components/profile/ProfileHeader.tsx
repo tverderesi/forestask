@@ -7,24 +7,24 @@ export default function ProfileHeader({ userData, gameLevels }) {
 
   return (
     <Figure
-      className='flex mt-2 mx-auto justify-between'
-      style={{ height: '100px', width: '90%' }}
+      className='flex py-5 mx-auto justify-between'
+      style={{ width: '90%' }}
     >
       <img
-        className='rounded-full w-[20%]  me-2'
+        className='rounded-full w-[100px] me-2'
         src='./media/profile_pic.jpg'
         alt='Sua Foto de Perfil'
       />
-      <figcaption className='w-100'>
+      <figcaption className='w-full'>
         <div
-          className='flex flex-col ml-4 justify-between'
+          className='flex flex-col ml-4 justify-around'
           style={{ height: '100px' }}
         >
-          <span className='fs-5'>Hello, {userData.name}</span>
+          <span className='text-2xl font'>Hello, {userData.name}</span>
 
           <div className='flex flex-row justify-between items-center'>
             <div
-              className='progress w-100'
+              className='w-full text-center'
               style={{
                 height: '25px',
                 borderRadius: '13px',
@@ -33,14 +33,17 @@ export default function ProfileHeader({ userData, gameLevels }) {
               }}
             >
               <div
-                className='text-center fw-bolder w-100'
+                className='text-center font-semibold w-[50%]'
                 style={{
+                  height: '25px',
+                  borderRadius: '13px',
                   lineHeight: '20px',
                   position: 'absolute',
                   top: '0',
                   left: 'auto',
                   right: 'auto',
                   zIndex: '1',
+                  backgroundColor: 'var(--bold-accent-color-1)',
                 }}
               >
                 {userData.level.toString() === lastLevel

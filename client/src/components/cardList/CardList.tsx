@@ -5,7 +5,7 @@ import ActivityCard from '../activityCard/AcitivityCard';
 import AppContext from '../../context/AppContext';
 
 import CardListTop from './CardListTop';
-import { NoCards } from './NoCards';
+import { NoCards } from '../activityCard/NoCards';
 
 function CardList() {
   const { maxPages, cardsPerPage, windowWidth, cards, page, direction } =
@@ -20,7 +20,7 @@ function CardList() {
   const styleDesktop: React.CSSProperties = {
     position: 'relative',
     overflowY: 'scroll',
-    height: 'calc(85vh + 4rem)',
+    height: 'calc(90vh + 4rem)',
     minWidth: `max(350px, ${
       windowWidth < 1100 ? 'calc(60vw + ( 220 / 1920 * 100vw ))' : '80vw'
     })`,

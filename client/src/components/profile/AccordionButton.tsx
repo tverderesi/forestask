@@ -23,11 +23,11 @@ export default function AccordionButton({
   );
 
   return (
-    <div className='grid grid-cols-3 gap-3'>
+    <div className='grid grid-cols-3 gap-3 px-6'>
       {categories.map(category => {
         return (
           <button
-            className='p-2 rounded-full font-bold  text-white  text-sm'
+            className='p-2 rounded-full font-semibold  text-white  text-sm'
             style={{
               backgroundColor: `${itemPalette[dataTheme][category]}`,
             }}

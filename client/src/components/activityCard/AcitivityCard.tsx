@@ -18,10 +18,10 @@ function ActivityCard({ item }: Types.ChildProps) {
   return (
     <div className='mx-auto mt-3 activity-card flex '>
       <section
-        className='flex flex-col w-[95%] mx-5 content-center'
+        className='flex flex-col w-4/5 mx-5 content-center'
         onClick={handleCardClick}
       >
-        <h5 className='text-lg font-semibold text-center my-3 cursor-pointer'>
+        <h5 className='text-[1.1rem] font-semibold text-center my-3 ml-28 cursor-pointer'>
           {item.title}
         </h5>
         <CardTags
@@ -35,7 +35,7 @@ function ActivityCard({ item }: Types.ChildProps) {
         </div>
       </section>
 
-      <section className='justify-center items-center'>
+      <section className='justify-center items-center w-1/5'>
         <div
           className='rounded-circle nav-button'
           onClick={e => {

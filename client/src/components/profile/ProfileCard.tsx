@@ -37,8 +37,11 @@ function ProfileCard() {
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
 
   return (
-    <Card style={Style.card as React.CSSProperties}>
-      <Card.Header
+    <div
+      style={Style.card as React.CSSProperties}
+      className='overflow-y-scroll'
+    >
+      <div
         style={Style.cardHeader}
         className='m-0'
       >
@@ -47,7 +50,7 @@ function ProfileCard() {
           userData={userData}
           gameLevels={gameLevels}
         />
-      </Card.Header>
+      </div>
       <Card.Body
         className='p-0 m-0'
         style={{
@@ -124,7 +127,7 @@ function ProfileCard() {
       <Card.Footer style={{ border: 'none' }}>
         <Navbar dispatch={dispatch} />
       </Card.Footer>
-    </Card>
+    </div>
   );
 }
 export default ProfileCard;

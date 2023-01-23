@@ -28,22 +28,22 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
 
   return (
     <IconContext.Provider value={{ size: '20px' }}>
-      <div className='grid grid-cols-4 mx-auto mt-[4px] w-[70%] fw-semibold'>
+      <div className='grid grid-cols-2 lg:grid-cols-4  g-0 mt-2 ml-1 font-semibold'>
         <div className={classes}>
-          <MdCalendarToday className='me-2' />
+          <MdCalendarToday className='mr-1' />
           {date}
         </div>
-        <span className={classes}>
-          <MdSentimentVerySatisfied className='me-2' />
+        <div className={classes}>
+          <MdSentimentVerySatisfied className='mr-1' />
           {Number(xp)} XP
-        </span>
+        </div>
         <div
           className={classes}
           style={{
             color: activityPalette[dataTheme][`${type}`],
           }}
         >
-          <MdInfoOutline className='me-1' /> {type}
+          <MdInfoOutline className='mr-1' /> {type}
         </div>
         <div
           className={classes}
@@ -51,7 +51,7 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
             color: subjectPalette[dataTheme][`${subject}`],
           }}
         >
-          <MdOutlineLightbulb className='me-1' />
+          <MdOutlineLightbulb className='mr-1' />
           {subject}
         </div>
       </div>
