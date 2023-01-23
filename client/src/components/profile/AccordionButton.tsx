@@ -1,4 +1,4 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { useCallback } from 'react';
 
 export default function AccordionButton({
   name,
@@ -8,39 +8,35 @@ export default function AccordionButton({
   dispatch,
   dataTheme,
 }) {
-  const handleAccordionFilter = (e: React.MouseEvent<HTMLElement>) => {
-    const { innerHTML, style } = e.currentTarget;
+  const handleAccordionFilter = useCallback(
+    e => {
+      const { innerHTML, style } = e.currentTarget;
 
-    filters[`${name.toLowerCase()}`] = innerHTML;
-    filters[`${name.toLowerCase()}Color`] = style.backgroundColor;
-    dispatch({
-      type: 'ADD_TO_FILTER',
-      payload: filters,
-    });
-  };
+      filters[`${name.toLowerCase()}`] = innerHTML;
+      filters[`${name.toLowerCase()}Color`] = style.backgroundColor;
+      dispatch({
+        type: 'ADD_TO_FILTER',
+        payload: filters,
+      });
+    },
+    [dispatch, filters, name]
+  );
 
   return (
-    <Container className='gx-0'>
-      <Row>
-        {categories.map(category => {
-          return (
-            <Col className='gx-3 col-auto mt-0 mb-3'>
-              <button
-                className='p-2 btn rounded-borders'
-                style={{
-                  backgroundColor: `${itemPalette[dataTheme][category]}`,
-                  fontWeight: '600',
-                  color: ' white',
-                  fontSize: '.85rem',
-                }}
-                onClick={handleAccordionFilter}
-              >
-                {category}
-              </button>
-            </Col>
-          );
-        })}
-      </Row>
-    </Container>
+    <div className='grid grid-cols-3 gap-3'>
+      {categories.map(category => {
+        return (
+          <button
+            className='p-2 rounded-full font-bold  text-white  text-sm'
+            style={{
+              backgroundColor: `${itemPalette[dataTheme][category]}`,
+            }}
+            onClick={handleAccordionFilter}
+          >
+            {category}
+          </button>
+        );
+      })}
+    </div>
   );
 }

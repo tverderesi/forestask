@@ -4,7 +4,7 @@ export default function AccordionCompleted({ filters, dispatch }) {
   return (
     <Container
       fluid
-      className='d-flex align-items-center justify-content-around g-0 justify-self-center'
+      className='d-flex items-center justify-around g-0 justify-self-center'
     >
       <label>
         <input

@@ -3,8 +3,8 @@ import { FaCheck } from 'react-icons/fa';
 import AppContext from '../../context/AppContext';
 import { handleDone } from '../../context/AppFunctions';
 import CardTags from './CardTags';
+
 import * as Types from './ActivityCardTypes';
-import './ActivityCard.css';
 
 function ActivityCard({ item }: Types.ChildProps) {
   const [completed, setCompleted] = useState(item.checked);
@@ -17,11 +17,11 @@ function ActivityCard({ item }: Types.ChildProps) {
 
   return (
     <div className='mx-auto mt-3 activity-card flex '>
-      <div
-        className='flex flex-col w-[80%] mx-5'
+      <section
+        className='flex flex-col w-[95%] mx-5 content-center'
         onClick={handleCardClick}
       >
-        <h5 className='text-lg fw-semibold text-center my-3 cursor-pointer'>
+        <h5 className='text-lg font-semibold text-center my-3 cursor-pointer'>
           {item.title}
         </h5>
         <CardTags
@@ -31,12 +31,13 @@ function ActivityCard({ item }: Types.ChildProps) {
           deadline={item.deadline}
         />
         <div className='p-3'>
-          <p className='text-base'>{item.content}</p>
+          <p className={`text-base ${open ? '' : 'hidden'} `}>{item.content}</p>
         </div>
-      </div>
+      </section>
 
-      <div className='p-0 content-start items-start rounded-circle'>
+      <section className='justify-center items-center'>
         <div
+          className='rounded-circle nav-button'
           onClick={e => {
             e.preventDefault();
             handleDone(
@@ -51,12 +52,12 @@ function ActivityCard({ item }: Types.ChildProps) {
           }}
         >
           <FaCheck
-            className='p-0 text-green-500'
             size='30'
+            className='ml-[25%] mt-[25%]'
             style={{ opacity: completed ? 1 : 0.3 }}
           />
         </div>
-      </div>
+      </section>
     </div>
   );
 }

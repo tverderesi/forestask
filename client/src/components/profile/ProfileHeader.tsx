@@ -7,22 +7,22 @@ export default function ProfileHeader({ userData, gameLevels }) {
 
   return (
     <Figure
-      className='d-flex mt-2 mx-auto justify-content-between'
+      className='flex mt-2 mx-auto justify-between'
       style={{ height: '100px', width: '90%' }}
     >
       <img
-        className='rounded-circle me-2'
+        className='rounded-full w-[20%]  me-2'
         src='./media/profile_pic.jpg'
         alt='Sua Foto de Perfil'
       />
       <figcaption className='w-100'>
         <div
-          className='d-flex flex-column ms-4 justify-content-between'
+          className='flex flex-col ml-4 justify-between'
           style={{ height: '100px' }}
         >
           <span className='fs-5'>Hello, {userData.name}</span>
 
-          <div className='d-flex flex-row justify-content-between align-items-center'>
+          <div className='flex flex-row justify-between items-center'>
             <div
               className='progress w-100'
               style={{

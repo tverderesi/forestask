@@ -36,7 +36,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Portuguese",
       "type": "Homework",
-      "checked": false,
+      "checked": true,
       "xp": "82",
       "deadline": "2022-11-19T02:16:15.624Z"
     },
@@ -46,7 +46,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "English",
       "type": "Text",
-      "checked": false,
+      "checked": true,
       "xp": "73",
       "deadline": "2022-12-16T01:23:50.955Z"
     },

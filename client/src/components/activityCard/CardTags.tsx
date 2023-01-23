@@ -10,25 +10,15 @@ import {
 import { useContext } from 'react';
 import { IconContext } from 'react-icons/lib';
 
-// 3. "internal" modules
-
-// 4. modules from a "parent" directory
 import AppContext from '../../context/AppContext';
-// 5. "sibling" modules from the same or a sibling's directory
 
-// 6. "index" of the current directory
-
-// 7. "object"-imports (only available in TypeScript)
-
-// 8. "type" imports (only available in Flow and TypeScript)
 import * as Types from './ActivityCardTypes';
 
 function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   const { subjectPalette, activityPalette, dataTheme } = useContext(AppContext);
-  // Styling
+
   const locale = Intl.NumberFormat().resolvedOptions().locale;
-  const classes =
-    'd-flex align-items-center me-1 col-auto g-0 justify-self-center';
+  const classes = 'flex items-center self-center';
 
   const date = new Date(deadline).toLocaleDateString(locale, {
     year: 'numeric',
@@ -38,47 +28,31 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
 
   return (
     <IconContext.Provider value={{ size: '20px' }}>
-      <div
-        className='d-flex flex-wrap g-0 w-[80%]'
-        style={{ fontWeight: 600, fontSize: '.9rem' }}
-      >
-        <div
-          className={classes}
-          style={{ width: '6.75rem' }}
-        >
-          <MdCalendarToday className='me-1' />
+      <div className='grid grid-cols-4 mx-auto mt-[4px] w-[70%] fw-semibold'>
+        <div className={classes}>
+          <MdCalendarToday className='me-2' />
           {date}
         </div>
+        <span className={classes}>
+          <MdSentimentVerySatisfied className='me-2' />
+          {Number(xp)} XP
+        </span>
         <div
           className={classes}
-          style={{ width: '4.5rem' }}
+          style={{
+            color: activityPalette[dataTheme][`${type}`],
+          }}
         >
-          <MdSentimentVerySatisfied className='me-1' />
-          {Number(xp)} XP
+          <MdInfoOutline className='me-1' /> {type}
         </div>
         <div
-          className='d-flex g-0 mt-1'
-          style={{ width: '13.5rem' }}
+          className={classes}
+          style={{
+            color: subjectPalette[dataTheme][`${subject}`],
+          }}
         >
-          <div
-            className={classes}
-            style={{
-              color: activityPalette[dataTheme][`${type}`],
-              width: '50%',
-            }}
-          >
-            <MdInfoOutline className='me-1' /> {type}
-          </div>
-          <div
-            className={classes}
-            style={{
-              color: subjectPalette[dataTheme][`${subject}`],
-              width: '50%',
-            }}
-          >
-            <MdOutlineLightbulb className='me-1' />
-            {subject}
-          </div>
+          <MdOutlineLightbulb className='me-1' />
+          {subject}
         </div>
       </div>
     </IconContext.Provider>

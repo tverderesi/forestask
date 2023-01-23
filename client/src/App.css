@@ -186,3 +186,45 @@ form input.top:focus, form input.bottom:focus{   background-color: rgb(225, 255,
 #button.dropdown-toggle::after {
   display: none !important; 
 }
+
+.activity-card {
+  backdrop-filter: blur(20px);
+  background-color: var(--card-bg-color);
+  border-radius: 16px;
+  border: none;
+  box-shadow: var(--card-shadow);
+  background-blend-mode: overlay;
+}
+
+.check-button {
+  vertical-align: middle;
+  align-self: center;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  
+}
+
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.soft-accent {
+  color: var(--soft-accent-bg-color)
+
+}
+
+
+.nav-button {
+  height: 60px !important;
+  width: 60px !important;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 2.5%;
+  top: calc(50% - 30px);
+  background-color: var(--soft-accent-bg-color) !important;
+}

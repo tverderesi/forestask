@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { AppProvider } from './context/AppContext';
 import Viewport from './components/Viewport';

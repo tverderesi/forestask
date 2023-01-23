@@ -29,7 +29,7 @@ export default function Viewport() {
     return (
       <main
         data-theme={dataTheme}
-        className='d-flex justify-content-center align-items-center'
+        className='flex justify-center items-center'
         style={{
           backgroundImage: `url(./media/background/${
             dataTheme === 'light' ? '4' : '7'
@@ -46,7 +46,7 @@ export default function Viewport() {
 
           {initSuccess === true && showForest === false && (
             <motion.div
-              className='d-flex justify-content-between align-items-start'
+              className='flex justify-between items-start'
               key='mainViewport'
               style={{
                 width: windowWidth < 900 ? '95%' : '90%',

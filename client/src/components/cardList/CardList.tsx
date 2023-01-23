@@ -1,24 +1,11 @@
-// 1. node "builtin" modules
-
-// 2. "external" modules
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
-import { Card } from 'react-bootstrap';
-import { GiPartyPopper } from 'react-icons/gi';
-// 3. "internal" modules
 
-// 4. modules from a "parent" directory
 import ActivityCard from '../activityCard/AcitivityCard';
 import AppContext from '../../context/AppContext';
-import { activityCard } from '../activityCard/ActivityCardStyle';
-// 5. "sibling" modules from the same or a sibling's directory
+
 import CardListTop from './CardListTop';
-
-// 6. "index" of the current directory
-
-// 7. "object"-imports (only available in TypeScript)
-
-// 8. "type" imports (only available in Flow and TypeScript)
+import { NoCards } from './NoCards';
 
 function CardList() {
   const { maxPages, cardsPerPage, windowWidth, cards, page, direction } =
@@ -46,9 +33,8 @@ function CardList() {
 
   return (
     <div
-      className={`d-flex flex-column ${
-        page === maxPages ? `justify-content-start` : `justify-content-between`
-      }`}
+      //prettier-ignore
+      className={`flex flex-col ${page === maxPages ? `content-start` : `content-between`}`}
       style={windowWidth < 825 ? styleMobile : styleDesktop}
     >
       <AnimatePresence mode='popLayout'>
@@ -118,28 +104,7 @@ function CardList() {
               },
             }}
           >
-            <Card
-              className='d-flex justify-content-center'
-              style={activityCard}
-            >
-              <Card.Body
-                className='d-flex justify-content-center align-items-center mb-0'
-                style={{ fontSize: '1.25em', fontWeight: '600' }}
-              >
-                <span className='h5 mb-0'>
-                  No Activities found for these filters. Hooray!
-                </span>
-                <GiPartyPopper
-                  className='ms-3'
-                  size={70}
-                  style={{
-                    position: 'absolute',
-                    right: '2%',
-                    color: '#a6a6a6b3',
-                  }}
-                />
-              </Card.Body>
-            </Card>
+            <NoCards />
           </motion.div>
         )}
       </AnimatePresence>

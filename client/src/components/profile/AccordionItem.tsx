@@ -1,51 +1,23 @@
-import { Accordion, Col, Row } from 'react-bootstrap';
-import AccordionHeader from 'react-bootstrap/esm/AccordionHeader';
-import AccordionBody from 'react-bootstrap/esm/AccordionBody';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import AccordionButton from './AccordionButton';
 import AccordionDeadline from './AccordionDeadline';
-import { AccordionType } from '../../types/Types';
 import AccordionCompleted from './AccordionCompleted';
 
-export default function AccordionItem({
-  name,
-  categories,
-  itemPalette,
-  icon,
-}: AccordionType) {
+export default function AccordionItem({ name, categories, itemPalette, icon }) {
   const { dispatch, filters, dataTheme } = useContext(AppContext);
 
   return (
-    <Accordion.Item
-      eventKey={name}
-      style={{
-        backgroundColor: 'transparent',
-        fontWeight: '600',
-      }}
-    >
-      <AccordionHeader style={{ backgroundColor: 'transparent' }}>
-        <Row className='mb-1 mt-1'>
-          <Col className='d-flex align-items-center'>
-            <span
-              style={{
-                position: 'relative',
-                top: '-.35rem',
-                fontWeight: '600',
-              }}
-            >
-              {icon}
-            </span>
-            <span
-              className=' h6'
-              style={{ fontWeight: '600' }}
-            >
-              {name}
-            </span>
-          </Col>
-        </Row>
-      </AccordionHeader>
-      <AccordionBody className={`${name === 'Deadline' ? '' : 'ms-3'}`}>
+    <div className='my-1'>
+      <section className='flex items-center p-3 rounded-md'>
+        <span className='mr-1'>{icon}</span>
+        <span className='font-semibold text-lg'>{name}</span>
+      </section>
+      <div
+        className={`px-2 py-2 transition-all rounded-md ${
+          name === 'Deadline' ? '' : 'ms-3'
+        } `}
+      >
         {name === 'Subjects' ? (
           <AccordionButton
             name={name}
@@ -79,7 +51,7 @@ export default function AccordionItem({
         ) : (
           ''
         )}
-      </AccordionBody>
-    </Accordion.Item>
+      </div>
+    </div>
   );
 }
