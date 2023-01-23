@@ -39,7 +39,7 @@ function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
   return (
     <IconContext.Provider value={{ size: '20px' }}>
       <div
-        className='d-flex flex-wrap g-0 w-100'
+        className='d-flex flex-wrap g-0 w-[80%]'
         style={{ fontWeight: 600, fontSize: '.9rem' }}
       >
         <div
