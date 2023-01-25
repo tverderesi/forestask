@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Container } from 'react-bootstrap';
+
 import AppContext from '../../context/AppContext';
 import { Card } from '../../types/Types';
 import BlurredBackground from '../atoms/BlurredBackground';
@@ -114,7 +114,7 @@ export default function AddItem() {
         height='90vh'
       >
         <Title />
-        <Container>
+        <div>
           <FormControlText card={newCard} />
           <FormControlTextArea card={newCard} />
           <DropdownContainer>
@@ -131,7 +131,7 @@ export default function AddItem() {
               card={newCard}
             />
           </DropdownContainer>
-          <Container className='d-flex justify-content-between g-0'>
+          <div className='d-flex justify-content-between g-0'>
             <XPPicker
               width='45%'
               target={newCard}
@@ -140,7 +140,7 @@ export default function AddItem() {
               width='45%'
               target={newCard}
             />
-          </Container>
+          </div>
           <ButtonContainer>
             <PrimaryButton
               buttonColor='var(--bold-accent-color-2)'
@@ -153,7 +153,7 @@ export default function AddItem() {
               btnText='Submit'
             />
           </ButtonContainer>
-        </Container>
+        </div>
       </GenericCard>
     </>
   );

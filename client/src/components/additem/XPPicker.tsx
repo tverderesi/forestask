@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
 
 export function XPPicker({ width, target }): JSX.Element {
   const [focused, setFocused] = useState(false);
   return (
-    <Form.Group style={{ width: width }}>
-      <Form.Label className='text-center w-100'>XP</Form.Label>
+    <div style={{ width: width }}>
+      <label className='text-center w-100'>XP</label>
       <div
         className='form-control'
         style={{
@@ -14,7 +13,7 @@ export function XPPicker({ width, target }): JSX.Element {
           backgroundColor: focused ? 'white' : '',
         }}
       >
-        <Form.Control
+        <input
           type='number'
           min='0'
           max='100'
@@ -34,8 +33,8 @@ export function XPPicker({ width, target }): JSX.Element {
             setFocused(false);
           }}
           onChange={e => (target.xp = e.currentTarget.value)}
-        ></Form.Control>
+        ></input>
       </div>
-    </Form.Group>
+    </div>
   );
 }

@@ -1,8 +1,5 @@
-import Card from 'react-bootstrap/Card';
-import { Accordion, Container } from 'react-bootstrap';
 import Navbar from '../layout/elements/DesktopProfileNavbar';
-
-import AccordionItem from './AccordionItem';
+import CustomAccordionItem from './accordion/CustomAccordionItem';
 import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
 import {
@@ -16,11 +13,20 @@ import FiltersRow from './FiltersRow';
 import FiltersHeader from './FiltersHeader';
 import * as Style from './ProfileCardStyles';
 import Header from '../layout/elements/Header';
-
+import 'react-accessible-accordion/dist/fancy-example.css';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 function ProfileCard() {
   const {
     subjects,
     page,
+    dataTheme,
+
     cardsPerPage,
     activities,
     subjectPalette,
@@ -30,7 +36,6 @@ function ProfileCard() {
     dispatch,
     userData,
     gameLevels,
-    showForest,
   } = useContext(AppContext);
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -41,28 +46,16 @@ function ProfileCard() {
       style={Style.card as React.CSSProperties}
       className='overflow-y-scroll'
     >
-      <div
-        style={Style.cardHeader}
-        className='m-0'
-      >
+      <div style={Style.cardHeader}>
         <Header />
         <ProfileHeader
           userData={userData}
           gameLevels={gameLevels}
         />
       </div>
-      <Card.Body
-        className='p-0 m-0'
-        style={{
-          position: 'relative',
-          overflowY: 'scroll',
-        }}
-      >
-        <Accordion
-          style={Style.accordion}
-          flush
-        >
-          <Container className='align-self-center justify-content-center mb-2 p-0'>
+      <div className='p-5 relative overflow-y-scroll'>
+        <div style={Style.accordion}>
+          <div className='align-self-center justify-content-center mb-2 p-0'>
             <FiltersHeader
               filters={filters}
               windowHeight={windowHeight}
@@ -76,57 +69,57 @@ function ProfileCard() {
               timeZone={timeZone}
               locale={locale}
             />
-          </Container>
-          <AccordionItem
-            icon={
-              <MdInfoOutline
-                size={20}
-                className='me-1'
-              />
-            }
-            name='Subjects'
-            categories={subjects}
-            itemPalette={subjectPalette}
-          />
-          <AccordionItem
-            name='Activities'
-            categories={activities}
-            itemPalette={activityPalette}
-            icon={
-              <MdOutlineLightbulb
-                size={20}
-                className='me-1'
-              />
-            }
-          />
-          <AccordionItem
-            name={'Deadline'}
-            icon={
-              <MdCalendarToday
-                size={20}
-                className='me-1'
-              />
-            }
-            categories={''}
-            itemPalette={''}
-          />
+          </div>
+          <Accordion>
+            <CustomAccordionItem
+              icon={
+                <MdInfoOutline
+                  size={20}
+                  className='mr-1'
+                />
+              }
+              name='Subjects'
+              categories={subjects}
+              itemPalette={subjectPalette}
+            />
+            <CustomAccordionItem
+              name='Activities'
+              categories={activities}
+              itemPalette={activityPalette}
+              icon={
+                <MdOutlineLightbulb
+                  size={20}
+                  className='mr-1'
+                />
+              }
+            />
+            <CustomAccordionItem
+              name={'Deadline'}
+              icon={
+                <MdCalendarToday
+                  size={20}
+                  className='mr-1'
+                />
+              }
+              categories={''}
+              itemPalette={''}
+            />
 
-          <AccordionItem
-            name={'Completed'}
-            icon={
-              <BsCheckLg
-                size={20}
-                className='me-1'
-              />
-            }
-            categories={''}
-            itemPalette={''}
-          />
-        </Accordion>
-      </Card.Body>
-      <Card.Footer style={{ border: 'none' }}>
-        <Navbar dispatch={dispatch} />
-      </Card.Footer>
+            <CustomAccordionItem
+              name={'Completed'}
+              icon={
+                <BsCheckLg
+                  size={20}
+                  className='mr-1'
+                />
+              }
+              categories={''}
+              itemPalette={''}
+            />
+          </Accordion>
+        </div>
+      </div>
+      <Navbar dispatch={dispatch} />
     </div>
   );
 }

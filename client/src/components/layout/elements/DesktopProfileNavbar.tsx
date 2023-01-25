@@ -1,15 +1,14 @@
-import { Row } from 'react-bootstrap';
 import DarkMode from '../buttons/DarkMode';
 import Forest from '../buttons/Forest';
 import ManageCards from '../buttons/ManageCards';
 
 function Navbar({ dispatch }) {
   return (
-    <Row className=''>
+    <div className='flex w-full h-auto soft-accent'>
       <DarkMode />
       <ManageCards dispatch={dispatch} />
       <Forest dispatch={dispatch} />
-    </Row>
+    </div>
   );
 }
 

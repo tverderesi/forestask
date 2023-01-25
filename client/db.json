@@ -106,7 +106,7 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
       "subject": "Music",
       "type": "Text",
-      "checked": true,
+      "checked": false,
       "xp": "49",
       "deadline": "2022-12-14T21:33:51.728Z"
     },

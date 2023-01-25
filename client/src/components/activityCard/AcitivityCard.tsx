@@ -53,7 +53,7 @@ function ActivityCard({ item }: Types.ChildProps) {
         >
           <FaCheck
             size='30'
-            className='ml-[25%] mt-[25%]'
+            className='ml-[25%] mt-[25%] transition-all duration-100'
             style={{ opacity: completed ? 1 : 0.3 }}
           />
         </div>

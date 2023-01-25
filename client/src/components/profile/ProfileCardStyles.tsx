@@ -7,7 +7,6 @@ export const cardHeader: React.CSSProperties = {
 };
 export const accordion = {
   backgroundColor: 'transparent',
-  borderBottom: '1px solid black',
 };
 export const card = {
   backdropFilter: 'blur(20px)',

@@ -25,7 +25,7 @@ export default function Modal() {
         backgroundImage: 'url(./media/noise.png)',
         backgroundBlendMode: 'overlay',
       }}
-      className='d-flex flex-column align-self-center justify-self-center align-items-center justify-content-center'
+      className='flex flex-col self-center justify-self-center items-center justify-center'
     >
       {loading ? <Loading /> : <Login />}
     </motion.div>

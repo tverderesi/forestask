@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { Dropdown, Form } from 'react-bootstrap';
-import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 
 export function CustomDropdown({
   dropdownName,
@@ -16,16 +13,16 @@ export function CustomDropdown({
         width: '45%',
       }}
     >
-      <Form.Label className='text-center w-100'>{dropdownName}</Form.Label>
+      <div className='text-center w-100'>{dropdownName}</div>
 
-      <Dropdown drop='down'>
-        <DropdownToggle
+      <div>
+        <div
           className='d-flex justify-content-between'
           key={`Select${dropdownName}`}
         >
           {value ? value : dropdownName}
-        </DropdownToggle>
-        <DropdownMenu
+        </div>
+        <div
           style={{
             backdropFilter: 'blur(20px)',
             backgroundColor: 'var(--card-bg-color-solid)',
@@ -38,8 +35,7 @@ export function CustomDropdown({
         >
           {dropdownItems.map((item, index) => {
             return (
-              <Dropdown.Item
-                eventKey={`${index}`}
+              <div
                 className='text-center'
                 style={{
                   width: '16rem',
@@ -57,11 +53,11 @@ export function CustomDropdown({
                 }}
               >
                 {item}
-              </Dropdown.Item>
+              </div>
             );
           })}
-        </DropdownMenu>
-      </Dropdown>
+        </div>
+      </div>
     </div>
   );
 }

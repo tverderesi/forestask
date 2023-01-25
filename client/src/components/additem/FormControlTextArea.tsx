@@ -1,17 +1,15 @@
-import { Form } from 'react-bootstrap';
-
 export function FormControlTextArea({ card }) {
   return (
-    <Form.Group className='mb-3'>
-      <Form.Label
+    <div className='mb-3'>
+      <input
         className='w-100 text-center'
         spellCheck='true'
       >
         Content
-      </Form.Label>
+      </input>
 
-      <Form.Control
-        as='textarea'
+      <input
+        type='textarea'
         aria-label='With textarea'
         placeholder='Content'
         required={true}
@@ -21,6 +19,6 @@ export function FormControlTextArea({ card }) {
           borderRadius: '1rem 1rem 0 1rem',
         }}
       />
-    </Form.Group>
+    </div>
   );
 }

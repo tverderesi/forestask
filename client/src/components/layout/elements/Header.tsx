@@ -6,9 +6,9 @@ function Header() {
       <div className='flex py-2'>
         <div
           style={{ width: 'auto' }}
-          className='mx-auto font-semibold text-2xl w-auto self-center'
+          className='mx-auto font-bold text-4xl w-auto self-center'
         >
-          <BsTreeFill className='forest-green text-2xl  align-middle relative bottom-1 mr-1 inline' />
+          <BsTreeFill className='forest-green text-3xl  align-middle relative bottom-1.5 mr-1 inline' />
           flores<span className='forest-green'>tarefa </span>
         </div>
       </div>

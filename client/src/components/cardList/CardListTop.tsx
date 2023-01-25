@@ -1,4 +1,3 @@
-import { Card, Row } from 'react-bootstrap';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import { handlePageChange } from '../../context/AppFunctions';
 import { useContext } from 'react';
@@ -43,11 +42,11 @@ function CardListTop() {
   };
 
   return (
-    <Card
+    <div
       style={CardListStyle}
       className={`container-md mt-0 ${page === maxPages ? `mb-3` : ''}`}
     >
-      <Row className='p-5 font-semibold'>
+      <div className='p-5 font-semibold row'>
         <span className='text-xl'>
           Tasks {page + 1}/{maxPages + 1}
         </span>
@@ -83,8 +82,8 @@ function CardListTop() {
           className='rounded-xl  p-0'
           style={PageButtonStyle(page, 'left') as any}
         />
-      </Row>
-    </Card>
+      </div>
+    </div>
   );
 }
 

@@ -1,4 +1,3 @@
-import { Figure } from 'react-bootstrap';
 import { setLastLevel } from '../../context/AppFunctions';
 import ProgressBar from './ProgressBar';
 
@@ -6,10 +5,7 @@ export default function ProfileHeader({ userData, gameLevels }) {
   const lastLevel = setLastLevel(gameLevels);
 
   return (
-    <Figure
-      className='flex py-5 mx-auto justify-between'
-      style={{ width: '90%' }}
-    >
+    <figure className='flex py-5 mx-auto justify-between w-[90%]'>
       <img
         className='rounded-full w-[100px] me-2'
         src='./media/profile_pic.jpg'
@@ -58,6 +54,6 @@ export default function ProfileHeader({ userData, gameLevels }) {
           </div>
         </div>
       </figcaption>
-    </Figure>
+    </figure>
   );
 }

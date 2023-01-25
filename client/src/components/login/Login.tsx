@@ -33,7 +33,7 @@ export default function Login() {
   return (
     <AnimatePresence>
       <motion.form
-        className='d-flex flex-column'
+        className='flex flex-col items-center content-center justify-self-center mx-auto my-auto'
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
@@ -41,23 +41,22 @@ export default function Login() {
       >
         <Header />
         <input
-          className='top mt-3'
+          className='top mt-5 w-full md:w-full'
           required
           type='text'
           placeholder='Username'
-          style={{ width: windowWidth < 825 ? '80vw' : '100%' }}
         />
         <input
           required
           type='password'
           placeholder='Password'
-          className='bottom'
-          style={{ width: windowWidth < 825 ? '80vw' : '100%' }}
+          className='bottom w-full md:w-full'
         ></input>
         <input
           type='submit'
           value='Log in'
           style={loginStyle}
+          className='w-1/2 md:w-full'
         />
       </motion.form>
     </AnimatePresence>

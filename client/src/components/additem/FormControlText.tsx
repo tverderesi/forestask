@@ -1,17 +1,15 @@
-import { Form } from 'react-bootstrap';
-
 export function FormControlText({ card }): JSX.Element {
   return (
-    <Form.Group className='mb-3'>
-      <Form.Label className='text-center w-100'>Title</Form.Label>
+    <div className='mb-3'>
+      <label className='text-center w-100'>Title</label>
 
-      <Form.Control
+      <input
         placeholder='Title'
         onChange={e => {
           card['title'] = e.currentTarget.value;
         }}
         required={true}
       />
-    </Form.Group>
+    </div>
   );
 }

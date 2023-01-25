@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { Container, Form } from 'react-bootstrap';
 
 export function DatePicker({ width, target }): JSX.Element {
   const [focused, setFocused] = useState(false);
   return (
-    <Form.Group
+    <form
       className='mb-3'
       style={{ width: width }}
     >
-      <Form.Label className='text-center w-100'>Deadline</Form.Label>
-      <Container
-        fluid
+      <div className='text-center w-100'>Deadline</div>
+      <div
         className={`d-flex align-items-center justify-content-around g-0 justify-self-center`}
       >
         <div
@@ -49,7 +47,7 @@ export function DatePicker({ width, target }): JSX.Element {
             }}
           />
         </div>
-      </Container>
-    </Form.Group>
+      </div>
+    </form>
   );
 }
