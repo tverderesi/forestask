@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { AccordionItemPanel } from 'react-accessible-accordion';
 
 import AppContext from '../../../context/AppContext';
 
@@ -7,7 +6,7 @@ export default function AccordionDeadline() {
   const { dispatch, filters } = useContext(AppContext);
   const [focused, setFocused] = useState(false);
   return (
-    <AccordionItemPanel className='flex items-center justify-around g-0 justify-self-center'>
+    <div className='flex items-center justify-around g-0 justify-self-center'>
       <div
         className='self-center text-sm flex flex-col w-[70%] pr-0 jusitfy-center items-center font-semibold rounded-[1.12rem] h-[2.25rem]'
         style={{
@@ -33,6 +32,6 @@ export default function AccordionDeadline() {
           }}
         />
       </div>
-    </AccordionItemPanel>
+    </div>
   );
 }

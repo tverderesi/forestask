@@ -6,7 +6,7 @@ function DarkMode() {
   const { dataTheme, dispatch } = useContext(AppContext);
   return (
     <button
-      className='btn-transparent primary flex flex-col justify-between items-center p-3 w-auto h-auto basis-1/3'
+      className='btn font-bold btn-invisible flex flex-col justify-between items-center my-1 mx-2 px-3 py-2 w-auto h-auto basis-1/4 rounded-bl-2xl text-base capitalize '
       key='darkMode'
       onClick={() => {
         dispatch({

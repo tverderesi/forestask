@@ -7,7 +7,7 @@ export default function FiltersRow({ filters, dispatch, timeZone, locale }) {
   const { subjects, activities, deadline, checked } = filters;
 
   return (
-    <div className='flex my-2 mx-auto flex-wrap items-center justify-center'>
+    <div className='flex mx-auto flex-wrap items-center justify-center mt-2'>
       {
         /* prettier-ignore */
         subjects && (<SubjectsBadge filters={filters} dispatch={dispatch} />)

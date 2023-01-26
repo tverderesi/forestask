@@ -11,7 +11,7 @@ export function DeadlineBadge({
 }) {
   return (
     <div
-      className={`rounded-full  text-sm font-semibold mr-1.5 mt-1 text-center px-1 bg-orange-600 py-0.5 text-white`}
+      className={`badge badge-sm  bg-orange-600 py-0.5 border-none font-bold mr-1`}
     >
       {deadline
         ? new Date(deadline).toLocaleDateString(locale, {
@@ -20,7 +20,7 @@ export function DeadlineBadge({
         : ''}
       {deadline && (
         <FaTimes
-          className='ml-1 inline relative top-[-.05rem]'
+          className='ml-1 inline fill-white my-auto relative top-[0.3px] left-0.5'
           onClick={() => {
             const payload = { filters: { deadline: '' } };
             dispatch({ type: 'ADD_TO_FILTER', payload: payload });

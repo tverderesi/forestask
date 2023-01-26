@@ -1,24 +1,26 @@
 import { FaTimes } from 'react-icons/fa';
 
 export function ActivitiesBadge({
-  filters: { activities, activitiesColor },
+  filters,
   dispatch,
 }: {
   filters: any;
   dispatch: any;
 }) {
+  const { activities, activitiesColor } = filters;
   return (
     <div
-      className={`rounded-full text-sm font-semibold mr-1.5 text-center px-2 py-[3px] mt-1 flex  justify-center items-center text-white`}
+      className={`badge badge-sm font-bold border-none mr-1`}
       style={{ backgroundColor: activitiesColor }}
     >
       {activities}
       {activities && (
         <FaTimes
-          className='ml-1 inline fill-white my-auto relative top-[1.5px]'
+          className='ml-1 inline fill-white my-auto relative top-[0.3px] left-0.5'
           onClick={() => {
             const payload = {
               filters: {
+                ...filters,
                 activities: '',
                 activitiesColor: '',
               },

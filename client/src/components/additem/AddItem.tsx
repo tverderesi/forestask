@@ -2,8 +2,7 @@ import { useContext } from 'react';
 
 import AppContext from '../../context/AppContext';
 import { Card } from '../../types/Types';
-import BlurredBackground from '../atoms/BlurredBackground';
-import GenericCard from '../atoms/GenericCard';
+
 import { ButtonContainer } from './ButtonContainer';
 import { CustomDropdown } from './CustomDropdown';
 import { DatePicker } from './DatePicker';
@@ -18,6 +17,7 @@ import {
   putCards,
   setPagesParameters,
 } from '../../context/AppFunctions';
+import { motion } from 'framer-motion';
 
 export default function AddItem() {
   const {
@@ -80,7 +80,8 @@ export default function AddItem() {
     });
   };
 
-  const handleCancel = () => {
+  const handleCancel = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     newCard.id = '';
     newCard.content = '';
     newCard.type = '';
@@ -107,16 +108,57 @@ export default function AddItem() {
   };
 
   return (
-    <>
-      <BlurredBackground />
-      <GenericCard
-        width='87vh'
-        height='90vh'
+    <div
+      className=' flex items-center justify-center'
+      style={{
+        width: '100vw',
+        height: '100vh',
+        position: 'absolute',
+      }}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className='p-10 flex flex-col overflow-y-scroll font-semibold justify-between 
+      activity-card card-shadow rounded-2xl max-w-[87vw] max-h-[90vh]'
+        initial={{ y: 500 }}
+        animate={{ y: 0 }}
+        exit={{ y: 500 }}
       >
         <Title />
+        <FormControlText card={newCard} />
+        <FormControlTextArea card={newCard} />
+        <div className='dropdown'>
+          <label
+            tabIndex={0}
+            className='btn m-1'
+          >
+            Click
+          </label>
+          <ul
+            tabIndex={0}
+            className='dropdown-content activity-card p-2 shadow bg-base-100 rounded-box w-52'
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Item 2</a>
+            </li>
+          </ul>
+        </div>
+
+        <button
+          className='btn'
+          onClick={handleCancel}
+        >
+          cancel
+        </button>
+        {/* <Title />
         <div>
-          <FormControlText card={newCard} />
-          <FormControlTextArea card={newCard} />
+          
+       
           <DropdownContainer>
             <CustomDropdown
               dropdownName={'Subject'}
@@ -147,14 +189,10 @@ export default function AddItem() {
               handleClick={handleCancel}
               btnText='Cancel'
             />
-            <PrimaryButton
-              buttonColor='var(--bold-accent-color-1)'
-              handleClick={handleSubmit}
-              btnText='Submit'
-            />
+     
           </ButtonContainer>
-        </div>
-      </GenericCard>
-    </>
+        </div> */}
+      </motion.div>
+    </div>
   );
 }

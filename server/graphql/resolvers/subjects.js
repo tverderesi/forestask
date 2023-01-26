@@ -1,19 +1,11 @@
 const mongoose = require('mongoose');
-const Subject = require('models/subject');
-
-async function getSubjects(args) {
-  try {
-    const subjects = await Subject.find(args);
-    const totalCount = await Subject.countDocuments(args);
-    return {
-      subjects,
-      totalCount,
-    };
-  } catch (error) {
-    throw new Error(error);
-  }
-}
+const Subjects = require('models/subjects');
 
 module.exports = {
-  getSubjects,
+  Query: {
+    getSubjects: async (_, args, { mongoose }) => {
+      const subjects = await Subjects.find();
+      return subjects;
+    },
+  },
 };

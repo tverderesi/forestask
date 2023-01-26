@@ -4,7 +4,7 @@ import ManageCards from '../buttons/ManageCards';
 
 function Navbar({ dispatch }) {
   return (
-    <div className='flex w-full h-auto soft-accent'>
+    <div className='flex w-full h-20 soft-accent rounded-b-2xl absolute bottom-0'>
       <DarkMode />
       <ManageCards dispatch={dispatch} />
       <Forest dispatch={dispatch} />

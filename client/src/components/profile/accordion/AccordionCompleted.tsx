@@ -1,8 +1,6 @@
-import { AccordionItemPanel } from 'react-accessible-accordion';
-
 export default function AccordionCompleted({ filters, dispatch }) {
   return (
-    <AccordionItemPanel className='grid grid-cols-4 gap-3 px-6 items-center justify-around g-0 justify-self-center'>
+    <div className='grid grid-cols-4 gap-3 px-6 items-center justify-around g-0 justify-self-center'>
       <button
         value='checked'
         className='p-2 col-span-2 rounded-full font-bold bg-green-600 text-white  text-sm'
@@ -25,6 +23,6 @@ export default function AccordionCompleted({ filters, dispatch }) {
       >
         Not Completed
       </button>
-    </AccordionItemPanel>
+    </div>
   );
 }

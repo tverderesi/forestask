@@ -1,6 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback } from 'react';
-import { AccordionItemPanel } from 'react-accessible-accordion';
 
 export default function AccordionButtons({
   name,
@@ -25,7 +23,7 @@ export default function AccordionButtons({
   );
 
   return (
-    <AccordionItemPanel className='grid grid-cols-3 gap-3 px-6'>
+    <div className='grid grid-cols-3 gap-3 px-6'>
       {categories.map(category => {
         return (
           <button
@@ -39,6 +37,6 @@ export default function AccordionButtons({
           </button>
         );
       })}
-    </AccordionItemPanel>
+    </div>
   );
 }

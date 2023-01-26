@@ -4,9 +4,8 @@ import { BsCardChecklist } from 'react-icons/bs';
 function MainView({ dispatch }) {
   return (
     <motion.button
-      className='d-flex align-items-center justify-content-center'
+      className='flex items-center justify-center rounded-full backdrop-blur-xl '
       style={{
-        borderRadius: '2rem',
         height: '4rem',
         backdropFilter: 'blur(20px)',
         backgroundColor: '#f9fafb6b',

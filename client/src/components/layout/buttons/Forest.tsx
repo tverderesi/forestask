@@ -3,7 +3,7 @@ import { FaTree } from 'react-icons/fa';
 export default function Forest({ dispatch }) {
   return (
     <button
-      className='btn-transparent primary flex flex-col justify-between items-center p-3 w-auto h-auto basis-1/3'
+      className='btn font-bold btn-invisible h-auto px-3 py-2 text-base capitalize flex flex-col justify-between items-center basis-1/4 rounded-br-2xl mx-2 my-1'
       key='Tasks'
       onClick={e => {
         e.preventDefault();

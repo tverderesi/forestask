@@ -30,11 +30,6 @@ export default function Viewport() {
       <main
         data-theme={dataTheme}
         className='flex justify-center items-center'
-        style={{
-          backgroundImage: `url(./media/background/${
-            dataTheme === 'light' ? '4' : '7'
-          }.png`,
-        }}
       >
         <AnimatePresence mode='popLayout'>
           <ForestBackground
@@ -46,11 +41,8 @@ export default function Viewport() {
 
           {initSuccess === true && showForest === false && (
             <motion.div
-              className='flex justify-between items-start'
+              className='flex justify-between items-start w-[95%] md:w-[90%]'
               key='mainViewport'
-              style={{
-                width: windowWidth < 900 ? '95%' : '90%',
-              }}
             >
               <motion.div
                 initial={{ x: -1000 }}

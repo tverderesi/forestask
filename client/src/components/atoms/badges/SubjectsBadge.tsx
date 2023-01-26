@@ -9,7 +9,7 @@ export function SubjectsBadge({
 }) {
   return (
     <div
-      className={`rounded-full text-sm font-semibold mr-1.5 text-center px-2 py-[3px] mt-1 flex  justify-center items-center`}
+      className={`badge badge-sm border-none font-bold mr-1`}
       style={{ backgroundColor: subjectsColor }}
     >
       <span className=' text-white my-auto h-full'> {subjects}</span>

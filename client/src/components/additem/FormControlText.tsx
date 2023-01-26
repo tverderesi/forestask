@@ -1,7 +1,7 @@
 export function FormControlText({ card }): JSX.Element {
   return (
-    <div className='mb-3'>
-      <label className='text-center w-100'>Title</label>
+    <>
+      <label className='text-center w-full text-xl mb-2'>Title</label>
 
       <input
         placeholder='Title'
@@ -9,7 +9,8 @@ export function FormControlText({ card }): JSX.Element {
           card['title'] = e.currentTarget.value;
         }}
         required={true}
+        className='form-control mb-4'
       />
-    </div>
+    </>
   );
 }

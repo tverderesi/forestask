@@ -11,16 +11,9 @@ import { BsCheckLg } from 'react-icons/bs';
 import ProfileHeader from './ProfileHeader';
 import FiltersRow from './FiltersRow';
 import FiltersHeader from './FiltersHeader';
-import * as Style from './ProfileCardStyles';
 import Header from '../layout/elements/Header';
 import 'react-accessible-accordion/dist/fancy-example.css';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
+import { Accordion } from 'react-accessible-accordion';
 function ProfileCard() {
   const {
     subjects,
@@ -40,83 +33,82 @@ function ProfileCard() {
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+  // backdropFilter: 'blur(20px)',
+
+  // backgroundBlendMode: 'overlay',
+  // backgroundColor: 'var(--card-bg-color)',
+  // borderRadius: '16px',
+
+  // height: 'calc(87vh + 1rem)',
+  // boxShadow: 'var(--card-shadow)',
+  // width: 'max(350px, 30vw) ',
 
   return (
-    <div
-      style={Style.card as React.CSSProperties}
-      className='overflow-y-scroll'
-    >
-      <div style={Style.cardHeader}>
+    <div className='backdrop-blur-xl bg-blend-overlay bg-[var(--card-bg-color)] rounded-2xl h-[calc(87vh+1rem)] w-[30vw] min-w-[350px] shadow-2xl relative top-8 flex flex-col'>
+      <div className='rounded-t-2xl bg-[var(--softer-accent-bg-color)] h-[max(30vh,12rem)] bg-blend-overlay'>
         <Header />
         <ProfileHeader
           userData={userData}
           gameLevels={gameLevels}
         />
       </div>
-      <div className='p-5 relative overflow-y-scroll'>
-        <div style={Style.accordion}>
-          <div className='align-self-center justify-content-center mb-2 p-0'>
-            <FiltersHeader
-              filters={filters}
-              windowHeight={windowHeight}
-              dispatch={dispatch}
-              page={page}
-              cardsPerPage={cardsPerPage}
-            />
-            <FiltersRow
-              filters={filters}
-              dispatch={dispatch}
-              timeZone={timeZone}
-              locale={locale}
-            />
-          </div>
-          <Accordion>
-            <CustomAccordionItem
-              icon={
-                <MdInfoOutline
-                  size={20}
-                  className='mr-1'
-                />
-              }
-              name='Subjects'
-              categories={subjects}
-              itemPalette={subjectPalette}
-            />
-            <CustomAccordionItem
-              name='Activities'
-              categories={activities}
-              itemPalette={activityPalette}
-              icon={
-                <MdOutlineLightbulb
-                  size={20}
-                  className='mr-1'
-                />
-              }
-            />
-            <CustomAccordionItem
-              name={'Deadline'}
-              icon={
-                <MdCalendarToday
-                  size={20}
-                  className='mr-1'
-                />
-              }
-              categories={''}
-              itemPalette={''}
-            />
+      <div className='px-3 relative top-0 h-[calc(100%-max(30vh,12rem)-5rem)]'>
+        <div className='align-self-center  justify-content-center px-0 py-2  h-[4.5rem]'>
+          <FiltersHeader
+            filters={filters}
+            windowHeight={windowHeight}
+            dispatch={dispatch}
+            page={page}
+            cardsPerPage={cardsPerPage}
+          />
+          <FiltersRow
+            filters={filters}
+            dispatch={dispatch}
+            timeZone={timeZone}
+            locale={locale}
+          />
+        </div>
+        <div className='overflow-y-scroll h-[calc(100%-4.5rem)] mx-auto'>
+          <CustomAccordionItem
+            icon={<MdInfoOutline size={20} />}
+            name='Subjects'
+            categories={subjects}
+            itemPalette={subjectPalette}
+          />
+          <CustomAccordionItem
+            name='Activities'
+            categories={activities}
+            itemPalette={activityPalette}
+            icon={
+              <MdOutlineLightbulb
+                size={20}
+                className='mr-1'
+              />
+            }
+          />
+          <CustomAccordionItem
+            name={'Deadline'}
+            icon={
+              <MdCalendarToday
+                size={20}
+                className='mr-1'
+              />
+            }
+            categories={''}
+            itemPalette={''}
+          />
 
-            <CustomAccordionItem
-              name={'Completed'}
-              icon={
-                <BsCheckLg
-                  size={20}
-                  className='mr-1'
-                />
-              }
-              categories={''}
-              itemPalette={''}
-            />
-          </Accordion>
+          <CustomAccordionItem
+            name={'Completed'}
+            icon={
+              <BsCheckLg
+                size={20}
+                className='mr-1'
+              />
+            }
+            categories={''}
+            itemPalette={''}
+          />
         </div>
       </div>
       <Navbar dispatch={dispatch} />

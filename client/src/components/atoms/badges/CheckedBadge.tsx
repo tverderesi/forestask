@@ -9,7 +9,7 @@ export function CheckedBadge({
 }) {
   return (
     <div
-      className={`rounded-full text-sm font-semibold mr-1.5 mt-1 text-center px-1 py-0.5 text-white ${
+      className={`badge badge-sm font-bold border-none ${
         checked ? ' px-1.5 py-0.5' : ''
       } mr-1 ${checked === 'completed' ? 'bg-green-600' : 'bg-red-700'}`}
     >
@@ -20,7 +20,7 @@ export function CheckedBadge({
         : ''}
       {(checked === 'completed' || checked === 'notCompleted') && (
         <FaTimes
-          className='ml-1 inline fill-white'
+          className='ml-1 inline fill-white my-auto relative top-[0.3px] left-0.5'
           onClick={() => {
             const payload = { filters: { checked: '' } };
 

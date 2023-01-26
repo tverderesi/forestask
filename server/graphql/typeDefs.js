@@ -1,22 +1,16 @@
-const gql = require('graphql-tag');
+const { buildSchema } = require('graphql-relay-js');
 
-const typeDefs = gql`
+const typeDefs = buildSchema(`
   type Subject {
     id: ID!
     name: String!
   }
 
-  type SubjectsConnection {
-    edges: [SubjectEdge]
-    totalCount: Int
-  }
-
-  type SubjectEdge {
-    node: Subject
-    cursor: String
+  type Subjects {
+    subjects: [Subject]!
   }
 
   type Query {
-    subjects(first: Int, after: String, name: String): SubjectsConnection
+    getSubjects: [Subject]
   }
-`;
+`);
