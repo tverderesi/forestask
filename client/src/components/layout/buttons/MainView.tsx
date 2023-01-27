@@ -4,6 +4,7 @@ import { BsCardChecklist } from 'react-icons/bs';
 function MainView({ dispatch }) {
   return (
     <motion.button
+      key='back-cards'
       className='flex items-center justify-center rounded-full backdrop-blur-xl '
       style={{
         height: '4rem',

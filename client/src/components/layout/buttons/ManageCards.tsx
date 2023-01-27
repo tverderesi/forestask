@@ -17,16 +17,15 @@ export default function ManageCards({ dispatch }: { dispatch: any }) {
         className='dropdown-content bg-[var(--card-bg-color)] rounded-2xl py-2 backdrop-blur-xl shadow-lg mb-3 text-center w-full'
       >
         <li
-          className='font-semibold align-middle border-b border-gray-400/20 py-2 mx-1'
+          className='font-semibold align-middle border-b border-gray-400/20 py-2 mx-1 cursor-pointer'
           onClick={(e: React.SyntheticEvent) => {
             e.preventDefault();
-            dispatch({ type: 'TOGGLE_FOREST', payload: true });
-            dispatch({ type: 'ADD_CARD' });
+            dispatch({ type: 'ADD_CARD', payload: true });
           }}
         >
-          <label htmlFor='add-item'>
-            <BsPlusCircle className='absolute left-[5%] top-[calc(19.4px-2px)] text-xl' />
-            Add Cards
+          <label htmlFor='add-item cursor-pointer'>
+            <BsPlusCircle className='absolute left-[5%] top-[calc(19.4px-2px)] text-xl cursor-pointer' />
+            <span className='cursor-pointer'>Add Cards</span>
           </label>
         </li>
         <li className='font-semibold align-middle py-2'>

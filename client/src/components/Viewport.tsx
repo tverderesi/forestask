@@ -8,6 +8,7 @@ import MainView from './layout/buttons/MainView';
 import MobileNavbar from './layout/elements/MobileNavbar';
 import ForestBackground from './forest/ForestBackground';
 import AddItem from './additem/AddItem';
+import ManageCards from './layout/buttons/ManageCards';
 
 export default function Viewport() {
   const { initSuccess, showForest, dispatch, userData, dataTheme, addCard } =
@@ -33,11 +34,11 @@ export default function Viewport() {
       >
         <AnimatePresence mode='popLayout'>
           <ForestBackground
+            key='forest-background'
             levelArray={levelArray}
             windowWidth={windowWidth}
             showForest={showForest}
           />
-          {addCard && <AddItem />}
 
           {initSuccess === true && showForest === false && (
             <motion.div
@@ -54,6 +55,7 @@ export default function Viewport() {
                 key='profileCard'
               >
                 <ProfileCard />
+                {addCard && <ManageCards dispatch={dispatch} />}
               </motion.div>
               <motion.div
                 exit={{ x: 1000, y: 0, transition: { duration: 1 } }}
@@ -63,8 +65,8 @@ export default function Viewport() {
               </motion.div>
             </motion.div>
           )}
-          {initSuccess === false && <Modal />}
-          {initSuccess === true && showForest === true && (
+          {!initSuccess && <Modal />}
+          {initSuccess && showForest && !addCard && (
             <>
               <MainView dispatch={dispatch} />
             </>
@@ -75,8 +77,8 @@ export default function Viewport() {
   } else {
     return (
       <>
-        {initSuccess === false && <Modal />}
-        {initSuccess === true && showForest === false && (
+        {!initSuccess && <Modal />}
+        {initSuccess && !showForest && (
           <>
             <div style={{ position: 'relative', zIndex: '10' }}>
               <CardList />
@@ -84,12 +86,12 @@ export default function Viewport() {
             </div>
           </>
         )}
-        {initSuccess === true && showForest === true && (
+        {initSuccess && showForest && (
           <>
             <MainView dispatch={dispatch} />
           </>
         )}
-        {initSuccess === true && (
+        {initSuccess && (
           <ForestBackground
             levelArray={levelArray}
             windowWidth={windowWidth}

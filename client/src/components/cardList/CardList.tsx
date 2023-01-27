@@ -22,12 +22,12 @@ function CardList() {
     overflowY: 'scroll',
     height: 'calc(90vh + 4rem)',
     minWidth: `max(350px, ${
-      windowWidth < 1100 ? 'calc(60vw + ( 220 / 1920 * 100vw ))' : '80vw'
+      windowWidth < 1100 ? 'calc(60vw + ( 220 / 1920 * 100vw ))' : '20vw'
     })`,
     overflowX: 'visible',
     paddingTop: '2rem',
     paddingBottom: '2rem',
-    paddingLeft: windowWidth < 1100 ? 'calc( 220 / 1920 * 100vw)' : '25%',
+
     paddingRight: '25%',
   };
 

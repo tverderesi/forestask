@@ -17,7 +17,8 @@ import {
   putCards,
   setPagesParameters,
 } from '../../context/AppFunctions';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import ManageCards from '../layout/buttons/ManageCards';
 
 export default function AddItem() {
   const {
@@ -29,6 +30,7 @@ export default function AddItem() {
     cardsPerPage,
     cardHeight,
     windowHeight,
+    addCard,
   } = useContext(AppContext);
 
   const handleSubmit = async () => {
@@ -91,8 +93,8 @@ export default function AddItem() {
     newCard.title = '';
     newCard.deadline = 0;
     dispatch({
-      type: 'SEND_CARD',
-      payload: '',
+      type: 'ADD_CARD',
+      payload: false,
     });
   };
 
@@ -108,54 +110,29 @@ export default function AddItem() {
   };
 
   return (
+    // <div
+    //   className=' flex items-center justify-center'
+    //   key='blur-bg'
+    //   style={{
+    //     width: '100vw',
+    //     height: '100vh',
+    //   }}
+    //   // initial={{ opacity: 0 }}
+    //   // animate={{ opacity: 1 }}
+    //   // exit={{ opacity: 0 }}
+    // >
     <div
-      className=' flex items-center justify-center'
-      style={{
-        width: '100vw',
-        height: '100vh',
-        position: 'absolute',
-      }}
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
+      key='add-card'
+      className='p-[1000px] flex flex-col overflow-y-scroll font-semibold justify-between 
+       card-shadow rounded-2xl max-w-[87vw] max-h-[90vh]'
     >
-      <motion.div
-        className='p-10 flex flex-col overflow-y-scroll font-semibold justify-between 
-      activity-card card-shadow rounded-2xl max-w-[87vw] max-h-[90vh]'
-        initial={{ y: 500 }}
-        animate={{ y: 0 }}
-        exit={{ y: 500 }}
-      >
-        <Title />
-        <FormControlText card={newCard} />
-        <FormControlTextArea card={newCard} />
-        <div className='dropdown'>
-          <label
-            tabIndex={0}
-            className='btn m-1'
-          >
-            Click
-          </label>
-          <ul
-            tabIndex={0}
-            className='dropdown-content activity-card p-2 shadow bg-base-100 rounded-box w-52'
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
+      <Title />
 
-        <button
-          className='btn'
-          onClick={handleCancel}
-        >
-          cancel
-        </button>
-        {/* <Title />
+      {/* 
+      <FormControlText card={newCard} />
+      <FormControlTextArea card={newCard} /> */}
+
+      {/* <Title />
         <div>
           
        
@@ -192,7 +169,7 @@ export default function AddItem() {
      
           </ButtonContainer>
         </div> */}
-      </motion.div>
     </div>
+    // </div>
   );
 }
