@@ -7,8 +7,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import MainView from './layout/buttons/MainView';
 import MobileNavbar from './layout/elements/MobileNavbar';
 import ForestBackground from './forest/ForestBackground';
-import AddItem from './additem/AddItem';
+
 import ManageCards from './layout/buttons/ManageCards';
+import AddItem from './AddItem/addItem';
 
 export default function Viewport() {
   const { initSuccess, showForest, dispatch, userData, dataTheme, addCard } =
@@ -42,9 +43,10 @@ export default function Viewport() {
 
           {initSuccess === true && showForest === false && (
             <motion.div
-              className='flex justify-between items-start w-[95%] md:w-[90%]'
+              className='flex justify-between items-start w-full'
               key='mainViewport'
             >
+              {addCard && <AddItem />}
               <motion.div
                 initial={{ x: -1000 }}
                 animate={{
@@ -55,7 +57,6 @@ export default function Viewport() {
                 key='profileCard'
               >
                 <ProfileCard />
-                {addCard && <ManageCards dispatch={dispatch} />}
               </motion.div>
               <motion.div
                 exit={{ x: 1000, y: 0, transition: { duration: 1 } }}

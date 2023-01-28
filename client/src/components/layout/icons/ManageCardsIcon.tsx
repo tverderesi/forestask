@@ -1,7 +1,9 @@
 export default function ManageCards({
   scaleFactor = 1,
+  className = '',
 }: {
   scaleFactor?: number;
+  className?: string;
 }) {
   const width = `${8 * scaleFactor}mm`;
   const height = `${24.0551 * scaleFactor}`;
@@ -13,6 +15,7 @@ export default function ManageCards({
       version='1.1'
       viewBox='0 0 16 12.73'
       style={{ verticalAlign: 'top' }}
+      className={className}
     >
       <g transform='translate(-89.367 -93.965)'>
         <g

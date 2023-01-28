@@ -12,8 +12,7 @@ import ProfileHeader from './ProfileHeader';
 import FiltersRow from './FiltersRow';
 import FiltersHeader from './FiltersHeader';
 import Header from '../layout/elements/Header';
-import 'react-accessible-accordion/dist/fancy-example.css';
-import { Accordion } from 'react-accessible-accordion';
+
 function ProfileCard() {
   const {
     subjects,
@@ -33,18 +32,9 @@ function ProfileCard() {
 
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
-  // backdropFilter: 'blur(20px)',
-
-  // backgroundBlendMode: 'overlay',
-  // backgroundColor: 'var(--card-bg-color)',
-  // borderRadius: '16px',
-
-  // height: 'calc(87vh + 1rem)',
-  // boxShadow: 'var(--card-shadow)',
-  // width: 'max(350px, 30vw) ',
 
   return (
-    <div className='backdrop-blur-xl bg-blend-overlay bg-[var(--card-bg-color)] rounded-2xl h-[calc(87vh+1rem)] w-[30vw] min-w-[350px] shadow-2xl relative top-8 flex flex-col'>
+    <div className='backdrop-blur-xl bg-blend-overlay bg-[var(--card-bg-color)] rounded-2xl h-[calc(87vh+1rem)] w-[30vw] min-w-[350px] shadow-2xl relative top-8 flex flex-col ml-[5vw]'>
       <div className='rounded-t-2xl bg-[var(--softer-accent-bg-color)] h-[max(30vh,12rem)] bg-blend-overlay'>
         <Header />
         <ProfileHeader

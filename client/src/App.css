@@ -93,6 +93,14 @@ textarea.form-control {
   min-height: 2.25rem !important;
 }
 
+.form-control-ddown {
+  min-height: 2.25rem;
+}
+
+.form-control-ddown ul {
+  background-color: var(--card-bg-color-more-transparent);
+}
+
 .form-control::placeholder {
   color: rgba(0, 0, 0, 0.507);
 }
@@ -101,6 +109,7 @@ textarea.form-control {
   outline: solid 3px var(--bold-accent-color-1);
   border-color: none;
   box-shadow: none;
+  border: none;
 }
 .forest-green {
   color: var(--leafy-green);
@@ -171,10 +180,6 @@ main {
 .btn-transparent:hover {
   background-color: var(--soft-accent-bg-color) !important;
   color: black;
-}
-
-.accordion {
-  --bs-accordion-border-color: transparent !important;
 }
 
 .accordion-button {

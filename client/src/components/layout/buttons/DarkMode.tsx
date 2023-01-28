@@ -20,7 +20,7 @@ function DarkMode() {
         className='align-top'
       />
 
-      {dataTheme === 'dark' ? 'Day' : 'Night'}
+      <span className='text-sm'>{dataTheme === 'dark' ? 'Day' : 'Night'}</span>
     </button>
   );
 }

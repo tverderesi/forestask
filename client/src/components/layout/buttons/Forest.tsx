@@ -12,9 +12,9 @@ export default function Forest({ dispatch }) {
     >
       <FaTree
         size={28}
-        style={{ verticalAlign: 'top' }}
+        className='align-top '
       />
-      Forest
+      <span className='block text-sm'>Forest</span>
     </button>
   );
 }

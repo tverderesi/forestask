@@ -18,23 +18,13 @@ function CardList() {
     height: 'calc(88.5vh - 2rem)',
   };
   const styleDesktop: React.CSSProperties = {
-    position: 'relative',
     overflowY: 'scroll',
-    height: 'calc(90vh + 4rem)',
-    minWidth: `max(350px, ${
-      windowWidth < 1100 ? 'calc(60vw + ( 220 / 1920 * 100vw ))' : '20vw'
-    })`,
-    overflowX: 'visible',
-    paddingTop: '2rem',
-    paddingBottom: '2rem',
-
-    paddingRight: '25%',
   };
 
   return (
     <div
       //prettier-ignore
-      className={`flex flex-col ${page === maxPages ? `content-start` : `content-between`}`}
+      className={`flex flex-col ${page === maxPages ? `content-start` : `content-between`} w-[60vw] min-w-[350px] self-center relative py-8 pl-[20vw] pr-[5vw]  overflow-x-hidden`}
       style={windowWidth < 825 ? styleMobile : styleDesktop}
     >
       <AnimatePresence mode='popLayout'>

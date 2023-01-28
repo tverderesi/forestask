@@ -9,7 +9,7 @@ export function FormControlTextArea({ card }) {
       </label>
 
       <textarea
-        className='form-control mb-4'
+        className='form-control mb-4 w-full'
         aria-label='With textarea'
         placeholder='Content'
         required={true}

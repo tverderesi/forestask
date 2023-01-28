@@ -7,10 +7,13 @@ export default function ManageCards({ dispatch }: { dispatch: any }) {
     <div className='dropdown dropdown-top dropdown-end justify-between mx-2 my-1 basis-1/2 '>
       <label
         tabIndex={0}
-        className='btn btn-invisible h-full w-full pt-0.5 px-3 pb-0.5  flex flex-col capitalize font-bold text-base'
+        className='btn btn-invisible h-full w-full py-1.5 px-3  capitalize font-bold flex flex-col items-center text-sm  justify-between'
       >
-        <ManageCardsIcon scaleFactor={1.2} />
-        Manage Cards
+        <ManageCardsIcon
+          scaleFactor={1.2}
+          className='mt-0.5 self-center justify-self-center'
+        />
+        <span className='block mb-0.5'> Manage Cards</span>
       </label>
       <ul
         tabIndex={0}

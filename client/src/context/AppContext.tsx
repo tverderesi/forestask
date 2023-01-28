@@ -35,7 +35,7 @@ export const AppProvider = ({ children }: Props) => {
     showForest: false,
     direction: 1,
     dataTheme: 'light',
-    addCard: true,
+    addCard: false,
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
