@@ -15,15 +15,6 @@ const {
   validateLoginInput,
 } = require('../../utils/validators');
 
-/**
- * Generates a JSON web token for a user.
- *
- * @param {Object} user - The user object.
- * @param {string} user.id - The ID of the user.
- * @param {string} user.email - The email of the user.
- * @param {string} user.username - The username of the user.
- * @returns {string} The generated JSON web token.
- */
 const generateToken = user =>
   jwt.sign(
     {
@@ -33,18 +24,11 @@ const generateToken = user =>
       profilePicture: user.profilePicture,
     },
     process.env.SECRET_KEY,
-    { expiresIn: '1h' }
+    { expiresIn: '24h' }
   );
 
 module.exports = {
   Mutation: {
-    /**
-     * GraphQL mutation for logging in a user.
-     * @param {string} username - The username of the user.
-     * @param {string} password - The password of the user.
-     * @returns {Object} An object containing the user's information and a token.
-     * @throws {UserInputError} If the provided login information is invalid.
-     */
     async login(_, { username, password }) {
       const { errors, valid } = validateLoginInput(username, password);
       const user = await User.findOne({ username });
@@ -71,17 +55,9 @@ module.exports = {
         token,
       };
     },
-
-    /**
-     * GraphQL mutation for registering a new user.
-     * @param {Object} registerInput - An object containing the registration information for the new user.
-     * @param {string} registerInput.username - The username for the new user.
-     * @param {string} registerInput.email - The email for the new user.
-     * @param {string} registerInput.password - The password for the new user.
-     * @param {string} registerInput.confirmPassword - The password confirmation for the new user.
-     * @returns {Object} An object containing the user's information and a token.
-     * @throws {UserInputError} If the provided registration information is invalid or the username or email is already in use.
-     */
+    //TODO add verification for ADMIN Type and TEACHER type;
+    //TODO add birthdate checking for teachers
+    //TODO add fullname
     async register(
       _, // parent argument
       {

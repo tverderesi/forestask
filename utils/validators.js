@@ -17,7 +17,8 @@ module.exports.validateRegisterInput = (
   email,
   password,
   confirmPassword,
-  profilePicture
+  profilePicture,
+  age
 ) => {
   const errors = {};
   switch (true) {
@@ -35,6 +36,9 @@ module.exports.validateRegisterInput = (
       /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i
     ):
       errors.email = 'Email must be a valid email address.';
+      break;
+    case age < 18:
+      errors.age = 'Teachers must be 18 years or older.';
       break;
     case password === '':
       errors.password = 'Password must not be empty or contain spaces!';
