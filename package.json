@@ -1,64 +1,37 @@
 {
-  "name": "woovi_challenge",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:5000",
-  "dependencies": {
-    "@fortawesome/free-regular-svg-icons": "^6.2.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.2.0",
-    "@types/node": "^18.11.4",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "babel-plugin-macros": "^3.1.0",
-    "bootstrap": "^5.2.1",
-    "bootstrap-icons": "^1.9.1",
-    "concurrently": "^7.4.0",
-    "framer-motion": "^7.5.2",
-    "json-server": "^0.17.0",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.5.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.4.2",
-    "react-scripts": "5.0.1",
-    "tinycolor2": "^1.4.2",
-    "typescript": "^4.8.4",
-    "uuid": "^9.0.0",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "florestarefa_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "json-server --watch db.json ---port 5000",
-    "dev": "concurrently \"npm run server\" \"npm start\"",
-    "lint": "eslint -f unix \"src/**/*.{ts,tsx}\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tverderesi/woovi_challenge.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tverderesi/woovi_challenge/issues"
+  },
+  "homepage": "https://github.com/tverderesi/woovi_challenge#readme",
+  "dependencies": {
+    "apollo-link-context": "^1.0.20",
+    "apollo-server": "^3.11.1",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "graphql": "^15.8.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.4",
+    "mongoose": "^6.9.0"
   },
   "devDependencies": {
-    "@types/tinycolor2": "^1.4.3",
-    "eslint-plugin-tsdoc": "^0.2.17"
+    "nodemon": "^2.0.20"
   }
 }
