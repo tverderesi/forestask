@@ -7,26 +7,52 @@ const typeDefs = gql`
     teacher: String
     students: [Student]!
   }
-
-  type Student {
-    id: ID!
-    name: String!
-    createdAt: String!
-    dateBirth: String!
-    subjects: [Subject]!
-    totalXP: Int!
+  enum PrivilegeLevel {
+    STUDENT
+    TEACHER
+    ADMIN
   }
 
-  type Teacher {
+  interface User {
     id: ID!
+    username: String!
     createdAt: String!
-    dateBirth: String!
-    subjects: [Subject]!
+    privilegeLevel: PrivilegeLevel!
   }
 
   type ActivityType {
     id: ID!
     name: String!
+  }
+
+  type Student implements User {
+    id: ID!
+    fullName: String!
+    username: String!
+    createdAt: String!
+    birthday: String!
+    profilePicture: String!
+    subjects: [Subject]!
+    totalXP: Int!
+    privilegeLevel: PrivilegeLevel!
+  }
+
+  type Teacher implements User {
+    id: ID!
+    fullName: String!
+    username: String!
+    createdAt: String!
+    birthday: String!
+    profilePicture: String!
+    subjects: [Subject]!
+    privilegeLevel: PrivilegeLevel!
+  }
+
+  type Admin implements User {
+    id: ID!
+    createdAt: String!
+    username: String!
+    privilegeLevel: PrivilegeLevel!
   }
 
   type Assignment {
@@ -35,6 +61,23 @@ const typeDefs = gql`
     teacher: String!
     students: [Student]!
     type: ActivityType!
+    deadline: String!
+  }
+
+  input RegisterInput {
+    username: String!
+    fullName: String
+    birthday: String
+    privilegePassword: String
+    email: String!
+    password: String!
+    confirmPassword: String!
+    profilePicture: String
+  }
+
+  input LoginInput {
+    username: String!
+    password: String!
   }
 
   type Query {
@@ -43,6 +86,8 @@ const typeDefs = gql`
   type Mutation {
     addSubject(name: String!, teacher: String, students: [String]): Subject
     deleteSubject(id: ID!): String
+    login(loginInput: LoginInput!): User!
+    register(registerInput: RegisterInput!): User!
   }
 `;
 
