@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
 require('dotenv').config();
+const { getPrivilegeLevel } = require('../../utils/misc');
 
 const User = require('../../models/User');
 const {
@@ -55,14 +56,15 @@ module.exports = {
         token,
       };
     },
-    //TODO add verification for ADMIN Type and TEACHER type;
-    //TODO add birthdate checking for teachers
-    //TODO add fullname
+
     async register(
       _, // parent argument
       {
         registerInput: {
           username,
+          fullName,
+          birthday,
+          privilegePassword,
           email,
           password,
           confirmPassword,
@@ -70,12 +72,15 @@ module.exports = {
         },
       } // args argument
     ) {
+      const privilegeLevel = getPrivilegeLevel(privilegePassword);
       // validate user data
       const { valid, errors } = validateRegisterInput(
         username,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        birthday,
+        privilegeLevel
       );
       if (!valid) {
         throw new UserInputError('Errors', { errors });
@@ -107,19 +112,44 @@ module.exports = {
         email,
         username,
         password,
-        createdAt: new Date().toISOString(),
         profilePicture,
+        fullName,
+        privilegeLevel,
+        birthday: new Date(birthday).toISOString(),
+        createdAt: new Date().toISOString(),
       });
 
-      const res = await newUser.save();
+      const savedUser = await newUser.save();
+      const token = generateToken(savedUser);
 
-      const token = generateToken(res);
+      switch (savedUser.privilegeLevel) {
+        case savedUser.privilegeLevel === 'STUDENT':
+          console.log(savedUser.privilegeLevel === 'STUDENT');
+          return {
+            ...savedUser._doc,
+            id: savedUser._id,
+            token,
+          };
+        case savedUser.privilegeLevel === 'TEACHER':
+          console.log(savedUser.privilegeLevel === 'TEACHER');
+          return {
+            ...savedUser._doc,
+            id: savedUser._id,
+            token,
+          };
+        case savedUser.privilegeLevel === 'ADMIN':
+          console.log(savedUser.privilegeLevel === 'ADMIN');
+          return {
+            ...savedUser._doc,
+            id: savedUser._id,
+            token,
+          };
 
-      return {
-        ...res._doc,
-        id: res.id,
-        token,
-      };
+        default:
+          throw new Error(
+            `Invalid privilege level: ${savedUser.privilegeLevel}`
+          );
+      }
     },
   },
 };

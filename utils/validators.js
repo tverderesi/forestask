@@ -1,3 +1,5 @@
+const { ageCalc, getPrivilegeLevel } = require('./misc');
+
 /**
  * Validates the provided username, email, password, and confirm password.
  * @param {String} username - The username to validate.
@@ -17,17 +19,19 @@ module.exports.validateRegisterInput = (
   email,
   password,
   confirmPassword,
-  profilePicture,
-  age
+  birthday,
+  privilegeLevel
 ) => {
   const errors = {};
+  const age = ageCalc(birthday);
+
   switch (true) {
     case username.trim() === '':
       errors.username = 'Username must not be empty!';
-      break;
+
     case email.trim() === '':
       errors.email = 'E-mail must not be empty!';
-      break;
+
     /**
      * A regular expression that checks that a string is a valid email address.
      * @type {RegExp}
@@ -36,13 +40,13 @@ module.exports.validateRegisterInput = (
       /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i
     ):
       errors.email = 'Email must be a valid email address.';
-      break;
-    case age < 18:
+
+    case privilegeLevel !== 'STUDENT' && age < 18:
       errors.age = 'Teachers must be 18 years or older.';
-      break;
+
     case password === '':
       errors.password = 'Password must not be empty or contain spaces!';
-      break;
+
     /**
      * A regular expression that checks that a password meets the following requirements:
      * - At least 8 characters long
@@ -57,10 +61,9 @@ module.exports.validateRegisterInput = (
     ):
       errors.password =
         'Password must contain at least one uppercase case, one lowercase letter, one number and one symbol.';
-      break;
+
     case password !== confirmPassword:
       errors.confirmPassword = 'Passwords must match!';
-      break;
   }
   return { errors, valid: Object.keys(errors).length < 1 };
 };

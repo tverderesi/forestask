@@ -30,7 +30,7 @@ const typeDefs = gql`
     fullName: String!
     username: String!
     createdAt: String!
-    dateBirth: String!
+    birthday: String!
     profilePicture: String!
     subjects: [Subject]!
     totalXP: Int!
@@ -42,7 +42,7 @@ const typeDefs = gql`
     fullName: String!
     username: String!
     createdAt: String!
-    dateBirth: String!
+    birthday: String!
     profilePicture: String!
     subjects: [Subject]!
     privilegeLevel: PrivilegeLevel!
@@ -64,12 +64,30 @@ const typeDefs = gql`
     deadline: String!
   }
 
+  input RegisterInput {
+    username: String!
+    fullName: String
+    birthday: String
+    privilegePassword: String
+    email: String!
+    password: String!
+    confirmPassword: String!
+    profilePicture: String
+  }
+
+  input LoginInput {
+    username: String!
+    password: String!
+  }
+
   type Query {
     getSubjects: [Subject]
   }
   type Mutation {
     addSubject(name: String!, teacher: String, students: [String]): Subject
     deleteSubject(id: ID!): String
+    login(loginInput: LoginInput!): User!
+    register(registerInput: RegisterInput!): User!
   }
 `;
 
