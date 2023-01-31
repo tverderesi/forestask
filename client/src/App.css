@@ -10,6 +10,7 @@
   --soft-accent-bg-color: #9a9c9e44;
   --bg-image-url: url('../public/media/background/4.png');
   --softer-accent-bg-color: #9a9c9e28;
+  --soft-accent-bg-color-solid: #bce3ef;
   --card-shadow: 5px 5px 20px #3a3a3a38;
   --modal-color: #dfdfdfb3;
   --font-color: black
@@ -324,5 +325,25 @@ form input.bottom:focus {
 }
 
 .steps .step::before, .steps .step:not(.step-primary)::after {
-  background-color: var(--softer-accent-bg-color);
+  background-color: var(--soft-accent-bg-color-solid);
 }
+
+
+.floating-pic:hover{
+  position: relative;
+  z-index: 2;
+  scale: 1.5;
+  transition: all ease-in-out .3s;
+  background-color: var(--card-bg-color-more-transparent);
+  backdrop-filter: blur(32px);
+  box-shadow: var(--card-shadow);
+  border-radius: 1rem;
+
+}
+
+
+
+.floating-pic {
+  transition: all ease-in-out .3s;
+}
+.tooltip {text-transform: none;}
