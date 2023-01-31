@@ -12,8 +12,9 @@
   --softer-accent-bg-color: #9a9c9e28;
   --card-shadow: 5px 5px 20px #3a3a3a38;
   --modal-color: #dfdfdfb3;
-  --font-color: black;
+  --font-color: black
   --bold-accent-color-2: #f57bfb;
+  --placeholder-font-color: #00000081;
 }
 
 [data-theme='dark'] {
@@ -38,6 +39,7 @@
   --font-color: whitesmoke;
   --card-shadow: 5px 5px 20px #230129a9;
   --tree-brightness: 0.9;
+  --placeholder-font-color: #ffffff81;
   --bg-image-url: url('../public/media/background/7.png');
 }
 
@@ -46,16 +48,22 @@
   color: var(--font-color);
 }
 
-main {
-  background-image: var(--bg-image-url);
+.bg-image {
+  background-image: var(--bg-image-url) !important;
 }
 
-.form-control {
+.btn{
+  text-transform: capitalize;
+}
+
+.form-control,
+input.form-control[type='password'],
+input.form-control[type='date'] {
   border-radius: 1rem;
   font-weight: 600;
   padding: 0.25rem 0.75rem;
-  color: black;
-  background-color: var(--soft-accent-bg-color);
+  color: var(--font-color);
+  background-color: var(--soft-accent-bg-color) !important;
   font-size: 1rem;
   width: 100%;
   align-self: center;
@@ -102,7 +110,7 @@ textarea.form-control {
 }
 
 .form-control::placeholder {
-  color: rgba(0, 0, 0, 0.507);
+  color: var(--placeholder-font-color);
 }
 .form-control:focus {
   color: var(--font-color);
@@ -115,6 +123,7 @@ textarea.form-control {
   color: var(--leafy-green);
 }
 
+
 main {
   height: 100vh;
   margin: 0;
@@ -122,6 +131,11 @@ main {
   background-size: cover;
   background-position: 0 100%;
   width: 100vw;
+}
+input[type='date']:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }
 
 .btn:hover {
@@ -161,7 +175,7 @@ main {
   color: var(--font-color) !important;
 }
 
-.btn-bold-2:hover {
+.btn .btn-bold-2:hover {
   background-color: var(--bold-accent-color-2);
   border: none;
 }
@@ -222,9 +236,7 @@ main {
 input[type='date']:focus {
   outline: 3px solid #c491ff00 !important;
 }
-input[type='date'] {
-  margin-left: 10px;
-}
+
 
 form {
   border-radius: 1rem;
@@ -309,4 +321,8 @@ form input.bottom:focus {
 
 .tree-night {
   filter: brightness(0.6) hue-rotate(-15deg);
+}
+
+.steps .step::before, .steps .step:not(.step-primary)::after {
+  background-color: var(--softer-accent-bg-color);
 }
