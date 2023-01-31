@@ -1,7 +1,7 @@
-import { ActivitiesBadge } from '../atoms/badges/ActivitiesBadge';
-import { CheckedBadge } from '../atoms/badges/CheckedBadge';
-import { DeadlineBadge } from '../atoms/badges/DeadlineBadge';
-import { SubjectsBadge } from '../atoms/badges/SubjectsBadge';
+import { ActivitiesBadge } from '../../atoms/badges/ActivitiesBadge';
+import { CheckedBadge } from '../../atoms/badges/CheckedBadge';
+import { DeadlineBadge } from '../../atoms/badges/DeadlineBadge';
+import { SubjectsBadge } from '../../atoms/badges/SubjectsBadge';
 
 export default function FiltersRow({ filters, dispatch, timeZone, locale }) {
   const { subjects, activities, deadline, checked } = filters;

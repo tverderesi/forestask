@@ -67,8 +67,6 @@ export const AppProvider = ({ children }: Props) => {
       state.totalCards
     );
 
-    console.log(payload);
-
     dispatch({ type: 'UPDATE_PAGES_PARAMETERS', payload: payload });
     updatePage();
 
