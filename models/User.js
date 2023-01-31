@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   createdAt: {
-    type: Date,
+    type: String,
     default: Date.now,
   },
   privilegeLevel: {
@@ -14,7 +14,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     enum: ['STUDENT', 'TEACHER', 'ADMIN'],
   },
-  fullName: {
+  email: {
+    type: String,
+    required: true,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
     type: String,
     required: true,
   },
@@ -29,10 +37,14 @@ const userSchema = new mongoose.Schema({
   subjects: {
     type: [mongoose.Types.ObjectId],
     ref: 'Subject',
-    required: true,
   },
-  totalXP: {
-    type: Number,
+  assignments: {
+    type: [mongoose.Types.ObjectId],
+    ref: 'Assignment',
+  },
+  password: {
+    type: String,
+    required: true,
   },
 });
 

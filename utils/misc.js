@@ -17,3 +17,9 @@ module.exports.getPrivilegeLevel = privilegePassword => {
       return 'STUDENT';
   }
 };
+
+module.exports.isEmail = logIn => {
+  return /[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(
+    logIn
+  );
+};

@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
 require('dotenv').config();
-const { getPrivilegeLevel } = require('../../utils/misc');
+const { getPrivilegeLevel, isEmail } = require('../../utils/misc');
 
 const User = require('../../models/User');
 const {
@@ -22,7 +22,7 @@ const generateToken = user =>
       id: user.id,
       email: user.email,
       username: user.username,
-      profilePicture: user.profilePicture,
+      privilegeLevel: user.privilegeLevel,
     },
     process.env.SECRET_KEY,
     { expiresIn: '24h' }
@@ -30,27 +30,34 @@ const generateToken = user =>
 
 module.exports = {
   Mutation: {
-    async login(_, { username, password }) {
-      const { errors, valid } = validateLoginInput(username, password);
-      const user = await User.findOne({ username });
+    async login(_, { logInInput: { logIn, password } }) {
+      const errors = {};
 
-      if (!valid) {
-        throw new UserInputError('Wrong credentials.', { errors });
+      let user;
+
+      isEmail(logIn);
+      if (validateLoginInput(logIn, password)) {
+        if (isEmail(logIn)) {
+          user = await User.findOne({ email: logIn });
+          if (!user) errors.General = 'User with email not found!';
+        } else {
+          user = await User.findOne({ username: logIn });
+          if (!user) errors.General = 'User with username not found!';
+        }
       }
 
-      if (!user) {
-        errors.general = 'User not found!';
-        throw new UserInputError('User not found.', { errors });
-      }
-
-      const match = await bcrypt.compare(password, user.password);
+      const match = await bcrypt.compareSync(password, user.password);
       if (!match) {
-        throw new UserInputError('Wrong credentials.', { errors });
+        throw new UserInputError('Wrong credentials.', {
+          errors: { password: 'Wrong password' },
+        });
       }
 
       const token = generateToken(user);
-
+      const typename =
+        user.privilegeLevel[0] + user.privilegeLevel.slice(1).toLowerCase();
       return {
+        __typename: typename,
         ...user._doc,
         id: user.id,
         token,
@@ -62,7 +69,8 @@ module.exports = {
       {
         registerInput: {
           username,
-          fullName,
+          firstName,
+          lastName,
           birthday,
           privilegePassword,
           email,
@@ -98,6 +106,7 @@ module.exports = {
 
       // make sure email doesn't already exist
       const uniqueEmail = await User.findOne({ email });
+
       if (uniqueEmail) {
         throw new UserInputError('Email is already registered.', {
           errors: {
@@ -107,13 +116,15 @@ module.exports = {
       }
 
       // hash password and create an auth token
+      //TODO generate random salt and encrypt it.
       password = await bcrypt.hash(password, 12);
       const newUser = new User({
         email,
         username,
         password,
         profilePicture,
-        fullName,
+        firstName,
+        lastName,
         privilegeLevel,
         birthday: new Date(birthday).toISOString(),
         createdAt: new Date().toISOString(),
@@ -123,23 +134,27 @@ module.exports = {
       const token = generateToken(savedUser);
 
       switch (savedUser.privilegeLevel) {
-        case savedUser.privilegeLevel === 'STUDENT':
-          console.log(savedUser.privilegeLevel === 'STUDENT');
+        case 'STUDENT':
           return {
+            __typename: 'Student',
             ...savedUser._doc,
             id: savedUser._id,
             token,
+            assignments: [],
+            subjects: [],
           };
-        case savedUser.privilegeLevel === 'TEACHER':
-          console.log(savedUser.privilegeLevel === 'TEACHER');
+        case 'TEACHER':
           return {
+            __typename: 'Teacher',
             ...savedUser._doc,
             id: savedUser._id,
             token,
+            subjects: [],
+            assignments: [],
           };
-        case savedUser.privilegeLevel === 'ADMIN':
-          console.log(savedUser.privilegeLevel === 'ADMIN');
+        case 'ADMIN':
           return {
+            __typename: 'Admin',
             ...savedUser._doc,
             id: savedUser._id,
             token,

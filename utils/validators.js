@@ -1,19 +1,5 @@
-const { ageCalc, getPrivilegeLevel } = require('./misc');
+const { ageCalc } = require('./misc');
 
-/**
- * Validates the provided username, email, password, and confirm password.
- * @param {String} username - The username to validate.
- * @param {String} email - The email address to validate.
- * @param {String} password - The password to validate.
- * @param {String} confirmPassword - The confirm password to validate.
- * @returns {Object} An object containing the validation errors and a boolean indicating whether the input is valid.
- * @property {Object} errors - An object containing any validation errors.
- * @property {String} errors.username - An error message for the username, if it is invalid.
- * @property {String} errors.email - An error message for the email address, if it is invalid.
- * @property {String} errors.password - An error message for the password, if it is invalid.
- * @property {String} errors.confirmPassword - An error message for the confirm password, if it is invalid.
- * @property {Boolean} valid - A boolean indicating whether the input is valid (`true`) or invalid (`false`).
- */
 module.exports.validateRegisterInput = (
   username,
   email,
@@ -68,20 +54,10 @@ module.exports.validateRegisterInput = (
   return { errors, valid: Object.keys(errors).length < 1 };
 };
 
-/**
- * Validates the provided username and password.
- * @param {String} username - The username to validate.
- * @param {String} password - The password to validate.
- * @returns {Object} An object containing the validation errors and a boolean indicating whether the input is valid.
- * @property {Object} errors - An object containing any validation errors.
- * @property {String} errors.username - An error message for the username, if it is invalid.
- * @property {String} errors.password - An error message for the password, if it is invalid.
- * @property {Boolean} valid - A boolean indicating whether the input is valid (`true`) or invalid (`false`).
- */
-module.exports.validateLoginInput = (username, password) => {
+module.exports.validateLoginInput = (logIn, password) => {
   const errors = {};
-  if (username.trim() === '') {
-    errors.username = 'Username must not be empty!';
+  if (!logIn || logIn.trim() === '') {
+    errors.field = 'Username or email must not be empty!';
   }
   if (password.trim() === '') {
     errors.password = 'Password must not be empty!';
