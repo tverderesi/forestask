@@ -10,7 +10,7 @@ export function RoleSelect({
 }) {
   return (
     <motion.div
-      className='flex flex-col flex-1 items-center justify-center w-full h-full font-semibold mt-0'
+      className='flex flex-col items-center justify-center font-semibold mx-auto my-auto'
       initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -50, opacity: 0 }}
@@ -24,6 +24,7 @@ export function RoleSelect({
         ].map(({ role, icon }) => {
           return (
             <button
+              key={role}
               className={`btn w-32 h-32 shadow-lg text-xl flex-col items-center justify-center
                   ${selectedRole === role ? 'btn-primary' : 'btn-transparent'}`}
               onClick={(e: React.MouseEvent<HTMLButtonElement>) =>

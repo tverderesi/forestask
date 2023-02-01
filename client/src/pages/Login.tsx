@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useContext } from 'react';
-import AppContext from '../../context/AppContext';
-import { init } from '../../context/AppFunctions';
-import Header from '../../atoms/Header';
+import AppContext from '../context/AppContext';
+import { init } from '../context/AppFunctions';
+import Header from '../atoms/Header';
 
 export default function Login() {
   const { cardHeight, dispatch, windowHeight, windowWidth } =

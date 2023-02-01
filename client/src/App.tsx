@@ -2,10 +2,10 @@ import './App.css';
 import { AppProvider } from './context/AppContext';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/pages/Home';
+import Home from './pages/Home';
 import HomeButtons from './components/layout/login/HomeButtons';
 import Modal from './components/login/Modal';
-import Register from './components/pages/Register';
+import Register from './pages/Register';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 function App() {
   const client = new ApolloClient({

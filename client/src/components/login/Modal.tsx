@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import Loading from './Loading';
-import Login from '../pages/Login';
+import Login from '../../pages/Login';
 
 export default function Modal() {
   const { loading } = useContext(AppContext);

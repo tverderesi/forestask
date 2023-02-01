@@ -32,20 +32,21 @@ const PageNavigator: React.FC<Props> = ({
   };
 
   return (
-    <div className='flex justify-between items-start mt-3'>
+    <div className='flex justify-between items-start h-[10%] mx-auto self-center font-semibold'>
       <button
-        className='btn btn-sm btn-square btn-primary capitalize text-base font-semibold mt-1 mr-3'
+        className='btn btn-sm btn-square btn-primary capitalize text-base mt-1 mr-6'
         disabled={currentPage === 1}
         onClick={handleBack}
       >
         <BsArrowLeft />
       </button>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center '>
         <ul className='steps steps-horizontal '>
           {typeof steps !== 'boolean' &&
             steps.map((item, idx) => {
               return (
                 <motion.li
+                  key={item}
                   className={`step ${
                     currentPage >= idx + 1 ? 'step-primary' : ''
                   } `}
@@ -61,7 +62,7 @@ const PageNavigator: React.FC<Props> = ({
         </ul>
       </div>
       <button
-        className='btn btn-primary btn-square btn-sm capitalize mt-1 text-base font-semibold'
+        className='btn btn-primary btn-square btn-sm capitalize mt-1 text-base font-semibold ml-6'
         disabled={currentPage === totalPages}
         onClick={handleNext}
       >

@@ -10,12 +10,13 @@
   --soft-accent-bg-color: #9a9c9e44;
   --bg-image-url: url('../public/media/background/4.png');
   --softer-accent-bg-color: #9a9c9e28;
-  --soft-accent-bg-color-solid: #bce3ef;
+  --soft-accent-bg-color-solid: #bbd3c3bd;
   --card-shadow: 5px 5px 20px #3a3a3a38;
   --modal-color: #dfdfdfb3;
   --font-color: black
   --bold-accent-color-2: #f57bfb;
   --placeholder-font-color: #00000081;
+  --soft-warning-bg: #e0a8a841;
 }
 
 [data-theme='dark'] {
@@ -347,3 +348,9 @@ form input.bottom:focus {
   transition: all ease-in-out .3s;
 }
 .tooltip {text-transform: none;}
+
+
+.soft-warning {
+  background-color:  #df9e541f;
+  border: 1px solid  #e0854841;
+}
