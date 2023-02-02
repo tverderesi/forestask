@@ -37,7 +37,7 @@ export function AvatarSelector({
   return (
     <motion.div
       key='avatarselection'
-      className='grid grid-cols-2 xs:grid-cols-4 h-full sm:grid-cols-8 mt-8'
+      className='grid grid-cols-2 xs:grid-cols-4 h-full sm:grid-cols-8 mt-8 '
       initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -50, opacity: 0 }}

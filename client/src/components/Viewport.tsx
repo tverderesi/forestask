@@ -1,7 +1,9 @@
+/** @format */
+
 import CardList from './cardList/CardList';
 import ProfileCard from './profile/ProfileCard';
 import { useContext, useEffect, useState } from 'react';
-import Modal from './login/Modal';
+
 import AppContext from '../context/AppContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import MainView from './layout/buttons/MainView';
@@ -24,10 +26,5 @@ export default function Viewport() {
     levelArray.push(index);
   }
 
-  return (
-    <main
-      data-theme={dataTheme}
-      className='flex justify-center items-center'
-    ></main>
-  );
+  return <main data-theme={dataTheme} className='flex justify-center items-center'></main>;
 }

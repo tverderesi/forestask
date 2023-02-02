@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -77,8 +79,8 @@ function TreeIcon({ treeNumber }) {
     >
       <g transform='matrix(.24 0 0 .24 -202.782 -424.625)'>
         <g
+          className='stroke-[var(--font-color)]'
           fill='none'
-          stroke='#000'
           strokeDasharray='none'
           strokeOpacity='1'
           strokeWidth='0.063'

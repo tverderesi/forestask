@@ -12,7 +12,7 @@ export function Date({
   return (
     <div className='flex flex-col w-full'>
       <label className='text-center text-base font-semibold mb-2 capitalize w-full'>{label}</label>
-      <input type='date' className='form-control w-full flex' {...register(name)} />
+      <input type='date' className='form-control flex' {...register(name)} />
     </div>
   );
 }

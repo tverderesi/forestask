@@ -27,8 +27,8 @@ export default function Home() {
         }}
         exit={{ y: 100, opacity: 0 }}
         className='transition-all duration-200 backdrop-blur-xl bg-blend-overlay 
-        bg-card md:rounded-2xl w-screen h-screen md:w-auto md:h-auto overflow-y-scroll md:overflow-auto md:min-w-[70vh] md:min-h-[70vh] p-5 md:p-10 m-auto shadow top-8 
-        flex flex-col justify-between'
+        bg-card md:rounded-2xl w-screen h-screen md:w-auto md:h-auto md:min-w-[70vh] md:min-h-[70vh] p-5 md:p-10 m-auto shadow top-8 
+        flex flex-col justify-between overflow-y-scroll'
       >
         <Header className='h-[10%]' />
         <Outlet key='outlet' />

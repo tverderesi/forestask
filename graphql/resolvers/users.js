@@ -21,6 +21,7 @@ const generateToken = user =>
       email: user.email,
       username: user.username,
       privilegeLevel: user.privilegeLevel,
+      profilePicture: user.profilePicture,
     },
     process.env.SECRET_KEY,
     { expiresIn: '24h' }
@@ -85,7 +86,6 @@ module.exports = {
         email,
         password,
         confirmPassword,
-
         privilegePassword,
         confirmPrivilegePassword,
         selectedPrivilegeLevel

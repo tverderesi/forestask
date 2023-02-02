@@ -17,8 +17,6 @@ export default function Login() {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -200, opacity: 0 }}
       onSubmit={handleSubmit}
-    >
-      <
-    </motion.form>
+    ></motion.form>
   );
 }

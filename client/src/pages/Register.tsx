@@ -12,9 +12,10 @@ import { useForm } from 'react-hook-form';
 import { Date, Email, FirstName, LastName, Password, Username } from '../components/Form/Form';
 import { AvatarSelector } from '../components/Form/AvatarSelector';
 import { REGISTER_USER_MUTATION } from '../util/GraphQL';
+import Loading from '../components/layout/Loading';
 
 export default function Register() {
-  const { register, handleSubmit, watch, formState } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       username: '',
       birthday: '',
@@ -81,7 +82,7 @@ export default function Register() {
 
   // const [errors, setErrors] = useState({}) as any;
 
-  const [addUser, { loading, called, client }] = useMutation(REGISTER_USER_MUTATION, {
+  const [addUser, { loading }] = useMutation(REGISTER_USER_MUTATION, {
     update(_, { data: { register: userData } }) {
       console.log(userData);
     },
@@ -92,9 +93,16 @@ export default function Register() {
 
   return (
     <>
+      {loading && (
+        <Loading
+          text={'Registering...'}
+          className='absolute top-0 left-0 flex flex-col p-0 h-screen w-screen  
+        items-center justify-center md:w-full md:h-full z-[2] backdrop-blur-xl bg-[var(--bg-card-2)]'
+        />
+      )}
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center  flex-1 justify-between '
+        className='flex flex-col items-center flex-1 justify-between w-auto h-auto'
         initial={{
           x: 200,
           opacity: 0,
@@ -109,9 +117,8 @@ export default function Register() {
         {currentPage === 2 && (
           <motion.div
             key='infoform'
-            className='flex flex-col md:grid md:grid-cols-2 gap-6 px-2 md:m-6 md:overflow-auto
-            
-            items-center pb-5 md:pb-0 overflow-y-scrol '
+            className='flex flex-col md:grid md:grid-cols-2 gap-6 px-2 md:m-6
+            items-center pb-5 md:pb-0'
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -50, opacity: 0 }}
@@ -132,7 +139,7 @@ export default function Register() {
 
             {selectedRole &&
               selectedRole !== 'student' && ( //prettier-ignore
-                <div className='grid grid-cols-2 col-span-2 gap-6 border-warning soft-warning rounded-2xl p-3 w-[calc(100%+1.5rem)] -ml-3'>
+                <div className='flex flex-col md:grid md:grid-cols-2 md:col-span-2 gap-6 border-warning soft-warning rounded-2xl p-3 w-[calc(100%+1.5rem)] -ml-3 overflow-hidden'>
                   {
                     //prettier-ignore
                     <Password register={register} label={privilegePasswordLabel} name='privilegePassword' />

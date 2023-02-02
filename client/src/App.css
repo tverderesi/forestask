@@ -5,7 +5,7 @@
   --bg-card: #f9fafba0;
   --bg-card-2: #f9fafb62;
   --bg-card-3: #f9fafbbf;
-  --bg-card-solid: #f1f1f1fc;
+  --bg-card-solid: #f1f1f1cd;
   --accent-1: #c491ff;
   --accent-2: #f000b8;
   --accent-3: #f57bfb;
@@ -43,7 +43,7 @@
   --bg-image-url: url('../public/media/background/4.png');
   --bg-accent-1: #49494977;
   --bg-accent-2: #9a9c9e14;
-  --bg-accent-3: #515954bd;
+  --bg-accent-3: hsla(354, 30%, 20%, 0.741);
   --card-shadow: 5px 5px 20px #230129a9;
   --font-color: #0f172a;
   --tree-brightness: 0.9;
@@ -266,7 +266,7 @@ input.form-control.w-full.flex {
 .touched {
   position: relative;
   z-index: 2;
-  scale: 1.5;
+  scale: 1.1;
   transition: all ease-in-out 0.3s;
   background-color: var(--bg-card-2);
   backdrop-filter: blur(32px);
@@ -281,4 +281,11 @@ input.form-control.w-full.flex {
 .soft-warning {
   background-color: #df9e541f;
   border: 1px solid #e0854841;
+}
+
+@media (min-width: 768px) {
+  .floating-pic:hover,
+  .touched {
+    scale: 1.5;
+  }
 }
