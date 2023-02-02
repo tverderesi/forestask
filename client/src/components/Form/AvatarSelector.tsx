@@ -90,13 +90,10 @@ function SingleAvatar({
     >
       <img
         src={`${getPictureURL(item.name)}`}
-        className='rounded-full w-14 h-14'
+        className={`rounded-full w-14 h-14 ${item.isSelected ? 'selected-avatar' : ''}`}
         onClick={(e: React.SyntheticEvent) => {
           e.preventDefault();
           handleImageClick(index);
-        }}
-        style={{
-          boxShadow: item.isSelected ? '0 1px 3px 0 var(--accent-2),0 0 0 2px var(--accent-2)' : '',
         }}
         alt={item.name}
       />

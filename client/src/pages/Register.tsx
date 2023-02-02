@@ -78,7 +78,7 @@ export default function Register() {
     update(_, { data: { register: userData } }) {
       context.login(userData);
 
-      navigate('/', { replace: true });
+      navigate('/test', { replace: true });
     },
     onError(err) {
       console.log(err.graphQLErrors[0].extensions.errors);

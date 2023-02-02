@@ -1,3 +1,5 @@
+/** @format */
+
 import jwtDecode from 'jwt-decode';
 import { createContext, useReducer } from 'react';
 
@@ -37,8 +39,9 @@ function AuthProvider(props: any): JSX.Element {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const login = (userData: any) => {
-    console.log(userData);
     localStorage.setItem('jwtToken', userData.token);
+    localStorage.setItem('profilePic', userData.profilePicture);
+    localStorage.setItem('firstName', userData.firstName);
     dispatch({ type: 'LOGIN', payload: userData });
   };
 
@@ -46,12 +49,7 @@ function AuthProvider(props: any): JSX.Element {
     localStorage.removeItem('jwtToken');
     dispatch({ type: 'LOGOUT' });
   };
-  return (
-    <AuthContext.Provider
-      value={{ user: state.user, login, logout }}
-      {...props}
-    />
-  );
+  return <AuthContext.Provider value={{ user: state.user, login, logout }} {...props} />;
 }
 
 export { AuthContext, AuthProvider };

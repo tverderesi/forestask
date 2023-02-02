@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
 import AuthRoute from './util/AuthRoute';
+import Viewport from './components/Viewport';
 
 function App() {
   return (
@@ -18,13 +19,21 @@ function App() {
         <AppProvider>
           <Router>
             <Routes>
-              <Route element={<Home />} path='/'>
+              <Route
+                element={
+                  <AuthRoute>
+                    <Viewport />
+                  </AuthRoute>
+                }
+                path='/'
+              >
                 <Route path='/' element={<HomeButtons />} />
                 {/* prettier-ignore */}
                 <Route path='/login' element={<AuthRoute><Login /></AuthRoute>} />
                 {/* prettier-ignore */}
                 <Route path='/register' element={<AuthRoute><Register /></AuthRoute>} />
               </Route>
+              <Route path='/test' element={<Viewport />} />
             </Routes>
           </Router>
         </AppProvider>
