@@ -1,14 +1,8 @@
 /** @format */
 
 import App from './App';
-import {
-  InMemoryCache,
-  createHttpLink,
-  ApolloProvider,
-  ApolloClient,
-  HttpLink,
-} from '@apollo/client';
-import { setContext } from 'apollo-link-context';
+import { InMemoryCache, createHttpLink, ApolloProvider, ApolloClient } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({ uri: 'http://localhost:4000' });
 
