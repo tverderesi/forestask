@@ -34,18 +34,19 @@ module.exports = {
 
       let user;
 
-      isEmail(logIn);
-      if (validateLoginInput(logIn, password)) {
+      if (validateLoginInput(logIn, password).valid) {
         if (isEmail(logIn)) {
           user = await User.findOne({ email: logIn });
-          if (!user) errors.General = 'User with email not found!';
+          if (!user) throw new UserInputError((errors.General = 'User with email not found!'));
         } else {
           user = await User.findOne({ username: logIn });
-          if (!user) errors.General = 'User with username not found!';
+          if (!user) {
+            throw new UserInputError((errors.General = 'User with username not found!'));
+          }
         }
       }
 
-      const match = await bcrypt.compareSync(password, user.password);
+      const match = bcrypt.compareSync(password, user.password);
       if (!match) {
         throw new UserInputError('Wrong credentials.', {
           errors: { password: 'Wrong password' },

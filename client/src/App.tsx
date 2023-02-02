@@ -8,21 +8,27 @@ import Home from './pages/Home';
 import HomeButtons from './components/layout/login/HomeButtons';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import { AuthProvider } from './context/AuthContext';
+import AuthRoute from './util/AuthRoute';
 
 function App() {
   return (
     <main className='App flex justify-center bg-image'>
-      <AppProvider>
-        <Router>
-          <Routes>
-            <Route element={<Home />} path='/'>
-              <Route path='/' element={<HomeButtons />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-            </Route>
-          </Routes>
-        </Router>
-      </AppProvider>
+      <AuthProvider>
+        <AppProvider>
+          <Router>
+            <Routes>
+              <Route element={<Home />} path='/'>
+                <Route path='/' element={<HomeButtons />} />
+                {/* prettier-ignore */}
+                <Route path='/login' element={<AuthRoute><Login /></AuthRoute>} />
+                {/* prettier-ignore */}
+                <Route path='/register' element={<AuthRoute><Register /></AuthRoute>} />
+              </Route>
+            </Routes>
+          </Router>
+        </AppProvider>
+      </AuthProvider>
     </main>
   );
 }

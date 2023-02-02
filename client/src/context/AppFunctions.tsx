@@ -1,14 +1,9 @@
+/** @format */
+
 import paletteCreator from '../components/style/PaletteCreator';
 import { Card } from '../types/Types';
-import { v4 as uuidv4 } from 'uuid';
 
-export async function changePage(
-  filters,
-  currentPage,
-  index,
-  maxPages,
-  cardsPerPage
-) {
+export async function changePage(filters, currentPage, index, maxPages, cardsPerPage) {
   let newPage = currentPage + index;
   newPage = newPage >= maxPages ? maxPages : newPage < 0 ? 0 : newPage;
   const params = {
@@ -24,21 +19,9 @@ export async function changePage(
   return { newPage, currentCards };
 }
 
-export const putCards = async newCard => {
-  newCard.id = uuidv4();
-  const a = JSON.stringify(newCard);
-  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards`, {
-    headers: { 'Content-Type': 'application/json' },
-    method: 'POST',
-    body: a,
-  });
-};
-
 export const getXP = async () => {
   let XP = 0;
-  const res = await fetch(
-    `${process.env.REACT_APP_FAKE_SERVER}/cards?checked=true`
-  );
+  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards?checked=true`);
   const cards: Card[] = await res.json();
   cards.map(card => (XP += Number(card.xp)));
 
@@ -48,33 +31,25 @@ export const getXP = async () => {
 export const fetchGameLevels = async (level = '') => {
   const params = level ? paramBuilder(level) : '';
 
-  const res = await fetch(
-    `${process.env.REACT_APP_FAKE_SERVER}/levels/${params}`
-  );
+  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/levels/${params}`);
   return await res.json();
 };
 
 export const updateGameLevels = (userData, gameLevels) => {};
 
 export async function fetchActivities() {
-  const response = await fetch(
-    `${process.env.REACT_APP_FAKE_SERVER}/activities`,
-    {
-      headers: { 'Content-Type': 'json' },
-    }
-  );
+  const response = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/activities`, {
+    headers: { 'Content-Type': 'json' },
+  });
   return await response.json();
 }
 
 export const fetchCards = async (params, getXTotalCount = false) => {
   const queryParams = paramBuilder(params);
 
-  const response = await fetch(
-    `${process.env.REACT_APP_FAKE_SERVER}/cards?${queryParams}`,
-    {
-      headers: { 'Content-Type': 'text/html' },
-    }
-  );
+  const response = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards?${queryParams}`, {
+    headers: { 'Content-Type': 'text/html' },
+  });
   const data = await response.json();
   const xTotalCount = Number(response.headers.get('X-total-count'));
   return getXTotalCount ? [data, xTotalCount] : data;
@@ -94,12 +69,9 @@ export async function createActivityPalette() {
 }
 
 export const fetchSubjects = async () => {
-  const response = await fetch(
-    `${process.env.REACT_APP_FAKE_SERVER}/subjects`,
-    {
-      headers: { 'Content-Type': 'json' },
-    }
-  );
+  const response = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/subjects`, {
+    headers: { 'Content-Type': 'json' },
+  });
   const data = await response.json();
   return data;
 };
@@ -113,15 +85,7 @@ export function setPagesParameters(cardHeight, windowHeight, totalCards) {
 
 export const paramBuilder = queryParams => {
   const params = {};
-  const keys = [
-    'subject',
-    'type',
-    'deadline',
-    'checked',
-    '_start',
-    '_limit',
-    'level',
-  ];
+  const keys = ['subject', 'type', 'deadline', 'checked', '_start', '_limit', 'level'];
   const values = Object.values(queryParams);
 
   values.map((value, index) => {
@@ -137,23 +101,11 @@ export const handlePageChange = async (
   cardsPerPage,
   dispatch
 ) => {
-  const payload = await changePage(
-    filters,
-    page,
-    index,
-    maxPages,
-    cardsPerPage
-  );
+  const payload = await changePage(filters, page, index, maxPages, cardsPerPage);
   dispatch({ type: 'CHANGE_PAGE', payload: payload });
 };
 
-export const filterCards = async (
-  filters,
-  windowHeight,
-  dispatch,
-  page,
-  cardsPerPage
-) => {
+export const filterCards = async (filters, windowHeight, dispatch, page, cardsPerPage) => {
   const { subjects, activities, deadline, checked } = filters;
   const params = {
     subjects: subjects,
@@ -179,11 +131,7 @@ export const filterCards = async (
     payload: payload2.length,
   });
 
-  const filteredPagesParameters = await setPagesParameters(
-    100,
-    windowHeight,
-    payload2.length
-  );
+  const filteredPagesParameters = await setPagesParameters(100, windowHeight, payload2.length);
   dispatch({
     type: 'SET_PAGES_PARAMETERS',
     payload: filteredPagesParameters,
@@ -239,11 +187,7 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
   dispatch({ type: 'SET_GAME_LEVELS', payload: gameLevels });
   dispatch({ type: 'SET_USER_DATA', payload: userData });
 
-  const pageParameters = setPagesParameters(
-    cardHeight,
-    windowHeight,
-    xTotalCount
-  );
+  const pageParameters = setPagesParameters(cardHeight, windowHeight, xTotalCount);
   dispatch({ type: 'SET_PAGES_PARAMETERS', payload: pageParameters });
   const { cardsPerPage } = pageParameters;
   const firstLoadParams = {
@@ -299,9 +243,7 @@ export const handleDone: any = async (
 ) => {
   setCompleted(!completed);
   addDone(item, id);
-  const newXP = item.checked
-    ? Number(userData.xp) + Number(item.xp)
-    : userData.xp - item.xp;
+  const newXP = item.checked ? Number(userData.xp) + Number(item.xp) : userData.xp - item.xp;
   const userLevel = setUserLevel(newXP, gameLevels);
 
   dispatch({

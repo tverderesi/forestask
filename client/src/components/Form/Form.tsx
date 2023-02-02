@@ -52,44 +52,15 @@ export function Email({ register }) {
   );
 }
 
-export function FirstName({ register }): JSX.Element {
+export function Text({ register, label, placeholder, name }): JSX.Element {
   return (
     <div className='flex flex-col'>
-      <label className='text-center text-base font-semibold mb-2'>First Name</label>
+      <label className='text-center text-base font-semibold mb-2'>{label}</label>
       <input
-        placeholder='First Name'
+        placeholder={placeholder}
         required={true}
         className='form-control'
-        {...register('firstName')}
-      />
-    </div>
-  );
-}
-
-export function LastName({ register }): JSX.Element {
-  return (
-    <div className='flex flex-col'>
-      <label className='text-center text-base font-semibold mb-2'>Last Name</label>
-      <input
-        name='lastName'
-        placeholder='Last Name'
-        required={true}
-        className='form-control'
-        {...register('lastName')}
-      />
-    </div>
-  );
-}
-
-export function Username({ register }): JSX.Element {
-  return (
-    <div className='flex flex-col'>
-      <label className='text-center text-base font-semibold mb-2'>Username</label>
-      <input
-        placeholder='Username'
-        required={true}
-        className='form-control'
-        {...register('username')}
+        {...register(name)}
       />
     </div>
   );

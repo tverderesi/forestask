@@ -289,3 +289,21 @@ input.form-control.w-full.flex {
     scale: 1.5;
   }
 }
+
+html {
+  scrollbar-width: none;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

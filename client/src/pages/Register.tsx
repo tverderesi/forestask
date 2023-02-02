@@ -2,17 +2,19 @@
 
 import { motion } from 'framer-motion';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useHandleClick } from '../util/hooks';
 import { profilePictureDictionary } from '../util/profilePictureDictionary';
 import { useMutation } from '@apollo/client';
 import PageNavigator from '../atoms/PageNavigator';
 import { RoleSelect } from '../components/Form/RoleSelect';
 import { useForm } from 'react-hook-form';
-import { Date, Email, FirstName, LastName, Password, Username } from '../components/Form/Form';
+import { Date, Email, Text, Password } from '../components/Form/Form';
 import { AvatarSelector } from '../components/Form/AvatarSelector';
 import { REGISTER_USER_MUTATION } from '../util/GraphQL';
 import Loading from '../components/layout/Loading';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const { register, handleSubmit } = useForm({
@@ -28,6 +30,8 @@ export default function Register() {
       lastName: '',
     },
   });
+  const context = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
     const profilePicture = placeholderNames.filter(item => item.isSelected === true)[0].name;
@@ -72,7 +76,9 @@ export default function Register() {
 
   const [addUser, { loading }] = useMutation(REGISTER_USER_MUTATION, {
     update(_, { data: { register: userData } }) {
-      console.log(userData);
+      context.login(userData);
+
+      navigate('/', { replace: true });
     },
     onError(err) {
       console.log(err.graphQLErrors[0].extensions.errors);
@@ -111,11 +117,25 @@ export default function Register() {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -50, opacity: 0 }}
           >
-            <FirstName register={register} />
+            <Text
+              register={register}
+              label={'First Name'}
+              name={'firstName'}
+              placeholder={'First Name'}
+            />
+            <Text
+              register={register}
+              label={'Last Name'}
+              name={'lastName'}
+              placeholder={'Last Name'}
+            />
 
-            <LastName register={register} />
-
-            <Username register={register} />
+            <Text
+              register={register}
+              label={'Username'}
+              name={'username'}
+              placeholder={'Username'}
+            />
 
             <Email register={register} />
 
