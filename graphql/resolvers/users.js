@@ -1,6 +1,7 @@
 /**
  * A module that handles user authentication.
  *
+ * @format
  * @module auth/resolvers/users
  */
 
@@ -8,13 +9,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
 require('dotenv').config();
-const { getPrivilegeLevel, isEmail } = require('../../utils/misc');
+const { isEmail } = require('../../utils/misc');
 
 const User = require('../../models/User');
-const {
-  validateRegisterInput,
-  validateLoginInput,
-} = require('../../utils/validators');
+const { validateRegisterInput, validateLoginInput } = require('../../utils/validators');
 
 const generateToken = user =>
   jwt.sign(
@@ -54,8 +52,7 @@ module.exports = {
       }
 
       const token = generateToken(user);
-      const typename =
-        user.privilegeLevel[0] + user.privilegeLevel.slice(1).toLowerCase();
+      const typename = user.privilegeLevel[0] + user.privilegeLevel.slice(1).toLowerCase();
       return {
         __typename: typename,
         ...user._doc,
@@ -72,23 +69,26 @@ module.exports = {
           firstName,
           lastName,
           birthday,
+          confirmPrivilegePassword,
           privilegePassword,
           email,
           password,
           confirmPassword,
           profilePicture,
+          selectedPrivilegeLevel,
         },
       } // args argument
     ) {
-      const privilegeLevel = getPrivilegeLevel(privilegePassword);
       // validate user data
       const { valid, errors } = validateRegisterInput(
         username,
         email,
         password,
         confirmPassword,
-        birthday,
-        privilegeLevel
+
+        privilegePassword,
+        confirmPrivilegePassword,
+        selectedPrivilegeLevel
       );
       if (!valid) {
         throw new UserInputError('Errors', { errors });
@@ -118,6 +118,7 @@ module.exports = {
       // hash password and create an auth token
       //TODO generate random salt and encrypt it.
       password = await bcrypt.hash(password, 12);
+
       const newUser = new User({
         email,
         username,
@@ -125,7 +126,7 @@ module.exports = {
         profilePicture,
         firstName,
         lastName,
-        privilegeLevel,
+        privilegeLevel: selectedPrivilegeLevel,
         birthday: new Date(birthday).toISOString(),
         createdAt: new Date().toISOString(),
       });
@@ -161,9 +162,7 @@ module.exports = {
           };
 
         default:
-          throw new Error(
-            `Invalid privilege level: ${savedUser.privilegeLevel}`
-          );
+          throw new Error(`Invalid privilege level: ${savedUser.privilegeLevel}`);
       }
     },
   },

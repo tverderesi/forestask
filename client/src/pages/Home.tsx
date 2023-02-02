@@ -1,9 +1,17 @@
+/** @format */
+
 import { AnimatePresence, motion } from 'framer-motion';
 import { MouseEvent, useRef, useState, useLayoutEffect } from 'react';
 import Header from '../atoms/Header';
 import { Outlet } from 'react-router-dom';
-
+import { useMutation } from '@apollo/client';
+import { REGISTER_USER_MUTATION } from '../util/GraphQL';
 export default function Home() {
+  const [addUser, { loading }] = useMutation(REGISTER_USER_MUTATION, {
+    onError(err) {
+      console.log(err.graphQLErrors[0].extensions.errors);
+    },
+  });
   return (
     <AnimatePresence>
       {/* //TODO add motion design to this element */}
@@ -18,10 +26,12 @@ export default function Home() {
           opacity: 1,
         }}
         exit={{ y: 100, opacity: 0 }}
-        className='transition-all duration-200 backdrop-blur-xl bg-blend-overlay bg-[var(--card-bg-color)] rounded-2xl min-w-[70vh] min-h-[70vh] p-10 m-auto shadow-2xl top-8 flex flex-col justify-between'
+        className='transition-all duration-200 backdrop-blur-xl bg-blend-overlay 
+        bg-card md:rounded-2xl w-screen h-screen md:w-auto md:h-auto overflow-y-scroll md:overflow-auto md:min-w-[70vh] md:min-h-[70vh] p-5 md:p-10 m-auto shadow top-8 
+        flex flex-col justify-between'
       >
         <Header className='h-[10%]' />
-        <Outlet key='a' />
+        <Outlet key='outlet' />
       </motion.div>
     </AnimatePresence>
   );

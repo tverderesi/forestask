@@ -1,64 +1,37 @@
-import { AiOutlineQuestionCircle } from 'react-icons/ai';
+/** @format */
 
-export function Birthday({ register }): JSX.Element {
-  return (
-    <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>Birthday</label>
-      <input
-        type='date'
-        className='form-control'
-        {...register('birthday')}
-      />
-    </div>
-  );
-}
-
-export function ConfirmPassword({ register }): JSX.Element {
-  return (
-    <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>
-        Confirm Password
-      </label>
-
-      <input
-        placeholder='Confirm Password'
-        required={true}
-        className='form-control'
-        type='password'
-        {...register('confirmPassword')}
-      />
-    </div>
-  );
-}
-
-export function ConfirmPrivilegesPassword({
-  role,
+export function Date({
   register,
+  name,
+  label,
 }: {
-  role: string;
   register: any;
+  name: string;
+  label: any;
+}): JSX.Element {
+  return (
+    <div className='flex flex-col w-full'>
+      <label className='text-center text-base font-semibold mb-2 capitalize w-full'>{label}</label>
+      <input type='date' className='form-control w-full flex' {...register(name)} />
+    </div>
+  );
+}
+
+export function Password({
+  register,
+  name,
+  label,
+  required,
+}: {
+  register: any;
+  name: string;
+  label: string | JSX.Element;
+  required?: true;
 }): JSX.Element {
   return (
     <div className='flex flex-col'>
-      <label className='text-center text-lg font-semibold mb-2 capitalize'>
-        Confirm {role} Password{' '}
-        <div
-          className='tooltip tooltip-warning none'
-          data-tip={
-            "This password was provided to you by your institution. You CAN'T change your privileges after you created your account."
-          }
-        >
-          <AiOutlineQuestionCircle className='inline mb-1' />
-        </div>
-      </label>
-
-      <input
-        placeholder={`${role} Privileges Password`}
-        required={true}
-        className='form-control text-ellipsis capitalize'
-        type='password'
-        {...register('confirmPrivilegePassword')}
-      />
+      <label className='text-center text-base font-semibold mb-2 capitalize'>{label}</label>
+      <input required={required} className='form-control' type='password' {...register(name)} />
     </div>
   );
 }
@@ -66,7 +39,7 @@ export function ConfirmPrivilegesPassword({
 export function Email({ register }) {
   return (
     <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>E-mail</label>
+      <label className='text-center text-base font-semibold mb-2'>E-mail</label>
 
       <input
         placeholder='e-mail'
@@ -82,9 +55,7 @@ export function Email({ register }) {
 export function FirstName({ register }): JSX.Element {
   return (
     <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>
-        First Name
-      </label>
+      <label className='text-center text-base font-semibold mb-2'>First Name</label>
       <input
         placeholder='First Name'
         required={true}
@@ -98,9 +69,7 @@ export function FirstName({ register }): JSX.Element {
 export function LastName({ register }): JSX.Element {
   return (
     <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>
-        Last Name
-      </label>
+      <label className='text-center text-base font-semibold mb-2'>Last Name</label>
       <input
         name='lastName'
         placeholder='Last Name'
@@ -112,56 +81,10 @@ export function LastName({ register }): JSX.Element {
   );
 }
 
-export function Password({ register }): JSX.Element {
-  return (
-    <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>Password</label>
-      <input
-        placeholder='Password'
-        required={true}
-        className='form-control'
-        type='password'
-        {...register('password')}
-      />
-    </div>
-  );
-}
-
-export function PrivilegesPassword({
-  role,
-  register,
-}: {
-  role: string;
-  register: any;
-}): JSX.Element {
-  return (
-    <div className='flex flex-col'>
-      <label className='text-center capitalize text-lg font-semibold mb-2'>
-        {role} Privileges Password{' '}
-        <div
-          className='tooltip tooltip-warning none'
-          data-tip={
-            "This password was provided to you by your institution. You CAN'T change your privileges after you created your account."
-          }
-        >
-          <AiOutlineQuestionCircle className='inline mb-1' />
-        </div>
-      </label>
-
-      <input
-        placeholder={`${role} Privileges Password`}
-        required={true}
-        className='form-control text-ellipsis capitalize'
-        type='password'
-        {...register('privilegePassword')}
-      />
-    </div>
-  );
-}
 export function Username({ register }): JSX.Element {
   return (
     <div className='flex flex-col'>
-      <label className='text-center text-xl font-semibold mb-2'>Username</label>
+      <label className='text-center text-base font-semibold mb-2'>Username</label>
       <input
         placeholder='Username'
         required={true}

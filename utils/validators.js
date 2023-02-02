@@ -1,15 +1,19 @@
-const { ageCalc } = require('./misc');
+/** @format */
+
+const { getPrivilegeLevel } = require('./misc');
 
 module.exports.validateRegisterInput = (
   username,
   email,
   password,
   confirmPassword,
-  birthday,
-  privilegeLevel
+  privilegePassword,
+  confirmPrivilegePassword,
+  selectedPrivilegeLevel
 ) => {
   const errors = {};
-  const age = ageCalc(birthday);
+
+  const privilegeLevel = getPrivilegeLevel(privilegePassword);
 
   switch (true) {
     case username.trim() === '':
@@ -27,10 +31,9 @@ module.exports.validateRegisterInput = (
     ):
       errors.email = 'Email must be a valid email address.';
 
-    case privilegeLevel !== 'STUDENT' && age < 18:
-      errors.age = 'Teachers must be 18 years or older.';
-
     case password === '':
+      errors.password = 'Password must not be empty or contain spaces!';
+    case selectedPrivilegeLevel !== 'STUDENT' && privilegePassword === '':
       errors.password = 'Password must not be empty or contain spaces!';
 
     /**
@@ -42,14 +45,21 @@ module.exports.validateRegisterInput = (
      * - Contains at least one symbol
      * @type {RegExp}
      */
-    case !password.match(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-    ):
+
+    case !password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/):
       errors.password =
         'Password must contain at least one uppercase case, one lowercase letter, one number and one symbol.';
 
     case password !== confirmPassword:
       errors.confirmPassword = 'Passwords must match!';
+
+    case selectedPrivilegeLevel !== 'STUDENT':
+      privilegePassword !== confirmPrivilegePassword
+        ? (errors.privilegePassword = 'Privilege Passwords no not match!')
+        : '';
+
+    // case :
+    //   errors.privilegeLevel = `Privilege Password is incorrect for the level you selected! ${selectedPrivilegeLevel} ${privilegeLevel}`;
   }
   return { errors, valid: Object.keys(errors).length < 1 };
 };

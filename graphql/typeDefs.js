@@ -1,3 +1,5 @@
+/** @format */
+
 const { gql } = require('graphql-tag');
 
 const typeDefs = gql`
@@ -92,6 +94,8 @@ const typeDefs = gql`
     password: String!
     confirmPassword: String!
     profilePicture: String
+    confirmPrivilegePassword: String!
+    selectedPrivilegeLevel: String!
   }
 
   input LogInInput {

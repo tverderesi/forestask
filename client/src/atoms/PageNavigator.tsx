@@ -1,3 +1,5 @@
+/** @format */
+
 import { motion } from 'framer-motion';
 import React from 'react';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
@@ -40,14 +42,14 @@ const PageNavigator: React.FC<Props> = ({
       >
         <BsArrowLeft />
       </button>
-      <div className='flex flex-col items-center '>
+      <div className='xs:flex flex-col items-center hidden   '>
         <ul className='steps steps-horizontal '>
           {typeof steps !== 'boolean' &&
             steps.map((item, idx) => {
               return (
                 <motion.li
                   key={item}
-                  className={`step ${
+                  className={`step cursor-pointer text-xs sm:text-base ${
                     currentPage >= idx + 1 ? 'step-primary' : ''
                   } `}
                   onClick={(e: React.SyntheticEvent) => {

@@ -1,3 +1,5 @@
+/** @format */
+
 import gql from 'graphql-tag';
 
 export const REGISTER_USER_MUTATION = gql`

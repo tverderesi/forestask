@@ -1,4 +1,7 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * @format
+ * @type {import('tailwindcss').Config}
+ */
 
 function withOpacityValue(variable) {
   return ({ opacityValue }) => {
@@ -12,7 +15,10 @@ function withOpacityValue(variable) {
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: { colors: { 'soft-accent': withOpacityValue('--softAccent') } },
+    extend: {
+      colors: { 'soft-accent': withOpacityValue('--softAccent') },
+      screens: { xs: '350px' },
+    },
   },
   plugins: [require('daisyui')],
   daisyui: {
