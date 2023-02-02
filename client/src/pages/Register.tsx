@@ -52,19 +52,7 @@ export default function Register() {
   //prettier-ignore
   const [placeholderNames, setPlaceholderNames] = useState(profilePictureDictionary)
 
-  const confirmPrivilegePasswordLabel = (
-    <>
-      Confirm {selectedRole} Password{' '}
-      <div
-        className='tooltip tooltip-warning none'
-        data-tip={
-          "This password was provided to you by your institution. You CAN'T change your privileges after you created your account."
-        }
-      >
-        <AiOutlineQuestionCircle className='inline mb-1' />
-      </div>
-    </>
-  );
+  const confirmPrivilegePasswordLabel = <>Confirm {selectedRole} Password </>;
 
   const privilegePasswordLabel = (
     <>
@@ -139,7 +127,7 @@ export default function Register() {
 
             {selectedRole &&
               selectedRole !== 'student' && ( //prettier-ignore
-                <div className='flex flex-col md:grid md:grid-cols-2 md:col-span-2 gap-6 border-warning soft-warning rounded-2xl p-3 w-[calc(100%+1.5rem)] -ml-3 overflow-hidden'>
+                <div className='flex flex-col md:grid md:grid-cols-2 md:col-span-2 gap-6 border-warning soft-warning rounded-2xl p-3 w-[calc(100%+1.5rem)] -ml-3 overflow'>
                   {
                     //prettier-ignore
                     <Password register={register} label={privilegePasswordLabel} name='privilegePassword' />
