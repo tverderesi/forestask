@@ -4,7 +4,7 @@ import App from './App';
 import { InMemoryCache, createHttpLink, ApolloProvider, ApolloClient } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-const httpLink = createHttpLink({ uri: 'https://florestarefa-server.onrender.com/' });
+const httpLink = createHttpLink({ uri: 'https://localhost:4000' });
 
 const authLink = setContext(() => {
   const token = localStorage.getItem('jwtToken');

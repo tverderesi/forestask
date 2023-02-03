@@ -2,7 +2,7 @@
 
 [data-theme='light'] {
   --leafy-green: #017933;
-  --bg-card: #f9fafba0;
+  --bg-card: #f9fafb8a;
   --bg-card-2: #f9fafb62;
   --bg-card-3: #f9fafbbf;
   --bg-card-solid: #f1f1f1cd;
@@ -109,9 +109,7 @@ option {
 textarea.form-control {
   min-height: 2.25rem !important;
 }
-.shadow {
-  box-shadow: var(--card-shadow);
-}
+
 .form-control-ddown {
   min-height: 2.25rem;
 }
@@ -150,7 +148,7 @@ main {
 }
 
 .card-shadow {
-  box-shadow: var(--card-shadow);
+  background-color: red;
 }
 
 .btn-transparent {
@@ -203,13 +201,14 @@ main {
   color: black;
 }
 
-.activity-card {
+.card-style {
   backdrop-filter: blur(20px);
   background-color: var(--bg-card);
   border-radius: 16px;
   border: none;
   box-shadow: var(--card-shadow);
   background-blend-mode: overlay;
+  box-shadow: var(--card-shadow);
 }
 
 .check-button {
@@ -223,6 +222,7 @@ main {
 .cardTitle {
   font-size: 1rem;
   font-weight: 600;
+  background-color: red;
 }
 
 .soft-accent {
@@ -314,4 +314,55 @@ body::-webkit-scrollbar {
 
 .selected-avatar-big {
   box-shadow: 0 1px 5px 0 var(--accent-2), 0 0 0 3px var(--accent-2);
+}
+
+.btn-translucent,
+.btn-translucent:hover {
+  background-color: #57575749;
+  box-shadow: 0px 0px 3px #66666633;
+  color: var(--font-color);
+  border: none;
+}
+
+.btn-translucent:disabled {
+  background-color: #cacaca52;
+  box-shadow: 0px 0px 3px #66666618;
+}
+.tracking-in-expand-fwd-bottom {
+  -webkit-animation: tracking-in-expand-fwd-bottom 1s cubic-bezier(0.215, 0.61, 0.355, 1) 2
+    alternate both;
+  animation: tracking-in-expand-fwd-bottom 1s cubic-bezier(0.215, 0.61, 0.355, 1) 2 alternate both;
+}
+@-webkit-keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(500px);
+    transform: translateZ(-700px) translateY(500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(500px);
+    transform: translateZ(-700px) translateY(500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
 }

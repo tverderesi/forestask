@@ -1,3 +1,5 @@
+/** @format */
+
 import { ReactNode } from 'react';
 
 //Semi-Primitive Types
@@ -15,7 +17,7 @@ export type Card = {
   xp: number;
   checked: any;
   title: string;
-  deadline: number;
+  deadline: Date;
 };
 
 export type AccordionType = {

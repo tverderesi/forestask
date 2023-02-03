@@ -4,13 +4,6 @@
     "level": 0,
     "xp": 0
   },
-  "subjects": [
-    "Music",
-    "Math",
-    "Portuguese",
-    "English",
-    "Science"
-  ],
   "activities": [
     "Test",
     "Homework"
@@ -37,7 +30,7 @@
       "subject": "Portuguese",
       "type": "Homework",
       "checked": true,
-      "xp": "82",
+      "xp": 82,
       "deadline": "2022-11-19T02:16:15.624Z"
     },
     {

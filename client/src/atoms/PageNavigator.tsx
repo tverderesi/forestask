@@ -10,12 +10,16 @@ type Props =
       setCurrentPage: (page: number) => void;
       steps: string[];
       totalPages?: number;
+      color?: string;
+      height?: string;
     }
   | {
       currentPage: number;
       setCurrentPage: (page: number) => void;
       steps?: boolean;
       totalPages: number;
+      color?: string;
+      height?: string;
     };
 
 const PageNavigator: React.FC<Props> = ({
@@ -23,6 +27,8 @@ const PageNavigator: React.FC<Props> = ({
   setCurrentPage,
   steps = false,
   totalPages = typeof steps !== 'boolean' && steps.length,
+  color = 'primary',
+  height = '10%',
 }) => {
   const handleNext = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -34,9 +40,13 @@ const PageNavigator: React.FC<Props> = ({
   };
 
   return (
-    <div className='flex justify-between items-start h-[10%] mx-auto self-center font-semibold'>
+    <div
+      className={`flex justify-between items-start h-[${height}] mx-auto self-center font-semibold`}
+    >
       <button
-        className='btn btn-sm btn-square btn-primary capitalize text-base mt-1 mr-6'
+        className={`btn btn-sm btn-square btn-${color} capitalize text-base ${
+          steps && 'mt-1 mr-6'
+        }`}
         disabled={currentPage === 1}
         onClick={handleBack}
       >
@@ -50,7 +60,7 @@ const PageNavigator: React.FC<Props> = ({
                 <motion.li
                   key={item}
                   className={`step cursor-pointer text-xs sm:text-base ${
-                    currentPage >= idx + 1 ? 'step-primary' : ''
+                    currentPage >= idx + 1 ? `step-${color}` : ''
                   } `}
                   onClick={(e: React.SyntheticEvent) => {
                     e.preventDefault();
@@ -64,7 +74,9 @@ const PageNavigator: React.FC<Props> = ({
         </ul>
       </div>
       <button
-        className='btn btn-primary btn-square btn-sm capitalize mt-1 text-base font-semibold ml-6'
+        className={`btn btn-${color} btn-square btn-sm capitalize text-base font-semibold ${
+          steps && 'mt-1 ml-6'
+        } `}
         disabled={currentPage === totalPages}
         onClick={handleNext}
       >

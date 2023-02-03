@@ -1,3 +1,5 @@
+/** @format */
+
 import tinycolor from 'tinycolor2';
 
 export default function paletteCreator(
