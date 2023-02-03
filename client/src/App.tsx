@@ -22,7 +22,7 @@ function App() {
               <Route
                 element={
                   <AuthRoute>
-                    <Viewport />
+                    <Home />
                   </AuthRoute>
                 }
                 path='/'

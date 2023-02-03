@@ -137,7 +137,7 @@ export default function Register() {
               placeholder={'Username'}
             />
 
-            <Email register={register} />
+            <Email register={register} name='email' />
 
             <Date name='birthday' register={register} label='Birthday' />
 

@@ -1,13 +1,12 @@
 /** @format */
 
 import { useState } from 'react';
-import { Text, TextArea, Dropdown } from '../Form/Form';
+import { Text, TextArea, Dropdown, Date, Number } from '../Form/Form';
 import { useForm } from 'react-hook-form';
 import { BsPlusCircle } from 'react-icons/bs';
 
 function AddItem() {
-  const [subject, setSubject] = useState('');
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       id: '',
       content: '',
@@ -18,8 +17,12 @@ function AddItem() {
       deadline: 0,
     },
   });
-  const handleChange = (newValue: string) => {
-    setSubject(newValue);
+
+  const [subject, setSubject] = useState('');
+  const [activity, setActitivy] = useState('');
+
+  const handleChange = (newValue: string, callback: any) => {
+    callback(newValue);
   };
 
   return (
@@ -32,14 +35,30 @@ function AddItem() {
         <Text label='Title' name='title' placeholder='Title' register={register} />
 
         <Dropdown
-          name='Subject'
+          name='subject'
           items={['A', 'B', 'C', 'D', 'E']}
           onChange={handleChange}
-          label='Subjects'
+          label='Subject'
+          callback={setSubject}
         />
         <TextArea label='Content' placeholder='Content' register={register} name='content' />
-
-        <div className='flex'></div>
+        <Date label='Deadline' register={register} name='deadline' />
+        <Number
+          label='XP'
+          register={register}
+          name='xp'
+          options={{ min: 0, max: 100 }}
+          min={0}
+          max={100}
+        />
+        <Dropdown
+          name='activity'
+          items={['A', 'B', 'C', 'D', 'E']}
+          onChange={handleChange}
+          label='Activity'
+          callback={setActitivy}
+          direction='top'
+        />
       </div>
     </div>
   );
