@@ -6,9 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 import DotenvWebpackPlugin from 'dotenv-webpack';
 
 
-const httpLink = createHttpLink({ uri: 'localhost:4000' });
-// https://florestarefa-server.onrender.com/graphql
-console.log(process.env.SERVER_URI);
+const httpLink = createHttpLink({ uri: 'https://florestarefa-server.onrender.com/graphql' });
 
 const authLink = setContext(() => {
   const token = localStorage.getItem('jwtToken');
