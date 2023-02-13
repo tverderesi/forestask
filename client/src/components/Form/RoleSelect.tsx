@@ -19,7 +19,7 @@ export function RoleSelect({
     >
       {' '}
       <h3 className='text-2xl mb-5 relative top-[-1.625rem]'>I'm a...</h3>
-      <div className='flex flex-col sm:grid sm:grid-cols-3 gap-2 relative top-[-1.625rem]'>
+      <div className='flex flex-col sm:grid sm:grid-cols-3 gap-8 md:gap-4 relative top-[-1.625rem]'>
         {[
           { role: 'student', icon: <FaGraduationCap size={60} /> },
           { role: 'teacher', icon: <FaChalkboardTeacher size={60} /> },

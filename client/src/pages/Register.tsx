@@ -15,6 +15,7 @@ import { REGISTER_USER_MUTATION } from '../util/GraphQL';
 import Loading from '../components/layout/Loading';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../atoms/BackButton';
 
 export default function Register() {
   const { register, handleSubmit } = useForm({
@@ -106,7 +107,7 @@ export default function Register() {
           opacity: 1,
         }}
         exit={{ x: -200, opacity: 0 }}
-      >
+      > <BackButton />
         {currentPage === 1 && <RoleSelect selectedRole={selectedRole} handleClick={handleClick} />}
         {currentPage === 2 && (
           <motion.div
