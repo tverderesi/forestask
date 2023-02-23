@@ -9,6 +9,7 @@ import AppContext from '../../context/AppContext';
 import CardListTop from './CardListTop';
 import { NoCards } from '../activityCard/NoCards';
 
+
 function CardList() {
   const { maxPages, cardsPerPage, page, direction } = useContext(AppContext);
 

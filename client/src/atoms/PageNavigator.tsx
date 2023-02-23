@@ -52,7 +52,7 @@ const PageNavigator: React.FC<Props> = ({
       >
         <BsArrowLeft />
       </button>
-      <div className='xs:flex flex-col items-center hidden   '>
+      <div className='xs:flex flex-col items-center '>
         <ul className='steps steps-horizontal '>
           {typeof steps !== 'boolean' &&
             steps.map((item, idx) => {

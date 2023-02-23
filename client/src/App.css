@@ -1,4 +1,6 @@
 /** @format */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
 
 [data-theme='light'] {
   --leafy-green: #017933;
@@ -54,6 +56,9 @@
   --bg-image-url: url('../public/media/background/7.png');
 }
 
+* {    
+  font-family: 'Noto Sans JP', sans-serif;
+}
 .bg-image {
   background-image: var(--bg-image-url) !important;
 }
@@ -168,20 +173,20 @@ main {
 .btn-bold-1 {
   background-color: var(--accent-1);
   border: none;
-  color: var(--font-color) !important;
+
 }
 
-.btn-bold-1:hover {
-  background-color: var(--accent-1);
-}
 .btn-bold-2 {
   background-color: var(--accent-2);
   border: none;
-  color: var(--font-color) !important;
+  
 }
-
-.btn .btn-bold-2:hover {
-  background-color: var(--accent-2);
+.btn.btn-bold-1:hover  {
+  background-color: var(--accent-1) !important;
+  border: none;
+}
+.btn.btn-bold-2:hover  {
+  background-color: var(--accent-2) !important;
   border: none;
 }
 .btn-invisible {

@@ -3,9 +3,13 @@
 import App from './App';
 import { InMemoryCache, createHttpLink, ApolloProvider, ApolloClient } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import DotenvWebpackPlugin from 'dotenv-webpack';
 
-const httpLink = createHttpLink({ uri: 'https://florestarefa-server.onrender.com/graphql' });
-console.log(process.env.SERVER_URI);
+
+// const httpLink = createHttpLink({ uri: 'https://florestarefa-server.onrender.com/graphql' });
+
+const httpLink = createHttpLink({ uri: 'https://localhost:400-' });
+
 const authLink = setContext(() => {
   const token = localStorage.getItem('jwtToken');
   return {
