@@ -1,8 +1,6 @@
-/** @format */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
 
-
-[data-theme='light'] {
+[data-theme="light"] {
   --leafy-green: #017933;
   --bg-card: #f9fafb8a;
   --bg-card-2: #f9fafb62;
@@ -12,7 +10,7 @@
   --accent-2: #f000b8;
   --accent-3: #f57bfb;
   --bg-accent-1: #9a9c9e44;
-  --bg-image-url: url('../public/media/background/4.png');
+  --bg-image-url: url("../public/media/background/4.png");
   --bg-accent-2: #9a9c9e28;
   --bg-accent-3: #bbd3c3bd;
   --card-shadow: 5px 5px 20px #3a3a3a38;
@@ -22,7 +20,7 @@
   --bg-soft-warning: #e0a8a841;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   /* --card-color: #37393b;
   --cardhover: #515253;
   --homework: ;
@@ -42,7 +40,7 @@
   --accent-2: #f000b8;
   --accent-3: #f57bfb;
   --bg-accent: #9a9c9e44;
-  --bg-image-url: url('../public/media/background/4.png');
+  --bg-image-url: url("../public/media/background/4.png");
   --bg-accent-1: #49494977;
   --bg-accent-2: #9a9c9e14;
   --bg-accent-3: hsla(354, 30%, 20%, 0.741);
@@ -53,11 +51,11 @@
   --bg-soft-warning: #e0a8a841;
   --font-color: #f5f5f5;
   --placeholder: #ffffff81;
-  --bg-image-url: url('../public/media/background/7.png');
+  --bg-image-url: url("../public/media/background/7.png");
 }
 
-* {    
-  font-family: 'Noto Sans JP', sans-serif;
+* {
+  font-family: "Noto Sans JP", sans-serif;
 }
 .bg-image {
   background-image: var(--bg-image-url) !important;
@@ -72,8 +70,8 @@
 }
 
 .form-control,
-input.form-control[type='password'],
-input.form-control[type='date'] {
+input.form-control[type="password"],
+input.form-control[type="date"] {
   border-radius: 1rem;
   font-weight: 600;
   padding: 0.25rem 0.75rem;
@@ -101,7 +99,7 @@ textarea.form-control {
   font-size: 0.85rem;
   align-self: center;
   width: 100%;
-  appearance: 'none';
+  appearance: "none";
 }
 
 option {
@@ -173,19 +171,17 @@ main {
 .btn-bold-1 {
   background-color: var(--accent-1);
   border: none;
-
 }
 
 .btn-bold-2 {
   background-color: var(--accent-2);
   border: none;
-  
 }
-.btn.btn-bold-1:hover  {
+.btn.btn-bold-1:hover {
   background-color: var(--accent-1) !important;
   border: none;
 }
-.btn.btn-bold-2:hover  {
+.btn.btn-bold-2:hover {
   background-color: var(--accent-2) !important;
   border: none;
 }
@@ -334,9 +330,10 @@ body::-webkit-scrollbar {
   box-shadow: 0px 0px 3px #66666618;
 }
 .tracking-in-expand-fwd-bottom {
-  -webkit-animation: tracking-in-expand-fwd-bottom 1s cubic-bezier(0.215, 0.61, 0.355, 1) 2
-    alternate both;
-  animation: tracking-in-expand-fwd-bottom 1s cubic-bezier(0.215, 0.61, 0.355, 1) 2 alternate both;
+  -webkit-animation: tracking-in-expand-fwd-bottom 1s
+    cubic-bezier(0.215, 0.61, 0.355, 1) 2 alternate both;
+  animation: tracking-in-expand-fwd-bottom 1s
+    cubic-bezier(0.215, 0.61, 0.355, 1) 2 alternate both;
 }
 @-webkit-keyframes tracking-in-expand-fwd-bottom {
   0% {

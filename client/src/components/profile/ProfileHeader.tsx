@@ -2,7 +2,7 @@ import { setLastLevel } from '../../context/AppFunctions';
 import ProgressBar from './ProgressBar';
 
 export default function ProfileHeader({ userData, gameLevels }) {
-  const lastLevel = setLastLevel(gameLevels);
+  const lastLevel = setLastLevel(gameLevels)
 
   return (
     <figure className='flex py-5 mx-auto justify-between w-[90%]'>

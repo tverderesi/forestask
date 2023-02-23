@@ -4,13 +4,13 @@ import './App.css';
 import { AppProvider } from './context/AppContext';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import Onboard from './pages/Onboard';
 import HomeButtons from './components/layout/login/HomeButtons';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
 import AuthRoute from './util/AuthRoute';
-import Viewport from './components/Viewport';
+import StudentHome from './pages/StudentHome';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
               <Route
                 element={
                   <AuthRoute>
-                    <Home />
+                    <Onboard />
                   </AuthRoute>
                 }
                 path='/'
@@ -33,7 +33,7 @@ function App() {
                 {/* prettier-ignore */}
                 <Route path='/register' element={<AuthRoute><Register /></AuthRoute>} />
               </Route>
-              <Route path='/test' element={<Viewport />} />
+              <Route path='/test' element={<StudentHome />} />
             </Routes>
           </Router>
         </AppProvider>

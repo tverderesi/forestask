@@ -7,7 +7,8 @@ import ActivityCard from '../activityCard/AcitivityCard';
 import AppContext from '../../context/AppContext';
 
 import CardListTop from './CardListTop';
-import { NoCards } from '../activityCard/NoCards';
+import NoCards from '../activityCard/NoCards';
+
 
 
 function CardList() {
@@ -37,7 +38,7 @@ function CardList() {
   return (
     <div
       //prettier-ignore
-      className={`flex flex-col ${page === maxPages ? `content-start` : `content-between`} w-[60vw] min-w-[350px] self-center relative py-8 pl-[20vw] pr-[5vw]  overflow-x-hidden`}
+      className={`flex flex-col ${page === maxPages ? `content-start` : `content-between`} w-[60vw] min-w-[350px] self-center absolute right-0 top-0 py-8 pl-[20vw] pr-[5vw]   overflow-x-hidden`}
     >
       <AnimatePresence mode='popLayout'>
         <motion.div
@@ -82,6 +83,7 @@ function CardList() {
                 className={page === maxPages ? `mb-3` : ''}
               >
                 <ActivityCard item={item} />
+                     <NoCards />
               </motion.div>
             );
           })

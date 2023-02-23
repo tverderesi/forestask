@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Header from '../atoms/Header';
 import { Outlet } from 'react-router-dom';
 
-export default function Home() {
+export default function Onboard() {
   return (
     <AnimatePresence>
       {/* //TODO add motion design to this element */}
