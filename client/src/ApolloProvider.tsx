@@ -8,7 +8,7 @@ import DotenvWebpackPlugin from 'dotenv-webpack';
 
 // const httpLink = createHttpLink({ uri: 'https://florestarefa-server.onrender.com/graphql' });
 
-const httpLink = createHttpLink({ uri: 'https://localhost:400-' });
+const httpLink = createHttpLink({ uri: 'https://localhost:4000' });
 
 const authLink = setContext(() => {
   const token = localStorage.getItem('jwtToken');
