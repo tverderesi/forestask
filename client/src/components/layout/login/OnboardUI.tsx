@@ -6,7 +6,7 @@ import { BsTree } from 'react-icons/bs';
 import TreeIconStatic from '../icons/TreeIconStatic';
 import { motion } from 'framer-motion';
 
-export default function HomeButtons() {
+export default function OnboardUI() {
   return (
     <>
       <motion.div

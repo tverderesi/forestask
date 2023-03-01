@@ -1,6 +1,6 @@
 /** @format */
 
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const REGISTER_USER_MUTATION = gql`
   mutation Register($registerInput: RegisterInput!) {
@@ -114,6 +114,41 @@ export const LOGIN_USER_MUTATION = gql`
         profilePicture
         password
       }
+    }
+  }
+`;
+
+export const GET_USER_QUERY = gql`
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      firstName
+      lastName
+      createdAt
+      password
+      email
+      privilegeLevel
+      profilePicture
+      birthday
+    }
+  }
+`;
+
+export const GET_USERS_QUERY = gql`
+  query GetUsers {
+    getUsers {
+      id
+      username
+      firstName
+      lastName
+      createdAt
+      password
+      privilegeLevel
+      token
+      email
+      profilePicture
+      birthday
     }
   }
 `;

@@ -27,7 +27,8 @@ export default function Login() {
   const [loginUser, { loading }] = useMutation(LOGIN_USER_MUTATION, {
     update(_, { data: { login: userData } }) {
       context.login(userData);
-      navigate('/test', { replace: true });
+   
+      navigate(userData.privilegeLevel !== 'STUDENT'? '/test' : '/home', { replace: true });
     },
     onError(err: any) {
       setErrors(err.graphQLErrors[0]?.extensions?.errors);

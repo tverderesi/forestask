@@ -1,6 +1,6 @@
 /** @format */
 
-const { gql } = require('graphql-tag');
+const { gql } = require("graphql-tag");
 
 const typeDefs = gql`
   type Subject {
@@ -29,6 +29,8 @@ const typeDefs = gql`
     email: String!
     token: String!
     privilegeLevel: PrivilegeLevel!
+    profilePicture: String!
+    birthday: String!
   }
 
   type Student implements User {
@@ -73,6 +75,7 @@ const typeDefs = gql`
     token: String!
     profilePicture: String!
     password: String!
+    birthday: String!
   }
 
   type Assignment {
@@ -105,6 +108,8 @@ const typeDefs = gql`
 
   type Query {
     getSubjects: [Subject]
+    getUser(id: ID!): User!
+    getUsers: [User]
   }
   type Mutation {
     addSubject(name: String!, teacher: String, students: [String]): Subject
