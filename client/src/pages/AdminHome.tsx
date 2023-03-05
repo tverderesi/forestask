@@ -9,14 +9,16 @@ export default function AdminHome() {
   const userData = useQuery(GET_USER_QUERY, {
     variables: { id: user.id },
   }).data?.getUser;
-
+  console.log(user);
+  console.log(userData);
   return (
     <div className="bg-slate-300/90 w-screen h-screen backdrop-blur-3xl">
+      HIIIIIIIIIIII
       <Profile />
     </div>
   );
 }
 
-export function Profile({}) {
+export function Profile() {
   return <div></div>;
 }

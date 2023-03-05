@@ -1,6 +1,6 @@
 /** @format */
-import { useEffect, useState } from 'react';
-import { FaCaretDown } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import { FaCaretDown } from "react-icons/fa";
 
 export function Date({
   register,
@@ -14,9 +14,15 @@ export function Date({
   options?: any;
 }): JSX.Element {
   return (
-    <div className='flex flex-col w-full'>
-      <label className='text-center text-base font-semibold mb-2 capitalize w-full'>{label}</label>
-      <input type='date' className='form-control flex flex-row' {...register(name, { options })} />
+    <div className="flex flex-col w-full">
+      <label className="text-center  font-semibold mb-2 capitalize w-full">
+        {label}
+      </label>
+      <input
+        type="date"
+        className="form-control flex flex-row text-sm"
+        {...register(name, { options })}
+      />
     </div>
   );
 }
@@ -33,22 +39,30 @@ export function Password({
   options?: any;
 }): JSX.Element {
   return (
-    <div className='flex flex-col'>
-      <label className={`text-center text-base font-semibold mb-2 capitalize`}>{label}</label>
-      <input className='form-control' type='password' {...register(name, { ...options })} />
+    <div className="flex flex-col w-full">
+      <label className={`text-center font-semibold mb-2 capitalize w-full`}>
+        {label}
+      </label>
+      <input
+        className="form-control text-sm w-full"
+        type="password"
+        {...register(name, { ...options })}
+      />
     </div>
   );
 }
 
 export function Email({ register, name, options = {} }) {
   return (
-    <div className='flex flex-col'>
-      <label className='text-center text-base font-semibold mb-2'>E-mail</label>
+    <div className="flex flex-col">
+      <label className="text-center  font-semibold text-night mb-2">
+        E-mail
+      </label>
       <input
-        placeholder='e-mail'
+        placeholder="e-mail"
         required={true}
-        className='form-control'
-        type='email'
+        className="form-control text-sm"
+        type="email"
         {...register(name, { ...options })}
       />
     </div>
@@ -60,16 +74,16 @@ export function Text({
   label,
   placeholder,
   name,
-  className = '',
+  className = "",
   options = {},
 }): JSX.Element {
   return (
-    <div className={`flex flex-col ${className}`}>
-      <label className='text-center text-base font-semibold mb-2'>{label}</label>
+    <div className={`flex flex-col w-full`}>
+      <label className="text-center  font-semibold mb-2">{label}</label>
       <input
         placeholder={placeholder}
         required={true}
-        className='form-control'
+        className="form-control text-sm"
         {...register(name, { ...options })}
       />
     </div>
@@ -77,12 +91,12 @@ export function Text({
 }
 export function TextArea({ register, name, label, placeholder, options = {} }) {
   return (
-    <div className='flex flex-col col-span-2'>
-      <label className='text-center w-full font-semibold mb-2'>{label}</label>
+    <div className="flex flex-col col-span-2">
+      <label className="text-center w-full font-semibold mb-2">{label}</label>
 
       <textarea
-        className='form-control mb-4 w-full'
-        aria-label='With textarea'
+        className="form-control mb-4 w-full"
+        aria-label="With textarea"
         placeholder={placeholder}
         {...register(name, { ...options })}
       />
@@ -98,30 +112,32 @@ export function Dropdown({
   onChange,
   label,
   callback,
-  direction = 'bottom',
+  direction = "bottom",
 }: {
   items: string[];
   name: string;
   onChange;
   label;
   callback;
-  direction?: 'top' | 'bottom' | 'left' | 'right';
+  direction?: "top" | "bottom" | "left" | "right";
 }) {
-  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
     onChange(selectedItem, callback);
   }, [selectedItem]);
 
   return (
-    <div className='flex flex-col'>
-      <label className='text-center w-full font-semibold mb-2'>{label}</label>
-      <div className={`dropdown dropdown-${direction} dropdown-hover dropdown-end justify-between`}>
+    <div className="flex flex-col">
+      <label className="text-center w-full font-semibold mb-2">{label}</label>
+      <div
+        className={`dropdown dropdown-${direction} dropdown-hover dropdown-end justify-between`}
+      >
         <label
           tabIndex={0}
-          className='form-control rounded-full no-animation capitalize font-bold text-base mx-auto w-full h-full '
+          className="form-control rounded-full no-animation capitalize font-bold text-base mx-auto w-full h-full "
         >
-          <span className='flex items-center justify-between px-2'>
+          <span className="flex items-center justify-between px-2">
             {!selectedItem ? name : selectedItem}
             <FaCaretDown />
           </span>
@@ -134,15 +150,15 @@ export function Dropdown({
             return (
               <li
                 className={`font-semibold align-middle border-b ${
-                  idx === items.length ? '' : 'border-gray-400/20'
+                  idx === items.length ? "" : "border-gray-400/20"
                 } py-2 mx-1 cursor-pointer`}
                 onClick={(e: React.SyntheticEvent) => {
                   e.preventDefault();
                   setSelectedItem(item);
                 }}
               >
-                <label htmlFor='add-item cursor-pointer'>
-                  <span className='cursor-pointer'>{item}</span>
+                <label htmlFor="add-item cursor-pointer">
+                  <span className="cursor-pointer">{item}</span>
                 </label>
               </li>
             );
@@ -153,15 +169,22 @@ export function Dropdown({
   );
 }
 
-export function Number({ label, name, register, options = {}, min, max }): JSX.Element {
+export function Number({
+  label,
+  name,
+  register,
+  options = {},
+  min,
+  max,
+}): JSX.Element {
   return (
-    <div className='flex flex-col'>
-      <label className='text-center w-full font-semibold mb-2'>{label}</label>
+    <div className="flex flex-col">
+      <label className="text-center w-full font-semibold mb-2">{label}</label>
       <input
-        type='number'
+        type="number"
         min={min}
         max={max}
-        className='form-control'
+        className="form-control"
         {...register(name, options)}
       />
     </div>
@@ -171,8 +194,8 @@ export function Number({ label, name, register, options = {}, min, max }): JSX.E
 export function Submit({ value }) {
   return (
     <input
-      className='btn btn-secondary btn-sm my-2 col-span-2 xs:col-span-4 sm:col-span-8 mx-auto'
-      type='submit'
+      className="btn btn-secondary btn-sm my-2 col-span-2 xs:col-span-4 sm:col-span-8 mx-auto"
+      type="submit"
       value={value}
     />
   );

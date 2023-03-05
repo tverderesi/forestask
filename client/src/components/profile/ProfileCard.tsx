@@ -11,7 +11,7 @@ import { BsCheckLg } from "react-icons/bs";
 import ProfileHeader from "./ProfileHeader";
 import FiltersRow from "./FiltersRow";
 import FiltersHeader from "./FiltersHeader";
-import Header from "../../atoms/Header";
+import Header from "../../atoms/Logo";
 
 function ProfileCard({ userData }) {
   const {

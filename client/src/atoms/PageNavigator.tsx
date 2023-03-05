@@ -1,8 +1,8 @@
 /** @format */
 
-import { motion } from 'framer-motion';
-import React from 'react';
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { motion } from "framer-motion";
+import React from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 type Props =
   | {
@@ -26,9 +26,9 @@ const PageNavigator: React.FC<Props> = ({
   currentPage,
   setCurrentPage,
   steps = false,
-  totalPages = typeof steps !== 'boolean' && steps.length,
-  color = 'primary',
-  height = '10%',
+  totalPages = typeof steps !== "boolean" && steps.length,
+  color = "primary",
+  height = "10%",
 }) => {
   const handleNext = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -45,42 +45,42 @@ const PageNavigator: React.FC<Props> = ({
     >
       <button
         className={`btn btn-sm btn-square btn-${color} capitalize text-base ${
-          steps && 'mt-1 mr-6'
+          steps && "mt-1 mr-6"
         }`}
         disabled={currentPage === 1}
         onClick={handleBack}
       >
-        <BsArrowLeft />
+        <FaArrowLeft />
       </button>
-      <div className='xs:flex flex-col items-center '>
-        <ul className='steps steps-horizontal '>
-          {typeof steps !== 'boolean' &&
+      <div className="xs:flex flex-col items-center ">
+        <ul className="steps steps-horizontal ">
+          {typeof steps !== "boolean" &&
             steps.map((item, idx) => {
               return (
                 <motion.li
                   key={item}
-                  className={`step cursor-pointer text-xs sm:text-base ${
-                    currentPage >= idx + 1 ? `step-${color}` : ''
+                  className={`step cursor-pointer text-extrabold sm:text-base ${
+                    currentPage >= idx + 1 ? `step-${color}` : ""
                   } `}
                   onClick={(e: React.SyntheticEvent) => {
                     e.preventDefault();
                     setCurrentPage(idx + 1);
                   }}
                 >
-                  {item}
+                  <span className="text-sm mt-1">{item}</span>
                 </motion.li>
               );
             })}
         </ul>
       </div>
       <button
-        className={`btn btn-${color} btn-square btn-sm capitalize text-base font-semibold ${
-          steps && 'mt-1 ml-6'
+        className={`btn btn-${color} btn-square btn-sm bg-mauve capitalize text-base font-semibold ${
+          steps && "mt-1 ml-6"
         } `}
         disabled={currentPage === totalPages}
         onClick={handleNext}
       >
-        <BsArrowRight />
+        <FaArrowRight />
       </button>
     </div>
   );
