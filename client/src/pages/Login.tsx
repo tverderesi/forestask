@@ -28,7 +28,7 @@ export default function Login() {
     update(_, { data: { login: userData } }) {
       context.login(userData);
 
-      navigate("/home", {
+      navigate("/app/home", {
         replace: true,
       });
     },
