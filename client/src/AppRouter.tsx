@@ -6,15 +6,14 @@ import Login from "./pages/Login";
 import AuthRoute from "./util/AuthRoute";
 import StudentHome from "./pages/StudentHome";
 import Home from "./pages/Home";
-
 import NotFound from "./pages/NotFound";
-import AppHome, { TeacherHome } from "./pages/AppHome";
+import AppHome from "./pages/AppHome";
+import { TeacherHome } from "./pages/TeacherHome";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import AdminHome from "./pages/AdminHome";
 
 export function AppRouter() {
-  const { user } = useContext(AuthContext) as any;
   return (
     <Router>
       <Routes>
@@ -27,20 +26,7 @@ export function AppRouter() {
           <Route path="/app/login" element={<Login />} />
           <Route path="/app/register" element={<Register />} />
         </Route>
-        <Route path="app/home/" element={<AppHome />}>
-          <Route
-            path="app/home/:id"
-            element={
-              user.privilegeLevel === "ADMIN" ? (
-                <AdminHome />
-              ) : user.privilegeLevel === "STUDENT" ? (
-                <StudentHome />
-              ) : (
-                <TeacherHome />
-              )
-            }
-          />
-        </Route>
+        <Route path="app/home/" element={<AppHome />} />
       </Routes>
     </Router>
   );

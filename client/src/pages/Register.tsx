@@ -110,7 +110,6 @@ export default function Register() {
         }}
         exit={{ x: -200, opacity: 0 }}
       >
-        {" "}
         {currentPage === 1 && (
           <RoleSelect selectedRole={selectedRole} handleClick={handleClick} />
         )}
