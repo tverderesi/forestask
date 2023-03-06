@@ -3,15 +3,9 @@ import Onboard from "./pages/Onboard";
 import OnboardUI from "./components/layout/login/OnboardUI";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import AuthRoute from "./util/AuthRoute";
-import StudentHome from "./pages/StudentHome";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import AppHome from "./pages/AppHome";
-import { TeacherHome } from "./pages/TeacherHome";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
-import AdminHome from "./pages/AdminHome";
 
 export function AppRouter() {
   return (
