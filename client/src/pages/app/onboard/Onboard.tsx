@@ -1,9 +1,9 @@
 /** @format */
 
 import { AnimatePresence, motion } from "framer-motion";
-import Logo from "../atoms/Logo";
+import Logo from "../../../atoms/Logo";
 import { Outlet, useLocation } from "react-router-dom";
-import BackButton from "../atoms/BackButton";
+import BackButton from "../../../atoms/interface/BackButton";
 
 export default function Onboard() {
   const location = useLocation();
@@ -11,7 +11,6 @@ export default function Onboard() {
   return (
     <div className="h-screen w-screen bg-image flex items-center justify-center ">
       <AnimatePresence>
-        {/* //TODO add motion design to this element */}
         <motion.div
           key="home"
           initial={{
@@ -28,7 +27,7 @@ export default function Onboard() {
         flex flex-col justify-between z-[2] "
         >
           <Logo className="h-[10%]" />
-          {location.pathname !== "/app" ? <BackButton /> : ""}
+          {location.pathname !== "/app" ? <BackButton href="/app" /> : ""}
           <Outlet key="outlet" />
         </motion.div>
       </AnimatePresence>

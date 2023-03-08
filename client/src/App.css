@@ -17,7 +17,7 @@
   --lavender-web: #e9edfcff;
 
   /*Previous Color Palette*/
-  --bg-card: #e9edfc8a;
+  --bg-card: #e9edfc90;
   --bg-card-2: #e9edfc62;
   --bg-card-3: #e9edfcbf;
   --bg-card-solid: #f1f1f1cd;
@@ -58,7 +58,7 @@
   --dark-purple: #19071aff;
   --vermilion: #de413aff;
 
-  --bg-card: #151515db;
+  --bg-card: #15151590;
   --bg-card-2: #2f2f2fdb;
   --bg-card-3: #484848bf;
   --bg-card-solid: #0b0b0bbf;
@@ -244,7 +244,6 @@ main {
 .cardTitle {
   font-size: 1rem;
   font-weight: 600;
-  background-color: red;
 }
 
 .soft-accent {
@@ -277,7 +276,7 @@ input.form-control.w-full.flex {
 }
 
 .steps .step::before {
-  @apply bg-night;
+  @apply bg-night-900;
   height: 0.15rem;
   width: 60%;
 }
@@ -385,6 +384,19 @@ body::-webkit-scrollbar {
   animation: tracking-in-expand-fwd-bottom 1s
     cubic-bezier(0.215, 0.61, 0.355, 1) 2 alternate both;
 }
+.dropdown:focus .dropdown-content-full,
+.dropdown:focus-within .dropdown-content-full {
+  background-color: rgba(255, 192, 203, 0.451) !important;
+  width: 100vw;
+  left: -0.5rem;
+  top: 100%;
+
+  position: absolute;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 @-webkit-keyframes tracking-in-expand-fwd-bottom {
   0% {
     letter-spacing: -0.5em;

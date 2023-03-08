@@ -1,8 +1,8 @@
 /** @format */
 
-import { useState } from 'react';
+import { useState } from "react";
+import { PageNavigator } from "../../atoms/interface/PageNavigator";
 
-import PageNavigator from '../../atoms/PageNavigator';
 function CardListTop() {
   // Styling
 
@@ -10,17 +10,17 @@ function CardListTop() {
   const totalPages = 5;
 
   return (
-    <div className='p-5 card-style font-semibold flex rounded-2xl w-full justify-center items-center'>
-      <p className='w-full text-center text-xl'>
+    <div className="p-5 card-style font-semibold flex rounded-2xl w-full justify-center items-center">
+      <p className="w-full text-center text-xl">
         Tasks {currentPage}/{totalPages}
       </p>
-      <div className='absolute w-[calc(100%-2.5rem)] justify-center self-center '>
+      <div className="absolute w-[calc(100%-2.5rem)] justify-center self-center ">
         <PageNavigator
-          color='translucent'
+          color="translucent"
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
-          height={'100%'}
+          height={"100%"}
         />
       </div>
     </div>

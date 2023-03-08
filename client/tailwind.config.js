@@ -28,7 +28,6 @@ module.exports = {
           700: "#353b4f",
           800: "#262933",
           900: "#141518",
-          DEFAULT: "#141518",
         },
         "non-photo-blue": "#91e5fe",
         "non-photo-blue-2": "#baf0fe",
@@ -62,7 +61,6 @@ module.exports = {
           700: "#864320",
           800: "#743a1c",
           900: "#623219",
-          DEFAULT: "#623219",
         },
         "magenta-dye": "#c41a69",
 

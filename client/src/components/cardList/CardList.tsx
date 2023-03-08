@@ -1,15 +1,13 @@
 /** @format */
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useContext } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { useContext } from "react";
 
-import ActivityCard from '../activityCard/AcitivityCard';
-import AppContext from '../../context/AppContext';
+import { ActivityCard } from "../activityCard/AcitivityCard";
+import AppContext from "../../context/AppContext";
 
-import CardListTop from './CardListTop';
-import NoCards from '../activityCard/NoCards';
-
-
+import CardListTop from "./CardListTop";
+import NoCards from "../activityCard/NoCards";
 
 function CardList() {
   const { maxPages, cardsPerPage, page, direction } = useContext(AppContext);
@@ -25,14 +23,14 @@ function CardList() {
   // };
   const cards = [
     {
-      'id': 'c7e12578-243e-4c08-b33b-460c5b7d9880',
-      'title': 'Portuguese Homework',
-      'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit.  ',
-      'subject': 'Portuguese',
-      'type': 'Homework',
-      'checked': true,
-      'xp': 82,
-      'deadline': new Date('2022-11-19T02:16:15.624Z'),
+      id: "c7e12578-243e-4c08-b33b-460c5b7d9880",
+      title: "Portuguese Homework",
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  ",
+      subject: "Portuguese",
+      type: "Homework",
+      checked: true,
+      xp: 82,
+      deadline: new Date("2022-11-19T02:16:15.624Z"),
     },
   ];
   return (
@@ -40,9 +38,9 @@ function CardList() {
       //prettier-ignore
       className={`flex flex-col ${page === maxPages ? `content-start` : `content-between`} w-[60vw] min-w-[350px] self-center absolute right-0 top-0 py-8 pl-[20vw] pr-[5vw]   overflow-x-hidden`}
     >
-      <AnimatePresence mode='popLayout'>
+      <AnimatePresence mode="popLayout">
         <motion.div
-          style={{ position: 'sticky' }}
+          style={{ position: "sticky" }}
           initial={{ opacity: 0, x: direction * 200 }}
           animate={{
             x: 0,
@@ -80,16 +78,16 @@ function CardList() {
                     delay: 0.15 * (index % cardsPerPage),
                   },
                 }}
-                className={page === maxPages ? `mb-3` : ''}
+                className={page === maxPages ? `mb-3` : ""}
               >
                 <ActivityCard item={item} />
-                     <NoCards />
+                <NoCards />
               </motion.div>
             );
           })
         ) : (
           <motion.div
-            key='nocards'
+            key="nocards"
             initial={{ opacity: 0, x: 200 * direction }}
             animate={{
               x: 0,

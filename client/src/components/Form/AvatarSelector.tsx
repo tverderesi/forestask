@@ -1,37 +1,18 @@
-/** @format */
-
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { getPictureURL } from "../../util/profilePictureDictionary";
+import { AvatarSelectorProps, SingleAvatarProps } from "../../types/Types";
 
-export function AvatarSelector({
+export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   placeholderNames,
   setPlaceholderNames,
-}: {
-  placeholderNames: { name: string; isSelected: boolean; v: string }[];
-  setPlaceholderNames: React.Dispatch<
-    React.SetStateAction<
-      {
-        name: string;
-        isSelected: boolean;
-        v: string;
-      }[]
-    >
-  >;
-}) {
+}) => {
   const handleImageClick = (index: number) => {
-    setPlaceholderNames((prevState) => {
-      const newNames = prevState.map((item, i) => {
-        if (i === index) {
-          item.isSelected = true;
-          // values.profilePicture = item.name;
-        } else {
-          item.isSelected = false;
-        }
-        return item;
-      });
-      return newNames;
-    });
+    setPlaceholderNames((prevState) =>
+      prevState.map((item, i) => ({
+        ...item,
+        isSelected: i === index,
+      }))
+    );
   };
 
   return (
@@ -46,15 +27,13 @@ export function AvatarSelector({
         Select an Avatar
       </h2>
 
-      {placeholderNames.map((item, index) => {
-        return (
-          <SingleAvatar
-            item={item}
-            handleImageClick={handleImageClick}
-            index={index}
-          />
-        );
-      })}
+      {placeholderNames.map((item, index) => (
+        <SingleAvatar
+          key={item.name}
+          item={item}
+          handleImageClick={() => handleImageClick(index)}
+        />
+      ))}
 
       <input
         className="btn btn-mauvine-300 btn-sm my-2 col-span-2 xs:col-span-4 sm:col-span-8 mx-auto"
@@ -63,56 +42,49 @@ export function AvatarSelector({
       />
     </motion.div>
   );
-}
+};
 
-function SingleAvatar({
-  item,
+export const SingleAvatar: React.FC<SingleAvatarProps> = ({
+  item: { name, isSelected },
   handleImageClick,
-  index,
-}: {
-  item: { name: string; isSelected: boolean; v: string };
+}) => {
+  const [isTouched, setIsTouched] = useState(false);
 
-  handleImageClick: (index: number) => void;
-  index: number;
-}): JSX.Element {
-  const [touched, setTouched] = useState(false);
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
     e.stopPropagation();
-    setTouched(true);
+    setIsTouched(true);
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    setIsTouched(false);
   };
 
-  const handleTouchEnd = (e) => {
-    e.stopPropagation();
-    setTouched(false);
-  };
   return (
     <div
       className={`flex flex-col items-center w-24 px-2 py-3 floating-pic h-full ${
-        touched ? "touched" : ""
+        isTouched ? "touched" : ""
       }`}
-      key={item.name}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <img
-        src={`${getPictureURL(item.name)}`}
+        src={`/media/avatars/${name}.jpg`}
         className={`rounded-full w-14 h-14 ${
-          item.isSelected ? "selected-avatar" : ""
+          isSelected ? "selected-avatar" : ""
         }`}
         onClick={(e: React.SyntheticEvent) => {
           e.preventDefault();
-          handleImageClick(index);
+          handleImageClick();
         }}
-        alt={item.name}
+        alt={name}
       />
       <span
-        key={item.name}
         className={`capitalize ${
-          item.isSelected ? "font-bold text-[var(--accent-2)]" : "font-semibold"
+          isSelected ? "font-bold text-[var(--accent-2)]" : "font-semibold"
         } mt-1 text-sm`}
       >
-        {item.name}
+        {name}
       </span>
     </div>
   );
-}
+};

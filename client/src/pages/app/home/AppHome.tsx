@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../../context/AuthContext";
 import AdminHome from "./AdminHome";
-import NotFound from "./NotFound";
+import NotFound from "../../NotFound";
 import StudentHome from "./StudentHome";
 import TeacherHome from "./TeacherHome";
 

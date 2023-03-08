@@ -4,13 +4,12 @@ import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 
 import { useForm } from "react-hook-form";
-import { Text, Password } from "../components/Form/Form";
-import { LOGIN_USER_MUTATION } from "../util/GraphQL";
-import { AuthContext } from "../context/AuthContext";
+import { Text, Password } from "../../../components/Form/Form";
+import { LOGIN_USER_MUTATION } from "../../../util/GraphQL";
+import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import Loading from "../components/layout/Loading";
-import { getPictureURL } from "../util/profilePictureDictionary";
+import Loading from "../../../components/layout/Loading";
 
 export default function Login() {
   const context = useContext(AuthContext);
@@ -37,7 +36,9 @@ export default function Login() {
     },
   });
 
-  const profilePic = getPictureURL(localStorage?.getItem("profilePic"));
+  const profilePic = `${
+    process.env.REACT_APP_PUBLIC_URL
+  }/media/avatars/${localStorage?.getItem("profilePic")}.jpg`;
 
   const firstName = localStorage?.getItem("firstName")
     ? ", " + localStorage?.getItem("firstName")

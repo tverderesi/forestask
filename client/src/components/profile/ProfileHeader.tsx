@@ -1,11 +1,7 @@
-import { setLastLevel } from "../../context/AppFunctions";
-import { getPictureURL } from "../../util/profilePictureDictionary";
-import ProgressBar from "./ProgressBar";
-
 export default function ProfileHeader({ userData }) {
   // const lastLevel = setLastLevel(gameLevels);
-  console.log(userData);
-  const hi = getPictureURL(userData.profilePicture) || undefined;
+
+  const hi = `${process.env.REACT_APP_PUBLIC_URL}/media/avatars/${userData.profilePicture}}.jpg`;
   return (
     <figure className="flex py-5 mx-auto justify-between w-[90%]">
       <img

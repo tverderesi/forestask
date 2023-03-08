@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-import Navbar from "../atoms/Navbar";
+import Navbar from "../atoms/interface/Navbar";
 
 export default function Home() {
   return (

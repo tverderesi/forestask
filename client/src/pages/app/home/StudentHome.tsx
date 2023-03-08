@@ -1,11 +1,11 @@
 /** @format */
 
-import CardList from "../components/cardList/CardList";
-import ProfileCard from "../components/profile/ProfileCard";
+import CardList from "../../../components/cardList/CardList";
+import ProfileCard from "../../../components/profile/ProfileCard";
 import { useQuery } from "@apollo/client";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { GET_USER_QUERY } from "../util/GraphQL";
+import { AuthContext } from "../../../context/AuthContext";
+import { GET_USER_QUERY } from "../../../util/GraphQL";
 
 export default function StudentHome() {
   const { user } = useContext(AuthContext) as any;
