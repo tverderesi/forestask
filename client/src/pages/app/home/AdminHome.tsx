@@ -1,13 +1,13 @@
 import { useQuery } from "@apollo/client";
-
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Logout from "../../../atoms/Logout";
 import { AuthContext } from "../../../context/AuthContext";
 import { GET_USER_QUERY } from "../../../util/GraphQL";
 import { CgProfile } from "react-icons/cg";
 import Logo from "../../../atoms/Logo";
-
+import { DropdownProps } from "../../../types/Types";
+import { TailSpin } from "react-loader-spinner";
 // Component for the dropdown menu item with submenus
 function DropdownMenuItem() {
   return (
@@ -40,7 +40,7 @@ function DropdownMenuItem() {
 function NavigationBar({ userData }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="navbar bg-base-100 h-20">
+    <div className="navbar bg-card backdrop-blur-2xl sticky  top-0  h-20">
       <div className="navbar-start">
         <div className="dropdown">
           <label
@@ -73,7 +73,7 @@ function NavigationBar({ userData }) {
             } fixed left-0 bottom-0`}
           ></div>
         </div>
-        <Logo className="lg:ml-0 flex-1" />
+        <Logo className="lg:ml-0" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -86,24 +86,26 @@ function NavigationBar({ userData }) {
           </li>
         </ul>
       </div>
-      <div className=" w-auto lg:w-full right-2 absolute navbar-end">
-        <Dropdown>
+      <div className="navbar-end">
+        <Dropdown position="bottom" align="end">
           <Avatar userData={userData} />
-          <div className="card-body">
-            <h3 className="card-title leading-[80%] text-night-900">
-              {userData.firstName} {userData.lastName}
-            </h3>
-            <p className="leading-[100%]  text-sm mt-0">
-              <em className="text-night-200">{userData.email}</em>
-            </p>
-            <p className="text-night-300">{userData.__typename}</p>
+          <div className="dropdown-content bg-card backdrop-blur-xl  mt-2 rounded-2xl card-compact w-72 p-2 shadow bg-primary text-primary-content">
+            <div className="card-body">
+              <h3 className="card-title leading-[80%] text-night-900">
+                {userData.firstName} {userData.lastName}
+              </h3>
+              <p className="leading-[100%]  text-sm mt-0">
+                <em className="text-night-200">{userData.email}</em>
+              </p>
+              <p className="text-night-300">{userData.__typename}</p>
 
-            <div className="card-actions">
-              <Link to="/" className="btn btn-primary btn-sm">
-                <CgProfile className="mr-1" size={"1rem"} />
-                Edit Profile
-              </Link>
-              <Logout />
+              <div className="card-actions">
+                <Link to="/app/home/profile" className="btn btn-primary btn-sm">
+                  <CgProfile className="mr-1" size={"1rem"} />
+                  Edit Profile
+                </Link>
+                <Logout />
+              </div>
             </div>
           </div>
         </Dropdown>
@@ -112,23 +114,37 @@ function NavigationBar({ userData }) {
   );
 }
 
-function Dropdown({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
+function Dropdown({
+  children,
+  hover = false,
+  position = "bottom",
+  align = "end",
+  forceOpen = false,
+}: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(forceOpen);
+
+  let containerClasses = "dropdown";
+  if (hover) {
+    containerClasses += " dropdown-hover";
+  }
+  if (position) {
+    containerClasses += ` dropdown-${position}`;
+  }
+  if (align) {
+    containerClasses += ` dropdown-${align}`;
+  }
+  if (forceOpen) containerClasses += ` dropdown-open`;
 
   return (
-    <div className="dropdown dropdown-hover dropdown-end">
+    <div className={containerClasses}>
       <label
         tabIndex={0}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(forceOpen ? true : !isOpen)}
         className="transition-all h-12 w-12 btn btn-ghost rounded-full p-0"
       >
         {children[0]}
       </label>
-      {isOpen && (
-        <div className="dropdown-content bg-card backdrop-blur-xl  mt-2 rounded-2xl card-compact w-72 p-2 shadow bg-primary text-primary-content">
-          {children.slice(1)}
-        </div>
-      )}
+      {isOpen && children.slice(1)}
     </div>
   );
 }
@@ -164,21 +180,31 @@ export default function AdminHome() {
   });
 
   return (
-    <div className="bg-slate-300/10 bg-contain  w-screen h-screen">
-      {loading ? "LOADING" : <Profile userData={data.getUser} />}
-      <div className="h-screen w-screen bg-image bg-cover bg-bottom">
-        <div className="  w-screen h-screen  backdrop-blur-[1000px] bg-card"></div>
-      </div>
+    <div className="h-screen w-screen bg-gradient-to-t from-[#b6e7fd]  via-[#ceeafd] to-[#bedfbe] overflow-y-scroll">
+      {loading ? (
+        <div className="navbar bg-card backdrop-blur-2xl sticky items-center justify-center  top-0  h-20 ">
+          <img
+            src={`${process.env.REACT_APP_PUBLIC_URL}/assets/profilePicturePlaceholder.svg`}
+            className="h-[64px]"
+            alt=""
+          />
+          <TailSpin
+            height="64"
+            width="64"
+            color="#428c0efa"
+            ariaLabel="tail-spin-loading"
+            radius="0"
+            wrapperStyle={{ zIndex: "2" }}
+            wrapperClass="absolute fill-mantis color-mantis"
+            visible={true}
+          />
+        </div>
+      ) : (
+        <>
+          <NavigationBar userData={data.getUser} />
+        </>
+      )}
+      <Outlet key="outlet" />
     </div>
-  );
-}
-
-export function Profile({ userData }) {
-  const [showProfile, setShowProfile] = useState(true);
-
-  return (
-    <>
-      <NavigationBar userData={userData} />
-    </>
   );
 }

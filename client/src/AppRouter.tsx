@@ -20,10 +20,10 @@ export function AppRouter() {
           <Route path="/app/login" element={<Login />} />
           <Route path="/app/register" element={<Register />} />
         </Route>
-        <Route path="app/home/" element={<AppHome />} />
+        <Route path="app/home/*" element={<AppHome />}>
+          <Route path="profile" element={<NotFound />} />
+        </Route>
       </Routes>
     </Router>
   );
 }
-
-// Old Routes

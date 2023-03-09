@@ -147,3 +147,11 @@ export type SingleAvatarProps = {
   item: PlaceholderName;
   handleImageClick: () => void;
 };
+
+export type DropdownProps = {
+  children: ReactNode[];
+  hover?: boolean;
+  position?: "top" | "bottom" | "left" | "right";
+  align?: "start" | "end";
+  forceOpen?: boolean;
+};
