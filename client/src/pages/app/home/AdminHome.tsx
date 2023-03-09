@@ -40,8 +40,8 @@ function DropdownMenuItem() {
 function NavigationBar({ userData }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="navbar bg-card backdrop-blur-2xl sticky  top-0  h-20">
-      <div className="navbar-start">
+    <div className="navbar bg-card backdrop-blur-2xl sticky  top-0  h-20 transition-all">
+      <div className="navbar-start max-lg:flex-grow transition-all">
         <div className="dropdown">
           <label
             tabIndex={0}
@@ -66,16 +66,17 @@ function NavigationBar({ userData }) {
               />
             </svg>
           </label>
-
           <div
             className={`w-screen bg-purple-600 h-[calc(100vh-5rem)] ${
               open ? "block" : "hidden"
-            } fixed left-0 bottom-0`}
-          ></div>
+            } fixed left-0 top-20`}
+          >
+            PLACEHOLDER MENU
+          </div>
         </div>
         <Logo className="lg:ml-0" />
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex transition-all">
         <ul className="menu menu-horizontal px-1">
           <li>
             <a>Item 1</a>
@@ -86,7 +87,7 @@ function NavigationBar({ userData }) {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end max-lg:w-auto">
         <Dropdown position="bottom" align="end">
           <Avatar userData={userData} />
           <div className="dropdown-content bg-card backdrop-blur-xl  mt-2 rounded-2xl card-compact w-72 p-2 shadow bg-primary text-primary-content">
