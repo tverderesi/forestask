@@ -46,11 +46,14 @@ function NavigationBar({ userData, children }) {
           <div
             className={`w-screen backdrop-blur-2xl h-[calc(100vh-5rem)] ${
               open ? "" : "hidden"
-            } fixed left-0 top-20  menu menu-vertical  bg-card w-auto transition-all`}
+            } fixed left-0 top-20  menu menu-vertical gap-4 pt-4 px-4  bg-card w-auto transition-all`}
           >
+            <h3 className="text-center text-2xl font-semibold text-magenta-dye">
+              Admin Mode
+            </h3>
             <div
               tabIndex={0}
-              className="collapse collapse-arrow border-y-base-300"
+              className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
             >
               <div className="collapse-title text-xl font-medium">
                 <span className="flex items-center font-semibold">
@@ -59,19 +62,28 @@ function NavigationBar({ userData, children }) {
               </div>
               <div className="collapse-content ">AAAAA</div>
             </div>
-
-            <Dropdown arrow>
-              <span className="flex items-center font-semibold">
-                <BiPencil className="mr-1 mt-0.5 text-xl" /> Subjects
-              </span>
-              <div>aaaaa</div>
-            </Dropdown>
-            <Dropdown arrow forceOpen>
-              <span className="flex items-center font-semibold">
-                <RxCardStack className="mr-1 mt-0.5 text-xl" /> Cards
-              </span>
-              <div>aaaaa</div>
-            </Dropdown>
+            <div
+              tabIndex={0}
+              className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
+            >
+              <div className="collapse-title text-xl font-medium">
+                <span className="flex items-center font-semibold">
+                  <BiPencil className="mr-1 mt-0.5 text-xl" /> Subjects
+                </span>
+              </div>
+              <div className="collapse-content ">AAAAA</div>
+            </div>
+            <div
+              tabIndex={0}
+              className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
+            >
+              <div className="collapse-title text-xl font-medium">
+                <span className="flex items-center font-semibold">
+                  <RxCardStack className="mr-1 mt-0.5 text-xl" /> Cards
+                </span>
+              </div>
+              <div className="collapse-content ">AAAAA</div>
+            </div>
           </div>
         </div>
         <Logo className="lg:ml-0" />
