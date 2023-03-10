@@ -6,6 +6,7 @@ import Login from "./pages/app/onboard/Login";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import AppHome from "./pages/app/home/AppHome";
+import { BackdropBlurTest } from "./util/BackdropBlurTest";
 
 export function AppRouter() {
   return (

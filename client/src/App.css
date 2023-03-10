@@ -430,3 +430,12 @@ body::-webkit-scrollbar {
     opacity: 1;
   }
 }
+
+li:hover > a.dropdown.dropdown-arrow > svg {
+  transform: rotate(90deg);
+  @apply transition-all;
+}
+
+li > a.dropdown.dropdown-arrow > svg {
+  @apply transition-all;
+}
