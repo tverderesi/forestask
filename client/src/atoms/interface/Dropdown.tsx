@@ -9,7 +9,6 @@ export function Dropdown({
   forceOpen = false,
   arrow = false,
 }: DropdownProps) {
-  console.log(children);
   let containerClasses = "dropdown";
   if (hover) {
     containerClasses += " dropdown-hover";

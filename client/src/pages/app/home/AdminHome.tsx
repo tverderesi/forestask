@@ -11,79 +11,46 @@ import { Avatar } from "../../../atoms/interface/Avatar";
 import { ElementDropdown } from "../../../atoms/interface/ElementDropdown";
 import { Dropdown } from "../../../atoms/interface/Dropdown";
 import { FaPencilAlt, FaUserCircle } from "react-icons/fa";
+import { HiMenuAlt1 } from "react-icons/hi";
 import { BiPencil } from "react-icons/bi";
 import { RxCardStack } from "react-icons/rx";
 
 function NavigationBar({ userData, children }) {
   const [open, setOpen] = useState(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOpen(!open);
+  };
+  const classes = `w-screen backdrop-blur-2xl h-[calc(100vh-5rem)] ${
+    open ? "" : "hidden"
+  } fixed left-0 top-20  menu menu-vertical gap-4 pt-4 px-4  bg-card w-auto transition-all`;
+
   return (
     <div className="navbar bg-card backdrop-blur-2xl sticky  top-0  h-20 transition-all">
       <div className="navbar-start max-lg:flex-grow w-1/4 transition-all">
         <div className="lg:hidden">
-          <label
-            tabIndex={0}
-            className="btn btn-ghost"
-            onClick={(e) => {
-              e.preventDefault();
-              setOpen(!open);
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+          <label tabIndex={0} className="btn btn-ghost" onClick={handleClick}>
+            <HiMenuAlt1 className="text-lg" />
           </label>
-          <div
-            className={`w-screen backdrop-blur-2xl h-[calc(100vh-5rem)] ${
-              open ? "" : "hidden"
-            } fixed left-0 top-20  menu menu-vertical gap-4 pt-4 px-4  bg-card w-auto transition-all`}
-          >
+          <div className={classes}>
             <h3 className="text-center text-2xl font-semibold text-magenta-dye">
-              Admin Mode
+              {userData.__typename} Mode
             </h3>
-            <div
-              tabIndex={0}
-              className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
-            >
-              <div className="collapse-title text-xl font-medium">
-                <span className="flex items-center font-semibold">
-                  <CgProfile className="mr-1 mt-0.5 text-xl" /> Profiles
-                </span>
-              </div>
-              <div className="collapse-content ">AAAAA</div>
-            </div>
-            <div
-              tabIndex={0}
-              className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
-            >
-              <div className="collapse-title text-xl font-medium">
-                <span className="flex items-center font-semibold">
-                  <BiPencil className="mr-1 mt-0.5 text-xl" /> Subjects
-                </span>
-              </div>
-              <div className="collapse-content ">AAAAA</div>
-            </div>
-            <div
-              tabIndex={0}
-              className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
-            >
-              <div className="collapse-title text-xl font-medium">
-                <span className="flex items-center font-semibold">
-                  <RxCardStack className="mr-1 mt-0.5 text-xl" /> Cards
-                </span>
-              </div>
-              <div className="collapse-content ">AAAAA</div>
-            </div>
+            {children.map((child) => {
+              return (
+                <div
+                  tabIndex={0}
+                  className="collapse collapse-arrow border-y-base-300 bg-slate-400/10 rounded-2xl"
+                >
+                  <div className="collapse-title text-xl font-medium">
+                    {child.props.children[0]}
+                  </div>
+                  <div className="collapse-content ">
+                    {child.props.children.slice(1)}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
         <Logo className="lg:ml-0" />
