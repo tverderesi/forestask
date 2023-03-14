@@ -1,4 +1,6 @@
-const { gql } = require('graphql-tag');
+/** @format */
+
+const { gql } = require("graphql-tag");
 
 const typeDefs = gql`
   type Subject {
@@ -13,46 +15,67 @@ const typeDefs = gql`
     ADMIN
   }
 
-  interface User {
-    id: ID!
-    username: String!
-    createdAt: String!
-    privilegeLevel: PrivilegeLevel!
-  }
-
   type ActivityType {
     id: ID!
     name: String!
   }
+  interface User {
+    id: ID!
+    username: String!
+    firstName: String!
+    lastName: String!
+    createdAt: String!
+    password: String!
+    email: String!
+    token: String!
+    privilegeLevel: PrivilegeLevel!
+    profilePicture: String!
+    birthday: String!
+  }
 
   type Student implements User {
     id: ID!
-    fullName: String!
+    firstName: String!
+    lastName: String!
     username: String!
     createdAt: String!
     birthday: String!
     profilePicture: String!
     subjects: [Subject]!
-    totalXP: Int!
+    assignments: [Assignment]!
     privilegeLevel: PrivilegeLevel!
+    email: String!
+    token: String!
+    password: String!
   }
 
   type Teacher implements User {
     id: ID!
-    fullName: String!
+    firstName: String!
+    lastName: String!
     username: String!
     createdAt: String!
     birthday: String!
     profilePicture: String!
     subjects: [Subject]!
     privilegeLevel: PrivilegeLevel!
+    email: String!
+    token: String!
+    password: String!
   }
 
   type Admin implements User {
     id: ID!
+    firstName: String!
+    lastName: String!
     createdAt: String!
     username: String!
     privilegeLevel: PrivilegeLevel!
+    email: String!
+    token: String!
+    profilePicture: String!
+    password: String!
+    birthday: String!
   }
 
   type Assignment {
@@ -66,27 +89,32 @@ const typeDefs = gql`
 
   input RegisterInput {
     username: String!
-    fullName: String
+    firstName: String!
+    lastName: String!
     birthday: String
     privilegePassword: String
     email: String!
     password: String!
     confirmPassword: String!
     profilePicture: String
+    confirmPrivilegePassword: String!
+    selectedPrivilegeLevel: String!
   }
 
-  input LoginInput {
-    username: String!
+  input LogInInput {
+    logIn: String!
     password: String!
   }
 
   type Query {
     getSubjects: [Subject]
+    getUser(id: ID!): User!
+    getUsers: [User]
   }
   type Mutation {
     addSubject(name: String!, teacher: String, students: [String]): Subject
     deleteSubject(id: ID!): String
-    login(loginInput: LoginInput!): User!
+    login(logInInput: LogInInput!): User!
     register(registerInput: RegisterInput!): User!
   }
 `;

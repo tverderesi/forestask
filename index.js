@@ -1,19 +1,12 @@
+/** @format */
+
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+
 require('dotenv').config();
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
-const { getPrivilegeLevel } = require('./utils/misc');
-
-// bcrypt
-//   .compare('fl0r3st4r3f4!', process.env.TEACHER_KEY)
-//   .then(res => console.log('teacher ' + res));
-
-// bcrypt
-//   .compare('Passw0rd!', process.env.ADMIN_KEY)
-//   .then(res => console.log('admin ' + res));
 
 const server = new ApolloServer({
   typeDefs,

@@ -1,15 +1,19 @@
-import './App.css';
-import { AppProvider } from './context/AppContext';
-import Viewport from './components/Viewport';
+/** @format */
 
-function App() {
+import "./App.css";
+import { AppProvider } from "./context/AppContext";
+
+import { AuthProvider } from "./context/AuthContext";
+import { AppRouter } from "./AppRouter";
+
+export default function App() {
   return (
-    <div className='App d-flex justify-content-center'>
-      <AppProvider>
-        <Viewport />
-      </AppProvider>
-    </div>
+    <main className="App flex justify-center">
+      <AuthProvider>
+        <AppProvider>
+          <AppRouter />
+        </AppProvider>
+      </AuthProvider>
+    </main>
   );
 }
-
-export default App;

@@ -1,51 +1,64 @@
-import AppContext from '../../context/AppContext';
-import { useContext } from 'react';
+/** @format */
 
-import { Card } from '../../types/Types';
+import { useState } from 'react';
+import { Text, TextArea, Dropdown, Date, Number } from '../Form/Form';
+import { useForm } from 'react-hook-form';
+import { BsPlusCircle } from 'react-icons/bs';
 
-import SubjectsDropdown from '../layout/buttons/SubjectsDropdown';
-import { Title } from '../additemOld/Title';
-import { FormControlText } from './FormControlText';
-import { FormControlTextArea } from './FormControlTextArea';
 function AddItem() {
-  const {
-    subjects,
-    page,
-    dataTheme,
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      id: '',
+      content: '',
+      type: '',
+      xp: 0,
+      checked: 'false',
+      title: '',
+      deadline: 0,
+    },
+  });
 
-    cardsPerPage,
-    activities,
-    subjectPalette,
-    activityPalette,
-    filters,
-    windowHeight,
-    dispatch,
-    userData,
-    gameLevels,
-  } = useContext(AppContext);
+  const [subject, setSubject] = useState('');
+  const [activity, setActitivy] = useState('');
 
-  const newCard: Card = {
-    id: '',
-    content: '',
-    type: '',
-    subject: '',
-    xp: 0,
-    checked: 'false',
-    title: '',
-    deadline: 0,
+  const handleChange = (newValue: string, callback: any) => {
+    callback(newValue);
   };
+
   return (
     <div className='absolute z-[5] w-screen h-screen backdrop-blur-2xl top-0 left-0 flex items-center justify-center'>
-      <div className='backdrop-blur-xl bg-blend-overlay bg-[var(--card-bg-color)] rounded-2xl w-[75vh] h-[75vh] shadow-2xl p-5 top-8 flex flex-col justify-start'>
-        <Title />
-        <SubjectsDropdown
-          card={newCard}
-          subjects={subjects}
-        />
-        <FormControlText card={newCard} />
-        <FormControlTextArea card={newCard} />
+      <div className='grid grid-cols-2 backdrop-blur-xl bg-blend-overlay bg-card rounded-2xl w-[75vh] h-[75vh] shadow-2xl top-8 p-10 gap-5'>
+        <h2 className='text-2xl text-center font-semibold flex items-center justify-center col-span-2'>
+          <BsPlusCircle className='inline-block mr-3 my-4' /> Add Item
+        </h2>
 
-        <div className='flex'></div>
+        <Text label='Title' name='title' placeholder='Title' register={register} />
+
+        <Dropdown
+          name='subject'
+          items={['A', 'B', 'C', 'D', 'E']}
+          onChange={handleChange}
+          label='Subject'
+          callback={setSubject}
+        />
+        <TextArea label='Content' placeholder='Content' register={register} name='content' />
+        <Date label='Deadline' register={register} name='deadline' />
+        <Number
+          label='XP'
+          register={register}
+          name='xp'
+          options={{ min: 0, max: 100 }}
+          min={0}
+          max={100}
+        />
+        <Dropdown
+          name='activity'
+          items={['A', 'B', 'C', 'D', 'E']}
+          onChange={handleChange}
+          label='Activity'
+          callback={setActitivy}
+          direction='top'
+        />
       </div>
     </div>
   );

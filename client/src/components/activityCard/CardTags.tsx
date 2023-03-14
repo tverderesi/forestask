@@ -1,6 +1,5 @@
-// 1. node "builtin" modules
+/** @format */
 
-// 2. "external" modules
 import {
   MdInfoOutline,
   MdOutlineLightbulb,
@@ -11,14 +10,26 @@ import { useContext } from 'react';
 import { IconContext } from 'react-icons/lib';
 
 import AppContext from '../../context/AppContext';
+import paletteCreator from '../style/PaletteCreator';
 
-import * as Types from './ActivityCardTypes';
-
-function CardTags({ subject, type, deadline, xp }: Types.CardTags) {
-  const { subjectPalette, activityPalette, dataTheme } = useContext(AppContext);
-
+function CardTags({
+  subject,
+  type,
+  deadline,
+  xp,
+}: {
+  subject: string;
+  type: string;
+  deadline: Date;
+  xp: number;
+}) {
   const locale = Intl.NumberFormat().resolvedOptions().locale;
   const classes = 'flex items-center self-center';
+  const dataTheme = 'light';
+  const activities = ['Test', 'Homework'];
+  const subjects = ['Music', 'Math', 'Portuguese', 'English', 'Science'];
+  const activityPalette = paletteCreator(activities, '#ff6f08', '#ff6f08');
+  const subjectPalette = paletteCreator(subjects, '#c491ff', '#b56576');
 
   const date = new Date(deadline).toLocaleDateString(locale, {
     year: 'numeric',

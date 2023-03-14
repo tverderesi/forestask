@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+/** @format */
+
+import { ReactNode } from "react";
 
 //Semi-Primitive Types
 
@@ -15,11 +17,11 @@ export type Card = {
   xp: number;
   checked: any;
   title: string;
-  deadline: number;
+  deadline: Date;
 };
 
 export type AccordionType = {
-  name: 'Subjects' | 'Activities' | 'Deadline' | 'Completed';
+  name: "Subjects" | "Activities" | "Deadline" | "Completed";
   categories: subject[] | type[] | string;
   itemPalette: ItemPalette | string;
   icon: ReactNode;
@@ -62,7 +64,7 @@ export interface State {
   loadingStatus: string;
   showForest: boolean;
   direction: -1 | 1;
-  dataTheme: 'dark' | 'light';
+  dataTheme: "dark" | "light";
   addCard: boolean;
 }
 
@@ -82,3 +84,76 @@ export interface AppContextTypes extends State {
 }
 
 export type Props = { children?: ReactNode };
+
+export type BackButtonProps = {
+  href: string;
+};
+
+export type StepProps =
+  | {
+      currentPage: number;
+      setCurrentPage: (page: number) => void;
+      steps: string[];
+      totalPages?: number;
+      color?: string;
+      height?: string;
+    }
+  | {
+      currentPage: number;
+      setCurrentPage: (page: number) => void;
+      steps?: boolean;
+      totalPages: number;
+      color?: string;
+      height?: string;
+    };
+
+export type StepsType = {
+  steps: boolean | string[];
+  currentPage: number;
+  color: string;
+  setCurrentPage: (page: number) => void;
+};
+
+export interface ActivityCardProps {
+  item: Card;
+}
+
+export interface CardContentProps {
+  item: Card;
+  open: boolean;
+  handleCardClick: () => void;
+}
+
+export interface CardButtonProps {
+  item: Card;
+  completed: boolean;
+  userData: any;
+  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  dispatch: any;
+  gameLevels: any;
+}
+
+export type PlaceholderName = {
+  name: string;
+  isSelected: boolean;
+};
+
+export type AvatarSelectorProps = {
+  placeholderNames: PlaceholderName[];
+  setPlaceholderNames: React.Dispatch<React.SetStateAction<PlaceholderName[]>>;
+};
+
+export type SingleAvatarProps = {
+  item: PlaceholderName;
+  handleImageClick: () => void;
+};
+
+export type DropdownProps = {
+  children: ReactNode[];
+  hover?: boolean;
+  position?: "top" | "bottom" | "left" | "right";
+  align?: "start" | "end";
+  forceOpen?: boolean;
+  arrow?: boolean;
+  className?: string;
+};

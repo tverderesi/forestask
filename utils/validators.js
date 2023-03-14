@@ -1,29 +1,19 @@
-const { ageCalc, getPrivilegeLevel } = require('./misc');
+/** @format */
 
-/**
- * Validates the provided username, email, password, and confirm password.
- * @param {String} username - The username to validate.
- * @param {String} email - The email address to validate.
- * @param {String} password - The password to validate.
- * @param {String} confirmPassword - The confirm password to validate.
- * @returns {Object} An object containing the validation errors and a boolean indicating whether the input is valid.
- * @property {Object} errors - An object containing any validation errors.
- * @property {String} errors.username - An error message for the username, if it is invalid.
- * @property {String} errors.email - An error message for the email address, if it is invalid.
- * @property {String} errors.password - An error message for the password, if it is invalid.
- * @property {String} errors.confirmPassword - An error message for the confirm password, if it is invalid.
- * @property {Boolean} valid - A boolean indicating whether the input is valid (`true`) or invalid (`false`).
- */
+const { getPrivilegeLevel } = require('./misc');
+
 module.exports.validateRegisterInput = (
   username,
   email,
   password,
   confirmPassword,
-  birthday,
-  privilegeLevel
+  privilegePassword,
+  confirmPrivilegePassword,
+  selectedPrivilegeLevel
 ) => {
   const errors = {};
-  const age = ageCalc(birthday);
+
+  const privilegeLevel = getPrivilegeLevel(privilegePassword);
 
   switch (true) {
     case username.trim() === '':
@@ -41,10 +31,9 @@ module.exports.validateRegisterInput = (
     ):
       errors.email = 'Email must be a valid email address.';
 
-    case privilegeLevel !== 'STUDENT' && age < 18:
-      errors.age = 'Teachers must be 18 years or older.';
-
     case password === '':
+      errors.password = 'Password must not be empty or contain spaces!';
+    case selectedPrivilegeLevel !== 'STUDENT' && privilegePassword === '':
       errors.password = 'Password must not be empty or contain spaces!';
 
     /**
@@ -56,32 +45,29 @@ module.exports.validateRegisterInput = (
      * - Contains at least one symbol
      * @type {RegExp}
      */
-    case !password.match(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-    ):
+
+    case !password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/):
       errors.password =
         'Password must contain at least one uppercase case, one lowercase letter, one number and one symbol.';
 
     case password !== confirmPassword:
       errors.confirmPassword = 'Passwords must match!';
+
+    case selectedPrivilegeLevel !== 'STUDENT':
+      privilegePassword !== confirmPrivilegePassword
+        ? (errors.privilegePassword = 'Privilege Passwords no not match!')
+        : '';
+
+    // case :
+    //   errors.privilegeLevel = `Privilege Password is incorrect for the level you selected! ${selectedPrivilegeLevel} ${privilegeLevel}`;
   }
   return { errors, valid: Object.keys(errors).length < 1 };
 };
 
-/**
- * Validates the provided username and password.
- * @param {String} username - The username to validate.
- * @param {String} password - The password to validate.
- * @returns {Object} An object containing the validation errors and a boolean indicating whether the input is valid.
- * @property {Object} errors - An object containing any validation errors.
- * @property {String} errors.username - An error message for the username, if it is invalid.
- * @property {String} errors.password - An error message for the password, if it is invalid.
- * @property {Boolean} valid - A boolean indicating whether the input is valid (`true`) or invalid (`false`).
- */
-module.exports.validateLoginInput = (username, password) => {
+module.exports.validateLoginInput = (logIn, password) => {
   const errors = {};
-  if (username.trim() === '') {
-    errors.username = 'Username must not be empty!';
+  if (!logIn || logIn.trim() === '') {
+    errors.field = 'Username or email must not be empty!';
   }
   if (password.trim() === '') {
     errors.password = 'Password must not be empty!';
