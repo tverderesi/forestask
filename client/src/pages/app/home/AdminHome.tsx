@@ -6,14 +6,14 @@ import { AuthContext } from "../../../context/AuthContext";
 import { GET_USER_QUERY } from "../../../util/GraphQL";
 import { CgProfile } from "react-icons/cg";
 import Logo from "../../../atoms/Logo";
-import { TailSpin } from "react-loader-spinner";
 import { Avatar } from "../../../atoms/interface/Avatar";
 import { ElementDropdown } from "../../../atoms/interface/ElementDropdown";
 import { Dropdown } from "../../../atoms/interface/Dropdown";
-import { FaPencilAlt, FaUserCircle } from "react-icons/fa";
+
 import { HiMenuAlt1 } from "react-icons/hi";
 import { BiPencil } from "react-icons/bi";
 import { RxCardStack } from "react-icons/rx";
+import { TreeSpinner } from "../../../atoms/interface/TreeSpinner";
 
 function NavigationBar({ userData, children }) {
   const [open, setOpen] = useState(false);
@@ -21,9 +21,9 @@ function NavigationBar({ userData, children }) {
     e.preventDefault();
     setOpen(!open);
   };
-  const classes = `w-screen backdrop-blur-2xl h-[calc(100vh-5rem)] ${
+  const classes = `w-screen  backdrop-blur-2xl h-[calc(100vh-5rem)] ${
     open ? "" : "hidden"
-  } fixed left-0 top-20  menu menu-vertical gap-4 pt-4 px-4  bg-card w-auto transition-all`;
+  } fixed left-0 top-20 flex flex-col  menu gap-4 p-4  bg-card w-auto transition-all`;
 
   return (
     <div className="navbar bg-card backdrop-blur-2xl sticky  top-0  h-20 transition-all">
@@ -51,6 +51,37 @@ function NavigationBar({ userData, children }) {
                 </div>
               );
             })}
+            <div className="bg-slate-400/10 rounded-2xl absolute bottom-4 p-4 w-[calc(100vw-2rem)]">
+              <div className="collapse-title flex items-center">
+                <Avatar userData={userData} className="h-16 mr-4" />
+                <div>
+                  <h3 className="card-title leading-[80%] text-night-900">
+                    {userData.firstName} {userData.lastName}
+                  </h3>
+                  <p className="leading-[100%]  text-sm mt-0">
+                    <em className="text-night-200">{userData.email}</em>
+                  </p>
+                  <p className="text-night-300">{userData.__typename}</p>
+                </div>
+              </div>
+              <div className="collapse-content">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Accusamus quo a vero excepturi ratione esse. Dignissimos animi
+                  eos aut. Possimus esse delectus, expedita unde, a veniam fuga
+                  incidunt repudiandae consequuntur quod maxime qui? Odit,
+                  consequuntur minus vitae perferendis temporibus quod aut animi
+                  eaque ducimus nemo officia voluptatem, ullam similique cum
+                  eligendi quis assumenda veritatis expedita incidunt qui ipsa
+                  reprehenderit deserunt! Placeat reiciendis totam sint quod
+                  iure, quidem vero porro doloremque explicabo delectus. Fugiat
+                  atque non quo voluptas excepturi, in illum accusantium
+                  blanditiis dolor, animi et enim eligendi nihil modi sapiente
+                  incidunt dolorem voluptates alias, quis qui doloribus quaerat
+                  beatae? Aliquid.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <Logo className="lg:ml-0" />
@@ -59,17 +90,20 @@ function NavigationBar({ userData, children }) {
         <ul className="menu menu-horizontal px-1 flex-nowrap">
           {Children.map(children, (child) =>
             typeof child === "object" &&
-            (child.type.name === "Dropdown" ||
-              child.type.name === "ElementDropdown") ? (
+            child.type.name === "ElementDropdown" ? (
               child
             ) : (
-              <li>{child}</li>
+              <li tabIndex={0}>{child}</li>
             )
           )}
         </ul>
       </div>
-      <div className="navbar-end max-lg:w-auto w-1/4">
-        <ElementDropdown position="bottom" align="end">
+      <div className="navbar-end  max-lg:w-[51.6px] w-1/4 h-full">
+        <ElementDropdown
+          position="bottom"
+          align="end"
+          className="max-lg:hidden"
+        >
           <Avatar userData={userData} />
           <div className="dropdown-content bg-card backdrop-blur-xl  mt-2 rounded-2xl card-compact w-72 p-2 shadow bg-primary text-primary-content">
             <div className="card-body">
@@ -107,21 +141,7 @@ export default function AdminHome() {
     <div className="h-screen w-screen bg-gradient-to-t from-[#b6e7fd]  via-[#ceeafd] to-[#bedfbe] overflow-y-scroll">
       {loading ? (
         <div className="navbar bg-card backdrop-blur-2xl sticky items-center justify-center  top-0  h-20 ">
-          <img
-            src={`${process.env.REACT_APP_PUBLIC_URL}/assets/profilePicturePlaceholder.svg`}
-            className="h-[64px]"
-            alt=""
-          />
-          <TailSpin
-            height="64"
-            width="64"
-            color="#428c0efa"
-            ariaLabel="tail-spin-loading"
-            radius="0"
-            wrapperStyle={{ zIndex: "2" }}
-            wrapperClass="absolute fill-mantis color-mantis"
-            visible={true}
-          />
+          <TreeSpinner />
         </div>
       ) : (
         <>

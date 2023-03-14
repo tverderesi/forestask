@@ -21,7 +21,7 @@ export function Dropdown({
   }
   if (forceOpen) containerClasses += ` dropdown-open`;
   return (
-    <li tabIndex={0}>
+    <>
       <a className={`${containerClasses} justify-between dropdown-arrow `}>
         {children[0]}
         {arrow && (
@@ -41,6 +41,6 @@ export function Dropdown({
           return <li>{child}</li>;
         })}
       </ul>
-    </li>
+    </>
   );
 }

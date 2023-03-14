@@ -82,6 +82,7 @@
 
 .bg-image {
   background-image: var(--bg-image-url) !important;
+  background-position: 0vh 100vh;
 }
 
 .bg-card {

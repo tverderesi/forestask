@@ -7,13 +7,14 @@ import TeacherHome from "./TeacherHome";
 
 const AppHome = () => {
   const { user } = useContext(AuthContext) as any;
+  console.log(user.privilegeLevel === "STUDENT");
 
   switch (true) {
     case user.privilegeLevel === "ADMIN":
       return <AdminHome />;
     case user.privilegeLevel === "TEACHER":
       return <TeacherHome />;
-    case user.privilegelLevel === "STUDENT":
+    case user.privilegeLevel === "STUDENT":
       return <StudentHome />;
     default:
       return <NotFound />;
@@ -21,4 +22,3 @@ const AppHome = () => {
 };
 
 export default AppHome;
-export { TeacherHome };

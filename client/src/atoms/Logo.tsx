@@ -1,5 +1,3 @@
-import { BsTreeFill } from "react-icons/bs";
-
 export default function Logo({ className = "", light = true }) {
   return (
     <div

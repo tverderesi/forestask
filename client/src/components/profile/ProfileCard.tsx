@@ -1,4 +1,3 @@
-import Navbar from "../layout/elements/DesktopProfileNavbar";
 import CustomAccordionItem from "./accordion/CustomAccordionItem";
 import AppContext from "../../context/AppContext";
 import { useContext } from "react";
@@ -11,9 +10,10 @@ import { BsCheckLg } from "react-icons/bs";
 import ProfileHeader from "./ProfileHeader";
 import FiltersRow from "./FiltersRow";
 import FiltersHeader from "./FiltersHeader";
-import Header from "../../atoms/Logo";
+import Logo from "../../atoms/Logo";
+import { TreeSpinner } from "../../atoms/interface/TreeSpinner";
 
-function ProfileCard({ userData }) {
+function ProfileCard({ userData, loading }) {
   const {
     subjects,
     page,
@@ -34,14 +34,18 @@ function ProfileCard({ userData }) {
   const locale = Intl.DateTimeFormat().resolvedOptions().locale;
 
   return (
-    <div className="backdrop-blur-xl bg-blend-overlay bg-[var(--card-bg-color)] rounded-2xl h-[calc(87vh+1rem)] w-[30vw] min-w-[350px] shadow-2xl relative top-8 flex flex-col ml-[5vw]">
-      <div className="rounded-t-2xl bg-[var(--softer-accent-bg-color)] h-[max(30vh,12rem)] bg-blend-overlay">
-        <Header />
-        <ProfileHeader userData={userData} />
-      </div>
-      <div className="px-3 relative top-0 h-[calc(100%-max(30vh,12rem)-5rem)]">
-        <div className="align-self-center  justify-content-center px-0 py-2  h-[4.5rem]">
-          {/* <FiltersHeader
+    <div className="backdrop-blur-xl bg-blend-overlay bg-card rounded-2xl h-[calc(87vh+1rem)] w-[30vw] min-w-[350px] shadow-2xl relative top-8 flex flex-col ml-[5vw]">
+      {loading ? (
+        <TreeSpinner />
+      ) : (
+        <>
+          <div className="rounded-t-2xl bg-[var(--softer-accent-bg-color)] h-[max(30vh,12rem)] bg-blend-overlay w-full">
+            <Logo className="justify-center pt-3" />
+            <ProfileHeader userData={userData} />
+          </div>
+          <div className="px-3 relative top-0 h-[calc(100%-max(30vh,12rem)-5rem)]">
+            <div className="align-self-center  justify-content-center px-0 py-2  h-[4.5rem]">
+              {/* <FiltersHeader
             filters={filters}
             windowHeight={windowHeight}
             dispatch={dispatch}
@@ -54,9 +58,9 @@ function ProfileCard({ userData }) {
             timeZone={timeZone}
             locale={locale}
           /> */}
-        </div>
-        <div className="overflow-y-scroll h-[calc(100%-4.5rem)] mx-auto">
-          {/* <CustomAccordionItem
+            </div>
+            <div className="overflow-y-scroll h-[calc(100%-4.5rem)] mx-auto">
+              {/* <CustomAccordionItem
             icon={<MdInfoOutline size={20} />}
             name="Subjects"
             categories={subjects}
@@ -81,9 +85,10 @@ function ProfileCard({ userData }) {
             categories={""}
             itemPalette={""}
           /> */}
-        </div>
-      </div>
-      <Navbar dispatch={dispatch} />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

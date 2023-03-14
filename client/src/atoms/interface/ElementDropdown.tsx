@@ -7,10 +7,11 @@ export function ElementDropdown({
   position = "bottom",
   align = "end",
   forceOpen = false,
+  className = "",
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(forceOpen);
 
-  let containerClasses = "dropdown";
+  let containerClasses = `dropdown ${className}`;
   if (hover) {
     containerClasses += " dropdown-hover";
   }

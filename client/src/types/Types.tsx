@@ -155,4 +155,5 @@ export type DropdownProps = {
   align?: "start" | "end";
   forceOpen?: boolean;
   arrow?: boolean;
+  className?: string;
 };
