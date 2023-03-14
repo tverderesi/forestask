@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -80,6 +81,10 @@
   --bg-image-url: url("../public/media/background/7.png");
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 200, "opsz" 48;
+}
+
 .bg-image {
   background-image: var(--bg-image-url) !important;
   background-position: 0vh 100vh;
@@ -120,6 +125,16 @@ textarea.form-control {
   border-radius: 1rem 1rem 0 1rem;
   width: 30rem;
   height: 12rem;
+}
+
+.btm-nav > button > .active {
+  @apply px-4;
+  @apply rounded-full;
+  @apply bg-lavender-web-200/50;
+}
+
+.btm-nav {
+  @apply backdrop-blur-2xl;
 }
 
 .dropdown-toggle {
