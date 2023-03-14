@@ -1,9 +1,15 @@
 /** @format */
 
-import paletteCreator from '../components/style/PaletteCreator';
-import { Card } from '../types/Types';
+import paletteCreator from "../components/style/PaletteCreator";
+import { Card } from "../types/Types";
 
-export async function changePage(filters, currentPage, index, maxPages, cardsPerPage) {
+export async function changePage(
+  filters,
+  currentPage,
+  index,
+  maxPages,
+  cardsPerPage
+) {
   let newPage = currentPage + index;
   newPage = newPage >= maxPages ? maxPages : newPage < 0 ? 0 : newPage;
   const params = {
@@ -21,57 +27,70 @@ export async function changePage(filters, currentPage, index, maxPages, cardsPer
 
 export const getXP = async () => {
   let XP = 0;
-  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards?checked=true`);
+  const res = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/cards?checked=true`
+  );
   const cards: Card[] = await res.json();
-  cards.map(card => (XP += Number(card.xp)));
+  cards.map((card) => (XP += Number(card.xp)));
 
   return XP;
 };
 
-export const fetchGameLevels = async (level = '') => {
-  const params = level ? paramBuilder(level) : '';
+export const fetchGameLevels = async (level = "") => {
+  const params = level ? paramBuilder(level) : "";
 
-  const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/levels/${params}`);
+  const res = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/levels/${params}`
+  );
   return await res.json();
 };
 
 export const updateGameLevels = (userData, gameLevels) => {};
 
 export async function fetchActivities() {
-  const response = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/activities`, {
-    headers: { 'Content-Type': 'json' },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/activities`,
+    {
+      headers: { "Content-Type": "json" },
+    }
+  );
   return await response.json();
 }
 
 export const fetchCards = async (params, getXTotalCount = false) => {
   const queryParams = paramBuilder(params);
 
-  const response = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards?${queryParams}`, {
-    headers: { 'Content-Type': 'text/html' },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/cards?${queryParams}`,
+    {
+      headers: { "Content-Type": "text/html" },
+    }
+  );
   const data = await response.json();
-  const xTotalCount = Number(response.headers.get('X-total-count'));
+  const xTotalCount = Number(response.headers.get("X-total-count"));
   return getXTotalCount ? [data, xTotalCount] : data;
 };
 
 export async function createSubjectPalette() {
   const subjects = await fetchSubjects();
-  const subjectPalette = paletteCreator(subjects, '#c491ff', '#b56576');
+  const subjectPalette = paletteCreator(subjects, "#c491ff", "#b56576");
   return subjectPalette;
 }
 
 export async function createActivityPalette() {
   const activities = await fetchActivities();
-  const activityPalette = paletteCreator(activities, '#ff6f08', '#ff6f08');
+  const activityPalette = paletteCreator(activities, "#ff6f08", "#ff6f08");
 
   return activityPalette;
 }
 
 export const fetchSubjects = async () => {
-  const response = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/subjects`, {
-    headers: { 'Content-Type': 'json' },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_FAKE_SERVER}/subjects`,
+    {
+      headers: { "Content-Type": "json" },
+    }
+  );
   const data = await response.json();
   return data;
 };
@@ -83,13 +102,21 @@ export function setPagesParameters(cardHeight, windowHeight, totalCards) {
   return PageParameters;
 }
 
-export const paramBuilder = queryParams => {
+export const paramBuilder = (queryParams) => {
   const params = {};
-  const keys = ['subject', 'type', 'deadline', 'checked', '_start', '_limit', 'level'];
+  const keys = [
+    "subject",
+    "type",
+    "deadline",
+    "checked",
+    "_start",
+    "_limit",
+    "level",
+  ];
   const values = Object.values(queryParams);
 
   values.map((value, index) => {
-    return value || value === false ? (params[keys[index]] = value) : '';
+    return value || value === false ? (params[keys[index]] = value) : "";
   });
   return new URLSearchParams(params);
 };
@@ -101,11 +128,23 @@ export const handlePageChange = async (
   cardsPerPage,
   dispatch
 ) => {
-  const payload = await changePage(filters, page, index, maxPages, cardsPerPage);
-  dispatch({ type: 'CHANGE_PAGE', payload: payload });
+  const payload = await changePage(
+    filters,
+    page,
+    index,
+    maxPages,
+    cardsPerPage
+  );
+  dispatch({ type: "CHANGE_PAGE", payload: payload });
 };
 
-export const filterCards = async (filters, windowHeight, dispatch, page, cardsPerPage) => {
+export const filterCards = async (
+  filters,
+  windowHeight,
+  dispatch,
+  page,
+  cardsPerPage
+) => {
   const { subjects, activities, deadline, checked } = filters;
   const params = {
     subjects: subjects,
@@ -127,27 +166,31 @@ export const filterCards = async (filters, windowHeight, dispatch, page, cardsPe
 
   const payload2 = await fetchCards(params2);
   dispatch({
-    type: 'LOAD_TOTAL_CARDS',
+    type: "LOAD_TOTAL_CARDS",
     payload: payload2.length,
   });
 
-  const filteredPagesParameters = await setPagesParameters(100, windowHeight, payload2.length);
+  const filteredPagesParameters = await setPagesParameters(
+    100,
+    windowHeight,
+    payload2.length
+  );
   dispatch({
-    type: 'SET_PAGES_PARAMETERS',
+    type: "SET_PAGES_PARAMETERS",
     payload: filteredPagesParameters,
   });
-  dispatch({ type: 'RENDER_CARDS', payload: payload });
+  dispatch({ type: "RENDER_CARDS", payload: payload });
 };
 
 export const setUserLevel = (userXP, gameLevels) => {
-  let userLevel = '0';
+  let userLevel = "0";
   for (let level = 0; userXP > Number(gameLevels[level]); level++) {
     userLevel = level.toString();
   }
   return userLevel;
 };
 
-export const fetchUserData = async (id = '') => {
+export const fetchUserData = async (id = "") => {
   const res = await fetch(`${process.env.REACT_APP_FAKE_SERVER}/user`);
   const userData = await res.json();
 
@@ -159,18 +202,18 @@ export const fetchUserData = async (id = '') => {
 };
 
 export const init = async (cardHeight, dispatch, windowHeight) => {
-  dispatch({ type: 'LOGIN_SUCCESS' });
+  dispatch({ type: "LOGIN_SUCCESS" });
   const firstCardParams = {
-    subject: '',
-    activity: '',
-    deadline: '',
-    checked: '',
+    subject: "",
+    activity: "",
+    deadline: "",
+    checked: "",
     _start: 0,
     _limit: 1,
   };
-  dispatch({ type: 'SET_LOADING', payload: true });
+  dispatch({ type: "SET_LOADING", payload: true });
   const [firstCard, xTotalCount] = await fetchCards(firstCardParams, true);
-  dispatch({ type: 'LOAD_TOTAL_CARDS', payload: xTotalCount });
+  dispatch({ type: "LOAD_TOTAL_CARDS", payload: xTotalCount });
   const subjects = await fetchSubjects();
   const subjectPalette = await createSubjectPalette();
   const activities = await fetchActivities();
@@ -178,33 +221,37 @@ export const init = async (cardHeight, dispatch, windowHeight) => {
   const gameLevels = await fetchGameLevels();
   const userData = await fetchUserData();
 
-  dispatch({ type: 'LOAD_SUBJECTS', payload: subjects });
-  dispatch({ type: 'FETCH_ACTIVITIES', payload: activities });
+  dispatch({ type: "LOAD_SUBJECTS", payload: subjects });
+  dispatch({ type: "FETCH_ACTIVITIES", payload: activities });
   dispatch({
-    type: 'CREATE_PALETTES',
+    type: "CREATE_PALETTES",
     payload: { subjectPalette, activityPalette },
   });
-  dispatch({ type: 'SET_GAME_LEVELS', payload: gameLevels });
-  dispatch({ type: 'SET_USER_DATA', payload: userData });
+  dispatch({ type: "SET_GAME_LEVELS", payload: gameLevels });
+  dispatch({ type: "SET_USER_DATA", payload: userData });
 
-  const pageParameters = setPagesParameters(cardHeight, windowHeight, xTotalCount);
-  dispatch({ type: 'SET_PAGES_PARAMETERS', payload: pageParameters });
+  const pageParameters = setPagesParameters(
+    cardHeight,
+    windowHeight,
+    xTotalCount
+  );
+  dispatch({ type: "SET_PAGES_PARAMETERS", payload: pageParameters });
   const { cardsPerPage } = pageParameters;
   const firstLoadParams = {
-    subject: '',
-    activity: '',
-    deadline: '',
-    checked: '',
+    subject: "",
+    activity: "",
+    deadline: "",
+    checked: "",
     _start: 0,
     _limit: cardsPerPage,
   };
 
-  dispatch({ type: 'CLEAR_CARDS' });
+  dispatch({ type: "CLEAR_CARDS" });
 
   const cards = await fetchCards(firstLoadParams);
-  dispatch({ type: 'RENDER_CARDS', payload: cards });
-  dispatch({ type: 'INIT_SUCCESS' });
-  setTimeout(() => dispatch({ type: 'SET_LOADING', payload: false }), 1000);
+  dispatch({ type: "RENDER_CARDS", payload: cards });
+  dispatch({ type: "INIT_SUCCESS" });
+  setTimeout(() => dispatch({ type: "SET_LOADING", payload: false }), 1000);
 };
 
 /** Puts the current state of the task in the database.
@@ -216,8 +263,8 @@ export const addDone: any = async (item, id) => {
   item.checked = !item.checked;
 
   await fetch(`${process.env.REACT_APP_FAKE_SERVER}/cards/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(item),
   });
 };
@@ -232,27 +279,8 @@ export const addDone: any = async (item, id) => {
  * @params dispatch - dispatch function that comes from {@link AppReducer.}
  * @eventProperty
  */
-export const handleDone: any = async (
-  id,
-  item,
-  userData,
-  completed,
-  setCompleted,
-  dispatch,
-  gameLevels
-) => {
-  setCompleted(!completed);
-  addDone(item, id);
-  const newXP = item.checked ? Number(userData.xp) + Number(item.xp) : userData.xp - item.xp;
-  const userLevel = setUserLevel(newXP, gameLevels);
 
-  dispatch({
-    type: 'SET_USER_DATA',
-    payload: { ...userData, xp: newXP, level: userLevel },
-  });
-};
-
-export const setLastLevel = gameLevels => {
+export const setLastLevel = (gameLevels) => {
   const levelIndexes = Object.keys(gameLevels);
   const lastLevel = levelIndexes[levelIndexes.length - 1];
   return lastLevel;

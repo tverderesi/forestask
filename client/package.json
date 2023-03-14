@@ -1,8 +1,8 @@
 {
-  "name": "woovi_challenge",
+  "name": "florestarefa",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  
   "dependencies": {
     "@apollo/client": "^3.7.6",
     "@testing-library/jest-dom": "^5.16.5",
@@ -20,7 +20,6 @@
     "framer-motion": "^9.1.6",
     "graphql": "^15.8.0",
     "graphql-tag": "^2.12.6",
-    "json-server": "^0.17.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-accessible-accordion": "^5.0.0",
@@ -41,8 +40,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch db.json ---port 5000",
-    "client-dev": "concurrently \"npm run start\" \"npm run server\"",
     "lint": "eslint -f unix \"src/**/*.{ts,tsx}\""
   },
   "eslintConfig": {

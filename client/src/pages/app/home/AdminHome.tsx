@@ -9,7 +9,6 @@ import Logo from "../../../atoms/Logo";
 import { Avatar } from "../../../atoms/interface/Avatar";
 import { ElementDropdown } from "../../../atoms/interface/ElementDropdown";
 import { Dropdown } from "../../../atoms/interface/Dropdown";
-
 import { HiMenuAlt1 } from "react-icons/hi";
 import { BiPencil } from "react-icons/bi";
 import { RxCardStack } from "react-icons/rx";
@@ -51,35 +50,26 @@ function NavigationBar({ userData, children }) {
                 </div>
               );
             })}
-            <div className="bg-slate-400/10 rounded-2xl absolute bottom-4 p-4 w-[calc(100vw-2rem)]">
-              <div className="collapse-title flex items-center">
-                <Avatar userData={userData} className="h-16 mr-4" />
-                <div>
-                  <h3 className="card-title leading-[80%] text-night-900">
-                    {userData.firstName} {userData.lastName}
-                  </h3>
-                  <p className="leading-[100%]  text-sm mt-0">
-                    <em className="text-night-200">{userData.email}</em>
-                  </p>
-                  <p className="text-night-300">{userData.__typename}</p>
-                </div>
+            <div className="bg-slate-400/10 rounded-2xl absolute bottom-4 p-4 w-[calc(100vw-2rem)] grid grid-cols-5 grid-rows-1 gap-2 items-center">
+              <div className="row-span-2 col-span-1">
+                <Avatar userData={userData} className="h-16 mr-1" />
               </div>
-              <div className="collapse-content">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusamus quo a vero excepturi ratione esse. Dignissimos animi
-                  eos aut. Possimus esse delectus, expedita unde, a veniam fuga
-                  incidunt repudiandae consequuntur quod maxime qui? Odit,
-                  consequuntur minus vitae perferendis temporibus quod aut animi
-                  eaque ducimus nemo officia voluptatem, ullam similique cum
-                  eligendi quis assumenda veritatis expedita incidunt qui ipsa
-                  reprehenderit deserunt! Placeat reiciendis totam sint quod
-                  iure, quidem vero porro doloremque explicabo delectus. Fugiat
-                  atque non quo voluptas excepturi, in illum accusantium
-                  blanditiis dolor, animi et enim eligendi nihil modi sapiente
-                  incidunt dolorem voluptates alias, quis qui doloribus quaerat
-                  beatae? Aliquid.
-                </p>
+
+              <div className="col-span-4 ">
+                <h3 className="card-title text-night-900">
+                  {userData.firstName} {userData.lastName}
+                </h3>
+
+                <div className="w-full flex gap-4 mt-2">
+                  <Link
+                    to="/app/home/profile"
+                    className="btn btn-primary btn-sm"
+                  >
+                    <CgProfile className="mr-1" size={"1rem"} />
+                    Edit Profile
+                  </Link>
+                  <Logout />
+                </div>
               </div>
             </div>
           </div>

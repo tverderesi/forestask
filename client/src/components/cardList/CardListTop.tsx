@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PageNavigator } from "../../atoms/interface/PageNavigator";
+import Logo from "../../atoms/Logo";
 
 function CardListTop() {
   // Styling
@@ -10,7 +11,7 @@ function CardListTop() {
   const totalPages = 5;
 
   return (
-    <div className="p-5 card-style font-semibold flex rounded-2xl w-full justify-center items-center">
+    <div className="py-3 px-5 h-16 bg-card font-semibold flex rounded-none lg:rounded-2xl shadow-2xl backdrop-blur-2xl w-full justify-center items-center">
       <p className="w-full text-center text-xl">
         Tasks {currentPage}/{totalPages}
       </p>

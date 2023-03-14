@@ -9,15 +9,14 @@ export default function ProfileHeader({ userData }) {
         userData={userData}
         className="rounded-full w-20 h-20 me-2 my-auto"
       />
-      <p>
-        <p className="text-xl font-semibold capitalize">
-          Hello, {userData.firstName}!
-        </p>
-        <p className="text-base  text-night-300 mt-0">
-          Young Padawawn - <span>Lvl. 7</span>
-        </p>
-        <p className="text-night-200 text-sm">2500XP until Lvl. 8</p>
+
+      <p className="text-xl font-semibold capitalize">
+        Hello, {userData.firstName}!
       </p>
+      <p className="text-base  text-night-300 mt-0">
+        Young Padawawn - <span>Lvl. 7</span>
+      </p>
+      <p className="text-night-200 text-sm">2500XP until Lvl. 8</p>
     </div>
   );
 }
