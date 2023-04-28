@@ -31,9 +31,70 @@ Florestarefa is built using the MERN (MongoDB, Express, React, Node.js) stack an
 - Apollo Server and Client
 - Vercel
 
+##Pipeline
+1. ###Front End:
+
+- [ ] Design UI for student interface
+- [ ] Design UI for teacher interface
+- [ ] Design UI for admin interface
+- [ ] Implement student interface using React
+- [ ] Implement teacher interface using React
+- [ ] Implement admin interface using React
+- [ ] Integrate UI components with GraphQL queries using Apollo Client
+- [ ] Implement user authentication and authorization using JSON Web Tokens (JWT)
+
+2. ###Back End:
+
+- [ ] Create MongoDB database schema
+- [ ] Set up GraphQL schema and resolvers using Apollo Server
+- [ ] Implement CRUD operations for database using Mongoose
+- [ ] Set up user authentication and authorization using JWT
+- [ ] Implement API endpoints for handling user registration, login, and logout
+- [ ] Implement API endpoints for handling data requests from the front-end using GraphQL
+
+3. ###Deployment:
+
+- [ ] Deploy MongoDB database to a cloud service provider (e.g. MongoDB Atlas)
+- [ ] Deploy the back-end server to a cloud service provider (e.g. Heroku, AWS)
+- [ ] Deploy the front-end application to a cloud service provider (e.g. Vercel)
+- [ ] Set up continuous integration and continuous deployment (CI/CD) pipelines using tools such as GitHub Actions or Travis CI
+
+4 . ###Implement GraphQL Schema and Resolvers
+
+- [ ] Implement GraphQL Schema and Resolvers
+- [ ] Define the GraphQL schema for the application's data model
+- [ ] Create resolvers to handle incoming GraphQL queries and mutations
+- [ ] Integrate with Apollo Server and Client for server and client-side GraphQL functionality
+
+5. ###Build User Interface Components
+- [ ] Create reusable components for the different UI elements of the application
+- [ ] Design and implement the UI for the student, teacher, and admin interfaces
+- [ ] Use React Router to manage navigation between different pages and interfaces
+
+6. ####Implement User Authentication and Authorization
+- [ ] Build a secure login and registration system for users
+- [ ] Use JSON Web Tokens (JWT) for user authentication and authorization
+- [ ] Set up user roles and permissions for different interfaces and actions
+
+7. ###Develop CRUD Operations
+- [ ] Implement Create, Read, Update, and Delete (CRUD) operations for data management
+- [ ] Use GraphQL queries and mutations to interact with the MongoDB database
+- [ ] Ensure data validation and error handling for all CRUD operations
+
+8. ###Testing and Debugging
+- [ ] Conduct unit and integration testing for each component and functionality
+- [ ] Use debugging tools to identify and fix issues in the codebase
+- [ ] Ensure cross-browser compatibility and responsiveness of the application
+
+9. ###Deployment and Hosting
+- [ ] Deploy the application to Vercel for hosting and production deployment
+- [ ] Configure the necessary environment variables and settings for the deployed application
+- [ ] Set up continuous integration and deployment (CI/CD) pipelines for automated deployment and updates.
+
+
 ## Future Development
 
-We plan to add features such as:
+I plan to add features such as:
 
 - Integration with external calendars such as Google Calendar.
 - Parental access to view student progress and performance.
