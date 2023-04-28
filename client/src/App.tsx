@@ -8,12 +8,10 @@ import { AppRouter } from "./AppRouter";
 
 export default function App() {
   return (
-    <main>
-      <AuthProvider>
-        <AppProvider>
-          <AppRouter />
-        </AppProvider>
-      </AuthProvider>
-    </main>
+    <AuthProvider>
+      <AppProvider>
+        <AppRouter />
+      </AppProvider>
+    </AuthProvider>
   );
 }

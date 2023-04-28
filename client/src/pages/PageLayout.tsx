@@ -1,12 +1,11 @@
-import { NavLink, Outlet } from "react-router-dom";
-
 import Navbar from "../atoms/interface/Navbar";
 import Features from "./Features";
 import Florestarefa from "./Florestarefa";
 import { Hero } from "./Hero";
-export default function Home() {
+
+export default function PageLayout() {
   return (
-    <>
+    <main className="snap-mandatory snap-both">
       <Navbar>
         <>
           <li>
@@ -17,9 +16,9 @@ export default function Home() {
           </li>
         </>
       </Navbar>
-      <Hero />
+      <Hero heroText={"Grow your knowledge in the forest of learning"} />
       <Features />
       <Florestarefa />
-    </>
+    </main>
   );
 }

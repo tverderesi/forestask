@@ -7,19 +7,24 @@ export const Features = () => {
   return (
     <>
       {/* Features for Students */}
-      <section className="bg-green-400 py-8">
-        <h1 className="text-3xl font-bold text-center mb-4">Florestarefa</h1>
-        <p className="text-xl text-center">
-          Florestarefa is a student-friendly progressive web application (PWA)
-          with gamified elements that doubles as a learning management system
-          (LMS) for school staff. The goal of the project is to provide a fun
-          and engaging learning experience for students, while also providing a
-          comprehensive and organized platform for teachers to manage their
-          classes and assignments.
-        </p>
+      <section
+        className="py-8 snap-center snap-always h-screen w-screen"
+        id="about"
+      >
+        <div className="w-1/2">
+          <h1 className="text-3xl font-bold text-center mb-4">Florestarefa</h1>
+          <p className="text-xl text-center ">
+            Florestarefa is a student-friendly progressive web application (PWA)
+            with gamified elements that doubles as a learning management system
+            (LMS) for school staff. The goal of the project is to provide a fun
+            and engaging learning experience for students, while also providing
+            a comprehensive and organized platform for teachers to manage their
+            classes and assignments.
+          </p>
+        </div>
       </section>
 
-      <section className="py-8 px-4 md:px-0 ">
+      <section className="py-8 px-4 md:px-0 snap-center snap-always">
         <h2 className="text-2xl font-bold mb-4">Features for Students</h2>
         <ul className="space-y-4">
           <li className="flex space-x-4 items-center">
@@ -47,7 +52,7 @@ export const Features = () => {
       </section>
 
       {/* Features for Teachers */}
-      <section className="py-8 px-4 md:px-0 bg-gray-100">
+      <section className="py-8 px-4 md:px-0 bg-gray-100 snap-center snap-always">
         <h2 className="text-2xl font-bold mb-4">Features for Teachers</h2>
         <ul className="space-y-4">
           <li className="flex space-x-4 items-center">
@@ -67,7 +72,7 @@ export const Features = () => {
           </li>
         </ul>
       </section>
-      <div className="bg-white shadow-lg rounded-lg p-6">
+      <div className="bg-white shadow-lg rounded-lg p-6 snap-center snap-always">
         <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
         <p className="text-lg font-medium mb-4">
           Florestarefa is built using the MERN (MongoDB, Express, React,

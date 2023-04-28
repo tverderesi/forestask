@@ -36,7 +36,18 @@ module.exports = {
         "green-yellow": "#afee4c",
         "ruddy-blue": "#5ba5fe",
 
-        "reseda-green": "#6f8c5c",
+        "reseda-green": {
+          100: "#e8f7d9",
+          200: "#c5e9b3",
+          300: "#a1db8d",
+          400: "#7dd067",
+          500: "#5dcf3f",
+          600: "#3dbb2a",
+          700: "#2a9a1f",
+          800: "#1a7716",
+          900: "#0d5410",
+          DEFAULT: "#a1db8d",
+        },
         "blue-gray": "#5c9bd9",
         "lavender-web": {
           100: "#e9edfc",

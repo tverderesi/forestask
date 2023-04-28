@@ -1,7 +1,29 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
-
 export default function Navbar({ children }) {
+  useEffect(() => {
+    const handleNavClick = (event) => {
+      const target = event.target;
+      const hash = target.getAttribute("href");
+      if (hash.startsWith("#")) {
+        event.preventDefault();
+        const targetElement = document.querySelector(hash);
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          duration: "5000ms",
+        });
+      }
+    };
+
+    const navbar = document.querySelector(".navbar");
+    navbar?.addEventListener("click", handleNavClick);
+
+    return () => {
+      navbar?.removeEventListener("click", handleNavClick);
+    };
+  }, []);
+
   return (
     <header className="navbar bg-night-900 text-lavender-web-100 h-16">
       <div className="navbar-start">

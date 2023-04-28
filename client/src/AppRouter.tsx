@@ -3,7 +3,7 @@ import Onboard from "./pages/app/onboard/Onboard";
 import OnboardUI from "./components/layout/login/OnboardUI";
 import Register from "./pages/app/onboard/Register";
 import Login from "./pages/app/onboard/Login";
-import Home from "./pages/Home";
+import PageLayout from "./pages/PageLayout";
 import NotFound from "./pages/NotFound";
 import AppHome from "./pages/app/home/AppHome";
 
@@ -16,26 +16,12 @@ export function AppRouter() {
     <Router>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Home />} errorElement={<NotFound />}></Route>
         <Route
-          path="/crazy"
-          element={
-            <>
-              <Navbar>
-                <>
-                  <li>
-                    <NavLink to="/#a">History</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/#about">About</NavLink>
-                  </li>
-                </>
-              </Navbar>
-              <Features />
-              <Florestarefa />
-            </>
-          }
-        />
+          path="/"
+          element={<PageLayout />}
+          errorElement={<NotFound />}
+        ></Route>
+
         <Route path="/app/" element={<Onboard />} errorElement={<NotFound />}>
           <Route path="/app/" element={<OnboardUI />} />
           <Route path="/app/login" element={<Login />} />

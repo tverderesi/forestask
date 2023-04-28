@@ -20,14 +20,14 @@ export default function Logo({ className = "", light = true }) {
   );
 }
 
-export function Pinetree({ className = "" }) {
+export function Pinetree({ className = "", strokeWidth = "0.047" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="2.25rem"
       fillRule="evenodd"
       strokeLinejoin="round"
-      strokeMiterlimit="2"
+      strokeMiterlimit="1"
       clipRule="evenodd"
       version="1.1"
       viewBox="0 0 32 40.269"
@@ -42,7 +42,7 @@ export function Pinetree({ className = "" }) {
         strokeLinejoin="round"
         strokeMiterlimit="2"
         strokeOpacity="1"
-        strokeWidth="0.047"
+        strokeWidth={strokeWidth}
         clipRule="evenodd"
         transform="matrix(39.08795 0 0 39.14705 -6.71 33.875)"
       >

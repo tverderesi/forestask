@@ -4,7 +4,9 @@ const Florestarefa = () => {
   return (
     <>
       <SlideInView>
-        <h1 className="text-2xl font-bold mb-4">Introduction</h1>
+        <h1 className="text-2xl font-bold mb-4 snap-center snap-always">
+          Introduction
+        </h1>
 
         <p className="mb-6">
           Florestarefa is the result of my passion for gaming, education, and
@@ -39,7 +41,9 @@ const Florestarefa = () => {
         </p>
       </SlideInView>
       <SlideInView>
-        <h2 className="text-lg font-bold mb-2">Development History</h2>
+        <h2 className="text-lg font-bold mb-2 snap-center snap-always">
+          Development History
+        </h2>
         <p className="mb-6">
           Florestarefa was initially created by my group at StartSe Tech
           Academy's Hackathon, a bootcamp course that I attended from May to
