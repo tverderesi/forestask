@@ -1,23 +1,25 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 import Navbar from "../atoms/interface/Navbar";
-
+import Features from "./Features";
+import Florestarefa from "./Florestarefa";
+import { Hero } from "./Hero";
 export default function Home() {
   return (
-    <div className="h-screen">
+    <>
       <Navbar>
         <>
           <li>
-            <NavLink to="/#a">History</NavLink>
+            <a href="#a">History</a>
           </li>
           <li>
-            <NavLink to="/#about">About</NavLink>
+            <a href="#about">About</a>
           </li>
         </>
       </Navbar>
-      <main>
-        <Outlet />
-      </main>
-    </div>
+      <Hero />
+      <Features />
+      <Florestarefa />
+    </>
   );
 }

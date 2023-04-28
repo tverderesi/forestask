@@ -1,19 +1,9 @@
-import CustomAccordionItem from "./accordion/CustomAccordionItem";
 import AppContext from "../../context/AppContext";
-import { useContext } from "react";
-import {
-  MdInfoOutline,
-  MdOutlineLightbulb,
-  MdCalendarToday,
-} from "react-icons/md";
-import { BsCheckLg } from "react-icons/bs";
+
 import ProfileHeader from "./ProfileHeader";
-import FiltersRow from "./FiltersRow";
-import FiltersHeader from "./FiltersHeader";
 import Logo from "../../atoms/Logo";
 import { TreeSpinner } from "../../atoms/interface/TreeSpinner";
-import { CgFilters, CgProfile } from "react-icons/cg";
-import { HiOutlineFilter } from "react-icons/hi";
+import React, { useState, useContext } from "react";
 
 function ProfileCard({ userData, loading }) {
   const {
@@ -29,9 +19,6 @@ function ProfileCard({ userData, loading }) {
 
     gameLevels,
   } = useContext(AppContext);
-
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const locale = Intl.DateTimeFormat().resolvedOptions().locale;
 
   return (
     <>
@@ -91,21 +78,39 @@ function ProfileCard({ userData, loading }) {
           </>
         )}
       </div>
-      <div className="btm-nav h-16 bg-card">
-        <button>
-          <span className="material-symbols-outlined active">filter_alt</span>
-          <span className="btm-nav-label font-semibold">Filters</span>
-        </button>
-        <button className="">
-          <span className="material-symbols-outlined">account_circle</span>
-          <span className="btm-nav-label font-semibold">Profile</span>
-        </button>
-        <button>
-          <span className="material-symbols-outlined">forest</span>
-          <span className="btm-nav-label font-semibold">Profile</span>
-        </button>
-      </div>
+      <BottomNavBar
+        buttons={[
+          { label: "Filters", icon: "filter_alt" },
+          { label: "Profile", icon: "account_circle" },
+          { label: "Forest", icon: "forest" },
+        ]}
+      />
     </>
+  );
+}
+
+function BottomNavBar({ buttons }) {
+  const [activeButton, setActiveButton] = useState(0);
+
+  const handleButtonClick = (index) => {
+    setActiveButton(index);
+  };
+
+  return (
+    <div className="btm-nav h-16 bg-card">
+      {buttons.map((button, index) => (
+        <button key={index} onClick={() => handleButtonClick(index)}>
+          <span
+            className={`material-symbols-outlined transition-all + ${
+              activeButton === index ? "active" : ""
+            }`}
+          >
+            {button.icon}
+          </span>
+          <span className="btm-nav-label font-semibold">{button.label}</span>
+        </button>
+      ))}
+    </div>
   );
 }
 export default ProfileCard;

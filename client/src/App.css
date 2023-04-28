@@ -126,7 +126,9 @@ textarea.form-control {
   width: 30rem;
   height: 12rem;
 }
-
+.transition {
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
 .btm-nav > button > .active {
   @apply px-4;
   @apply rounded-full;
@@ -135,6 +137,7 @@ textarea.form-control {
 
 .btm-nav {
   @apply backdrop-blur-2xl;
+  @apply text-lavender-web-900;
 }
 
 .dropdown-toggle {
@@ -149,6 +152,7 @@ textarea.form-control {
   align-self: center;
   width: 100%;
   appearance: "none";
+  -webkit-appearance: "none";
 }
 
 option {
@@ -180,15 +184,6 @@ textarea.form-control {
   border-color: none;
   box-shadow: none;
   border: none;
-}
-
-main {
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  background-size: cover;
-  background-position: 0 100%;
-  width: 100vw;
 }
 
 .btn-transparent {

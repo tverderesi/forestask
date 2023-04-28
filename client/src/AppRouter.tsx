@@ -6,16 +6,36 @@ import Login from "./pages/app/onboard/Login";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import AppHome from "./pages/app/home/AppHome";
-import { BackdropBlurTest } from "./util/BackdropBlurTest";
 
+import { NavLink } from "react-router-dom";
+import Features from "./pages/Features";
+import Florestarefa from "./pages/Florestarefa";
+import Navbar from "./atoms/interface/Navbar";
 export function AppRouter() {
   return (
     <Router>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Home />} errorElement={<NotFound />}>
-          {/* prettier-ignore */}
-        </Route>
+        <Route path="/" element={<Home />} errorElement={<NotFound />}></Route>
+        <Route
+          path="/crazy"
+          element={
+            <>
+              <Navbar>
+                <>
+                  <li>
+                    <NavLink to="/#a">History</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/#about">About</NavLink>
+                  </li>
+                </>
+              </Navbar>
+              <Features />
+              <Florestarefa />
+            </>
+          }
+        />
         <Route path="/app/" element={<Onboard />} errorElement={<NotFound />}>
           <Route path="/app/" element={<OnboardUI />} />
           <Route path="/app/login" element={<Login />} />

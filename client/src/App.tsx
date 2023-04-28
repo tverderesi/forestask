@@ -8,7 +8,7 @@ import { AppRouter } from "./AppRouter";
 
 export default function App() {
   return (
-    <main className="App flex justify-center">
+    <main>
       <AuthProvider>
         <AppProvider>
           <AppRouter />

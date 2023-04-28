@@ -1,10 +1,9 @@
-import { Children } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
 export default function Navbar({ children }) {
   return (
-    <header className="navbar bg-night text-lavender-web">
+    <header className="navbar bg-night-900 text-lavender-web-100 h-16">
       <div className="navbar-start">
         <div className="dropdown">
           <label
@@ -41,7 +40,7 @@ export default function Navbar({ children }) {
         <ul className="menu menu-horizontal px-1">{children}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/app" className="btn btn-primary">
+        <Link to="/app" className="btn bg-seal-brown-400">
           App
         </Link>
       </div>
