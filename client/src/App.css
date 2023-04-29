@@ -452,7 +452,7 @@ li > a.dropdown.dropdown-arrow > svg {
   @apply transition-all;
 }
 
-.hero-bg {
+.bg-hero {
   background: /*rose-red */ radial-gradient(
       circle at top left,
       #be1449,

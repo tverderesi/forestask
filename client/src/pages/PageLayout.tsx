@@ -5,7 +5,7 @@ import { Hero } from "./Hero";
 
 export default function PageLayout() {
   return (
-    <main className="snap-mandatory snap-both">
+    <main className=" bg-slate-100 h-screen w-screen overflow-y-scroll carousel carousel-vertical">
       <Navbar>
         <>
           <li>

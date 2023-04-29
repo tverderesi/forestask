@@ -25,7 +25,7 @@ export default function Navbar({ children }) {
   }, []);
 
   return (
-    <header className="navbar bg-night-900 text-lavender-web-100 h-16">
+    <header className="navbar bg-night-900 text-lavender-web-100 h-16 fixed z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <label
