@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useScrollToSection } from "../util/hooks";
+import { Link } from "react-router-dom";
 
 export const Hero = ({ heroText = "" }) => {
+  const scrollToAbout = useScrollToSection("#about");
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -14,12 +17,18 @@ export const Hero = ({ heroText = "" }) => {
         <p>{heroText}</p>
       </h1>
       <div className="flex flex-col md:flex-row w-1/2 md:w-auto justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[12.5%] md:bottom-1/4">
-        <button className="bg-night-900 text-seal-brown-50 hover:bg-mantis hover:text-night-900 btn btn-lg md:btn-2xl border-none drop-shadow-lg">
+        <button
+          onClick={scrollToAbout}
+          className="bg-night-900 text-seal-brown-50 hover:bg-mantis hover:text-night-900 btn btn-lg md:btn-2xl border-none drop-shadow-lg"
+        >
           Learn More
         </button>
-        <button className="bg-night-900 text-seal-brown-50 hover:bg-mantis hover:text-night-900 btn btn-lg md:btn-2xl border-none drop-shadow-lg">
+        <Link
+          to="/app"
+          className="bg-night-900 text-seal-brown-50 hover:bg-mantis hover:text-night-900 btn btn-lg md:btn-2xl border-none drop-shadow-lg"
+        >
           Explore the App
-        </button>
+        </Link>
       </div>
     </motion.div>
   );

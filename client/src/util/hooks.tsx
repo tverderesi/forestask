@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 export const useForm = (
   callback: { (): void; (): void; (): void },
@@ -28,7 +28,18 @@ export const useHandleClick = (
   const handleClick = (e: React.SyntheticEvent, role: string) => {
     e.preventDefault();
     setSelectedRole(role);
-    setCurrentPage(currentPage => currentPage + 1);
+    setCurrentPage((currentPage) => currentPage + 1);
   };
   return handleClick;
+};
+
+export const useScrollToSection = (sectionId) => {
+  const scrollToSection = useCallback(() => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [sectionId]);
+
+  return scrollToSection;
 };
