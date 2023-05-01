@@ -1,4 +1,4 @@
-import SlideInView from "./SlideInView";
+import SlideInView from "../pages/SlideInView";
 
 const Florestarefa = () => {
   return (

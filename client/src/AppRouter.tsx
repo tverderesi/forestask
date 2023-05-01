@@ -3,10 +3,10 @@ import Onboard from "./pages/app/onboard/Onboard";
 import OnboardUI from "./components/layout/login/OnboardUI";
 import Register from "./pages/app/onboard/Register";
 import Login from "./pages/app/onboard/Login";
-import PageLayout from "./pages/PageLayout";
+
 import NotFound from "./pages/NotFound";
 import AppHome from "./pages/app/home/AppHome";
-
+import { Home } from "./pages/Home";
 import AdminHome from "./pages/app/home/AdminHome";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import Loading from "./components/layout/Loading";
@@ -15,7 +15,7 @@ export function AppRouter() {
     <Router>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<PageLayout />} errorElement={<NotFound />}>
+        <Route path="/" element={<Home />} errorElement={<NotFound />}>
           <Route
             path="/loading"
             element={<Loading className="w-screen h-screen" text={"loading"} />}

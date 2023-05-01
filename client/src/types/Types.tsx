@@ -1,7 +1,7 @@
 /** @format */
 
 import { ReactNode } from "react";
-
+import { IconType } from "react-icons";
 //Semi-Primitive Types
 
 export type type = string;
@@ -156,4 +156,9 @@ export type DropdownProps = {
   forceOpen?: boolean;
   arrow?: boolean;
   className?: string;
+};
+
+export type FeatureProps = {
+  icon: IconType;
+  description: ReactNode;
 };

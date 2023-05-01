@@ -29,7 +29,7 @@ export const HeroText = ({
           transition: { easings: "ease-in-out", duration: 1 },
         }}
         transition={{ duration: 1, easings: "ease-in-out" }}
-        className="text-2xl md:text-3xl lg:text-5xl font-semibold text-white mb-10 text-center h-full relative flex items-center mx-10 leading-relaxed md:leading-relaxed lg:leading-relaxed"
+        className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-10 text-center h-full relative flex items-center mx-10 leading-relaxed md:leading-relaxed lg:leading-relaxed"
       >
         {moving ? heroText : heroTextArray[sentence]}
       </motion.h1>
