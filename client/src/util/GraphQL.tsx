@@ -152,3 +152,20 @@ export const GET_USERS_QUERY = gql`
     }
   }
 `;
+
+export const UPDATE_USER_MUTATION = gql`
+  mutation UpdateUser($id: ID!, $updateUserInput: UpdateUserInput!) {
+    updateUser(id: $id, updateUserInput: $updateUserInput) {
+      id
+      username
+      firstName
+      lastName
+      createdAt
+      password
+      email
+      privilegeLevel
+      profilePicture
+      birthday
+    }
+  }
+`;

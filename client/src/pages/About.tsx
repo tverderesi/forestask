@@ -1,9 +1,9 @@
-import { JourneyIcon } from "./Journey";
+import { JourneyIcon } from "../atoms/Journey";
 
 export function About() {
   return (
     <section
-      className="pt-24 pb-12 snap-center snap-always h-screen w-screen flex flex-col lg:flex-row items-center lg:justify-around"
+      className="bg-slate-100 pt-24 pb-12 snap-center snap-always h-screen w-screen flex flex-col lg:flex-row items-center lg:justify-around"
       id="about"
     >
       <div className="w-full h-2/5 lg:w-2/5 lg:h-4/5 m-auto lg:m-0">

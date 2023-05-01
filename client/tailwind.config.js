@@ -73,7 +73,19 @@ module.exports = {
           800: "#743a1c",
           900: "#623219",
         },
-        "magenta-dye": "#c41a69",
+        "magenta-dye": {
+          50: "#f4c4d9",
+          100: "#f0b4ce",
+          200: "#ea8eb8",
+          300: "#e469a2",
+          400: "#dd448c",
+          500: "#c41a69",
+          600: "#b0165e",
+          700: "#8d1150",
+          800: "#660a3d",
+          900: "#3f042a",
+          DEFAULT: "#c41a69",
+        },
 
         "tyrian-purple": "#4b0129",
         "rose-red": "#be1449",
@@ -94,6 +106,17 @@ module.exports = {
         "red-crayola": "#ee2849",
         "dark-purple": "#19071a",
         vermilion: "#de413a",
+      },
+      dropShadow: {
+        "3xl": "0 35px 35px rgba(0, 0, 0, 0.25)",
+        "4xl": [
+          "0 35px 35px rgba(0, 0, 0, 0.25)",
+          "0 45px 65px rgba(0, 0, 0, 0.15)",
+        ],
+        night: [
+          "0px 4px 3px rgba(136, 136, 136, 0.136)",
+          "0px 8px 8px rgba(124, 124, 124, 0.216)",
+        ],
       },
     },
   },

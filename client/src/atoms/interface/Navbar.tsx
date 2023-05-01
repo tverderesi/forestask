@@ -1,29 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import { useScrollToSection } from "../../util/hooks";
 export default function Navbar({ children }) {
-  useEffect(() => {
-    const handleNavClick = (event) => {
-      const target = event.target;
-      const hash = target.getAttribute("href");
-      if (hash.startsWith("#")) {
-        event.preventDefault();
-        const targetElement = document.querySelector(hash);
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          duration: "5000ms",
-        });
-      }
-    };
-
-    const navbar = document.querySelector(".navbar");
-    navbar?.addEventListener("click", handleNavClick);
-
-    return () => {
-      navbar?.removeEventListener("click", handleNavClick);
-    };
-  }, []);
-
+  const scrollToHero = useScrollToSection("#hero");
   return (
     <header className="navbar bg-night-900 text-lavender-web-100 h-16 fixed z-10">
       <div className="navbar-start">
@@ -54,9 +33,9 @@ export default function Navbar({ children }) {
             {children}
           </ul>
         </div>
-        <Link to="/">
-          <Logo light={false} />
-        </Link>
+        <button onClick={scrollToHero}>
+          <Logo light={false} className="ml-0" />
+        </button>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{children}</ul>

@@ -7,10 +7,8 @@ import PageLayout from "./pages/PageLayout";
 import NotFound from "./pages/NotFound";
 import AppHome from "./pages/app/home/AppHome";
 
-import { NavLink } from "react-router-dom";
-import Features from "./pages/Features";
-import Florestarefa from "./pages/Florestarefa";
-import Navbar from "./atoms/interface/Navbar";
+import AdminHome from "./pages/app/home/AdminHome";
+import ProfileEditPage from "./pages/ProfileEditPage";
 export function AppRouter() {
   return (
     <Router>
@@ -21,6 +19,7 @@ export function AppRouter() {
           element={<PageLayout />}
           errorElement={<NotFound />}
         ></Route>
+        <Route path="/admin" element={<AdminHome />} />
 
         <Route path="/app/" element={<Onboard />} errorElement={<NotFound />}>
           <Route path="/app/" element={<OnboardUI />} />
@@ -28,7 +27,7 @@ export function AppRouter() {
           <Route path="/app/register" element={<Register />} />
         </Route>
         <Route path="app/home/*" element={<AppHome />}>
-          <Route path="profile" element={<NotFound />} />
+          <Route path="profile" element={<ProfileEditPage />} />
         </Route>
       </Routes>
     </Router>

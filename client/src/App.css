@@ -1,8 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/fot-rodin-pro");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "FOT-Rodin Pro", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 [data-theme="light"] {
   /* Color Palette, Light Mode */
@@ -543,4 +550,90 @@ svg#freepik_stories-journey.animated #freepik--Character--inject-2 {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+
+svg#freepik_stories-lost:not(.animated) .animable {
+  opacity: 0;
+}
+
+svg#freepik_stories-lost.animated #freepik--question-marks--inject-26 {
+  animation: 1.5s alternate-reverse linear floating;
+  animation-delay: 0s;
+}
+
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+svg#freepik_stories-flowers:not(.animated) .animable {
+  opacity: 0;
+}
+svg#freepik_stories-flowers.animated #freepik--flowers-3--inject-18 {
+  animation: 0.3s 1 forwards ease-in zoomIn;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+svg#freepik_stories-flowers.animated #freepik--flowers-5--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+svg#freepik_stories-flowers.animated #freepik--flowers-6--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+svg#freepik_stories-flowers.animated #freepik--flowers-4--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+svg#freepik_stories-flowers.animated #freepik--flowers-2--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+svg#freepik_stories-flowers.animated #freepik--flowers-1--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-flowers.animated #freepik--Floor--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-flowers.animated #freepik--Shadows--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-flowrs.animated #freepik--Character--inject-18 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animator-hidden {
+  display: none;
 }
