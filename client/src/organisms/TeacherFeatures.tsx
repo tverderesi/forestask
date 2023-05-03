@@ -1,7 +1,7 @@
 import { FaLeaf, FaTasks } from "react-icons/fa";
 import { MdPeople } from "react-icons/md";
-import { Mathematics } from "../atoms/Mathematics";
-import { TeacherFeatureList } from "../molecules/TeacherFeatureList";
+import { Mathematics } from "atoms/svgs/Mathematics";
+import { TeacherFeatureList } from "molecules/TeacherFeatureList";
 
 export function TeacherFeatures() {
   const features = [

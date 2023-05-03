@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../atoms/Logo";
-import { Lost } from "../atoms/Lost";
+import { Lost } from "../atoms/svgs/Lost";
 const NotFoundPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100 dark:bg-night-900">

@@ -1,4 +1,4 @@
-import { JourneyIcon } from "../atoms/Journey";
+import { JourneyIcon } from "atoms/svgs/Journey";
 
 export function About() {
   return (

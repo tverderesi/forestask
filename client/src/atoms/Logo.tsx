@@ -5,10 +5,10 @@ export default function Logo({ className = "", light = true }) {
     >
       <Pinetree
         className={`${
-          light ? "stroke-mantis-600" : "stroke-mantis"
+          light ? "stroke-mantis-600" : "stroke-mantis-500"
         }  align-middle relative mr-1 inline`}
       />
-      <span className={`${light ? "text-mantis-600" : "text-mantis"}`}>
+      <span className={`${light ? "text-mantis-600" : "text-mantis-500"}`}>
         floresta
       </span>
       <span

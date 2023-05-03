@@ -30,11 +30,11 @@ export const Hero = ({
       id="hero"
     >
       <HeroText heroTextArray={heroTextArray} moving={moving} />
-      <div className="flex flex-col md:flex-row w-1/2 md:w-auto justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[12.5%] md:bottom-1/4">
-        <HeroButton onClick={scrollToAbout} size="lg">
+      <div className="flex flex-col md:flex-row w-4/6 md:w-1/5 justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[20%]">
+        <HeroButton onClick={scrollToAbout} size="xl">
           Learn More
         </HeroButton>
-        <HeroButton size="lg">
+        <HeroButton size="xl">
           <Link to="/app">Explore the App</Link>
         </HeroButton>
       </div>

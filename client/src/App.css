@@ -689,6 +689,71 @@ svg#freepik_stories-mathematics.animated #freepik--character-2--inject-26 {
   animation-delay: 0s;
 }
 
+svg#freepik_stories-application-programming-interface:not(.animated) .animable {
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--Charts--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--connection-3--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--Tab--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0s;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--speech-bubble-2--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.25s;
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--connection-2--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--Gears--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.25s;
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--connection-1--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--speech-bubble-1--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.25s;
+  opacity: 0;
+}
+
+svg#freepik_stories-application-programming-interface.animated
+  #freepik--Cloud--inject-9 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) zoomIn;
+  animation-delay: 0.25s;
+  opacity: 0;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

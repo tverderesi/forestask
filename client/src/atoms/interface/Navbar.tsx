@@ -9,7 +9,7 @@ export default function Navbar({ children }) {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-dark text-lavender-web lg:hidden"
+            className="btn btn-ghost btn-dark text-lavender-web lg:hidden "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ export default function Navbar({ children }) {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-night rounded-box w-52 font-semibold"
+            className="menu dropdown-content mt-3 p-2 shadow bg-night-900 rounded-box w-[calc(95vw)] font-semibold text-center  "
           >
             {children}
           </ul>

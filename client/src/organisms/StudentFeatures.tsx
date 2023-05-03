@@ -1,8 +1,8 @@
 import { FaLeaf, FaTasks } from "react-icons/fa";
 import { AiOutlineFileText } from "react-icons/ai";
 import { GiPlantSeed } from "react-icons/gi";
-import Gardener from "../atoms/Gardener";
-import { StudentFeatureList } from "../molecules/StudentFeatureList";
+import Gardener from "atoms/svgs/Gardener";
+import { StudentFeatureList } from "molecules/StudentFeatureList";
 export const StudentFeatures = () => {
   const features = [
     {
@@ -36,7 +36,7 @@ export const StudentFeatures = () => {
           <Gardener />
         </div>
         <article className="w-full lg:w-2/5 h-full  flex flex-col items-center justify-center p-10 pl-2 relative bottom-20 lg:bottom-0">
-          <h1 className="w-full text-2xl lg:text-3xl font-bold text-center lg:text-left mb-4">
+          <h1 className="w-full text-2xl lg:text-3xl font-bold text-center mb-4">
             Features for Students
           </h1>
           <ul className="relative left-2 space-y-4 lg:text-xl h-[calc(60%+2.5rem)] carousel carousel-vertical lg:h-full">

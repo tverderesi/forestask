@@ -13,13 +13,15 @@ export function HeroButton({
 }: ButtonProps) {
   const buttonClasses = `
     btn 
-    btn-${size} 
+    w-full
+    text-lg
+    md:text-xl
     ${
       color === "primary"
         ? "bg-night-900 text-seal-brown-50"
         : "bg-white text-night-900"
     }
-    hover:bg-mantis hover:text-night-900
+    hover:bg-mantis-600 hover:text-night-900
     border-none 
     drop-shadow-lg
     `;

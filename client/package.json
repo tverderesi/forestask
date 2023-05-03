@@ -63,6 +63,7 @@
   "devDependencies": {
     "@types/dotenv-webpack": "^7.0.3",
     "@types/tinycolor2": "^1.4.3",
+    "babel-plugin-module-resolver": "^5.0.0",
     "eslint-plugin-tsdoc": "^0.2.17"
   }
 }
