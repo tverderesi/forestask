@@ -1,6 +1,6 @@
-# Florestarefa
+# Forestask (Florestarefa)
 
-Florestarefa is a student-friendly Progressive Web Application (PWA) that doubles as a Learning Management System (LMS) for school staff. With its gamified elements, students can grow their own forest by completing assignments early and earning extra leafycoins, which they can trade for items such as fertilizers, decoration items, and even a barn.
+Forestask (Florestarefa) is a student-friendly Progressive Web Application (PWA) that doubles as a Learning Management System (LMS) for school staff. With its gamified elements, students can grow their own forest by completing assignments early and earning extra leafycoins, which they can trade for items such as fertilizers, decoration items, and even a barn.
 
 ## Features for Students
 
