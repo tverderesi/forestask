@@ -16,7 +16,7 @@
     "concurrently": "^7.4.0",
     "daisyui": "^2.51.0",
     "dotenv-webpack": "^8.0.1",
-    "framer-motion": "^9.1.6",
+    "framer-motion": "^10.12.9",
     "graphql": "^15.8.0",
     "graphql-tag": "^2.12.6",
     "jwt-decode": "^3.1.2",
