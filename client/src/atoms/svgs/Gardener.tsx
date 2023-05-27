@@ -9,7 +9,7 @@ export function Gardener() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="15 110 470 390"
       version="1.1"
-      height="100%"
+      height="90%"
     >
       <g
         id="freepik--Floor--inject-18"

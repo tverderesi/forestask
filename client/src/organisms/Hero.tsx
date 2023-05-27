@@ -30,7 +30,7 @@ export const Hero = ({
       id="hero"
     >
       <HeroText heroTextArray={heroTextArray} moving={moving} />
-      <div className="flex flex-col md:flex-row w-4/6 md:w-2/5 justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[20%]">
+      <div className="flex flex-col md:flex-row w-full  md:w-4/6 items-center justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[20%]">
         <HeroButton onClick={scrollToAbout} size="xl">
           Learn More
         </HeroButton>
