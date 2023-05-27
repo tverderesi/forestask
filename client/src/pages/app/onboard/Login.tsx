@@ -12,6 +12,7 @@ import { useMutation } from "@apollo/client";
 import Loading from "../../../components/layout/Loading";
 //@ts-ignore
 import { ReactComponent as ProfilePicturePlaceholder } from "assets/profilePicturePlaceholder.svg";
+import { SingleTreeLoader } from "atoms/interface/SingleTreeLoader";
 
 export default function Login() {
   const context = useContext(AuthContext);

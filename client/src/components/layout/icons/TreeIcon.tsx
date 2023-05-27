@@ -86,6 +86,7 @@ function TreeIcon({ treeNumber, ...props }) {
           transform="translate(781.65 1972.365) scale(282.01285)"
         >
           <motion.path
+            stroke="auto"
             fillRule="nonzero"
             strokeLinejoin="round"
             strokeMiterlimit="2"
@@ -97,6 +98,7 @@ function TreeIcon({ treeNumber, ...props }) {
             animate="animate"
           ></motion.path>
           <motion.path
+            stroke="auto"
             fillRule="nonzero"
             strokeLinejoin="round"
             strokeMiterlimit="2"
@@ -108,6 +110,7 @@ function TreeIcon({ treeNumber, ...props }) {
             animate="animate"
           ></motion.path>
           <motion.path
+            stroke="auto"
             fillRule="nonzero"
             variants={tree(2)}
             initial="initial"
@@ -115,6 +118,7 @@ function TreeIcon({ treeNumber, ...props }) {
             d="M1.363.156l.191.267c.009.01.012.022.012.036A.053.053 0 011.55.5a.057.057 0 01-.043.017.062.062 0 01-.038-.012l-.35-.273-.099.248a.06.06 0 01-.022.027A.062.062 0 01.905.48L.807.232l-.35.273a.062.062 0 01-.039.012A.057.057 0 01.375.5.053.053 0 01.358.46C.358.445.362.433.37.423L.56.156.53.153A.057.057 0 01.505.144a.05.05 0 01-.02-.019.067.067 0 01-.006-.03C.479.085.484.073.492.06l.15-.21a.062.062 0 01-.03-.02A.064.064 0 01.6-.208c0-.005 0-.012.003-.019l.009-.017.301-.42a.055.055 0 01.02-.019.054.054 0 01.028-.007.05.05 0 01.028.007c.008.005.015.01.02.019l.302.42a.15.15 0 00.01.017.089.089 0 01.003.019.065.065 0 01-.012.036.05.05 0 01-.03.02l.149.21a.063.063 0 01.014.037c0 .012-.002.022-.007.03a.05.05 0 01-.019.018.154.154 0 01-.057.012z"
           ></motion.path>
           <motion.path
+            stroke="auto"
             d="M.224.97h1.478"
             variants={ground}
             initial="initial"
