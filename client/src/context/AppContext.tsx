@@ -22,6 +22,7 @@ export const AppProvider = ({ children }: Props) => {
     showForest: false,
     direction: 1,
     dataTheme: "light",
+    fontLoaded: false,
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);

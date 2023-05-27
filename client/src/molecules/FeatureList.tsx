@@ -1,25 +1,9 @@
-import * as ReactIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as GiIcons from "react-icons/gi";
-import * as MdIcons from "react-icons/md";
-
+import { useGetIconComponent } from "util/hooks/useGetIconComponent";
 import { FeatureProps } from "../types/Types";
 
 export function FeatureList({ icon, description, accentColor }: FeatureProps) {
-  const iconMappings = {
-    FaLeaf: ReactIcons.FaLeaf,
-    FaTasks: ReactIcons.FaTasks,
-    AiOutlineFileText: AiIcons.AiOutlineFileText,
-    GiPlantSeed: GiIcons.GiPlantSeed,
-    MdPeople: MdIcons.MdPeople,
-  };
-
-  const getIconComponent = (iconName) => {
-    const IconComponent = iconMappings[iconName];
-    return IconComponent || null;
-  };
-
-  const Icon = getIconComponent(icon);
+  const getIcon = useGetIconComponent();
+  const Icon = getIcon(icon);
   return (
     <li className="flex space-x-2 items-start  w-[90%] relative text-base lg:text-xl whitespace-prewrap">
       <Icon

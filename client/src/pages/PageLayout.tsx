@@ -1,11 +1,17 @@
-import Navbar from "../atoms/interface/Navbar";
+import { useContext } from "react";
+import Navbar from "atoms/interface/Navbar";
+import AppContext from "context/AppContext";
 import { useScrollToSection } from "util/hooks";
+import { NavButton } from "atoms/interface/NavButton";
+import { useFontLoaded } from "util/hooks/useFontLoaded";
 
 export default function PageLayout({
   children,
 }: {
   children: React.ReactNode | React.ReactNode[];
 }) {
+  const { dispatch } = useContext(AppContext);
+  useFontLoaded(dispatch);
   const scrollToAbout = useScrollToSection("#about");
   const scrollToStudentFeatures = useScrollToSection("#student-features");
   const scrollToTeacherFeatures = useScrollToSection("#teacher-features");
@@ -15,18 +21,14 @@ export default function PageLayout({
     <main className=" bg-slate-100 h-screen w-screen overflow-y-scroll">
       <Navbar>
         <>
-          <li className="hover:bg-mantis-600 hover:text-night-900 hover:rounded-xl active:bg-mantis-600 active:text-night-900 active:rounded-xl">
-            <button onClick={scrollToAbout}>About</button>
-          </li>
-          <li className="hover:bg-mantis-600 hover:text-night-900 hover:rounded-xl active:bg-mantis-600 active:text-night-900 active:rounded-xl">
-            <button onClick={scrollToStudentFeatures}>Student Features</button>
-          </li>
-          <li className="hover:bg-mantis-600 hover:text-night-900 hover:rounded-xl active:bg-mantis-600 active:text-night-900 active:rounded-xl">
-            <button onClick={scrollToTeacherFeatures}>Teacher Features</button>
-          </li>
-          <li className="hover:bg-mantis-600 hover:text-night-900 hover:rounded-xl active:bg-mantis-600 active:text-night-900 active:rounded-xl">
-            <button onClick={scrollToTechStack}>Tech Stack</button>
-          </li>
+          <NavButton onClick={scrollToAbout}>About</NavButton>
+          <NavButton onClick={scrollToStudentFeatures}>
+            Student Features
+          </NavButton>
+          <NavButton onClick={scrollToTeacherFeatures}>
+            Teacher Features
+          </NavButton>
+          <NavButton onClick={scrollToTechStack}>Tech Stack</NavButton>
         </>
       </Navbar>
       {children}

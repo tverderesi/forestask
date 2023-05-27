@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import PageLayout from "./PageLayout";
 import { Hero } from "organisms/Hero";
 import { About } from "organisms/About";
@@ -39,7 +40,7 @@ export function Home() {
           accentColor="text-red-crayola-600"
           featuresList={techStack}
         />
-        <Florestarefa />
+        {/* <Florestarefa /> */}
       </Carousel>
     </PageLayout>
   );

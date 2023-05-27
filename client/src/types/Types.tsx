@@ -66,10 +66,11 @@ export interface State {
   direction: -1 | 1;
   dataTheme: "dark" | "light";
   addCard: boolean;
+  fontLoaded: boolean;
 }
 
 //Dispatch Action Type
-export type Action = { type: string; payload: any };
+export type Action = { type: string; payload?: any };
 
 export type Dispatch = { state: State; Action: Action };
 
@@ -80,6 +81,7 @@ export interface AppContextTypes extends State {
   cardHeight: number;
   setCardHeight: any;
   filters: any;
+
   dispatch: (action: Action) => { state: State };
 }
 
