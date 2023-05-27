@@ -9,9 +9,12 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-// const httpLink = createHttpLink({ uri: 'https://florestarefa-server.onrender.com/graphql' });
-
-const httpLink = createHttpLink({ uri: "http://localhost:4000" });
+const httpLink = createHttpLink({
+  uri:
+    process.env.NODE_ENV === "production"
+      ? "https://florestarefa-server.onrender.com/graphql"
+      : "http://localhost:4000",
+});
 
 const authLink = setContext(() => {
   const token = localStorage.getItem("jwtToken");
