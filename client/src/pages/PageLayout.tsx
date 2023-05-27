@@ -3,9 +3,9 @@ import { useScrollToSection } from "util/hooks";
 
 export default function PageLayout({ children }) {
   const scrollToAbout = useScrollToSection("#about");
-  const scrollToStudentFeatures = useScrollToSection("#student_features");
-  const scrollToTeacherFeatures = useScrollToSection("#teacher_features");
-  const scrollToTechStack = useScrollToSection("#tech_stack");
+  const scrollToStudentFeatures = useScrollToSection("#student-features");
+  const scrollToTeacherFeatures = useScrollToSection("#teacher-features");
+  const scrollToTechStack = useScrollToSection("#tech-stack");
 
   return (
     <main className=" bg-slate-100 h-screen w-screen overflow-y-scroll carousel carousel-vertical">

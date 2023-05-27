@@ -1,0 +1,17 @@
+{
+  "paragraph": "",
+  "features": [
+    {
+      "icon": "MdPeople",
+      "description": "Keep track of student attendance easily with the Attendance feature. Reward students who maintain high attendance with extra LeafyCoins!"
+    },
+    {
+      "icon": "FaLeaf",
+      "description": "Monitor your students' progress with data-driven insights into their study habits and productivity."
+    },
+    {
+      "icon": "FaTasks",
+      "description": "Create and assign quests to your students to engage with the material in a fun and interactive way."
+    }
+  ]
+}

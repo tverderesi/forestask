@@ -26,11 +26,11 @@ export const Hero = ({
         opacity: 1,
         transition: { duration: 0.3, easings: "ease-in-out" },
       }}
-      className="relative h-screen carousel-item pt-16 bg-hero flex flex-col items-center justify-center"
+      className="relative w-screen h-screen carousel-item pt-16 bg-hero flex flex-col items-center justify-center"
       id="hero"
     >
       <HeroText heroTextArray={heroTextArray} moving={moving} />
-      <div className="flex flex-col md:flex-row w-4/6 md:w-1/5 justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[20%]">
+      <div className="flex flex-col md:flex-row w-4/6 md:w-2/5 justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[20%]">
         <HeroButton onClick={scrollToAbout} size="xl">
           Learn More
         </HeroButton>

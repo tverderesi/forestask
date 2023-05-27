@@ -13,7 +13,7 @@ export function HeroButton({
 }: ButtonProps) {
   const buttonClasses = `
     btn 
-    w-full
+    w-1/2
     text-lg
     md:text-xl
     ${

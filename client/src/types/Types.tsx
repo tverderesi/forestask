@@ -159,6 +159,7 @@ export type DropdownProps = {
 };
 
 export type FeatureProps = {
-  icon: IconType;
+  icon: string;
   description: ReactNode;
+  accentColor: string;
 };

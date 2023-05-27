@@ -1,0 +1,25 @@
+{
+  "paragraph": "",
+  "features": [
+    {
+      "icon": "FaLeaf",
+      "description": "MongoDB: document-oriented NoSQL database used to store and retrieve data."
+    },
+    {
+      "icon": "FaLeaf",
+      "description": "Express: lightweight web application framework used to handle HTTP requests and responses."
+    },
+    {
+      "icon": "FaLeaf",
+      "description": "React: JavaScript library used to build user interfaces."
+    },
+    {
+      "icon": "FaLeaf",
+      "description": "Node.js: server-side JavaScript runtime environment used to execute JavaScript code outside of a web browser."
+    },
+    {
+      "icon": "FaLeaf",
+      "description": "GraphQL: query language for APIs used to retrieve data from the server."
+    }
+  ]
+}

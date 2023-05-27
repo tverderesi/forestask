@@ -1,5 +1,5 @@
 import { useInView } from "react-intersection-observer";
-export function Mathematics() {
+export default function Mathematics() {
   const [ref, inView] = useInView({ threshold: 0.5 });
   return (
     <svg

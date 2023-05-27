@@ -16,7 +16,7 @@ const Florestarefa = () => {
           specialization, I witnessed my colleagues create reskinned PowerPoint
           presentations instead of real games that could engage and educate.
           This dissatisfaction drove me to create Florestarefa, a combination of
-          a to-do list and a learning management system that is both fun and
+          a game and a learning management system that is both fun and
           educational.
         </p>
       </SlideInView>

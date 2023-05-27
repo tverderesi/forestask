@@ -1,14 +1,15 @@
 import { useInView } from "react-intersection-observer";
-export default function Gardener() {
+export function Gardener() {
   const [ref, inView] = useInView({ threshold: 0.5 });
   return (
     <svg
       ref={ref}
-      className={`h-full mx-auto ${inView ? "animated" : ""}`}
+      className={`${inView ? "animated" : ""}`}
       id="freepik_stories-flowers"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 500 500"
+      viewBox="15 110 470 390"
       version="1.1"
+      height="100%"
     >
       <g
         id="freepik--Floor--inject-18"
