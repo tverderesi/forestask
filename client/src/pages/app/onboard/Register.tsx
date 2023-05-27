@@ -99,7 +99,7 @@ export default function Register() {
       )}
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-center justify-center  w-full h-full flex-1 my-auto"
+        className="flex flex-col items-center justify-start mt-3 lg:justify-center h-[70%]  w-full lg:h-full flex-1 my-auto"
         initial={{
           x: 200,
           opacity: 0,
@@ -116,8 +116,8 @@ export default function Register() {
         {currentPage === 2 && (
           <motion.div
             key="infoform"
-            className="flex flex-col md:grid md:grid-cols-2 gap-6 px-2 md:m-6 justify-center w-full h-full my-auto
-            items-center pb-5 md:pb-0"
+            className="flex flex-col m-0 md:grid md:grid-cols-2 gap-6 px-2 py-6 justify-start lg:justify-center w-full overflow-y-scroll h-full transition-all duration-150 ease-in-out
+            items-center scrollbar scrollbar-thin scrollbar-thumb scrollbar-track-primary-200"
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -50, opacity: 0 }}
@@ -171,10 +171,17 @@ export default function Register() {
           </motion.div>
         )}
         {currentPage === 3 && (
-          <AvatarSelector
-            placeholderNames={placeholderNames}
-            setPlaceholderNames={setPlaceholderNames}
-          />
+          <>
+            <AvatarSelector
+              placeholderNames={placeholderNames}
+              setPlaceholderNames={setPlaceholderNames}
+            />
+            <input
+              className="btn btn-ghost btn-sm bg-mantis-600 hover:bg-mantis-600 hover:text-night-900  active:bg-mantis-600 active:text-night-900 "
+              type="submit"
+              value=" Register"
+            />
+          </>
         )}
       </motion.form>
       <PageNavigator

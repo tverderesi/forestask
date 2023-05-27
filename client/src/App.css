@@ -36,7 +36,7 @@ body {
   --bg-image-url: url("../public/media/background/4.png");
   --bg-accent-2: #9a9c9e28;
   --bg-accent-3: #bbd3c3bd;
-  --card-shadow: 5px 5px 20px #3a3a3a38;
+
   --font-color: #0f172a;
 
   --placeholder: #00000081;
@@ -334,8 +334,7 @@ input.form-control.w-full.flex {
   ); /* Use vendor prefixes for backdrop-filter */
   backdrop-filter: blur(40px);
 
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Use a fallback box-shadow */
-  box-shadow: var(--card-shadow);
+  @apply shadow-md;
   border-radius: 1rem;
 }
 
@@ -355,7 +354,7 @@ input.form-control.w-full.flex {
   }
 }
 
-html {
+/* html {
   scrollbar-width: none;
 }
 
@@ -371,7 +370,7 @@ html {
 
 body::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .selected-avatar {
   box-shadow: 0 1px 3px 0 var(--accent-2), 0 0 0 2px var(--accent-2);

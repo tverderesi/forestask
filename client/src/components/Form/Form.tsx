@@ -54,7 +54,7 @@ export function Password({
 
 export function Email({ register, name, options = {} }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <label className="text-center  font-semibold text-night mb-2">
         E-mail
       </label>
@@ -78,7 +78,7 @@ export function Text({
   options = {},
 }): JSX.Element {
   return (
-    <div className={`flex flex-col w-full`}>
+    <div className="flex flex-col w-full">
       <label className="text-center  font-semibold mb-2">{label}</label>
       <input
         placeholder={placeholder}

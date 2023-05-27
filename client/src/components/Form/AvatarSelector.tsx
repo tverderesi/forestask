@@ -18,28 +18,23 @@ export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   return (
     <motion.div
       key="avatarselection"
-      className="grid grid-cols-2 xs:grid-cols-4 h-full sm:grid-cols-8 mt-8 "
+      className="h-[90%] space-y-4"
       initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -50, opacity: 0 }}
     >
-      <h2 className="col-span-2 xs:col-span-4 sm:col-span-8 w-full mb-5 text-center text-2xl font-semibold ">
+      <h2 className="w-full text-center text-2xl font-semibold ">
         Select an Avatar
       </h2>
-
-      {placeholderNames.map((item, index) => (
-        <SingleAvatar
-          key={item.name}
-          item={item}
-          handleImageClick={() => handleImageClick(index)}
-        />
-      ))}
-
-      <input
-        className="btn btn-mauvine-300 btn-sm my-2 col-span-2 xs:col-span-4 sm:col-span-8 mx-auto"
-        type="submit"
-        value=" Register"
-      />
+      <div className="grid grid-cols-3 sm:grid-cols-8 overflow-y-scroll lg:overflow-visible h-3/4  gap-y-4 py-4 w-screen lg:w-auto px-auto place-items-center ">
+        {placeholderNames.map((item, index) => (
+          <SingleAvatar
+            key={item.name}
+            item={item}
+            handleImageClick={() => handleImageClick(index)}
+          />
+        ))}
+      </div>
     </motion.div>
   );
 };
@@ -61,7 +56,7 @@ export const SingleAvatar: React.FC<SingleAvatarProps> = ({
 
   return (
     <div
-      className={`flex flex-col items-center w-24 px-2 py-3 floating-pic h-full ${
+      className={`flex flex-col items-center py-2 w-24 floating-pic h-full ${
         isTouched ? "touched" : ""
       }`}
       onTouchStart={handleTouchStart}

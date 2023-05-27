@@ -10,6 +10,8 @@ import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Loading from "../../../components/layout/Loading";
+//@ts-ignore
+import { ReactComponent as ProfilePicturePlaceholder } from "assets/profilePicturePlaceholder.svg";
 
 export default function Login() {
   const context = useContext(AuthContext);
@@ -54,25 +56,27 @@ export default function Login() {
         />
       )}
       <motion.div
-        className="w-full h-full"
+        className="w-full h-full flex flex-col items-center content-center"
         initial={{ x: 200, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: -200, opacity: 0 }}
       >
         <form
           key="loginform"
-          className="flex flex-col items-center content-center justify-self-center mx-auto my-auto gap-y-3 w-[70%]"
+          className="flex flex-col items-center content-center justify-self-center mx-auto  gap-y-3 w-[70%] my-auto"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <img
-            src={
-              profilePic ? profilePic : "/assets/profilePicturePlaceholder.svg"
-            }
-            alt="You"
-            className={`rounded-full avatar my-5 ${
-              profilePic ? "selected-avatar-big card-shadow w-1/3" : ""
-            } `}
-          />
+          {localStorage?.getItem("profilePic") ? (
+            <img
+              src={profilePic}
+              alt="You"
+              className={`rounded-full avatar my-5 ${
+                profilePic ? "selected-avatar-big card-shadow w-1/3" : ""
+              } `}
+            />
+          ) : (
+            <ProfilePicturePlaceholder className="w-1/2 stroke-black" />
+          )}
 
           <h4 className="text-lg font-semibold mb-2">
             Welcome Back{firstName}!
@@ -86,7 +90,7 @@ export default function Login() {
 
           <Password label={"Password"} name="password" register={register} />
           <input
-            className="btn btn-secondary btn-sm text-base my-5 col-span-2 xs:col-span-4 sm:col-span-8 mx-auto"
+            className="btn btn-ghost text-lavender-web-50   bg-red-crayola-600 hover:bg-red-crayola-600  active:bg-red-crayola-600 "
             type="submit"
             value="Log in"
           />

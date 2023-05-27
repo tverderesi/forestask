@@ -1,8 +1,14 @@
-<svg width="53.916668mm" height="53.916668mm" viewBox="0 0 53.916668 53.916668" version="1.1" id="svg5"
-  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg  viewBox="0 0 54 54" version="1.1" id="svg5"
+   xmlns="http://www.w3.org/2000/svg" >
+    <circle
+          cx="26.958334"
+          cy="26.958334"
+          r="26.458334"
+          fill="none"
+          stroke="auto"
+        />
   <g id="layer1" transform="translate(-47.739496,-28.751554)">
-    <path style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1" id="path236"
-      d="M 101.15616,55.709888 A 26.458334,26.458334 0 0 1 97.61142,68.939056" />
+    
     <g style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="g3141"
       transform="matrix(0.96064047,0,0,0.96064047,59.327583,36.367747)">
       <g transform="matrix(39.087946,0,0,39.147046,-6.7100967,33.875244)" id="g8890"
