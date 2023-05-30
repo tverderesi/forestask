@@ -73,7 +73,9 @@ export const AppReducer = (state: any, action: any) => {
     case "DIRECTION":
       return { ...state, direction: action.payload };
     case "FONT_LOADED":
-      console.log("FONT_LOADED");
       return { ...state, fontLoaded: true };
+
+    case "SET_AVATAR":
+      return { ...state, selectedAvatar: action.payload };
   }
 };

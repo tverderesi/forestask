@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { useContext, useState } from "react";
 import { useHandleClick } from "../../../util/hooks";
-import { profilePictureDictionary } from "../../../util/profilePictureDictionary";
 import { useMutation } from "@apollo/client";
 import { PageNavigator } from "../../../atoms/interface/PageNavigator";
 import { RoleSelect } from "../../../components/Form/RoleSelect";
@@ -15,9 +14,9 @@ import { REGISTER_USER_MUTATION } from "../../../util/GraphQL";
 import Loading from "../../../components/layout/Loading";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import AppContext from "context/AppContext";
 
 export default function Register() {
-  console.log(process.env);
   const { register, handleSubmit } = useForm({
     defaultValues: {
       username: "",
@@ -32,19 +31,16 @@ export default function Register() {
     },
   });
   const context = useContext(AuthContext);
+  const { selectedAvatar } = useContext(AppContext);
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    const profilePicture = placeholderNames.filter(
-      (item) => item.isSelected === true
-    )[0].name;
-
     addUser({
       variables: {
         registerInput: {
           ...data,
           selectedPrivilegeLevel: selectedRole.toUpperCase(),
-          profilePicture,
+          profilePicture: selectedAvatar,
         },
       },
     });
@@ -55,9 +51,6 @@ export default function Register() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleClick = useHandleClick(setSelectedRole, setCurrentPage);
-
-  //prettier-ignore
-  const [placeholderNames, setPlaceholderNames] = useState(profilePictureDictionary)
 
   const confirmPrivilegePasswordLabel = <>Confirm {selectedRole} Password </>;
 
@@ -172,12 +165,9 @@ export default function Register() {
         )}
         {currentPage === 3 && (
           <>
-            <AvatarSelector
-              placeholderNames={placeholderNames}
-              setPlaceholderNames={setPlaceholderNames}
-            />
+            <AvatarSelector />
             <input
-              className="btn btn-ghost btn-sm bg-mantis-600 hover:bg-mantis-600 hover:text-night-900  active:bg-mantis-600 active:text-night-900 "
+              className="btn btn-ghost btn-sm text-lavender-web-50 bg-fandango-400 hover:bg-fandango-400 hover:lavender-web-50  active:bg-fandango-400 active:lavender-web-50 lg:mb-4 mb-0 "
               type="submit"
               value=" Register"
             />

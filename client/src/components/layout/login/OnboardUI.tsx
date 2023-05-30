@@ -1,9 +1,6 @@
 /** @format */
 
 import { Link } from "react-router-dom";
-import { AiOutlineLogin } from "react-icons/ai";
-import { BsTree } from "react-icons/bs";
-import TreeIconStatic from "../icons/TreeIconStatic";
 import { motion } from "framer-motion";
 
 export default function OnboardUI() {

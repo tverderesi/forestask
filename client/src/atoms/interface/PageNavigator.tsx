@@ -10,7 +10,6 @@ export const PageNavigator: React.FC<StepProps> = ({
   setCurrentPage,
   steps = false,
   totalPages = typeof steps !== "boolean" && steps.length,
-  color = "primary",
   height = "10%",
 }) => {
   const handleNext = (e: React.MouseEvent) => {
@@ -22,14 +21,16 @@ export const PageNavigator: React.FC<StepProps> = ({
     setCurrentPage(currentPage - 1);
   };
 
+  const buttonClasses = `btn btn-ghost bg-fandango-400 hover:bg-fandango-400 hover:lavender-web-50  active:bg-fandango-400 active:lavender-web-50  rounded-lg flex py-2 px-3 items-center ml-2 text-lavender-web-50 mt-3 btn-square btn-sm  capitalize text-base font-semibold ${
+    steps && "mt-1 ml-6"
+  } `;
+
   return (
     <div
       className={`flex justify-between items-start h-[${height}] mx-auto self-center font-semibold`}
     >
       <button
-        className={`btn btn-sm btn-square btn-${color} capitalize text-base ${
-          steps && "mt-1 mr-6"
-        }`}
+        className={buttonClasses}
         disabled={currentPage === 1}
         onClick={handleBack}
       >
@@ -38,13 +39,10 @@ export const PageNavigator: React.FC<StepProps> = ({
       <Steps
         steps={steps}
         currentPage={currentPage}
-        color={color}
         setCurrentPage={setCurrentPage}
       />
       <button
-        className={`btn btn-${color} btn-square btn-sm bg-mauve capitalize text-base font-semibold ${
-          steps && "mt-1 ml-6"
-        } `}
+        className={buttonClasses}
         disabled={currentPage === totalPages}
         onClick={handleNext}
       >

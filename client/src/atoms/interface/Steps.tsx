@@ -5,7 +5,6 @@ import { StepsType } from "../../types/Types";
 export const Steps: React.FC<StepsType> = ({
   steps,
   currentPage,
-  color,
   setCurrentPage,
 }) => {
   return (
@@ -17,7 +16,7 @@ export const Steps: React.FC<StepsType> = ({
               <motion.li
                 key={item}
                 className={`step cursor-pointer text-extrabold sm:text-base ${
-                  currentPage >= idx + 1 ? `step-${color}` : ""
+                  currentPage >= idx + 1 ? `step-primary` : ""
                 } `}
                 onClick={(e: React.SyntheticEvent) => {
                   e.preventDefault();

@@ -27,7 +27,13 @@ export default function Onboard() {
         flex flex-col justify-between z-[2] "
         >
           <Logo className="h-[10%]" />
-          {location.pathname !== "/app" ? <BackButton href="/app" /> : ""}
+          {location.pathname !== "/app" ? (
+            <div className="absolute">
+              <BackButton href="/app" />
+            </div>
+          ) : (
+            ""
+          )}
           <Outlet key="outlet" />
         </motion.div>
       </AnimatePresence>

@@ -1,24 +1,15 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { AvatarSelectorProps, SingleAvatarProps } from "../../types/Types";
-
-export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
-  placeholderNames,
-  setPlaceholderNames,
-}) => {
-  const handleImageClick = (index: number) => {
-    setPlaceholderNames((prevState) =>
-      prevState.map((item, i) => ({
-        ...item,
-        isSelected: i === index,
-      }))
-    );
-  };
-
+import { useRef } from "react";
+import { SingleAvatarProps } from "../../types/Types";
+import { useContext } from "react";
+import AppContext from "../../context/AppContext";
+import { useProfilePictureDictionary } from "util/hooks/useProfilePictureDictionary";
+export const AvatarSelector: React.FC = () => {
+  const placeholderNames = useProfilePictureDictionary();
   return (
     <motion.div
       key="avatarselection"
-      className="h-[90%] space-y-4"
+      className="h-[100%] space-y-4"
       initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -50, opacity: 0 }}
@@ -26,59 +17,44 @@ export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
       <h2 className="w-full text-center text-2xl font-semibold ">
         Select an Avatar
       </h2>
-      <div className="grid grid-cols-3 sm:grid-cols-8 overflow-y-scroll lg:overflow-visible h-3/4  gap-y-4 py-4 w-screen lg:w-auto px-auto place-items-center ">
-        {placeholderNames.map((item, index) => (
-          <SingleAvatar
-            key={item.name}
-            item={item}
-            handleImageClick={() => handleImageClick(index)}
-          />
+      <div className="grid grid-cols-3 sm:grid-cols-8 overflow-y-scroll lg:overflow-visible h-3/4  gap-y-4 pt-4 pb-12 lg:p-4 w-screen lg:w-auto px-auto place-items-center carousel carousel-vertical z-0">
+        {placeholderNames.map((item) => (
+          <SingleAvatar key={item} item={item} />
         ))}
       </div>
     </motion.div>
   );
 };
-
-export const SingleAvatar: React.FC<SingleAvatarProps> = ({
-  item: { name, isSelected },
-  handleImageClick,
-}) => {
-  const [isTouched, setIsTouched] = useState(false);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setIsTouched(true);
-  };
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setIsTouched(false);
+export const SingleAvatar: React.FC<SingleAvatarProps> = ({ item }) => {
+  const { selectedAvatar, dispatch } = useContext(AppContext);
+  const itemRef = useRef<HTMLDivElement>(null);
+  const handleImageClick = () => {
+    dispatch({ type: "SET_AVATAR", payload: itemRef.current?.textContent });
   };
 
   return (
     <div
-      className={`flex flex-col items-center py-2 w-24 floating-pic h-full ${
-        isTouched ? "touched" : ""
-      }`}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      ref={itemRef}
+      key={item}
+      className={`flex flex-col items-center pt-4 mt-2 w-24 floating-pic h-full carousel-item`}
+      onClick={handleImageClick}
     >
       <img
-        src={`/media/avatars/${name}.jpg`}
+        key={item}
+        src={`/media/avatars/${item}.jpg`}
         className={`rounded-full w-14 h-14 ${
-          isSelected ? "selected-avatar" : ""
+          selectedAvatar === item ? "selected-avatar" : ""
         }`}
-        onClick={(e: React.SyntheticEvent) => {
-          e.preventDefault();
-          handleImageClick();
-        }}
-        alt={name}
+        alt={item}
       />
       <span
         className={`capitalize ${
-          isSelected ? "font-bold text-[var(--accent-2)]" : "font-semibold"
+          selectedAvatar === item
+            ? "font-bold text-fandango-400"
+            : "font-semibold"
         } mt-1 text-sm`}
       >
-        {name}
+        {item}
       </span>
     </div>
   );

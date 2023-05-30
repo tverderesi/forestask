@@ -91,7 +91,7 @@ export default function Login() {
 
           <Password label={"Password"} name="password" register={register} />
           <input
-            className="btn btn-ghost text-lavender-web-50   bg-red-crayola-600 hover:bg-red-crayola-600  active:bg-red-crayola-600 "
+            className="btn btn-ghost text-lavender-web-50   bg-fandango-400 hover:bg-fandango-400  active:bg-fandango-400 "
             type="submit"
             value="Log in"
           />

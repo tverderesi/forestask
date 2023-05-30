@@ -1,0 +1,28 @@
+export const useProfilePictureDictionary = () => {
+  return [
+    "ade",
+    "chris",
+    "christian",
+    "daniel",
+    "elliot",
+    "elyse",
+    "helen",
+    "jenny",
+    "joe",
+    "justen",
+    "kristy",
+    "lena",
+    "laura",
+    "lindsay",
+    "mark",
+    "matt",
+    "matthew",
+    "molly",
+    "nan",
+    "patrick",
+    "rachel",
+    "steve",
+    "stevie",
+    "veronika",
+  ];
+};

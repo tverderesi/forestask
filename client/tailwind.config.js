@@ -2,6 +2,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      boxShadow: {
+        "outline-fandango": ["0 0 1px 3px #d22f88", "0 0 0 2px #d22f88"],
+      },
       fontSize: {
         "2xs": ["0.625rem", { lineHeight: ".75rem" }],
       },

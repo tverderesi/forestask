@@ -26,7 +26,7 @@ body {
 
   /*Previous Color Palette*/
   --bg-card: #e9edfc90;
-  --bg-card-2: #e9edfc62;
+  --bg-card-2: hsla(227, 76%, 95%, 0.384);
   --bg-card-3: #e9edfcbf;
   --bg-card-solid: #f1f1f1cd;
   --accent-1: #c491ff;
@@ -98,7 +98,7 @@ body {
 }
 
 .bg-card {
-  background-color: var(--bg-card);
+  @apply bg-lavender-web-200/50;
 }
 
 .btn {
@@ -320,7 +320,7 @@ input.form-control.w-full.flex {
 .floating-pic:hover,
 .touched {
   position: relative;
-  z-index: 2;
+  z-index: 100;
   transform: scale(1.1); /* Use transform instead of scale */
   -webkit-transition: all ease-in-out 0.3s; /* Add vendor prefixes for the transition property */
   -moz-transition: all ease-in-out 0.3s;
@@ -329,13 +329,8 @@ input.form-control.w-full.flex {
   transition: all ease-in-out 0.3s;
   background-color: #f2f2f2; /* Use a fallback color */
   background-color: var(--bg-card-2);
-  -webkit-backdrop-filter: blur(
-    40px
-  ); /* Use vendor prefixes for backdrop-filter */
-  backdrop-filter: blur(40px);
 
-  @apply shadow-md;
-  border-radius: 1rem;
+  @apply shadow-sm rounded-2xl backdrop-blur-2xl;
 }
 
 .tooltip {
@@ -373,7 +368,7 @@ body::-webkit-scrollbar {
 } */
 
 .selected-avatar {
-  box-shadow: 0 1px 3px 0 var(--accent-2), 0 0 0 2px var(--accent-2);
+  box-shadow: 0 1px 3px 0 #d22f88, 0 0 0 2px #d22f88;
 }
 
 .selected-avatar-big {

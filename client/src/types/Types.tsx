@@ -67,6 +67,7 @@ export interface State {
   dataTheme: "dark" | "light";
   addCard: boolean;
   fontLoaded: boolean;
+  selectedAvatar: string;
 }
 
 //Dispatch Action Type
@@ -97,7 +98,7 @@ export type StepProps =
       setCurrentPage: (page: number) => void;
       steps: string[];
       totalPages?: number;
-      color?: string;
+
       height?: string;
     }
   | {
@@ -112,7 +113,7 @@ export type StepProps =
 export type StepsType = {
   steps: boolean | string[];
   currentPage: number;
-  color: string;
+
   setCurrentPage: (page: number) => void;
 };
 
@@ -135,19 +136,10 @@ export interface CardButtonProps {
   gameLevels: any;
 }
 
-export type PlaceholderName = {
-  name: string;
-  isSelected: boolean;
-};
-
-export type AvatarSelectorProps = {
-  placeholderNames: PlaceholderName[];
-  setPlaceholderNames: React.Dispatch<React.SetStateAction<PlaceholderName[]>>;
-};
+export type PlaceholderName = string;
 
 export type SingleAvatarProps = {
-  item: PlaceholderName;
-  handleImageClick: () => void;
+  item: string;
 };
 
 export type DropdownProps = {
