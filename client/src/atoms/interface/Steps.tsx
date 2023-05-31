@@ -18,7 +18,7 @@ export const Steps: React.FC<StepsType> = ({
                 className={`step cursor-pointer text-extrabold sm:text-base ${
                   currentPage >= idx + 1 ? `step-primary` : ""
                 } `}
-                onClick={(e: React.SyntheticEvent) => {
+                onClick={(e: React.MouseEvent<HTMLLIElement>) => {
                   e.preventDefault();
                   setCurrentPage(idx + 1);
                 }}
