@@ -1,13 +1,11 @@
-/** @format */
-
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { BigButton } from "../../../atoms/interface/BigButton";
 
 export default function OnboardUI() {
   return (
     <>
       <motion.div
-        className="grid grid-cols-2 gap-10 mx-auto my-auto relative top-[-2.25rem]"
+        className="grid grid-cols-2 gap-10 mx-auto my-auto relative"
         initial={{ x: 200, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: -200, opacity: 0 }}
@@ -20,18 +18,12 @@ export default function OnboardUI() {
         >
           Welcome!
         </motion.h2>
-        <Link
-          to="/app/login"
-          className="btn btn-transparent shadow-lg  capitalize text-xl h-32 w-32 flex-col "
-        >
-          <span className="font-semibold">Log In</span>
-        </Link>
-        <Link
-          to="/app/register"
-          className="btn btn-transparent shadow-lg font-[800] capitalize text-xl h-32 w-32 col-auto flex-col"
-        >
-          <span className="font-semibold">Register</span>
-        </Link>
+        <BigButton to="/app/login">
+          <span className="font-[800]">Login</span>
+        </BigButton>
+        <BigButton to="/app/register">
+          <span className="font-[800]">Register</span>
+        </BigButton>
       </motion.div>
     </>
   );
