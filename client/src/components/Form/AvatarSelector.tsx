@@ -1,11 +1,12 @@
+import { useContext, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
 import { SingleAvatarProps } from "../../types/Types";
-import { useContext } from "react";
 import AppContext from "../../context/AppContext";
-import { useProfilePictureDictionary } from "util/hooks/useProfilePictureDictionary";
+import { useProfilePictureDictionary } from "../../util/hooks/useProfilePictureDictionary";
+
 export const AvatarSelector: React.FC = () => {
   const placeholderNames = useProfilePictureDictionary();
+
   return (
     <motion.div
       key="avatarselection"
@@ -27,6 +28,10 @@ export const AvatarSelector: React.FC = () => {
 };
 export const SingleAvatar: React.FC<SingleAvatarProps> = ({ item }) => {
   const { selectedAvatar, dispatch } = useContext(AppContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
   const itemRef = useRef<HTMLDivElement>(null);
   const handleImageClick = () => {
     dispatch({ type: "SET_AVATAR", payload: itemRef.current?.textContent });
@@ -39,14 +44,19 @@ export const SingleAvatar: React.FC<SingleAvatarProps> = ({ item }) => {
       className={`flex flex-col items-center pt-4 mt-2 w-24 floating-pic h-full carousel-item`}
       onClick={handleImageClick}
     >
+      {isLoading && (
+        <div className="animate-pulse w-14 h-14 rounded-full bg-gray-300 absolute"></div>
+      )}
       <img
         key={item}
         src={`/media/avatars/${item}.jpg`}
         className={`rounded-full w-14 h-14 ${
           selectedAvatar === item ? "selected-avatar" : ""
         }`}
-        alt={item}
+        alt={!isLoading ? item : ""}
+        onLoad={handleLoad}
       />
+
       <span
         className={`capitalize ${
           selectedAvatar === item
