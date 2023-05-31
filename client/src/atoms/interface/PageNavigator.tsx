@@ -21,13 +21,13 @@ export const PageNavigator: React.FC<StepProps> = ({
     setCurrentPage(currentPage - 1);
   };
 
-  const buttonClasses = `btn btn-ghost bg-fandango-400 hover:bg-fandango-400 hover:lavender-web-50  active:bg-fandango-400 active:lavender-web-50  rounded-lg flex py-2 px-3 items-center ml-2 text-lavender-web-50 mt-3 btn-square btn-sm  capitalize text-base font-semibold ${
-    steps && "mt-1 ml-6"
+  const buttonClasses = `btn btn-ghost bg-fandango-400 hover:bg-fandango-400 hover:lavender-web-50  active:bg-fandango-400 active:lavender-web-50 rounded-lg text-lavender-web-50 mt-3 btn-square btn-sm  capitalize text-base font-semibold ${
+    steps && "mt-1"
   } `;
 
   return (
     <div
-      className={`flex justify-between items-start h-[${height}] mx-auto self-center font-semibold`}
+      className={`flex justify-between items-start h-[${height}] self-center font-semibold w-full`}
     >
       <button
         className={buttonClasses}
