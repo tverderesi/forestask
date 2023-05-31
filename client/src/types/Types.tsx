@@ -113,7 +113,6 @@ export type StepProps =
 export type StepsType = {
   steps: boolean | string[];
   currentPage: number;
-
   setCurrentPage: (page: number) => void;
 };
 
