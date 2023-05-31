@@ -14,7 +14,7 @@ import { REGISTER_USER_MUTATION } from "../../../util/GraphQL";
 import Loading from "../../../components/layout/Loading";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import AppContext from "context/AppContext";
+import AppContext from "../../../context/AppContext";
 
 export default function Register() {
   const { register, handleSubmit } = useForm({
@@ -31,7 +31,9 @@ export default function Register() {
     },
   });
   const context = useContext(AuthContext);
+
   const { selectedAvatar } = useContext(AppContext);
+
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
@@ -175,7 +177,6 @@ export default function Register() {
         )}
       </motion.form>
       <PageNavigator
-        color="primary"
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         steps={["Who are You?", "Info", "Avatar"]}

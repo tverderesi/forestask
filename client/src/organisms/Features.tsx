@@ -1,4 +1,4 @@
-import { FeatureList } from "molecules/FeatureList";
+import { FeatureList } from "../molecules/FeatureList";
 
 export function Features({
   id,

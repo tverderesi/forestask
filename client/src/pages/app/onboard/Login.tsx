@@ -2,17 +2,14 @@
 
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
-
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 import { Text, Password } from "../../../components/Form/Form";
 import { LOGIN_USER_MUTATION } from "../../../util/GraphQL";
 import { AuthContext } from "../../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+import { ReactComponent as ProfilePicturePlaceholder } from "../../../assets/profilePicturePlaceholder.svg";
 import Loading from "../../../components/layout/Loading";
-//@ts-ignore
-import { ReactComponent as ProfilePicturePlaceholder } from "assets/profilePicturePlaceholder.svg";
-import { SingleTreeLoader } from "atoms/interface/SingleTreeLoader";
 
 export default function Login() {
   const context = useContext(AuthContext);

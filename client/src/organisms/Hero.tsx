@@ -5,7 +5,7 @@ import AppContext from "../context/AppContext";
 import { useScrollToSection } from "../util/hooks";
 import { HeroText } from "../molecules/HeroText";
 import { Link } from "react-router-dom";
-import { SingleTreeLoader } from "atoms/interface/SingleTreeLoader";
+import { SingleTreeLoader } from "../atoms/interface/SingleTreeLoader";
 
 type HeroProps = {
   heroTextArray: string[];
