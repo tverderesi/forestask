@@ -2,12 +2,10 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "../../../atoms/Logo";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import BackButton from "../../../atoms/interface/BackButton";
 
 export default function Onboard() {
-  const location = useLocation();
-
   return (
     <div className="h-screen w-screen bg-image flex items-center justify-center ">
       <AnimatePresence>
@@ -26,14 +24,12 @@ export default function Onboard() {
         bg-card md:rounded-2xl w-screen h-screen md:h-auto md:w-auto md:min-w-[70vh] md:min-h-[70vh] p-5 md:p-10  shadow top-8 
         flex flex-col justify-between z-[2] "
         >
-          <Logo className="h-[10%]" />
-          {location.pathname !== "/app" ? (
-            <div className="absolute">
+          <div className="w-auto grid grid-cols-4">
+            <div className="col-span-1 ml-0 mr-auto">
               <BackButton href="/app" />
             </div>
-          ) : (
-            ""
-          )}
+            <Logo className="h-[10%] col-span-2" />
+          </div>
           <Outlet key="outlet" />
         </motion.div>
       </AnimatePresence>
