@@ -1,6 +1,3 @@
-import { FaCog, FaUsers, FaChartLine } from "react-icons/fa";
-import { BiMessageSquareDetail } from "react-icons/bi";
-import { HiOutlineShoppingCart } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 
 const SidebarLink = ({ to, icon, children }) => (
