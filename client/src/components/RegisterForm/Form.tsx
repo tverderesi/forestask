@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 
-const containerStyle = "flex flex-col w-[95%] px-2";
+const containerStyle = "flex flex-col w-[95%] px-3";
 
 export function Date({
   register,
