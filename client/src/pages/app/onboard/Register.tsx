@@ -7,7 +7,6 @@ import { REGISTER_USER_MUTATION } from "../../../util/GraphQL";
 import Loading from "../../../components/layout/Loading";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { RegisterProvider } from "../../../context/RegisterContext";
 import RegisterContext from "../../../context/RegisterContext";
 import { IRegisterFormState } from "../../../types/interfaces";
 import { RegisterAvatar } from "../../../organisms/RegisterAvatar";
