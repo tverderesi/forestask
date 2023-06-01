@@ -23,7 +23,6 @@ export const AppProvider = ({ children }: Props) => {
     direction: 1,
     dataTheme: "light",
     fontLoaded: false,
-    selectedAvatar: null,
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
