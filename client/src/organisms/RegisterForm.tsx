@@ -10,7 +10,7 @@ export const RegisterForm = () => {
   return (
     <motion.div
       key="infoform"
-      className="flex flex-col m-0 md:grid md:grid-cols-2 gap-6 px-2 py-6 justify-start lg:justify-center overflow-y-scroll overflow-x-hidden h-full transition-all duration-150 ease-in-out
+      className="flex flex-col m-0 md:grid md:grid-cols-2 gap-6 px-2 py-6 justify-start md:justify-center overflow-y-scroll overflow-x-hidden h-full transition-all duration-150 ease-in-out
             items-center scrollbar scrollbar-thin scrollbar-thumb scrollbar-track-primary-200"
       initial={{ x: 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
@@ -49,7 +49,7 @@ export const RegisterForm = () => {
         name="confirmPassword"
       />
 
-      <RoleKey />
+      <RoleKey register={register} name="roleKey" />
     </motion.div>
   );
 };
