@@ -1,4 +1,4 @@
-import { useGetIconComponent } from "../util/hooks/useGetIconComponent";
+import { useGetIconComponent } from "../hooks/useGetIconComponent";
 import { FeatureProps } from "../types/Types";
 
 export function FeatureList({ icon, description, accentColor }: FeatureProps) {
