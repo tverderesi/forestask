@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import React from "react";
+import { useContext } from "react";
 import { StepsType } from "../../types/Types";
+import RegisterContext from "../../context/RegisterContext";
 
-export const Steps: React.FC<StepsType> = ({
-  steps,
-  currentPage,
-  setCurrentPage,
-}) => {
+export const Steps: React.FC<StepsType> = ({ steps }) => {
+  const { currentPage, dispatch } = useContext(RegisterContext);
+
   return (
     <div className="xs:flex flex-col items-center ">
       <ul className="steps steps-horizontal ">
@@ -20,7 +19,7 @@ export const Steps: React.FC<StepsType> = ({
                 } `}
                 onClick={(e: React.MouseEvent<HTMLLIElement>) => {
                   e.preventDefault();
-                  setCurrentPage(idx + 1);
+                  dispatch({ type: "SET_PAGE", payload: idx + 1 });
                 }}
               >
                 <span className="text-sm mt-1">{item}</span>
