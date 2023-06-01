@@ -22,7 +22,7 @@ export default function Onboard() {
             opacity: 1,
           }}
           exit={{ y: 100, opacity: 0 }}
-          className="transition-all duration-200 xs:max-md:overflow-y-scroll backdrop-blur-xl bg-blend-overlay 
+          className="transition-all duration-200 ease-in-out xs:max-md:overflow-y-scroll backdrop-blur-xl bg-blend-overlay 
         bg-card md:rounded-2xl w-screen h-screen md:h-auto md:w-auto md:min-w-[70vh] md:min-h-[70vh] p-5 md:p-10  shadow top-8 
         flex flex-col justify-between z-[2] "
         >
