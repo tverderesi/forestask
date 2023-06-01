@@ -27,7 +27,11 @@ export function RoleSelect() {
             <button
               key={role}
               className={` btn w-60 h-20 sm:w-32 sm:h-32 shadow-lg text-xl flex-col items-center justify-center
-                  ${selectedRole === role ? "btn-primary" : "btn-transparent"}`}
+                  ${
+                    selectedRole === role
+                      ? "btn-ghost bg-fandango-400 hover:bg-fandango-300 text-lavender-web-50 hover:text-lavender-web-50"
+                      : "btn-transparent"
+                  }`}
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
                 dispatch({ type: "CLICK_ROLE", payload: role });
