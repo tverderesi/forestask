@@ -1,14 +1,14 @@
 import { DropdownProps } from "../../types/Types";
 
 // Component for the dropdown menu item with submenus
-export function Dropdown({
+export const Dropdown: React.FC<DropdownProps> = ({
   children,
   hover = false,
   position = "bottom",
   align = "end",
   forceOpen = false,
   arrow = false,
-}: DropdownProps) {
+}) => {
   let containerClasses = "dropdown";
   if (hover) {
     containerClasses += " dropdown-hover";
@@ -43,4 +43,4 @@ export function Dropdown({
       </ul>
     </>
   );
-}
+};
