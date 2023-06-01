@@ -2,8 +2,9 @@
 
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
-//Semi-Primitive Types
 
+//Semi-Primitive Types
+export type Maybe<T> = T | null;
 export type type = string;
 export type subject = string;
 
@@ -92,28 +93,13 @@ export type BackButtonProps = {
   href: string;
 };
 
-export type StepProps =
-  | {
-      currentPage: number;
-      setCurrentPage: (page: number) => void;
-      steps: string[];
-      totalPages?: number;
-
-      height?: string;
-    }
-  | {
-      currentPage: number;
-      setCurrentPage: (page: number) => void;
-      steps?: boolean;
-      totalPages: number;
-      color?: string;
-      height?: string;
-    };
+export type StepProps = {
+  steps: string[];
+  totalPages?: number;
+};
 
 export type StepsType = {
   steps: boolean | string[];
-  currentPage: number;
-  setCurrentPage: (page: number) => void;
 };
 
 export interface ActivityCardProps {
