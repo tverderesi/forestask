@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { BigButtonProps } from "../../types/interfaces";
 
-export const BigButton: React.FC<BigButtonProps> = ({ children, to }) => {
+export const BigTransparentButton: React.FC<BigButtonProps> = ({
+  children,
+  to,
+}) => {
   return (
     <Link
       to={to}
