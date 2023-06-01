@@ -1,6 +1,6 @@
 import { useInView } from "react-intersection-observer";
 
-export const JourneyIcon = () => {
+export const Journey = () => {
   const [ref, inView] = useInView({ threshold: 0.5 });
   return (
     <svg
