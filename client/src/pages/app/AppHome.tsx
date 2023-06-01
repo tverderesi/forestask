@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { AuthContext } from "../../../context/AuthContext";
-import AdminHome from "./AdminHome";
-import NotFound from "../../NotFound";
-import StudentHome from "./StudentHome";
-import TeacherHome from "./TeacherHome";
+import { AuthContext } from "../../context/AuthContext";
+import AdminHome from "../../organisms/AdminHome";
+import NotFound from "../NotFound";
+import StudentHome from "../../organisms/StudentHome";
+import TeacherHome from "../../organisms/TeacherHome";
 
 const AppHome = () => {
   const { user } = useContext(AuthContext) as any;
