@@ -12,7 +12,7 @@ export function SingleTreeLoader({ ...props }) {
     },
   };
 
-  const tree = (i) => {
+  const tree = (i: number) => {
     return {
       initial: { opacity: 0, scale: 0.9, y: 0.01 },
       animate: {
@@ -33,14 +33,17 @@ export function SingleTreeLoader({ ...props }) {
   };
 
   const ground = {
-    initial: { opacity: 0 },
+    initial: { opacity: 0, y: 0.1 },
     animate: {
       opacity: [0, 1, 1, 0],
+
       transition: {
         type: "tween",
         duration: 2,
         repeat: Infinity,
         repeatDelay: 2,
+        times: [0, 0.2, 0.8, 1],
+        delay: 0 + 2,
       },
     },
   };
