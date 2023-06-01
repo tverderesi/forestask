@@ -3,13 +3,13 @@ import Onboard from "./pages/app/onboard/Onboard";
 import OnboardUI from "./components/layout/login/OnboardUI";
 import Register from "./pages/app/onboard/Register";
 import Login from "./pages/app/onboard/Login";
-
 import NotFound from "./pages/NotFound";
-import AppHome from "./pages/app/home/AppHome";
+import AppHome from "./pages/app/AppHome";
 import { Home } from "./pages/Home";
-import AdminHome from "./pages/app/home/AdminHome";
+import AdminHome from "./organisms/AdminHome";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import Loading from "./components/layout/Loading";
+
 export function AppRouter() {
   return (
     <Router>

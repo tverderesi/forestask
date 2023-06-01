@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BigButton } from "../../../atoms/interface/BigButton";
+import { BigTransparentButton } from "../../../atoms/interface/BigTransparentButton";
 
 export default function OnboardUI() {
   return (
@@ -18,12 +18,12 @@ export default function OnboardUI() {
         >
           Welcome!
         </motion.h2>
-        <BigButton to="/app/login">
+        <BigTransparentButton to="/app/login">
           <span className="font-[800]">Login</span>
-        </BigButton>
-        <BigButton to="/app/register">
+        </BigTransparentButton>
+        <BigTransparentButton to="/app/register">
           <span className="font-[800]">Register</span>
-        </BigButton>
+        </BigTransparentButton>
       </motion.div>
     </>
   );

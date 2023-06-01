@@ -3,7 +3,7 @@ import Navbar from "../atoms/interface/Navbar";
 import AppContext from "../context/AppContext";
 import { useScrollToSection } from "../util/hooks";
 import { NavButton } from "../atoms/interface/NavButton";
-import { useFontLoaded } from "../util/hooks/useFontLoaded";
+import { useFontLoaded } from "../hooks/useFontLoaded";
 
 export default function PageLayout({
   children,

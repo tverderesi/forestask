@@ -2,7 +2,7 @@ import AppContext from "../../context/AppContext";
 
 import ProfileHeader from "./ProfileHeader";
 import Logo from "../../atoms/Logo";
-import { TreeSpinner } from "../../atoms/interface/TreeSpinner";
+import { SingleTreeLoader } from "../../atoms/interface/SingleTreeLoader";
 import React, { useState, useContext } from "react";
 
 function ProfileCard({ userData, loading }) {
@@ -24,7 +24,7 @@ function ProfileCard({ userData, loading }) {
     <>
       <div className="max-lg:hidden backdrop-blur-xl bg-blend-overlay bg-card rounded-2xl h-[calc(87vh+1rem)] w-[30vw] min-w-[350px] shadow-2xl relative top-8 flex flex-col ml-[5vw]">
         {loading ? (
-          <TreeSpinner />
+          <SingleTreeLoader />
         ) : (
           <>
             <div className="rounded-t-2xl bg-[var(--softer-accent-bg-color)] h-[max(30vh,12rem)] bg-blend-overlay w-full">
