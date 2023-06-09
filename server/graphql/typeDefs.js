@@ -91,14 +91,13 @@ const typeDefs = gql`
     username: String!
     firstName: String!
     lastName: String!
-    birthday: String
-    privilegePassword: String
+    birthday: String!
     email: String!
     password: String!
     confirmPassword: String!
-    profilePicture: String
-    confirmPrivilegePassword: String!
-    selectedPrivilegeLevel: String!
+    profilePicture: String!
+    role: String!
+    roleKey: String
   }
 
   input LogInInput {

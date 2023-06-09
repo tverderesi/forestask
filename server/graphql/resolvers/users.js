@@ -98,29 +98,28 @@ module.exports = {
           firstName,
           lastName,
           birthday,
-          confirmPrivilegePassword,
-          privilegePassword,
+          roleKey,    
           email,
           password,
           confirmPassword,
           profilePicture,
-          selectedPrivilegeLevel,
+          role
         },
       } // args argument
     ) {
       // validate user data
+
       const { valid, errors } = validateRegisterInput(
         username,
         email,
         password,
         confirmPassword,
-        privilegePassword,
-        confirmPrivilegePassword,
-        selectedPrivilegeLevel
-      );
+        roleKey,
+        role);
       if (!valid) {
         throw new UserInputError("Errors", { errors });
       }
+     
 
       // make sure username doesn't already exist
       const user = await User.findOne({ username });
@@ -143,7 +142,7 @@ module.exports = {
         });
       }
 
-      // hash password and create an auth token
+   
       //TODO generate random salt and encrypt it.
       password = await bcrypt.hash(password, 12);
 

@@ -7,13 +7,12 @@ module.exports.validateRegisterInput = (
   email,
   password,
   confirmPassword,
-  privilegePassword,
-  confirmPrivilegePassword,
-  selectedPrivilegeLevel
+roleKey,
+  role
 ) => {
   const errors = {};
 
-  const privilegeLevel = getPrivilegeLevel(privilegePassword);
+  const privilegeLevel = getPrivilegeLevel(roleKey);
 
   switch (true) {
     case username.trim() === '':
@@ -33,8 +32,8 @@ module.exports.validateRegisterInput = (
 
     case password === '':
       errors.password = 'Password must not be empty or contain spaces!';
-    case selectedPrivilegeLevel !== 'STUDENT' && privilegePassword === '':
-      errors.password = 'Password must not be empty or contain spaces!';
+    case role !== 'STUDENT' && privilegeKey === '':
+      errors.password = 'Privilege Key must not be empty or contain spaces!';
 
     /**
      * A regular expression that checks that a password meets the following requirements:
@@ -51,15 +50,16 @@ module.exports.validateRegisterInput = (
         'Password must contain at least one uppercase case, one lowercase letter, one number and one symbol.';
 
     case password !== confirmPassword:
-      errors.confirmPassword = 'Passwords must match!';
+      errors.confirmPassword = 'Passwords must match!'; 
 
-    case selectedPrivilegeLevel !== 'STUDENT':
-      privilegePassword !== confirmPrivilegePassword
-        ? (errors.privilegePassword = 'Privilege Passwords no not match!')
-        : '';
+    case privilegeLevel === 'INVALID':
+      errors.privilegeLevel = 'Privilege Key is invalid!';
+    
+      case privilegeLevel !== role:
+        errors.privilegeLevel = `Privilege Key for is incorrect for the role you selected!`;
+    
+   
 
-    // case :
-    //   errors.privilegeLevel = `Privilege Password is incorrect for the level you selected! ${selectedPrivilegeLevel} ${privilegeLevel}`;
   }
   return { errors, valid: Object.keys(errors).length < 1 };
 };
