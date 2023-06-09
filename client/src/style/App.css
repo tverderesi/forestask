@@ -35,7 +35,7 @@ body {
   --accent-2: #f000b8;
   --accent-3: #f57bfb;
   --bg-accent-1: #9a9c9e44;
-  --bg-image-url: url("../public/media/background/4.png");
+
   --bg-accent-2: #9a9c9e28;
   --bg-accent-3: #bbd3c3bd;
 
@@ -76,7 +76,7 @@ body {
   --accent-2: #f000b8;
   --accent-3: #f57bfb;
   --bg-accent: #9a9c9e44;
-  --bg-image-url: url("../public/media/background/4.png");
+
   --bg-accent-1: #49494977;
   --bg-accent-2: #9a9c9e14;
   --bg-accent-3: hsla(354, 30%, 20%, 0.741);
@@ -87,35 +87,19 @@ body {
   --bg-soft-warning: #e0a8a841;
   --font-color: #f5f5f5;
   --placeholder: #ffffff81;
-  --bg-image-url: url("../public/media/background/7.png");
+  
 }
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 200, "opsz" 48;
 }
 
-.bg-image {
-  background-image: var(--bg-image-url) !important;
-  background-position: 0vh 100vh;
-}
 
-.bg-card {
-  @apply bg-lavender-web-200/50;
-}
-
-.btn {
-  text-transform: capitalize;
-}
-
-.btn-primary {
-  @apply bg-mauveine-300;
-  @apply border-mauveine-300;
-}
 .btn-primary:focus,
 .btn-primary:hover {
-  @apply bg-mauveine-400;
-  @apply border-mauveine-400;
-  @apply text-lavender-web-100;
+  @apply bg-fandango-500;
+  @apply border-fandango-500;
+  @apply text-lavender-web-50;
 }
 .form-control,
 input.form-control[type="password"],
@@ -171,7 +155,7 @@ option {
   -o-appearance: none;
   appearance: none;
 }
-textarea.form-control {
+/* textarea.form-control {
   min-height: 2.25rem !important;
 }
 
@@ -193,7 +177,7 @@ textarea.form-control {
   border-color: none;
   box-shadow: none;
   border: none;
-}
+} */
 
 .btn-transparent {
   background-color: var(--bg-accent-2);
@@ -332,7 +316,7 @@ input.form-control.w-full.flex {
   background-color: #f2f2f2; /* Use a fallback color */
   background-color: var(--bg-card-2);
 
-  @apply shadow-sm rounded-2xl backdrop-blur-2xl;
+  @apply rounded-2xl shadow-sm backdrop-blur-2xl;
 }
 
 .tooltip {
