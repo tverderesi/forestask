@@ -1,11 +1,6 @@
-/** @format */
-
 import { createContext, useReducer } from "react";
-
 import { AppContextTypes, Props } from "../types/Types";
-
 import { AppReducer } from "./AppReducer";
-import FakeDataGenerator from "./FakeDataGenerator";
 
 const AppContext = createContext({} as AppContextTypes);
 

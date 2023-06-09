@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useRotatingElements } from "../util/hooks";
+import { useRotatingElements } from "../hooks";
 
 type HeroTextProps = {
   heroTextArray: string[];

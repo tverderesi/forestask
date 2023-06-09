@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
-import { useScrollToSection } from "../../util/hooks";
+import { useScrollToSection } from "../../hooks";
 import { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { SingleTreeLoader } from "./SingleTreeLoader";
@@ -12,7 +12,6 @@ export default function Navbar({ children }) {
     <header className="navbar bg-night-900 text-lavender-web-100 h-16 fixed z-10">
       {!fontLoaded ? (
         <SingleTreeLoader
-          treeNumber={0}
           className="stroke-white h-full mx-auto"
         />
       ) : (

@@ -5,11 +5,11 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { Text, Password } from "../../../components/RegisterForm/Form";
-import { LOGIN_USER_MUTATION } from "../../../util/GraphQL";
-import { AuthContext } from "../../../context/AuthContext";
-import { ReactComponent as ProfilePicturePlaceholder } from "../../../assets/profilePicturePlaceholder.svg";
-import Loading from "../../../components/layout/Loading";
+import { Text, Password } from "../components/RegisterForm/Form";
+import { LOGIN_USER_MUTATION } from "../util/GraphQL";
+import { AuthContext } from "../context/AuthContext";
+import { ReactComponent as ProfilePicturePlaceholder } from "../assets/profilePicturePlaceholder.svg";
+import Loading from "../components/layout/Loading";
 
 export default function Login() {
   const context = useContext(AuthContext);
@@ -49,26 +49,26 @@ export default function Login() {
       {loading && (
         <Loading
           text={"Logging in..."}
-          className="absolute top-0 left-0 flex flex-col p-0 h-screen w-screen  
-      items-center justify-center md:w-full md:h-full z-[2] backdrop-blur-xl bg-[var(--bg-card-2)] rounded-2xl"
+          className="absolute left-0 top-0 z-[2] flex h-screen w-screen flex-col  
+      items-center justify-center rounded-2xl bg-[var(--bg-card-2)] p-0 backdrop-blur-xl md:h-full md:w-full"
         />
       )}
       <motion.div
-        className="w-full h-full flex flex-col items-center content-center"
+        className="flex h-full w-full flex-col content-center items-center"
         initial={{ x: 200, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: -200, opacity: 0 }}
       >
         <form
           key="loginform"
-          className="flex flex-col items-center content-center justify-self-center mx-auto  gap-y-3 w-[70%] my-auto"
+          className="mx-auto my-auto flex w-[70%] flex-col content-center  items-center gap-y-3 justify-self-center"
           onSubmit={handleSubmit(onSubmit)}
         >
           {localStorage?.getItem("profilePic") ? (
             <img
               src={profilePic}
               alt="You"
-              className={`rounded-full avatar my-5 ${
+              className={`avatar my-5 rounded-full ${
                 profilePic ? "selected-avatar-big card-shadow w-1/3" : ""
               } `}
             />
@@ -76,7 +76,7 @@ export default function Login() {
             <ProfilePicturePlaceholder className="w-1/2 stroke-black" />
           )}
 
-          <h4 className="text-lg font-semibold mb-2">
+          <h4 className="mb-2 text-lg font-semibold">
             Welcome Back{firstName}!
           </h4>
           <Text
@@ -88,7 +88,7 @@ export default function Login() {
 
           <Password label={"Password"} name="password" register={register} />
           <input
-            className="btn btn-ghost text-lavender-web-50   bg-fandango-400 hover:bg-fandango-400  active:bg-fandango-400 "
+            className="btn-ghost btn bg-fandango-400   text-lavender-web-50 hover:bg-fandango-400  active:bg-fandango-400 "
             type="submit"
             value="Log in"
           />

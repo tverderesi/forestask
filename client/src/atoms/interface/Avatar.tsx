@@ -10,7 +10,7 @@ export function Avatar({
         <div className={`rounded-full ${className}`}>
           <img
             src={`${process.env.REACT_APP_PUBLIC_URL}/media/avatars/${profilePicture}.jpg`}
-            alt="Profile Picture"
+            alt="Profile"
           />
         </div>
       ) : (

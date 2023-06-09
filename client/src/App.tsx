@@ -1,8 +1,5 @@
-/** @format */
-
-import "./App.css";
+import "./style/App.css";
 import { AppProvider } from "./context/AppContext";
-
 import { AuthProvider } from "./context/AuthContext";
 import { AppRouter } from "./AppRouter";
 import { RegisterProvider } from "./context/RegisterContext";

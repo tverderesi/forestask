@@ -5,23 +5,23 @@ export interface BigButtonProps {
   to: string;
 }
 
-export interface IRegisterFormState {
+export interface IRegisterForm {
   username: Maybe<string>;
   birthday: Maybe<Date>;
-  privilegeKey: Maybe<string>;
+  roleKey: Maybe<string>;
   email: Maybe<string>;
   password: Maybe<string>;
   confirmPassword: Maybe<string>;
   firstName: Maybe<string>;
   lastName: Maybe<string>;
-  profilePicture: Maybe<string>;
 }
 
-export interface IRegisterState extends IRegisterFormState {
+export interface IRegisterState {
   currentPage: number;
   role: Maybe<"STUDENT" | "TEACHER" | "ADMIN">;
-  register: UseFormRegister<IRegisterFormState>;
-  handleSubmit: UseFormHandleSubmit<IRegisterFormState>;
+  profilePicture: Maybe<string>;
+  register: UseFormRegister<IRegisterForm>;
+  handleSubmit: UseFormHandleSubmit<IRegisterForm>;
   dispatch: React.Dispatch<IRegisterAction>;
 }
 
@@ -36,3 +36,8 @@ export interface IRegisterAction {
   type: string;
   payload?: any;
 }
+
+export type HeroProps = {
+  heroTextArray: string[];
+  moving?: boolean;
+};

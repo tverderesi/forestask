@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Onboard from "./pages/app/onboard/Onboard";
+import Onboard from "./pages/Onboard";
 import OnboardUI from "./components/layout/login/OnboardUI";
-import Register from "./pages/app/onboard/Register";
-import Login from "./pages/app/onboard/Login";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import AppHome from "./pages/app/AppHome";
+import AppHome from "./pages/AppHome";
 import { Home } from "./pages/Home";
 import AdminHome from "./organisms/AdminHome";
 import ProfileEditPage from "./pages/ProfileEditPage";
@@ -18,7 +18,7 @@ export function AppRouter() {
         <Route path="/" element={<Home />} errorElement={<NotFound />}>
           <Route
             path="/loading"
-            element={<Loading className="w-screen h-screen" text={"loading"} />}
+            element={<Loading className="h-screen w-screen" text={"loading"} />}
           />
         </Route>
         <Route path="/admin" element={<AdminHome />} />

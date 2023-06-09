@@ -2,22 +2,16 @@ import { motion } from "framer-motion";
 import { useContext } from "react";
 import { HeroButton } from "../atoms/HeroButton";
 import AppContext from "../context/AppContext";
-import { useScrollToSection } from "../util/hooks";
 import { HeroText } from "../molecules/HeroText";
 import { Link } from "react-router-dom";
 import { SingleTreeLoader } from "../atoms/interface/SingleTreeLoader";
+import { useScrollToSection } from '../hooks';
+import { HeroProps } from "../types/interfaces";
 
-type HeroProps = {
-  heroTextArray: string[];
-  moving?: boolean;
-  sentence?: number;
-};
-
-export const Hero = ({
+export const Hero: React.FC<HeroProps> = ({
   heroTextArray = [""],
   moving = false,
-  sentence = 0,
-}: HeroProps) => {
+}) => {
   const scrollToAbout = useScrollToSection("#about");
 
   const { fontLoaded } = useContext(AppContext);
@@ -35,7 +29,7 @@ export const Hero = ({
           id="hero"
         >
           <SingleTreeLoader
-            treeNumber={0}
+    
             className="stroke-white w-1/2 h-1/2 relative bottom-8"
           />
         </motion.section>
