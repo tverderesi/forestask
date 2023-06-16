@@ -5,7 +5,7 @@ import AppContext from "../context/AppContext";
 import { HeroText } from "../molecules/HeroText";
 import { Link } from "react-router-dom";
 import { SingleTreeLoader } from "../atoms/interface/SingleTreeLoader";
-import { useScrollToSection } from '../hooks';
+import { useScrollToSection } from "../hooks";
 import { HeroProps } from "../types/interfaces";
 
 export const Hero: React.FC<HeroProps> = ({
@@ -25,13 +25,10 @@ export const Hero: React.FC<HeroProps> = ({
             opacity: 1,
             transition: { duration: 0.5, easings: "ease-in-out" },
           }}
-          className="relative w-screen h-screen carousel-item pt-16 bg-hero flex flex-col items-center justify-center"
+          className="bg-hero carousel-item relative flex h-screen w-screen flex-col items-center justify-center pt-16"
           id="hero"
         >
-          <SingleTreeLoader
-    
-            className="stroke-white w-1/2 h-1/2 relative bottom-8"
-          />
+          <SingleTreeLoader className="relative bottom-8 h-1/2 w-1/2 stroke-white" />
         </motion.section>
       ) : (
         <motion.section
@@ -40,11 +37,11 @@ export const Hero: React.FC<HeroProps> = ({
             opacity: 1,
             transition: { duration: 0.5, easings: "ease-in-out" },
           }}
-          className="relative w-screen h-screen carousel-item pt-16 bg-hero flex flex-col items-center justify-center"
+          className="bg-hero carousel-item relative flex h-screen w-screen flex-col items-center justify-center pt-16"
           id="hero"
         >
           <HeroText heroTextArray={heroTextArray} moving={moving} />
-          <div className="flex flex-col md:flex-row w-full  md:w-4/6 items-center justify-center space-x-0 space-y-5 md:space-x-5 md:space-y-0 relative bottom-[20%]">
+          <div className="lg:bottom-1/5 relative bottom-[15%] flex  w-full flex-col items-center justify-center space-x-0 space-y-5 md:w-4/6 md:flex-row md:space-x-5 md:space-y-0">
             <HeroButton onClick={scrollToAbout} size="xl">
               Learn More
             </HeroButton>

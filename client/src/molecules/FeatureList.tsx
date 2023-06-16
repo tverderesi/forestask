@@ -5,11 +5,9 @@ export function FeatureList({ icon, description, accentColor }: FeatureProps) {
   const getIcon = useGetIconComponent();
   const Icon = getIcon(icon);
   return (
-    <li className="flex space-x-2 items-start  w-[90%] relative text-base lg:text-xl whitespace-prewrap">
-      <Icon
-        className={`w-5 h-5 ${accentColor} absolute left-[calc(5%-1rem)] top-1`}
-      />
-      <span className="w-[100%] relative left-[5%]">{description}</span>
+    <li className="whitespace-prewrap relative flex  w-[90%] items-start space-x-2 text-sm lg:text-lg">
+      <Icon className={`h-5 w-5 ${accentColor} relative  top-1`} />
+      <span className="relative w-[100%]">{description}</span>
     </li>
   );
 }

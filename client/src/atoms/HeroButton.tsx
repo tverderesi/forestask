@@ -6,14 +6,14 @@ type ButtonProps = {
 };
 
 export function HeroButton({
-  size = "md",
   color = "primary",
   onClick,
   children,
 }: ButtonProps) {
   const buttonClasses = `
     btn 
-    w-1/2
+    w-3/4
+    lg:w-1/2
     text-lg
     md:text-xl
     ${
@@ -24,6 +24,7 @@ export function HeroButton({
     hover:bg-mantis-600 hover:text-night-900
     border-none 
     drop-shadow-lg
+    capitalize
     `;
 
   return (

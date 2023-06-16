@@ -1,21 +1,23 @@
 export default function Logo({ className = "", light = true }) {
   return (
     <div
-      className={`${className} flex py-2 whitespace-nowrap mx-auto font-semibold text-3xl items-end  w-auto self-end text-lavender-web`}
+      className={`${className} text-lavender-web relative mx-auto flex w-auto items-end self-end  whitespace-nowrap py-2 text-3xl font-semibold`}
     >
-      <Pinetree
-        className={`${
-          light ? "stroke-mantis-600" : "stroke-mantis-500"
-        }  align-middle relative mr-1 inline`}
-      />
-      <span className={`${light ? "text-mantis-600" : "text-mantis-500"}`}>
-        floresta
-      </span>
-      <span
-        className={`${light ? "text-seal-brown-900" : "text-seal-brown-50"}`}
-      >
-        refa
-      </span>
+      <div className="relative left-5">
+        <Pinetree
+          className={`${
+            light ? "stroke-mantis-600" : "stroke-mantis-500"
+          }  relative mr-1 inline align-middle`}
+        />
+        <span className={`${light ? "text-mantis-600" : "text-mantis-500"}`}>
+          floresta
+        </span>
+        <span
+          className={`${light ? "text-seal-brown-900" : "text-seal-brown-50"}`}
+        >
+          refa
+        </span>
+      </div>
     </div>
   );
 }

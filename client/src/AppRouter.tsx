@@ -10,7 +10,9 @@ import AdminHome from "./organisms/AdminHome";
 import ProfileEditPage from "./pages/ProfileEditPage";
 import Loading from "./components/layout/Loading";
 
+
 export function AppRouter() {
+  
   return (
     <Router>
       <Routes>

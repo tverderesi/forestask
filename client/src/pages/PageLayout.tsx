@@ -18,7 +18,7 @@ export default function PageLayout({
   const scrollToTechStack = useScrollToSection("#tech-stack");
 
   return (
-    <main className=" bg-slate-100 h-screen w-screen overflow-y-scroll">
+    <main className=" h-screen w-screen overflow-y-scroll">
       <Navbar>
         <>
           <NavButton onClick={scrollToAbout}>About</NavButton>

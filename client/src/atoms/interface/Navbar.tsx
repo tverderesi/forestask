@@ -4,23 +4,22 @@ import { useScrollToSection } from "../../hooks";
 import { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { SingleTreeLoader } from "./SingleTreeLoader";
+import { ThemeChanger } from "../ThemeChanger";
 
 export default function Navbar({ children }) {
   const scrollToHero = useScrollToSection("#hero");
   const { fontLoaded } = useContext(AppContext);
   return (
-    <header className="navbar bg-night-900 text-lavender-web-100 h-16 fixed z-10">
+    <header className="navbar fixed z-10 h-16 bg-night-900 text-lavender-web-100 backdrop-blur-2xl dark:bg-night-900/75">
       {!fontLoaded ? (
-        <SingleTreeLoader
-          className="stroke-white h-full mx-auto"
-        />
+        <SingleTreeLoader className="mx-auto h-full stroke-white" />
       ) : (
         <>
           <div className="navbar-start">
             <div className="dropdown">
               <label
                 tabIndex={0}
-                className="btn btn-ghost btn-dark text-lavender-web lg:hidden "
+                className="btn-dark text-lavender-web btn-ghost btn lg:hidden "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,22 +38,25 @@ export default function Navbar({ children }) {
               </label>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content mt-3 p-2 shadow bg-night-900 rounded-box w-[calc(95vw)] font-semibold text-center  "
+                className="dropdown-content menu rounded-box mt-3 w-[calc(95vw)] bg-night-900 p-2 text-center font-semibold shadow  "
               >
                 {children}
               </ul>
+            </div>
+            <div className="absolute left-3 top-2 z-50">
+              <ThemeChanger />
             </div>
             <button onClick={scrollToHero}>
               <Logo light={false} className="ml-0" />
             </button>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{children}</ul>
+            <ul className="menu menu-horizontal gap-2">{children}</ul>
           </div>
           <div className="navbar-end">
             <Link
               to="/app"
-              className="font-bold btn btn-ghost bg-seal-brown-600 hover:bg-seal-brown-500 active:bg-seal-brown-500"
+              className="btn-ghost btn bg-seal-brown-600 font-bold tracking-wide hover:bg-seal-brown-500 active:bg-seal-brown-500"
             >
               App
             </Link>

@@ -17,16 +17,16 @@ export function Features({
   return (
     <>
       <section
-        className=" bg-slate-100 pt-16 carousel-item h-[calc(100vh-4rem)] w-screen flex flex-col lg:flex-row items-center lg:justify-around relative bottom-16"
+        className=" bg-base carousel-item relative bottom-16 flex h-[calc(100vh-4rem)] w-screen flex-col items-center justify-around pt-16 lg:flex-row lg:justify-around"
         id={id}
       >
-        <div className="h-2/5 lg:h-3/5 m-0">{drawing}</div>
-        <article className="w-full lg:w-2/5 lg:h-auto flex flex-col items-center justify-center">
-          <h1 className="w-full text-2xl lg:text-3xl font-bold text-left">
+        <div className="m-0 h-2/5 lg:h-3/5">{drawing}</div>
+        <article className="relative left-5 flex w-full flex-col items-center justify-center dark:text-slate-100 lg:h-auto lg:w-2/5">
+          <h2 className="relative -left-5 w-full text-center text-xl font-bold lg:left-0 lg:text-left lg:text-xl">
             {title}
-          </h1>
-          <p className="text-lg font-medium mb-4">{paragraph}</p>
-          <ul className="space-y-4 lg:text-xl lg:h-full w-full">
+          </h2>
+          <p className="mb-4 text-lg font-medium">{paragraph}</p>
+          <ul className="w-full space-y-4 lg:h-full">
             {features.map((feature, index) => (
               <FeatureList
                 key={index}

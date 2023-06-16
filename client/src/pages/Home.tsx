@@ -1,7 +1,6 @@
 import PageLayout from "./PageLayout";
 import { Hero } from "../organisms/Hero";
 import { About } from "../organisms/About";
-import Florestarefa from "../organisms/Florestarefa";
 import { Features } from "../organisms/Features";
 import { Server, Gardener, Mathematics } from "../atoms/svgs";
 import { Carousel } from "../atoms/Carousel";
@@ -14,27 +13,27 @@ export function Home() {
   return (
     <PageLayout>
       <Carousel>
-        <Hero heroTextArray={heroSentences} sentence={0} />
+        <Hero heroTextArray={heroSentences} />
         <About />
         <Features
           id="student-features"
           title="Features for Students"
           drawing={<Gardener />}
-          accentColor="text-magenta-dye-500"
+          accentColor="text-magenta-dye-500 dark:text-magenta-dye-300"
           featuresList={studentFeatures}
         />
         <Features
           id="teacher-features"
           title="Features for Teachers"
           drawing={<Mathematics />}
-          accentColor="text-seal-brown-600"
+          accentColor="text-seal-brown-600 dark:text-seal-brown-400"
           featuresList={teacherFeatures}
         />
         <Features
           id="tech-stack"
           title="Tech Stack"
           drawing={<Server />}
-          accentColor="text-red-crayola-600"
+          accentColor="text-red-crayola-600 dark:text-red-crayola-400"
           featuresList={techStack}
         />
         {/* <Florestarefa /> */}
