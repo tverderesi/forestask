@@ -24,7 +24,7 @@
     "react-accessible-accordion": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-icons": "^4.8.0",
+    "react-icons": "^4.12.0",
     "react-intersection-observer": "^9.4.3",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.12.0",
