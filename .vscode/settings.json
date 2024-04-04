@@ -1,0 +1,5 @@
+{
+  "vitest.enable": true,
+  "vitest.showFailMessages": true,
+  "vitest.watchOnStartup": true
+}

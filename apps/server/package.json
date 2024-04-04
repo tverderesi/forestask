@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development tsx --watch --trace-deprecation  ./src/index.ts",
+    "dev": "cross-env NODE_ENV=development tsx --watch ./src/index.ts",
     "start": "node index.js"
   },
   "repository": {

@@ -1,0 +1,49 @@
+@import url("https://fonts.cdnfonts.com/css/fot-rodin-pro");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "FOT-Rodin Pro";
+  font-style: normal;
+  font-weight: 300;
+  src:
+    local("FOT-Rodin Pro"),
+    url("https://fonts.cdnfonts.com/s/64818/FOTRodin Pro L.woff") format("woff");
+}
+@font-face {
+  font-family: "FOT-Rodin Pro";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://fonts.cdnfonts.com/s/64818/FOTRodin Pro M.woff")
+    format("woff");
+}
+@font-face {
+  font-family: "FOT-Rodin Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://fonts.cdnfonts.com/s/64818/FOTRodin Pro DB.woff")
+    format("woff");
+}
+@font-face {
+  font-family: "FOT-Rodin Pro";
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://fonts.cdnfonts.com/s/64818/FOTRodin Pro EB.woff")
+    format("woff");
+}
+@font-face {
+  font-family: "FOT-Rodin Pro";
+  font-style: normal;
+  font-weight: 900;
+  src: url("https://fonts.cdnfonts.com/s/64818/FOTRodin Pro UB.woff")
+    format("woff");
+}
+
+:root {
+  font-family: "FOT-Rodin Pro", sans-serif;
+}
+
+.slide-section {
+  @apply text-primary flex flex-col items-center justify-center gap-10 pt-16 h-screen;
+}
