@@ -15,27 +15,39 @@ export const LOL = () => (
   <>
     <section className="slide-section">
       <TreeIcon className="w-96  max-w-[90vw]" />
-      <h1 className="font-semibold text-5xl ">森林の仕事 Forestask</h1>
+      <h1 className="font-semibold text-5xl text-center">
+        森林の仕事 Forestask
+      </h1>
     </section>
     <section className="slide-section">
       <TreeIcon className="w-96  max-w-[90vw]" />
-      <h1 className="font-semibold text-5xl ">森林の仕事 Forestask</h1>
+      <h1 className="font-semibold text-5xl text-center">
+        森林の仕事 Forestask
+      </h1>
     </section>
     <section className="slide-section">
       <TreeIcon className="w-96  max-w-[90vw]" />
-      <h1 className="font-semibold text-5xl ">森林の仕事 Forestask</h1>
+      <h1 className="font-semibold text-5xl text-center">
+        森林の仕事 Forestask
+      </h1>
     </section>{" "}
     <section className="slide-section">
       <TreeIcon className="w-96  max-w-[90vw]" />
-      <h1 className="font-semibold text-5xl ">森林の仕事 Forestask</h1>
+      <h1 className="font-semibold text-5xl text-center">
+        森林の仕事 Forestask
+      </h1>
     </section>{" "}
     <section className="slide-section">
       <TreeIcon className="w-96  max-w-[90vw]" />
-      <h1 className="font-semibold text-5xl ">森林の仕事 Forestask</h1>
+      <h1 className="font-semibold text-5xl text-center">
+        森林の仕事 Forestask
+      </h1>
     </section>{" "}
     <section className="slide-section">
       <TreeIcon className="w-96  max-w-[90vw]" />
-      <h1 className="font-semibold text-5xl ">森林の仕事 Forestask</h1>
+      <h1 className="font-semibold text-5xl text-center">
+        森林の仕事 Forestask
+      </h1>
     </section>
   </>
 );
