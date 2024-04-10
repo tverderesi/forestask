@@ -10,18 +10,19 @@ import {
 } from "react";
 
 interface ThemeContextProps {
-  theme: keyof typeof themesObject;
-  setTheme: ChangeEventHandler<HTMLSelectElement>;
+  theme: keyof typeof themesObject | null | undefined;
+  setTheme: (theme: keyof typeof themesObject | null | undefined) => void;
+  handleThemeChange: ChangeEventHandler<HTMLSelectElement>;
 }
-
 const ThemeContext = createContext<ThemeContextProps>({
-  theme: getInitialThemeState(),
+  theme: undefined,
   setTheme: () => {},
+  handleThemeChange: () => {},
 });
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (!context) {
+  if (!context.theme) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
@@ -33,14 +34,16 @@ export const ThemeProvider = ({
   children: ReactNode | ReactNode[];
 }) => {
   const initialState = getInitialThemeState();
-  const [theme, setTheme] = useState<keyof typeof themesObject>(initialState);
+  const [theme, setTheme] = useState<
+    keyof typeof themesObject | null | undefined
+  >(initialState);
   const handleThemeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setTheme(e.target.value as keyof typeof themesObject);
     localStorage.setItem("theme", e.target.value);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
+    <ThemeContext.Provider value={{ theme, setTheme, handleThemeChange }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -49,15 +52,15 @@ export const ThemeProvider = ({
 export const ThemeChanger = (
   props: Omit<SelectProps, "onChange" | "value">,
 ) => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, handleThemeChange } = useContext(ThemeContext);
   const themes = Object.keys(themesObject);
 
-  if (!theme || !setTheme) {
+  if (!theme || !handleThemeChange) {
     throw new Error("ThemeChanger must be used within a ThemeProvider");
   }
 
   return (
-    <Select onChange={setTheme} value={theme} {...props}>
+    <Select onChange={handleThemeChange} value={theme} {...props}>
       <>
         <option disabled>Theme</option>
         {themes.map((theme) => (
