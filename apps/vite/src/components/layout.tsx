@@ -11,8 +11,11 @@ export const BaseLayout = ({
 }) => {
   const { theme } = useTheme();
   return (
-    <div className={cn(" w-screen", className)} data-theme={theme}>
-      <Navbar className="bg-neutral/80 backdrop-blur-lg">
+    <div
+      className={cn("w-screen h-screen overflow-y-scroll", className)}
+      data-theme={theme}
+    >
+      <Navbar className="backdrop-blur-lg">
         <NavbarStart>
           <p className="font-semibold text-neutral-content text-xl">
             Forestask

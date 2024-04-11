@@ -45,5 +45,5 @@
 }
 
 .slide-section {
-  @apply text-primary flex flex-col items-center justify-center gap-10 pt-16 h-screen;
+  @apply text-primary flex flex-col items-center justify-center gap-10 pt-16 h-screen snap-always;
 }
